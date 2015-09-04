@@ -1,0 +1,23 @@
+{
+  "name": "apex-incubator-site",
+  "version": "1.0.0",
+  "description": "The public incubator website for the Apache Apex Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-wip-us.apache.org/repos/asf/incubator-apex-site.git"
+  },
+  "keywords": [
+    "apache",
+    "software",
+    "foundation",
+    "apex",
+    "incubator",
+    "website"
+  ],
+  "author": "Andy Perlitch <andy@datatorrent.com>",
+  "license": "Apache-2.0"
+}

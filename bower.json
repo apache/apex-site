@@ -1,0 +1,25 @@
+{
+  "name": "apex-incubator-site",
+  "version": "1.0.0",
+  "authors": [
+    "Andy Perlitch <andyperlitch@gmail.com>"
+  ],
+  "description": "The public incubator website for the Apache Apex Project",
+  "keywords": [
+    "apache",
+    "software",
+    "foundation",
+    "apex",
+    "incubator",
+    "website"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "http://apex.incubator.apache.org/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
