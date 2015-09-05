@@ -19,5 +19,11 @@
     "website"
   ],
   "author": "Andy Perlitch <andy@datatorrent.com>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-compile-handlebars": "^0.5.0",
+    "gulp-marked": "^1.0.0",
+    "handlebars": "^4.0.2"
+  }
 }
