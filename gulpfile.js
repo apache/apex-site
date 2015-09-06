@@ -4,6 +4,8 @@
 var gulp = require('gulp');
 var marked = require('gulp-marked');
 var handlebars = require('gulp-compile-handlebars');
+var less = require('gulp-less');
+var path = require('path');
 
 // Constants
 var TEMP_PARTIAL_LOCATION = './.tmp/partials/';
@@ -55,3 +57,18 @@ gulp.task('html', ['md2html'], function() {
     .pipe(gulp.dest(BUILD_LOCATION));
 
 });
+
+// Creates the built css files
+gulp.task('less', function () {
+  return gulp.src('./src/less/main.less')
+    .pipe(less({
+      paths: [
+        path.join(__dirname, 'src', 'less'),
+        path.join(__dirname, 'bower_components', 'bootstrap', 'less')
+      ]
+    }))
+    .pipe(gulp.dest(path.join(BUILD_LOCATION, 'css')));
+});
+
+gulp.task('default', ['less', 'html']);
+
