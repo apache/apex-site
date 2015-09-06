@@ -1,0 +1,24 @@
+#main-nav {
+  background-color: @brand-primary;
+  margin-bottom: 10px;
+  .nav-link {
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background: lighten(@brand-primary, 25%);
+    }
+  }
+  .navbar-brand {
+    font-family: @headings-font-family;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    small {
+      font-weight: normal;
+      color: #CCC;
+    }
+  }
+  ul {
+    margin-top: 6px;
+  }
+}
