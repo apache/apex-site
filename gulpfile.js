@@ -70,8 +70,16 @@ gulp.task('less', function () {
     .pipe(gulp.dest(path.join(BUILD_LOCATION, 'css')));
 });
 
+// Copies necessary dependencies to dist
+gulp.task('copy:js', function() {
+  return gulp.src([
+    './bower_components/bootstrap/dist/js/bootstrap.min.js'
+  ])
+    .pipe(gulp.dest(path.join(BUILD_LOCATION, 'js')));
+});
+
 // Default task is to build the site
-gulp.task('default', ['less', 'html']);
+gulp.task('default', ['less', 'html', 'copy:js']);
 
 // Watch for changes
 gulp.task('watch', function() {
