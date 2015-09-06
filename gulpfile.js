@@ -70,5 +70,11 @@ gulp.task('less', function () {
     .pipe(gulp.dest(path.join(BUILD_LOCATION, 'css')));
 });
 
+// Default task is to build the site
 gulp.task('default', ['less', 'html']);
 
+// Watch for changes
+gulp.task('watch', function() {
+  gulp.watch('./src/less/*.less', ['less']);
+  gulp.watch(['./src/pages/*.html', './src/partials/*.handlebars', './src/md/*.md'], ['html']);
+});
