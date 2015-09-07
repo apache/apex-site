@@ -6,7 +6,7 @@
 
 exports = module.exports = [
   { id: 'index', label: 'Home', href: '/' },
-  { id: 'community', label: 'Community', href: '/community.html' },
+  // { id: 'community', label: 'Community', href: '/community.html' },
   { id: 'docs', label: 'Docs', href: '/docs.html' },
   { id: 'github', label: 'Github', items: [
     { label: 'Apex Core', href: 'https://github.com/apache/incubator-apex-core' },

@@ -1,5 +1,3 @@
-# Community
-
 ## Mailing Lists
 
 The following mailing lists can be used to get help with Apex.
