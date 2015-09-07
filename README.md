@@ -42,3 +42,19 @@ Assuming you have a file called `src/md/example_markdown.md`, you could have thi
 
 {{> footer}}
 ```
+
+Building
+--------
+Requires nodejs and npm.
+```bash
+# install dependencies
+npm install
+# run gulp command
+./node_modules/.bin/gulp
+```
+
+Developing
+----------
+
+When making changes to src files, you can run `grunt watch`, which will constantly build the project in the `/content` folder,
+so you don't have to manually run `grunt` after every change

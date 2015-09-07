@@ -16,18 +16,26 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <a class="navbar-brand" href="#">Apache Apex <small>(incubating)</small></a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="community.html">Community</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-static-top" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand" href="#">Apache Apex <small>(incubating)</small></a>
+        <ul class="nav nav-pills navbar-right">
+          {{#each nav}}
+          {{#if items}}
+          <li class="nav-item">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">{{label}}<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+              {{#each items}}
+              <li><a href="{{href}}">{{label}}</a></li>
+              {{/each}}
+            </ul>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="{{href}}">{{label}}</a>
+          </li>
+          {{/if}}
+          {{/each}}
+        </ul>
+      </div>
     </nav>
