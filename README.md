@@ -7,8 +7,11 @@ This is the source code for the Apache Apex Incubator website, hosted at [apex.i
 How it works
 ------------
 The master branch of this repo contains the files that are used to generate the HTML that ultimately gets pushed to the incubator site.
-The `asf-site` branch is where the actual generated files are stored. 
-Through a [gitpubsub](http://www.apache.org/dev/gitpubsub.html) mechanism, files are taken from the `asf-branch` and pushed to the live server.
+The `asf-site` branch is where the actual generated files are stored. Note that this branch must contain exactly one folder called `content`,
+and so has been checked out as an orphan branch with its own commit history apart from the master branch. See the *Building* section below.
+
+Through a [gitpubsub](http://www.apache.org/dev/gitpubsub.html) mechanism on the apache.org server,
+files are taken from the `asf-branch` and pushed to the live server.
 
 Partials
 --------
@@ -43,15 +46,14 @@ Assuming you have a file called `src/md/example_markdown.md`, you could have thi
 {{> footer}}
 ```
 
-Building
---------
-Requires nodejs and npm.
-```bash
-# install dependencies
-npm install
-# run gulp command
-./node_modules/.bin/gulp
-```
+Building (requires node+npm)
+----------------------------
+Run `build.sh` from the directory. This will:
+
+- ensure the necessary npm dependencies are installed
+- updates the `asf-site` branch with a new commit of the build from the current branch
+
+You must manually push to the `asf-site` remote branch.
 
 Developing
 ----------
