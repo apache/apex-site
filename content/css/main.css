@@ -6783,7 +6783,7 @@ button.close {
 }
 #main-nav .navbar-brand small {
   font-weight: normal;
-  color: #CCC;
+  color: rgba(255, 255, 255, 0.5);
 }
 #main-nav ul {
   margin-top: 6px;
