@@ -50,8 +50,8 @@ Building (requires node+npm)
 ----------------------------
 Run `build.sh` from the directory. This will:
 
-- ensure the necessary npm dependencies are installed
-- updates the `asf-site` branch with a new commit of the build from the current branch
+- ensure the necessary npm and bower dependencies are installed
+- checks out and updates the `asf-site` branch with a new commit of the build from the current branch
 
 You must manually push to the `asf-site` remote branch.
 
