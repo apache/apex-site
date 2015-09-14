@@ -4,7 +4,6 @@
 
 The following mailing lists can be used to get help with Apex.
 
-- [users@apex.incubator.apache.org](http://mail-archives.apache.org/mod_mbox/incubator-apex-users/) is for usage questions, help, and announcements. [subscribe](mailto:users-subscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20subscribe), [unsubscribe](mailto:users-unsubscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20unsubscribe), [archives](http://mail-archives.apache.org/mod_mbox/incubator-apex-users/)
 - [dev@apex.incubator.apache.org](http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/) is for people who want to contribute code to apex. [subscribe](mailto:dev-subscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20subscribe), [unsubscribe](mailto:dev-unsubscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20unsubscribe), [archives](http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/)
 - [commits@apex.incubator.apache.org](http://mail-archives.apache.org/mod_mbox/incubator-apex-commits/) is for commit messages and patches to apex. [subscribe](mailto:commits-subscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20subscribe), [unsubscribe](mailto:commits-unsubscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20unsubscribe), [archives](http://mail-archives.apache.org/mod_mbox/incubator-apex-commits/)
 
