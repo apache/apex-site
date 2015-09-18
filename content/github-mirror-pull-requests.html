@@ -51,15 +51,27 @@
     </nav>
 <div class="container">
   
-  <h1 id="documentation">Documentation</h1>
-  <p>New documentation will be coming soon!</p>
-  <p>Here are a few resources to get started with Apex:</p>
-  <ul>
-  <li><a href="https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html">Application Developer Guide</a></li>
-  <li><a href="https://www.datatorrent.com/docs/guides/ApplicationPackages.html">Application Packages Guide</a></li>
-  <li><a href="https://www.datatorrent.com/docs/guides/OperatorDeveloperGuide.html">Operator Developer Guide</a></li>
-  <li><a href="/github-mirror-pull-requests.html">Merging Github Mirror Pull Requests</a></li>
-  </ul>
+  <h1 id="submitting-and-merging-pull-requests-via-the-github-mirror">Submitting and Merging Pull Requests via the Github Mirror</h1>
+  <p>The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.</p>
+  <h2 id="opening-a-pull-request">Opening a Pull Request</h2>
+  <p>Fork the ASF github mirror:</p>
+  <p><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a></p>
+  <p>You can then update your local repository to add the new fork as remote. No
+  need for another clone or to recreate your workspace.</p>
+  <p>Once your feature is complete, submit the pull request. Ensure that the
+  Apex JIRA numbers are part of the commit message (we have not migrated to
+  ASF JIRA yet).</p>
+  <h2 id="merging-a-pull-request-must-be-a-committer-">Merging a Pull Request (must be a committer)</h2>
+  <p>The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></p>
+  <p>Access: <a href="https://git-wip-us.apache.org/#committers-getting-started">https://git-wip-us.apache.org/#committers-getting-started</a></p>
+  <p>Use the command line to pull in the changes from the pull requests. Since
+  the github mirror is readonly, you will not be shown the convenient command
+  line instructions :-( Good opportunity to remember the git commands!</p>
+  <p>Once done with verification, push the changes to the master. Within a few
+  seconds, the changes will propagate back to the github mirror and the pull
+  requests be closed and marked merged.</p>
+  <p><strong>Note: since none of us has write access to the mirror, only the author of a
+  pull request can close it.</strong></p>
 
 </div>
 
