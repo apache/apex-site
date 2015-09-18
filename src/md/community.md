@@ -19,4 +19,5 @@ To learn more about how we use Github to accept contributions to the project, [c
 
 ## Issue Tracking
 
-[Apex JIRA](https://malhar.atlassian.net/projects/APEX/issues)
+[Apex Core JIRA](https://malhar.atlassian.net/projects/APEX/issues)
+[Apex Malhar JIRA](https://malhar.atlassian.net/projects/MLHR/issues)
