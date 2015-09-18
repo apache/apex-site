@@ -7,3 +7,4 @@ Here are a few resources to get started with Apex:
 - [Application Developer Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html)
 - [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationPackages.html)
 - [Operator Developer Guide](https://www.datatorrent.com/docs/guides/OperatorDeveloperGuide.html)
+- [Merging Github Mirror Pull Requests](/github-mirror-pull-requests.html)

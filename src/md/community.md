@@ -15,6 +15,8 @@ The Apex Project is made up of two repositories:
 - [Apex Core](https://github.com/apache/incubator-apex-core) - The core of the Apex platform.
 - [Apex Malhar](https://github.com/apache/incubator-apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
 
+To learn more about how we use Github to accept contributions to the project, [check out this doc](/github-mirror-pull-requests.html).
+
 ## Issue Tracking
 
 [Apex JIRA](https://malhar.atlassian.net/projects/APEX/issues)
