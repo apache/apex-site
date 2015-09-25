@@ -60,8 +60,14 @@ gulp.task('copy:js', function() {
     .pipe(gulp.dest(path.join(BUILD_LOCATION, 'js')));
 });
 
+// Copies images to dist
+gulp.task('copy:images', function() {
+  return gulp.src(['./src/images/*'])
+    .pipe(gulp.dest(path.join(BUILD_LOCATION, 'images')));
+});
+
 // Default task is to build the site
-gulp.task('default', ['less', 'html', 'copy:js']);
+gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
 
 // Watch for changes
 gulp.task('watch', function() {
