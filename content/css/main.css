@@ -6785,6 +6785,11 @@ button.close {
   font-weight: normal;
   color: rgba(255, 255, 255, 0.5);
 }
+#main-nav .navbar-brand .logo {
+  height: 1em;
+  float: left;
+  margin-right: 5px;
+}
 #main-nav ul {
   margin-top: 6px;
 }
@@ -6800,4 +6805,15 @@ button.close {
 }
 .jumbotron h1 small {
   color: rgba(255, 255, 255, 0.5);
+}
+.jumbotron .text-ctnr h1 {
+  margin-top: 0;
+}
+.jumbotron .logo-ctnr {
+  text-align: center;
+}
+.jumbotron .logo-ctnr .logo {
+  width: 100%;
+  max-width: 200px;
+  margin-right: 10px;
 }
