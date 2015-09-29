@@ -8,9 +8,11 @@ exports = module.exports = [
   { id: 'index', label: 'Home', href: '/' },
   { id: 'community', label: 'Community', href: '/community.html' },
   { id: 'docs', label: 'Docs', href: '/docs.html' },
-  { id: 'github', label: 'Github', items: [
-    { label: 'Apex Core', href: 'https://github.com/apache/incubator-apex-core' },
-    { label: 'Apex Malhar', href: 'https://github.com/apache/incubator-apex-malhar' }
+  { id: 'source', label: 'Source', items: [
+    { label: 'Apex Core (ASF)', href: 'https://git-wip-us.apache.org/repos/asf?p=incubator-apex-core.git' },
+    { label: 'Apex Core (Github Mirror)', href: 'https://github.com/apache/incubator-apex-core' },
+    { label: 'Apex Malhar (ASF)', href: 'https://git-wip-us.apache.org/repos/asf?p=incubator-apex-malhar.git' },
+    { label: 'Apex Malhar (Github Mirror)', href: 'https://github.com/apache/incubator-apex-malhar' }
   ] },
   { id: 'apache', label: 'Apache', items: [
     { label: 'Status Page', href: 'http://incubator.apache.org/projects/apex.html' },
