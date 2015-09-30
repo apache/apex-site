@@ -81,15 +81,22 @@
 
   <hr>
   <div class="container">
-    <footer>
-      <p>© Apache Software Foundation 2015</p>
+    <footer id="main-footer">
+      <p>
+        Copyright &copy; <span id="copyright-year">2015</span> <a href="http://apache.org">The Apache Software Foundation</a>,
+        Licensed under the Apache License, Version 2.0<br>
+        Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
+        <a id="footer-feather" href="http://apache.org"><img src="/images/asf-feather.png" alt="The Apache Software Foundation"></a>
+      </p>
     </footer>
   </div> <!-- /container -->
 
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  
+  <script>
+    $('#copyright-year').text((new Date()).getFullYear());
+  </script>
 
 </body>
 </html>

@@ -6798,6 +6798,23 @@ button.close {
 #main-nav .nav .open > a:focus {
   color: #555555;
 }
+#main-footer {
+  text-align: center;
+  color: #777777;
+}
+#main-footer #footer-feather {
+  width: 135px;
+  opacity: 0.8;
+  transition: opacity 0.25s;
+  margin-top: 12px;
+  display: inline-block;
+}
+#main-footer #footer-feather:hover {
+  opacity: 1;
+}
+#main-footer #footer-feather img {
+  width: 100%;
+}
 .jumbotron {
   margin-top: -10px;
   background-color: #1ea3dd;
