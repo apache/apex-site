@@ -6834,3 +6834,6 @@ button.close {
   max-width: 200px;
   margin-right: 10px;
 }
+body {
+  -webkit-font-smoothing: antialiased;
+}
