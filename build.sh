@@ -14,6 +14,7 @@ mv content_tmp content
 git add content
 echo "Commiting changes to asf-site branch from master branch."
 git commit -m "from $COMMIT_HASH"
-echo "Build successful. You are now on the asf-site branch."
+echo "-----------------------------------------------------"
+echo "BUILD SUCCESSFUL. You are now on the asf-site branch."
 echo "Run git push origin asf-site to update the live site."
 set +e
