@@ -64,9 +64,12 @@
   <p><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a></p>
   <p>You can then update your local repository to add the new fork as remote. No
   need for another clone or to recreate your workspace.</p>
-  <p>Once your feature is complete, submit the pull request. Ensure that the
-  Apex JIRA numbers are part of the commit message (we have not migrated to
-  ASF JIRA yet).</p>
+  <p>Once your feature is complete, submit the pull request. Some additional notes:</p>
+  <ul>
+  <li>Commit messages need to reference JIRA (pull requests will be linked to ticket)</li>
+  <li>Travis CI pull request build needs to pass</li>
+  <li>Fix version needs to be set after pushing changes</li>
+  </ul>
   <h2 id="merging-a-pull-request-must-be-a-committer-">Merging a Pull Request (must be a committer)</h2>
   <p>The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></p>
   <p>Access: <a href="https://git-wip-us.apache.org/#committers-getting-started">https://git-wip-us.apache.org/#committers-getting-started</a></p>
