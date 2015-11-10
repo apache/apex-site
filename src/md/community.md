@@ -24,16 +24,15 @@ The Apex Project is made up of two repositories:
 
 ## Upcoming Meetups
 
-- GE Predix Using Apache Apex (incubating) for Data Ingestion & Time Series [San Ramon - Nov 17, 2015](http://www.meetup.com/IoT-Industrial-Internet-Bay-Area-Meetup/events/226364461/)
-- PubMatic to Share Real Time Insights for Advertising Tech using Apex [San Jose - Nov 19, 2015](http://www.meetup.com/Apex-Bay-Area-Chapter/events/226184395/)
+- PubMatic to Share Real Time Insights for Advertising Tech using Apex @ MapR Office [San Jose - Nov 19, 2015](http://www.meetup.com/Apex-Bay-Area-Chapter/events/226184395/)
 - Apache Apex – Deep Dive [Pune - Nov 25, 2015](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune/events/226506211/)
 
 ## Meetup Groups
 
-- [Apache Apex, Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
-- [Apache Apex, Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
-- [Apache Apex, Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
-- [Apache Apex, New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
-- [Apache Apex, Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
-- [Apache Apex, Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup)
-- [Apache Apex, Bay Area Chapter](http://www.meetup.com/Apex-Bay-Area-Chapter)
+- [Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
+- [Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
+- [Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
+- [New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
+- [Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
+- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup)
+- [Bay Area Chapter](http://www.meetup.com/Apex-Bay-Area-Chapter)
