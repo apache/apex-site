@@ -6766,6 +6766,8 @@ button.close {
 }
 #main-nav {
   background-color: #1ea3dd;
+  margin-bottom: 0;
+  border: none;
 }
 #main-nav .nav-link {
   color: white;
