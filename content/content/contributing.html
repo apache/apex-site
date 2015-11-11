@@ -57,42 +57,41 @@
     </nav>
 <div class="container">
   
-  <h1 id="community">Community</h1>
-  <h2 id="mailing-lists">Mailing Lists</h2>
-  <p>The following mailing lists can be used to get help with Apex.</p>
-  <ul>
-  <li><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/">dev@apex.incubator.apache.org</a> is for people who want to contribute code to apex. <a href="mailto:dev-subscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20subscribe">subscribe</a>, <a href="mailto:dev-unsubscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20unsubscribe">unsubscribe</a>, <a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/">archives</a></li>
-  <li><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-commits/">commits@apex.incubator.apache.org</a> is for commit messages and patches to apex. <a href="mailto:commits-subscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20subscribe">subscribe</a>, <a href="mailto:commits-unsubscribe@apex.incubator.apache.org?subject=send%20this%20email%20to%20unsubscribe">unsubscribe</a>, <a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-commits/">archives</a></li>
+  <h1 id="contributing-guidelines">Contributing Guidelines</h1>
+  <p>The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.</p>
+  <h2 id="opening-a-pull-request-contributors-">Opening a Pull Request (contributors)</h2>
+  <p>This project welcomes new contributors. If you would like to help by adding new features, enhancements or fixing bugs, here is how to do it.</p>
+  <ol>
+  <li>Create a <a href="https://malhar.atlassian.net/">JIRA</a> for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
+  <li>Fork the ASF github mirror (one time step):
+  <a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a></li>
+  <li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/devel-3">devel-3</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEX-123.my-feature</code>.</strong></li>
+  <li>When adding new files, please include the Apache v2.0 license header.<ul>
+  <li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
+  <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
   </ul>
-  <h2 id="contributing">Contributing</h2>
-  <p><strong>To learn more about how we use Github to accept contributions to the project, <a href="/contributing.html">check out the contributing guidelines</a>.</strong></p>
-  <p>The Apex Project is made up of two repositories:</p>
-  <ul>
-  <li><a href="https://github.com/apache/incubator-apex-core">Apex Core</a> - The core of the Apex platform.</li>
-  <li><a href="https://github.com/apache/incubator-apex-malhar">Apex Malhar</a> - Community-driven set of open-source &quot;operators&quot; and utilities for use in your Apex applications.</li>
+  </li>
+  <li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
+  <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
+  <li>After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a>.</li>
+  </ol>
+  <p>Thanks for contributing!</p>
+  <h2 id="merging-a-pull-request-committers-">Merging a Pull Request (committers)</h2>
+  <ol>
+  <li>Ensure that the basic requirements for a pull request are met. This includes:<ul>
+  <li>Commit messages need to reference JIRA (pull requests will be linked to ticket)</li>
+  <li>Travis CI pull request build needs to pass</li>
+  <li>Ensure tests are added/modified for new features or fixes</li>
+  <li>Ensure appropriate JavaDoc comments have been added</li>
   </ul>
-  <h2 id="release-process">Release Process</h2>
-  <p><strong>To learn more about the release process for Apex, <a href="/release.html">check out the release guidelines</a>.</strong></p>
-  <h2 id="issue-tracking">Issue Tracking</h2>
-  <ul>
-  <li><a href="https://malhar.atlassian.net/projects/APEX/issues">Apex Core JIRA</a></li>
-  <li><a href="https://malhar.atlassian.net/projects/MLHR/issues">Apex Malhar JIRA</a></li>
-  </ul>
-  <h2 id="upcoming-meetups">Upcoming Meetups</h2>
-  <ul>
-  <li>PubMatic to Share Real Time Insights for Advertising Tech using Apex @ MapR Office <a href="http://www.meetup.com/Apex-Bay-Area-Chapter/events/226184395/">San Jose - Nov 19, 2015</a></li>
-  <li>Apache Apex – Deep Dive <a href="http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune/events/226506211/">Pune - Nov 25, 2015</a></li>
-  </ul>
-  <h2 id="meetup-groups">Meetup Groups</h2>
-  <ul>
-  <li><a href="http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter">Chicago Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apex-Meetup-Houston">Houston Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apex-Meetup-Columbus">Columbus Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apache-Apex-New-York-Chapter">New York Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune">Pune Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup">Bengaluru Chapter</a></li>
-  <li><a href="http://www.meetup.com/Apex-Bay-Area-Chapter">Bay Area Chapter</a></li>
-  </ul>
+  </li>
+  <li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></li>
+  <li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.incubator.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
+  <li>Once done with verification, push the changes to the ASF repository&#39;s <code>devel-3</code> branch. Within a few
+  seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
+  <li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set after pushing the changes.</li>
+  </ol>
+  <p><strong>Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.</strong></p>
 
 </div>
 
