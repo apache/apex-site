@@ -10,6 +10,7 @@ This is the source code for the Apache Apex Incubator website, hosted at [apex.i
 - [Marked - Markdown parser/compiler](https://github.com/chjj/marked)
 - [Bootstrap - HTML/CSS/JS framework](http://getbootstrap.com/)
 - [jQuery](https://jquery.com/)
+- [HighlightJS - code syntax highlighting](https://highlightjs.org/)
 
 
 How it works
@@ -76,14 +77,21 @@ If you are a committer, do the following:
 
 Development
 -----------
-To set up the proper dev environment for this site, run the following:
 
+First, install dependencies:
 ```bash
 npm install
 ./node_modules/.bin/bower install
-./node_modules/.bin/gulp watch
 ```
 
+To test changes:
 
-The `gulp watch` command will start a process that watches for changes to source files and updates the `/content` folder accordingly.
-Simply open `/content/index.html` in your browser and refresh the page when you make changes.
+1. Make your changes to `.md`, `.html`, and `.less` files
+2. Run `./node_modules/.bin/gulp`. This creates a `content` folder 
+3. Serve this folder using something like Python's [Simple HTTP Server](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python).
+4. View the changes on the server you started in the previous step
+
+
+One way to improve this process is to run `./node_modules/.bin/gulp watch`. 
+This will start a process that watches for changes to source files and updates the `/content` folder accordingly.
+This way you make your change and refresh the page to see the effect immediately.
