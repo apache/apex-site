@@ -6766,7 +6766,6 @@ button.close {
 }
 #main-nav {
   background-color: #1ea3dd;
-  margin-bottom: 10px;
 }
 #main-nav .nav-link {
   color: white;
@@ -6790,13 +6789,21 @@ button.close {
   float: left;
   margin-right: 5px;
 }
-#main-nav ul {
-  margin-top: 6px;
-}
 #main-nav .nav .open > a,
 #main-nav .nav .open > a:hover,
 #main-nav .nav .open > a:focus {
   color: #555555;
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #EFEFEF;
+  }
+  .navbar-nav .open .dropdown-menu {
+    background-color: #48b6e6;
+  }
+}
+.navbar-toggle {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 #main-footer {
   text-align: center;
