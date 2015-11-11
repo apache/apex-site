@@ -1,6 +1,5 @@
 #main-nav {
   background-color: @brand-primary;
-  margin-bottom: 10px;
   .nav-link {
     color: white;
     cursor: pointer;
@@ -23,10 +22,19 @@
       margin-right: 5px;
     }
   }
-  ul {
-    margin-top: 6px;
-  }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     color: @gray;
   }
+
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #EFEFEF;
+  }
+  .navbar-nav .open .dropdown-menu {
+    background-color: lighten(@brand-primary, 10%);
+  }
+}
+.navbar-toggle {
+  background-color: rgba(255, 255, 255, 0.5);
 }
