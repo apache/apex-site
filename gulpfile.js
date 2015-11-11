@@ -14,7 +14,12 @@ var BUILD_LOCATION = './content';
 // Converts files in src/md into html files in .tmp/partials
 gulp.task('md2html', function() {
   return gulp.src('./src/md/*.md')
-    .pipe(marked())
+    .pipe(marked({
+      breaks: true,
+      highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value;
+      }
+    }))
     .pipe(gulp.dest(TEMP_PARTIAL_LOCATION))
     .on('error', function(err) {
       console.warn(err);

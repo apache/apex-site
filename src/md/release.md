@@ -7,7 +7,8 @@ http://www.apache.org/dev/release.html
 ## Creating Release Branch
 
 If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:
-```
+
+```bash
 git checkout devel-3 && git pull
 git checkout -b release-3.2 devel-3
 ```
@@ -21,7 +22,7 @@ For informational purpose, this should yield the list of files that needs the ve
 https://malhar.atlassian.net/browse/APEX-34
 
 For -core:  
-```
+```bash
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.3.0-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
@@ -117,6 +118,7 @@ Prerequisites:
  - Tag pushed to ASF git
 
 Build and deploy release candidate from RC tag:
+
 ```
 git checkout "v${rv}-RC1"
 git clean -d -f
@@ -127,17 +129,23 @@ Log on to https://repository.apache.org and look for Staging Repositories. "Clos
 Example URL: https://repository.apache.org/content/repositories/orgapacheapex-1000/
 
 Copy files to distribution dir and create checksums
+
 ```bash
 md5sum apex-3.2.0-incubating-source-release.tar.gz > apex-3.2.0-incubating-source-release.tar.gz.md5
 md5sum apex-3.2.0-incubating-source-release.zip > apex-3.2.0-incubating-source-release.zip.md5
 
 shasum -a 512 apex-3.2.0-incubating-source-release.tar.gz > apex-3.2.0-incubating-source-release.tar.gz.sha
 shasum -a 512 apex-3.2.0-incubating-source-release.zip > apex-3.2.0-incubating-source-release.zip.sha
-```
+
 svn co https://dist.apache.org/repos/dist/dev/incubator/apex
+```
+
 create directory for new version
 svn add the source archives and signature/checksum files
+
+```bash
 svn commit -m  "Apache Apex v3.2.0-incubating-RC2"
+```
 
 ## Voting 
 
@@ -171,19 +179,19 @@ Create version numbers for next release
 ### git
 
 Create final release tag:
-```
+```bash
 git tag -a "v3.2.0-incubating" -m "Release 3.2.0-incubating" "v3.2.0-incubating-RC2"
 git push apache "v3.2.0-incubating"
 ```
 Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
-```
+```bash
 git checkout release-3.2
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 git commit -am "Preparing for 3.2.1 development"
 ```
-Merge @since tag and change log changes to devel-3
+Merge `@since` tag and change log changes to `devel-3`
 
 ## Announce Release
 
