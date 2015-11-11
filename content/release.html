@@ -58,40 +58,40 @@
 <div class="container">
   
   <h1 id="how-to-release-apache-apex-incubating-">How to release Apache Apex (incubating)</h1>
-  <p>For general information on ASF releases, see:
-  <a href="http://incubator.apache.org/guides/releasemanagement.html">http://incubator.apache.org/guides/releasemanagement.html</a>
-  <a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
+  <p>For general information on ASF releases, see:<br><a href="http://incubator.apache.org/guides/releasemanagement.html">http://incubator.apache.org/guides/releasemanagement.html</a><br><a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
   <h2 id="creating-release-branch">Creating Release Branch</h2>
   <p>If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:</p>
-  <pre><code>git checkout devel-3 &amp;&amp; git pull
-  git checkout -b release-3.2 devel-3
-  </code></pre><p>Replace version in devel-3 branch:</p>
-  <pre><code>git checkout devel-3
-  git grep -l &quot;3.2.0-incubating-SNAPSHOT&quot;
+  <pre><code class="lang-bash">git checkout devel-<span class="hljs-number">3</span> &amp;&amp; git pull
+  git checkout -b release-<span class="hljs-number">3.2</span> devel-<span class="hljs-number">3</span>
+  </code></pre>
+  <p>Replace version in devel-3 branch:</p>
+  <pre><code>git checkout devel-<span class="hljs-number">3</span>
+  git grep <span class="hljs-operator">-l</span> <span class="hljs-string">"3.2.0-incubating-SNAPSHOT"</span>
   </code></pre><p>For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:</p>
   <p><a href="https://malhar.atlassian.net/browse/APEX-34">https://malhar.atlassian.net/browse/APEX-34</a></p>
   <p>For -core:  </p>
-  <pre><code>dv=3.2.0-incubating-SNAPSHOT
-  rv=3.3.0-incubating-SNAPSHOT
-  for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
-  </code></pre><p>For -malhar:</p>
-  <pre><code>mvn versions:set -DnewVersion=${rv}
+  <pre><code class="lang-bash">dv=<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-SNAPSHOT
+  rv=<span class="hljs-number">3.3</span>.<span class="hljs-number">0</span>-incubating-SNAPSHOT
+  <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> `git grep -l <span class="hljs-string">"${dv}"</span>`; do echo <span class="hljs-variable">$a</span>; sed -i <span class="hljs-string">'s/'</span><span class="hljs-string">"${dv}"</span><span class="hljs-string">'/'</span><span class="hljs-string">"${rv}"</span><span class="hljs-string">'/g'</span> <span class="hljs-variable">$a</span>; done
+  </code></pre>
+  <p>For -malhar:</p>
+  <pre><code>mvn versions:<span class="hljs-built_in">set</span> -DnewVersion=<span class="hljs-variable">${rv}</span>
   </code></pre><p>Commit and push the change:</p>
-  <pre><code>git commit -m &quot;Preparing for 3.3.0 development&quot;
-  git push apache devel-3
+  <pre><code>git <span class="hljs-operator"><span class="hljs-keyword">commit</span> -<span class="hljs-keyword">m</span> <span class="hljs-string">"Preparing for 3.3.0 development"</span>
+  git push apache devel-<span class="hljs-number">3</span></span>
   </code></pre><h2 id="preparing-release-candidate">Preparing Release Candidate</h2>
   <h3 id="add-missing-since-tags">Add missing @since tags</h3>
   <p>For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as</p>
   <p><a href="https://malhar.atlassian.net/browse/APEX-183">https://malhar.atlassian.net/browse/APEX-183</a></p>
   <p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, following (convoluted) procedure can be used <strong>only for -core</strong> to get the work done. </p>
   <p>Find the files that need to be modified:</p>
-  <pre><code>yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
+  <pre><code>yes | mvn javadoc:fix -DdefaultSince=<span class="hljs-number">3.2</span><span class="hljs-number">.0</span> -DfixTags=since -DignoreClirr=<span class="hljs-literal">true</span> -DfixFieldComment=<span class="hljs-literal">false</span> -DfixMethodComment=<span class="hljs-literal">false</span>
   </code></pre><p>The tags were inserted in the wrong place, remove the leading blank line added in previous step and replace <code>/**</code> with <code>/*</code> for affected files:</p>
-  <pre><code>git status -s | awk &#39;{print $2}&#39; | xargs sed -i &#39;:a;N;$!ba;s!^\n/\*\*!/*!&#39;
+  <pre><code><span class="hljs-title">git</span> status -s | awk <span class="hljs-string">'{print <span class="hljs-variable">$2</span>}'</span> | xargs sed -i <span class="hljs-string">':a;N;$!ba;s!^\n/\*\*!/*!'</span>
   </code></pre><p>Now repeat and insert tags in correct place:</p>
-  <pre><code>yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
+  <pre><code>yes | mvn javadoc:fix -DdefaultSince=<span class="hljs-number">3.2</span><span class="hljs-number">.0</span> -DfixTags=since -DignoreClirr=<span class="hljs-literal">true</span> -DfixFieldComment=<span class="hljs-literal">false</span> -DfixMethodComment=<span class="hljs-literal">false</span>
   </code></pre><p>Finally restore license headers to what they used to be:</p>
-  <pre><code>mvn license:format -Dlicense.skip=false
+  <pre><code><span class="hljs-keyword">mvn </span>license:format -Dlicense<span class="hljs-preprocessor">.skip</span><span class="hljs-label">=false</span>
   </code></pre><p>Do a git diff to double check, if all looks good commit and create pull request</p>
   <h3 id="update-changelog-from-jira">Update CHANGELOG from JIRA</h3>
   <p>Navigate to the unreleased version, example for 3.2.0:</p>
@@ -99,22 +99,21 @@
   <p>Obtain the release notes (text mode):</p>
   <p><a href="https://malhar.atlassian.net/secure/ReleaseNote.jspa?version=11700&amp;styleName=Text&amp;projectId=10700">https://malhar.atlassian.net/secure/ReleaseNote.jspa?version=11700&amp;styleName=Text&amp;projectId=10700</a></p>
   <p>Shorten any wrapping and overly long titles to fit width.  Copy the report and insert new release section into <code>CHANGELOG.md</code> with the release date set to 72 hours ahead to reflect the time for the vote.</p>
-  <p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread. 
-  Example: <a href="http://s.apache.org/SRM">http://s.apache.org/SRM</a></p>
+  <p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread.<br>Example: <a href="http://s.apache.org/SRM">http://s.apache.org/SRM</a></p>
   <p>Commit tags and change log:</p>
-  <pre><code>git commit -am &quot;Add @since tags and update change log for release 3.2.0&quot;
+  <pre><code><span class="hljs-title">git</span> commit -am <span class="hljs-string">"Add <span class="hljs-variable">@since</span> tags and update change log for release 3.2.0"</span>
   </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
-  <pre><code>dv=3.2.0-incubating-SNAPSHOT
-  rv=3.2.0-incubating
+  <pre><code>dv=<span class="hljs-number">3.2</span><span class="hljs-number">.0</span>-incubating-SNAPSHOT
+  rv=<span class="hljs-number">3.2</span><span class="hljs-number">.0</span>-incubating
   </code></pre><p>As mentioned earlier, use the following for -core releases:</p>
-  <pre><code>for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
+  <pre><code><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> `git grep -l <span class="hljs-string">"${dv}"</span>`; do echo <span class="hljs-variable">$a</span>; sed -i <span class="hljs-string">'s/'</span><span class="hljs-string">"${dv}"</span><span class="hljs-string">'/'</span><span class="hljs-string">"${rv}"</span><span class="hljs-string">'/g'</span> <span class="hljs-variable">$a</span>; done
   </code></pre><p>And this for -malhar releases:</p>
-  <pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv}
+  <pre><code>mvn versions:<span class="hljs-built_in">set</span> -Pall-modules -DnewVersion=<span class="hljs-variable">${rv}</span>
   </code></pre><p>Commit version change:</p>
-  <pre><code>git commit -am &quot;Preparing to release ${rv}-RC1&quot;
-  git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
+  <pre><code>git commit -am <span class="hljs-string">"Preparing to release <span class="hljs-variable">${rv}</span>-RC1"</span>
+  git tag <span class="hljs-operator">-a</span> <span class="hljs-string">"v<span class="hljs-variable">${rv}</span>-RC1"</span> -m <span class="hljs-string">"Release <span class="hljs-variable">${rv}</span>-RC1"</span>
   </code></pre><p>Push to fork, open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
-  <pre><code>git push apache &quot;v${rv}-RC1&quot;
+  <pre><code>git <span class="hljs-keyword">push</span> apache <span class="hljs-string">"v<span class="hljs-subst">${rv}</span>-RC1"</span>
   </code></pre><p>The only difference between branch and the tag is this final version number change. The branch stays at <code>SNAPSHOT</code> version.</p>
   <h2 id="build-and-deploy-release-candidate">Build and Deploy Release Candidate</h2>
   <p>Prerequisites:</p>
@@ -124,50 +123,48 @@
   <li>Tag pushed to ASF git</li>
   </ul>
   <p>Build and deploy release candidate from RC tag:</p>
-  <pre><code>git checkout &quot;v${rv}-RC1&quot;
-  git clean -d -f
+  <pre><code>git checkout <span class="hljs-string">"v<span class="hljs-variable">${rv}</span>-RC1"</span>
+  git clean <span class="hljs-operator">-d</span> <span class="hljs-operator">-f</span>
   mvn clean deploy -Papache-release -DskipTests -Dsonatype_user=&lt;user&gt;
   </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
   <p>Example URL: <a href="https://repository.apache.org/content/repositories/orgapacheapex-1000/">https://repository.apache.org/content/repositories/orgapacheapex-1000/</a></p>
   <p>Copy files to distribution dir and create checksums</p>
-  <pre><code class="lang-bash">md5sum apex-3.2.0-incubating-source-release.tar.gz &gt; apex-3.2.0-incubating-source-release.tar.gz.md5
-  md5sum apex-3.2.0-incubating-source-release.zip &gt; apex-3.2.0-incubating-source-release.zip.md5
+  <pre><code class="lang-bash">md5sum apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.tar</span><span class="hljs-class">.gz</span> &gt; apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.tar</span><span class="hljs-class">.gz</span><span class="hljs-class">.md5</span>
+  md5sum apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.zip</span> &gt; apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.zip</span><span class="hljs-class">.md5</span>
   
-  shasum -a 512 apex-3.2.0-incubating-source-release.tar.gz &gt; apex-3.2.0-incubating-source-release.tar.gz.sha
-  shasum -a 512 apex-3.2.0-incubating-source-release.zip &gt; apex-3.2.0-incubating-source-release.zip.sha
+  shasum -<span class="hljs-tag">a</span> <span class="hljs-number">512</span> apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.tar</span><span class="hljs-class">.gz</span> &gt; apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.tar</span><span class="hljs-class">.gz</span><span class="hljs-class">.sha</span>
+  shasum -<span class="hljs-tag">a</span> <span class="hljs-number">512</span> apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.zip</span> &gt; apex-<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-source-release<span class="hljs-class">.zip</span><span class="hljs-class">.sha</span>
+  
+  svn co https:<span class="hljs-comment">//dist.apache.org/repos/dist/dev/incubator/apex</span>
   </code></pre>
-  <p>svn co <a href="https://dist.apache.org/repos/dist/dev/incubator/apex">https://dist.apache.org/repos/dist/dev/incubator/apex</a>
-  create directory for new version
-  svn add the source archives and signature/checksum files
-  svn commit -m  &quot;Apache Apex v3.2.0-incubating-RC2&quot;</p>
+  <p>create directory for new version<br>svn add the source archives and signature/checksum files</p>
+  <pre><code class="lang-bash">svn <span class="hljs-operator"><span class="hljs-keyword">commit</span> -<span class="hljs-keyword">m</span>  <span class="hljs-string">"Apache Apex v3.2.0-incubating-RC2"</span></span>
+  </code></pre>
   <h2 id="voting">Voting</h2>
-  <p>PPMC vote call:
-  <a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser</a></p>
-  <p>PPMC vote result:
-  <a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E</a></p>
+  <p>PPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser</a></p>
+  <p>PPMC vote result:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E</a></p>
   <p>Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).</p>
-  <p>IPMC vote call:
-  <a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E</a></p>
-  <p>IPMC vote result:
-  <a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo2O8aqg3Z0-y0hiyq5aFskYrMDG-xYbdfQR8YGCiiGAjA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo2O8aqg3Z0-y0hiyq5aFskYrMDG-xYbdfQR8YGCiiGAjA%40mail.gmail.com%3E</a></p>
+  <p>IPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E</a></p>
+  <p>IPMC vote result:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo2O8aqg3Z0-y0hiyq5aFskYrMDG-xYbdfQR8YGCiiGAjA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo2O8aqg3Z0-y0hiyq5aFskYrMDG-xYbdfQR8YGCiiGAjA%40mail.gmail.com%3E</a></p>
   <p>If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.</p>
   <h2 id="promote-release">Promote Release</h2>
   <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
   <p>Move source release to dist folder: svn mv  <a href="https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2">https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2</a> <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating">https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating</a></p>
   <h3 id="jira">JIRA</h3>
-  <p>Close release and all associated tickets 
-  Create version numbers for next release</p>
+  <p>Close release and all associated tickets<br>Create version numbers for next release</p>
   <h3 id="git">git</h3>
   <p>Create final release tag:</p>
-  <pre><code>git tag -a &quot;v3.2.0-incubating&quot; -m &quot;Release 3.2.0-incubating&quot; &quot;v3.2.0-incubating-RC2&quot;
-  git push apache &quot;v3.2.0-incubating&quot;
-  </code></pre><p>Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):</p>
-  <pre><code>git checkout release-3.2
-  dv=3.2.0-incubating-SNAPSHOT
-  rv=3.2.1-incubating-SNAPSHOT
-  for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
-  git commit -am &quot;Preparing for 3.2.1 development&quot;
-  </code></pre><p>Merge @since tag and change log changes to devel-3</p>
+  <pre><code class="lang-bash"><span class="hljs-tag">git</span> <span class="hljs-tag">tag</span> <span class="hljs-tag">-a</span> "<span class="hljs-tag">v3</span><span class="hljs-class">.2</span><span class="hljs-class">.0-incubating</span>" <span class="hljs-tag">-m</span> "<span class="hljs-tag">Release</span> 3<span class="hljs-class">.2</span><span class="hljs-class">.0-incubating</span>" "<span class="hljs-tag">v3</span><span class="hljs-class">.2</span><span class="hljs-class">.0-incubating-RC2</span>"
+  <span class="hljs-tag">git</span> <span class="hljs-tag">push</span> <span class="hljs-tag">apache</span> "<span class="hljs-tag">v3</span><span class="hljs-class">.2</span><span class="hljs-class">.0-incubating</span>"
+  </code></pre>
+  <p>Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):</p>
+  <pre><code class="lang-bash">git checkout release-<span class="hljs-number">3.2</span>
+  dv=<span class="hljs-number">3.2</span>.<span class="hljs-number">0</span>-incubating-SNAPSHOT
+  rv=<span class="hljs-number">3.2</span>.<span class="hljs-number">1</span>-incubating-SNAPSHOT
+  <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> `git grep -l <span class="hljs-string">"${dv}"</span>`; do echo <span class="hljs-variable">$a</span>; sed -i <span class="hljs-string">'s/'</span><span class="hljs-string">"${dv}"</span><span class="hljs-string">'/'</span><span class="hljs-string">"${rv}"</span><span class="hljs-string">'/g'</span> <span class="hljs-variable">$a</span>; done
+  git commit -am <span class="hljs-string">"Preparing for 3.2.1 development"</span>
+  </code></pre>
+  <p>Merge <code>@since</code> tag and change log changes to <code>devel-3</code></p>
   <h2 id="announce-release">Announce Release</h2>
   <p><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201511.mbox/%3CCA%2B5xAo1mS-BMT%3DXk_q287_j5m6ngtaT8QEEED0zfQhXtgrnOtA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201511.mbox/%3CCA%2B5xAo1mS-BMT%3DXk_q287_j5m6ngtaT8QEEED0zfQhXtgrnOtA%40mail.gmail.com%3E</a></p>
 
