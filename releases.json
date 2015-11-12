@@ -1,0 +1,14 @@
+{
+  "core": {
+    "src": [
+      {
+        "version": "3.2.0-incubating",
+        "date": 1445639866000,
+        "repo": "incubator-apex-core"
+      }
+    ]
+  },
+  "malhar": {
+    "src": []
+  }
+}

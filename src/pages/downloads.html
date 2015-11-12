@@ -1,0 +1,62 @@
+{{> header}}
+
+<div class="container">
+  
+  <h1>Downloads</h1>
+
+  <!-- APEX CORE SOURCE RELEASES TABLE -->
+  {{#if releases.core.src.length}}
+  <h2>Apex Source Releases</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Version</th>
+        <th scope="col">Date</th>
+        <th scope="col">Source (zip)</th>
+        <th scope="col">Source (tarball)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each releases.core.src as |version vIndex|}}
+      <tr>
+        <td>
+          {{ version.version }}
+          {{#if @first}}
+          (latest)
+          {{/if}}
+        </td>
+        <td>
+          {{releaseDate version.date}}
+        </td>
+        <td>
+          <a href="http://www.apache.org/dyn/closer.lua/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.zip">apex-{{ version.version }}-source-release.zip</a><br>
+          <small>
+            (
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.zip.asc">pgp</a>,
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.zip.md5">md5</a>,
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.zip.sha">sha1</a>
+            )
+          </small>
+        </td>
+        <td>
+          <a href="http://www.apache.org/dyn/closer.lua/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.tar.gz">apex-{{ version.version }}-source-release.tar.gz</a><br>
+          <small>
+            (
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.tar.gz.asc">pgp</a>,
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.tar.gz.md5">md5</a>,
+              <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v{{ version.version }}/apex-{{ version.version }}-source-release.tar.gz.sha">sha1</a>
+            )
+          </small>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
+
+
+  {{> third-party-downloads}}
+
+</div>
+
+{{> footer}}

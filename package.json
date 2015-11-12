@@ -21,12 +21,16 @@
   "author": "Andy Perlitch <andy@datatorrent.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "async": "^1.5.0",
     "bower": "^1.5.2",
     "gulp": "^3.9.0",
     "gulp-compile-handlebars": "^0.5.0",
     "gulp-less": "^3.0.3",
     "gulp-marked": "^1.0.0",
     "handlebars": "^4.0.2",
-    "highlight.js": "^8.9.1"
+    "highlight.js": "^8.9.1",
+    "jsdom": "^7.0.2",
+    "lodash": "^3.10.1",
+    "request": "^2.65.0"
   }
 }

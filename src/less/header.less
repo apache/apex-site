@@ -8,6 +8,18 @@
     &:hover {
       background: lighten(@brand-primary, 25%);
     }
+    &.btn {
+      padding-bottom: 7px;
+      padding-top: 7px;
+      margin-top: 8px;
+      margin-left: 5px;
+      margin-right: 5px;
+      &.btn-success {
+        &:hover {
+          background-color: darken(@brand-success, 10%);
+        }
+      }
+    }
   }
   .navbar-brand {
     font-family: @headings-font-family;

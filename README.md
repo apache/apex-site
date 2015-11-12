@@ -95,3 +95,25 @@ To test changes:
 One way to improve this process is to run `./node_modules/.bin/gulp watch`. 
 This will start a process that watches for changes to source files and updates the `/content` folder accordingly.
 This way you make your change and refresh the page to see the effect immediately.
+
+
+Updating Downloads Page
+-----------------------
+
+The downloads page uses the content of `./releases.json` to populate the tables found there.
+Care has been taken to automatically generate this releases.json file. To do so, run:
+
+```bash
+./node_modules/.bin/gulp fetch-releases
+git add releases.json
+git commit -m 'updated releases'
+```
+
+This will do the following things:
+
+1. Parses out the release versions available via the [ASF dist pages](https://dist.apache.org/repos/dist/release/incubator/apex).
+2. Queries Github for these found release tags to find the date they were published to github
+3. Writes to releases.json with release information.
+
+
+Once you have committed the changes to `releases.json`, follow the steps to contributing steps to publish the site to go live.
