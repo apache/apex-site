@@ -6776,6 +6776,16 @@ button.close {
 #main-nav .nav-link:hover {
   background: #8bd1ef;
 }
+#main-nav .nav-link.btn {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  margin-top: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#main-nav .nav-link.btn.btn-success:hover {
+  background-color: #449d44;
+}
 #main-nav .navbar-brand {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
