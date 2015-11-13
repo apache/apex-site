@@ -11,6 +11,7 @@ var jsdom = require('jsdom');
 var fs = require('fs');
 var async = require('async');
 var _ = require('lodash');
+var exec = require('child_process').exec;
 
 // Constants
 var TEMP_PARTIAL_LOCATION = './.tmp/partials/';
@@ -167,25 +168,35 @@ gulp.task('fetch-versions', function(taskCb) {
           async.each(releases, function(release, eachCb) {
 
             // Get the tags for the repo
-            request({
-              url: 'https://api.github.com/repos/apache/' + release.repo + '/tags',
-              json: true,
-              headers: { 'User-Agent': 'apache' } // Github asks that the user agent is the GH org or username
-            }, function(err, response) {
+            var gitCommand = 'git ls-remote --tags "git://git.apache.org/' + release.repo + '.git"';
+            exec(gitCommand, function(err, stdout, stderr) {
 
-              // Abort if tags not found or something happened with github API
-              if (err) {
-                return eachCb(err);
+              // Abort if tags not found or something bad happened with the git ls-remote command
+              if (err || stderr) {
+                return eachCb(err || stderr);
               }
-              
-              // Find the tag object corresponding to this release
-              var ghTag = _.find(response.body, function(t) {
-                return t.name.replace(/^v/, '') === release.version;
-              });
 
-              // Get info about the commit that the tag points to
+              // Lines from ls-remote command look like [COMMIT_HASH]\trefs/tags/[TAG_NAME]
+              var lines = stdout.split('\n');
+              var tagHash;
+
+              // Find hash for this release's tag
+              for (var i = 0; i < lines.length; i++) {
+                var parts = lines[i].split('\t');
+                if (parts[1].replace(/^refs\/tags\/v?/, '') === release.version) {
+                  tagHash = parts[0];
+                  break;
+                }
+              }
+
+              // Ensure we found one
+              if (!tagHash) {
+                return eachCb('Could not find tag from ls-remote command');
+              }
+
+              // Get info about the tag via its hash (found with the ls-remote command)
               request({
-                url: ghTag.commit.url, // Github API address
+                url: 'https://api.github.com/repos/apache/' + release.repo + '/git/tags/' + tagHash, // Github API address
                 json: true,
                 headers: { 'User-Agent': 'apache' }
               }, function(err, response) {
@@ -196,7 +207,7 @@ gulp.task('fetch-versions', function(taskCb) {
                 }
 
                 // Set the date from the this information
-                release.date = Date.parse(response.body.commit.author.date);
+                release.date = Date.parse(response.body.tagger.date);
 
                 // We're all done
                 eachCb();
