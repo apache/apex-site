@@ -21,8 +21,16 @@ gulp.task('md2html', function() {
   return gulp.src('./src/md/*.md')
     .pipe(marked({
       breaks: true,
-      highlight: function (code) {
-        return require('highlight.js').highlightAuto(code).value;
+      highlight: function (code, lang) {
+        // Only highlight if language was specified and is not bash
+        // (bash highlighting is pretty bad right now in highlightjs)
+        var ignore = ['bash', 'sh', 'zsh'];
+        if (lang && ignore.indexOf(lang) === -1) {
+          return require('highlight.js').highlightAuto(code, [lang]).value;
+        }
+        else {
+          return code;
+        }
       }
     }))
     .pipe(gulp.dest(TEMP_PARTIAL_LOCATION))
@@ -30,6 +38,18 @@ gulp.task('md2html', function() {
       console.warn(err);
     });
 });
+
+// HACK: gulp-compile-handlebars does not allow you to provide compile options.
+// Once https://github.com/kaanon/gulp-compile-handlebars/pull/11 is merged
+// and published to npm, this won't be necessary.
+var originalCompile = handlebars.Handlebars.compile;
+handlebars.Handlebars.compile = function (fileContents, options) {
+  // The preventIndent option is necessary to prevent format issues
+  // that occur with <pre> blocks
+  var newOptions = _.extend({}, options, { preventIndent: true });
+  return originalCompile(fileContents, newOptions);
+};
+
 
 // Builds html files from src/pages
 gulp.task('html', ['md2html'], function() {

@@ -24,8 +24,7 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
   - Run `mvn license:format -Dlicense.skip=false` to automatically add the header when missing.
 1. Once your feature is complete, submit the pull request on github against `devel-3`.
 1. If you want specific people to review your pull request, use the `@` notation in Github comments to mention that user, and request that he/she reviews your changes.
-1. After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but [here is one explanation from git-scm.com]
- (https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) and a simple example is illustrated below:
+1. After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but [here is one explanation from git-scm.com](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) and a simple example is illustrated below:
 
   If tracking upstream/devel-3 then run `git rebase -i`. Else run `git rebase -i upstream/devel-3`.  
   This command opens the text editor which lists the multiple commits:
