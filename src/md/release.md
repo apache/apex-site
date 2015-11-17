@@ -104,11 +104,11 @@ Commit version change:
 git commit -am "Preparing to release ${rv}-RC1"
 git tag -a "v${rv}-RC1" -m "Release ${rv}-RC1"
 ```
-Push to fork, open pull request, wait for Travis CI build to succeed. Then push the tag.
+Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.
 ```
 git push apache "v${rv}-RC1" 
 ```
-The only difference between branch and the tag is this final version number change. The branch stays at `SNAPSHOT` version.
+The only difference between release branch and tag is this final version number change. The branch stays at `-SNAPSHOT` version.
 
 ## Build and Deploy Release Candidate
 Prerequisites:
@@ -128,23 +128,37 @@ Log on to https://repository.apache.org and look for Staging Repositories. "Clos
 
 Example URL: https://repository.apache.org/content/repositories/orgapacheapex-1000/
 
-Copy files to distribution dir and create checksums
+Copy files to distribution dir and create signatures and checksums. 
+(Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)
+
+For -core releases:
 
 ```bash
-md5sum apex-3.2.0-incubating-source-release.tar.gz > apex-3.2.0-incubating-source-release.tar.gz.md5
-md5sum apex-3.2.0-incubating-source-release.zip > apex-3.2.0-incubating-source-release.zip.md5
-
-shasum -a 512 apex-3.2.0-incubating-source-release.tar.gz > apex-3.2.0-incubating-source-release.tar.gz.sha
-shasum -a 512 apex-3.2.0-incubating-source-release.zip > apex-3.2.0-incubating-source-release.zip.sha
-
-svn co https://dist.apache.org/repos/dist/dev/incubator/apex
+md5sum apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.md5
+md5sum apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.md5
+shasum -a 512 apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.sha
+shasum -a 512 apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.sha
+gpg  --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
+gpg  --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
 ```
 
-create directory for new version
-svn add the source archives and signature/checksum files
+For -malhar releases:
 
 ```bash
-svn commit -m  "Apache Apex v3.2.0-incubating-RC2"
+md5sum malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.md5
+md5sum malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.md5
+shasum -a 512 malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.sha
+shasum -a 512 malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.sha
+gpg  --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
+gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+```
+
+Check files into the dist staging area:
+
+```bash
+mkdir svn-dist
+cp ../*-source-* svn-dist/
+svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m "Apache Apex v${rv}-RC1"
 ```
 
 ## Voting 
@@ -169,12 +183,15 @@ If the vote is not successful, a new RC needs to be built. Once IPMC vote passes
 
 Release Nexus staging repository: http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository
 
-Move source release to dist folder: svn mv  https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+Move source release from dist staging to release folder:
+```
+svn mv  https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+```
 
 ### JIRA
 
 Close release and all associated tickets 
-Create version numbers for next release
+Create version number X.Y.Z+1 for next release
 
 ### git
 
