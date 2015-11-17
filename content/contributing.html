@@ -89,7 +89,7 @@
 </li>
 <li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
 <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
-<li><p>After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
+<li><p>After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
 <p>If tracking upstream/devel-3 then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/devel-3</code>.<br>This command opens the text editor which lists the multiple commits:</p>
 <pre><code>pick 67cd79b change1
 pick 6f98905 change2
@@ -109,6 +109,7 @@ pick 6f98905 change2
 <pre><code>pick 67cd79b change1
 squash 6f98905 change2
 </code></pre></li>
+<li>If there are multiple contributors in a pull request preserve individual attributions. Try to squash the commits to the minimum number of commits required to preserve attribution and the contribution to still be functionally correct.</li>
 <li>Till the review is complete it may happen that working feature branch may diverge from <code>devel-3</code> substantially. Therefore, it is recommended to frequently merge <code>devel-3</code> to the branch being worked on by:<ul>
 <li>when the branch tracks upstream/devel-3<br><code>git pull</code></li>
 <li>when the branch doesn&#39;t track upstream<br><code>git pull upstream devel-3</code></li>
