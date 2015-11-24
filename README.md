@@ -84,6 +84,12 @@ npm install
 ./node_modules/.bin/bower install
 ```
 
+**Note: If you have a version of node earlier than 4, run the following command:**
+```bash
+npm install jsdom@3.1.2
+```
+
+
 To test changes:
 
 1. Make your changes to `.md`, `.html`, and `.less` files
