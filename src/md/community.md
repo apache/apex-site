@@ -26,17 +26,21 @@ The Apex Project is made up of two repositories:
 - [Apex Core JIRA](https://malhar.atlassian.net/projects/APEX/issues)
 - [Apex Malhar JIRA](https://malhar.atlassian.net/projects/MLHR/issues)
 
-## Upcoming Meetups
-
-- PubMatic to Share Real Time Insights for Advertising Tech using Apex @ MapR Office [San Jose - Nov 19, 2015](http://www.meetup.com/Apex-Bay-Area-Chapter/events/226184395/)
-- Apache Apex – Deep Dive [Pune - Nov 25, 2015](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune/events/226506211/)
-
 ## Meetup Groups
 
-- [Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
-- [Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
-- [Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
-- [New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
-- [Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
-- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup)
+To see upcoming meetup events, please visit [announcements page](/announcements.html).
+
+- [Austin Chapter]( http://www.meetup.com/Apache-Apex-Austin-Chapter/)
 - [Bay Area Chapter](http://www.meetup.com/Apex-Bay-Area-Chapter)
+- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup)
+- [Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
+- [Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
+- [Dallas Chapter]( http://www.meetup.com/Apache-Apex-Dallas-Chapter/)
+- [Denver Chapter]( http://www.meetup.com/Apache-Apex-Denver-Chapter/)
+- [El Segundo Chapter]( http://www.meetup.com/Apache-Apex-El-Segundo-Chapter/)
+- [Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
+- [New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
+- [Phoenix Chapter]( http://www.meetup.com/Apache-Apex-Phoenix-Chapter/)
+- [Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
+
+
