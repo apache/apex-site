@@ -16,22 +16,36 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-static-top" id="main-nav">
+    <nav class="navbar navbar-default navbar-static-top" id="main-nav">
       <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/">
           <img src="images/apex-logo.svg" class="logo" alt="Apache Apex Logo">
           Apache Apex
           <small>(incubating)</small>
         </a>
-        <ul class="nav nav-pills navbar-right">
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-right navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link " href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/community.html">Community</a>
+            <a class="nav-link " href="/announcements.html">Announcements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/docs.html">Docs</a>
+            <a class="nav-link " href="/community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/docs.html">Docs</a>
           </li>
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
@@ -52,46 +66,83 @@
               <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+          </li>
         </ul>
+        
       </div>
     </nav>
 <div class="container">
   
   <h1 id="contributing-guidelines">Contributing Guidelines</h1>
-  <p>The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.</p>
-  <h2 id="opening-a-pull-request-contributors-">Opening a Pull Request (contributors)</h2>
-  <p>This project welcomes new contributors. If you would like to help by adding new features, enhancements or fixing bugs, here is how to do it.</p>
-  <ol>
-  <li>Create a <a href="https://malhar.atlassian.net/">JIRA</a> for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
-  <li>Fork the ASF github mirror (one time step):
-  <a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a></li>
-  <li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/devel-3">devel-3</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEX-123.my-feature</code>.</strong></li>
-  <li>When adding new files, please include the Apache v2.0 license header.<ul>
-  <li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
-  <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
-  </ul>
-  </li>
-  <li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
-  <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
-  <li>After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a>.</li>
-  </ol>
-  <p>Thanks for contributing!</p>
-  <h2 id="merging-a-pull-request-committers-">Merging a Pull Request (committers)</h2>
-  <ol>
-  <li>Ensure that the basic requirements for a pull request are met. This includes:<ul>
-  <li>Commit messages need to reference JIRA (pull requests will be linked to ticket)</li>
-  <li>Travis CI pull request build needs to pass</li>
-  <li>Ensure tests are added/modified for new features or fixes</li>
-  <li>Ensure appropriate JavaDoc comments have been added</li>
-  </ul>
-  </li>
-  <li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></li>
-  <li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.incubator.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
-  <li>Once done with verification, push the changes to the ASF repository&#39;s <code>devel-3</code> branch. Within a few
-  seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
-  <li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set after pushing the changes.</li>
-  </ol>
-  <p><strong>Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.</strong></p>
+<p>The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.</p>
+<h2 id="opening-a-pull-request-contributors-">Opening a Pull Request (contributors)</h2>
+<p>This project welcomes new contributors. If you would like to help by adding new features, enhancements or fixing bugs, here is how to do it.</p>
+<ol>
+<li>Create a <a href="https://malhar.atlassian.net/">JIRA</a> for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
+<li>Fork the ASF github mirror (one time step):<br><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
+<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/incubator-apex-core.git</code></li>
+<li>Add <a href="https://github.com/apache/incubator-apex-core">incubator apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/incubator-apex-core</code></li>
+<li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/devel-3">devel-3</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEX-123.my-feature</code>.</strong><br><code>git checkout -b APEX-123.my-feature -t upstream/devel-3</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/devel-3</code></li>
+<li>When adding new files, please include the Apache v2.0 license header.<ul>
+<li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
+<li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
+</ul>
+</li>
+<li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
+<li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
+<li><p>After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
+<p>If tracking upstream/devel-3 then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/devel-3</code>.<br>This command opens the text editor which lists the multiple commits:</p>
+<pre><code>pick 67cd79b change1
+pick 6f98905 change2
+
+# Rebase e13748b..3463fbf onto e13748b (2 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like &quot;squash&quot;, but discard this commit&#39;s log message
+# x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+</code></pre><p>Squash &#39;change2&#39; to &#39;change1&#39; and save.</p>
+<pre><code>pick 67cd79b change1
+squash 6f98905 change2
+</code></pre></li>
+<li>If there are multiple contributors in a pull request preserve individual attributions. Try to squash the commits to the minimum number of commits required to preserve attribution and the contribution to still be functionally correct.</li>
+<li>Till the review is complete it may happen that working feature branch may diverge from <code>devel-3</code> substantially. Therefore, it is recommended to frequently merge <code>devel-3</code> to the branch being worked on by:<ul>
+<li>when the branch tracks upstream/devel-3<br><code>git pull</code></li>
+<li>when the branch doesn&#39;t track upstream<br><code>git pull upstream devel-3</code></li>
+</ul>
+</li>
+<li>If a pull from <code>devel-3</code> results in a conflict then resolve it and commit the merge. This results in additional merge commits in the pull request. Following steps help to ensure that the final pull request contains just one commit:<ul>
+<li>Rename the original branch:<br><code>git branch -m APEX-123.my-feature.squash</code></li>
+<li>Create a new branch (with the original name) from upstream/devel-3 that has latest changes:<br><code>git checkout -b APEX-123.my-feature -t upstream/devel-3</code></li>
+<li>Squash merge the old branch which was renamed. When the new branch has the latest changes then this squash will result only in the changes that were made for the feature:<br><code>git merge --squash APEX-123.my-feature.squash</code></li>
+<li>Commit the squash and force push it to the old feature remote branch so that the pull request is automatically updated:<br><code>git commit -m &quot;APEX-123 #comment added my-feature&quot;</code><br><code>git push origin +APEX-123.my-feature</code></li>
+<li>Delete the extra squash branch:<br><code>git branch -D APEX-123.my-feature.squash</code></li>
+</ul>
+</li>
+</ol>
+<p>Thanks for contributing!</p>
+<h2 id="merging-a-pull-request-committers-">Merging a Pull Request (committers)</h2>
+<ol>
+<li>Ensure that the basic requirements for a pull request are met. This includes:<ul>
+<li>Commit messages need to reference JIRA (pull requests will be linked to ticket)</li>
+<li>Travis CI pull request build needs to pass</li>
+<li>Ensure tests are added/modified for new features or fixes</li>
+<li>Ensure appropriate JavaDoc comments have been added</li>
+</ul>
+</li>
+<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></li>
+<li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.incubator.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
+<li>Once done with verification, push the changes to the ASF repository&#39;s <code>devel-3</code> branch. Within a few<br>seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
+<li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set after pushing the changes.</li>
+</ol>
+<p><strong>Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.</strong></p>
 
 </div>
 
@@ -104,6 +155,9 @@
         Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
         <a class="footer-link-img" href="http://apache.org"><img src="/images/asf-feather.png" alt="The Apache Software Foundation"></a>
         <a class="footer-link-img" href="http://incubator.apache.org/"><img src="/images/incubator-egg.png" alt="Apache Incubator"></a>
+      </p>
+      <p class="text-muted">
+        <small>Apache Apex is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</small>
       </p>
     </footer>
   </div> <!-- /container -->

@@ -16,22 +16,36 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-static-top" id="main-nav">
+    <nav class="navbar navbar-default navbar-static-top" id="main-nav">
       <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/">
           <img src="images/apex-logo.svg" class="logo" alt="Apache Apex Logo">
           Apache Apex
           <small>(incubating)</small>
         </a>
-        <ul class="nav nav-pills navbar-right">
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-right navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link " href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/community.html">Community</a>
+            <a class="nav-link " href="/announcements.html">Announcements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/docs.html">Docs</a>
+            <a class="nav-link " href="/community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/docs.html">Docs</a>
           </li>
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
@@ -52,22 +66,26 @@
               <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+          </li>
         </ul>
+        
       </div>
     </nav>
 <div class="container">
   
   <h1 id="documentation">Documentation</h1>
-  <p>New documentation will be coming soon!</p>
-  <p>Here are a few resources to get started with Apex:</p>
-  <ul>
-  <li><a href="https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html">Application Developer Guide</a></li>
-  <li><a href="https://www.datatorrent.com/docs/guides/ApplicationPackages.html">Application Packages Guide</a></li>
-  <li><a href="https://www.datatorrent.com/docs/guides/OperatorDeveloperGuide.html">Operator Developer Guide</a></li>
-  <li><a href="/github-mirror-pull-requests.html">Merging Github Mirror Pull Requests</a></li>
-  <li><a href="https://www.datatorrent.com/docs/apidocs/">JavaDoc</a></li>
-  <li><a href="https://www.datatorrent.com/blog-apex-performance-benchmark/">Benchmarks compare between 2.0 and 3.0</a></li>
-  </ul>
+<p>New documentation will be coming soon!</p>
+<p>Here are a few resources to get started with Apex:</p>
+<ul>
+<li><a href="http://docs.datatorrent.com/application_development/">Application Developer Guide</a></li>
+<li><a href="http://docs.datatorrent.com/application_packages/">Application Packages Guide</a></li>
+<li><a href="http://docs.datatorrent.com/operator_development/">Operator Developer Guide</a></li>
+<li><a href="/github-mirror-pull-requests.html">Merging Github Mirror Pull Requests</a></li>
+<li><a href="https://www.datatorrent.com/docs/apidocs/">JavaDoc</a></li>
+<li><a href="https://www.datatorrent.com/blog-apex-performance-benchmark/">Benchmarks compare between 2.0 and 3.0</a></li>
+</ul>
 
 </div>
 
@@ -80,6 +98,9 @@
         Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
         <a class="footer-link-img" href="http://apache.org"><img src="/images/asf-feather.png" alt="The Apache Software Foundation"></a>
         <a class="footer-link-img" href="http://incubator.apache.org/"><img src="/images/incubator-egg.png" alt="Apache Incubator"></a>
+      </p>
+      <p class="text-muted">
+        <small>Apache Apex is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</small>
       </p>
     </footer>
   </div> <!-- /container -->
