@@ -39,6 +39,9 @@
             <a class="nav-link " href="/">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="/announcements.html">Announcements</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " href="/community.html">Community</a>
           </li>
           <li class="nav-item">
@@ -127,9 +130,9 @@ rv=3.2.0-incubating
 </code></pre><p>Commit version change:</p>
 <pre><code>git commit -am &quot;Preparing to release ${rv}-RC1&quot;
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
-</code></pre><p>Push to fork, open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
+</code></pre><p>Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
 <pre><code>git push apache &quot;v${rv}-RC1&quot;
-</code></pre><p>The only difference between branch and the tag is this final version number change. The branch stays at <code>SNAPSHOT</code> version.</p>
+</code></pre><p>The only difference between release branch and tag is this final version number change. The branch stays at <code>-SNAPSHOT</code> version.</p>
 <h2 id="build-and-deploy-release-candidate">Build and Deploy Release Candidate</h2>
 <p>Prerequisites:</p>
 <ul>
@@ -143,17 +146,27 @@ git clean -d -f
 mvn clean deploy -Papache-release -DskipTests -Dsonatype_user=&lt;user&gt;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
 <p>Example URL: <a href="https://repository.apache.org/content/repositories/orgapacheapex-1000/">https://repository.apache.org/content/repositories/orgapacheapex-1000/</a></p>
-<p>Copy files to distribution dir and create checksums</p>
-<pre><code class="lang-bash">md5sum apex-3.2.0-incubating-source-release.tar.gz &gt; apex-3.2.0-incubating-source-release.tar.gz.md5
-md5sum apex-3.2.0-incubating-source-release.zip &gt; apex-3.2.0-incubating-source-release.zip.md5
-
-shasum -a 512 apex-3.2.0-incubating-source-release.tar.gz &gt; apex-3.2.0-incubating-source-release.tar.gz.sha
-shasum -a 512 apex-3.2.0-incubating-source-release.zip &gt; apex-3.2.0-incubating-source-release.zip.sha
-
-svn co https://dist.apache.org/repos/dist/dev/incubator/apex
+<p>Copy files to distribution dir and create signatures and checksums.<br>(Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)</p>
+<p>For -core releases:</p>
+<pre><code class="lang-bash">md5sum apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.md5
+md5sum apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.md5
+shasum -a 512 apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.sha
+shasum -a 512 apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.sha
+gpg  --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
+gpg  --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
 </code></pre>
-<p>create directory for new version<br>svn add the source archives and signature/checksum files</p>
-<pre><code class="lang-bash">svn commit -m  &quot;Apache Apex v3.2.0-incubating-RC2&quot;
+<p>For -malhar releases:</p>
+<pre><code class="lang-bash">md5sum malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.md5
+md5sum malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.md5
+shasum -a 512 malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.sha
+shasum -a 512 malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.sha
+gpg  --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
+gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+</code></pre>
+<p>Check files into the dist staging area:</p>
+<pre><code class="lang-bash">mkdir svn-dist
+cp ../*-source-* svn-dist/
+svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
 <p>PPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser</a></p>
@@ -164,9 +177,10 @@ svn co https://dist.apache.org/repos/dist/dev/incubator/apex
 <p>If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.</p>
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
-<p>Move source release to dist folder: svn mv  <a href="https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2">https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2</a> <a href="https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating">https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating</a></p>
-<h3 id="jira">JIRA</h3>
-<p>Close release and all associated tickets<br>Create version numbers for next release</p>
+<p>Move source release from dist staging to release folder:</p>
+<pre><code>svn mv  https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+</code></pre><h3 id="jira">JIRA</h3>
+<p>Close release and all associated tickets<br>Create version number X.Y.Z+1 for next release</p>
 <h3 id="git">git</h3>
 <p>Create final release tag:</p>
 <pre><code class="lang-bash">git tag -a &quot;v3.2.0-incubating&quot; -m &quot;Release 3.2.0-incubating&quot; &quot;v3.2.0-incubating-RC2&quot;

@@ -6856,6 +6856,12 @@ button.close {
 body {
   -webkit-font-smoothing: antialiased;
 }
+.latest-tag {
+  display: none;
+}
+.table tbody tr:first-child .latest-tag {
+  display: inline;
+}
 /*
 
 Colorbrewer theme

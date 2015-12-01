@@ -39,6 +39,9 @@
             <a class="nav-link " href="/">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="/announcements.html">Announcements</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " href="/community.html">Community</a>
           </li>
           <li class="nav-item">
@@ -73,9 +76,26 @@
 <div class="container">
   
   <h1 id="contributing-guidelines">Contributing Guidelines</h1>
-<p>The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.</p>
-<h2 id="opening-a-pull-request-contributors-">Opening a Pull Request (contributors)</h2>
-<p>This project welcomes new contributors. If you would like to help by adding new features, enhancements or fixing bugs, here is how to do it.</p>
+<p>This project welcomes new contributors and invites everyone to participate. Our aim is to build an open community. There are many different ways to get involved:</p>
+<ul>
+<li>Adding new features, enhancements, tests or fixing bugs</li>
+<li>Pull request reviews</li>
+<li>Release management and verification</li>
+<li>Participation on email list</li>
+<li>Web site improvements</li>
+<li>Documentation</li>
+<li>Organize meetups and other events</li>
+<li>Publishing papers and blogs</li>
+<li>Present at conferences or spread the word in other ways</li>
+</ul>
+<p>People that help with the project in any of the above categories or other ways are contributors. See the <a href="http://www.apache.org/foundation/how-it-works.html#roles">roles</a> as defined by the ASF.</p>
+<h2 id="becoming-a-committer">Becoming a committer</h2>
+<p>Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PPMC. A committer has a signed Contributor License Agreement (<a href="http://www.apache.org/licenses/icla.txt">CLA</a>) on file and an apache.org address.</p>
+<p>We expect committers to subscribe to the <a href="community.html#mailing-lists">project mailing lists</a>.  </p>
+<p>A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.</p>
+<p>The Podling Project Management Committee (<a href="http://incubator.apache.org/guides/ppmc.html">PPMC</a>) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.</p>
+<h2 id="opening-pull-requests-contributors-">Opening Pull Requests (contributors)</h2>
+<p>The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
 <ol>
 <li>Create a <a href="https://malhar.atlassian.net/">JIRA</a> for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
 <li>Fork the ASF github mirror (one time step):<br><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
@@ -89,7 +109,7 @@
 </li>
 <li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
 <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
-<li><p>After all review is complete, combine all new commits into one squashed commit, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
+<li><p>After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
 <p>If tracking upstream/devel-3 then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/devel-3</code>.<br>This command opens the text editor which lists the multiple commits:</p>
 <pre><code>pick 67cd79b change1
 pick 6f98905 change2
@@ -109,6 +129,7 @@ pick 6f98905 change2
 <pre><code>pick 67cd79b change1
 squash 6f98905 change2
 </code></pre></li>
+<li>If there are multiple contributors in a pull request preserve individual attributions. Try to squash the commits to the minimum number of commits required to preserve attribution and the contribution to still be functionally correct.</li>
 <li>Till the review is complete it may happen that working feature branch may diverge from <code>devel-3</code> substantially. Therefore, it is recommended to frequently merge <code>devel-3</code> to the branch being worked on by:<ul>
 <li>when the branch tracks upstream/devel-3<br><code>git pull</code></li>
 <li>when the branch doesn&#39;t track upstream<br><code>git pull upstream devel-3</code></li>
