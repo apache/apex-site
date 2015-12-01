@@ -1,12 +1,32 @@
 # Contributing Guidelines
 
-The apex core and apex malhar repositories both have mirror repositories on github which are used to review Pull Requests and provide a second remote endpoint for the codebase.
+This project welcomes new contributors and invites everyone to participate. Our aim is to build an open community. There are many different ways to get involved:
 
+* Adding new features, enhancements, tests or fixing bugs
+* Pull request reviews
+* Release management and verification
+* Participation on email list
+* Web site improvements
+* Documentation
+* Organize meetups and other events
+* Publishing papers and blogs
+* Present at conferences or spread the word in other ways
+ 
+People that help with the project in any of the above categories or other ways are contributors. See the [roles](http://www.apache.org/foundation/how-it-works.html#roles) as defined by the ASF.
 
+## Becoming a committer
 
-## Opening a Pull Request (contributors)
+Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PPMC. A committer has a signed Contributor License Agreement ([CLA](http://www.apache.org/licenses/icla.txt)) on file and an apache.org address.
 
-This project welcomes new contributors. If you would like to help by adding new features, enhancements or fixing bugs, here is how to do it.
+We expect committers to subscribe to the [project mailing lists](community.html#mailing-lists).  
+
+A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.
+
+The Podling Project Management Committee ([PPMC](http://incubator.apache.org/guides/ppmc.html)) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.
+
+## Opening Pull Requests (contributors)
+
+The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.
 
 1. Create a [JIRA](https://malhar.atlassian.net/) for the work you plan to do (or assign yourself to an existing JIRA ticket)
 1. Fork the ASF github mirror (one time step):
