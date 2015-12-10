@@ -28,14 +28,14 @@ The Podling Project Management Committee ([PPMC](http://incubator.apache.org/gui
 
 The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.
 
-1. Create a [JIRA](https://malhar.atlassian.net/) for the work you plan to do (or assign yourself to an existing JIRA ticket)
+1. Create a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://malhar.atlassian.net/projects/MLHR/issues/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
 1. Fork the ASF github mirror (one time step):
    https://github.com/apache/incubator-apex-core/  
 1. Clone the **fork** on your local workspace (one time step):  
   `git clone https://github.com/{github_username}/incubator-apex-core.git`
 1. Add [incubator apex core](https://github.com/apache/incubator-apex-core) as a remote repository (one time step):  
 `git remote add upstream https://github.com/apache/incubator-apex-core`
-1. Create a new branch from the [devel-3](https://github.com/apache/incubator-apex-core/tree/devel-3) branch. **Name your branch with the JIRA number in it, e.g. `APEX-123.my-feature`.**  
+1. Create a new branch from the [devel-3](https://github.com/apache/incubator-apex-core/tree/devel-3) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
 `git checkout -b APEX-123.my-feature -t upstream/devel-3`  
 Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:  
 `git branch -u upstream/devel-3`
