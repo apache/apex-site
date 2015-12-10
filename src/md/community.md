@@ -23,7 +23,7 @@ The Apex Project is made up of two repositories:
 
 ## Issue Tracking
 
-- [Apex Core JIRA](https://malhar.atlassian.net/projects/APEX/issues)
+- [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
 - [Apex Malhar JIRA](https://malhar.atlassian.net/projects/MLHR/issues)
 
 ## Meetup Groups
