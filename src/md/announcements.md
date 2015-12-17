@@ -1,6 +1,11 @@
 # Announcements
 
 
+## Users Mailing List Created
+
+Dec 17, 2015.  The Apache Apex community is pleased to announce a new mailing list users@apex.incubator.apache.org for people who want to build apps and/or solutions using Apex.  Subscribe by mailing users-subscribe@apex.incubator.apache.org.
+
+
 ## Malhar Library release 3.2.0-incubating
 
 Nov 16, 2015.  The Apache Apex community is pleased to announce release [3.2.0-incubating](/downloads.html) of the Malhar Library.
