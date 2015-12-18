@@ -11,7 +11,7 @@ This project welcomes new contributors and invites everyone to participate. Our 
 * Organize meetups and other events
 * Publishing papers and blogs
 * Present at conferences or spread the word in other ways
- 
+
 People that help with the project in any of the above categories or other ways are contributors. See the [roles](http://www.apache.org/foundation/how-it-works.html#roles) as defined by the ASF.
 
 ## Becoming a committer
@@ -23,6 +23,16 @@ We expect committers to subscribe to the [project mailing lists](community.html#
 A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.
 
 The Podling Project Management Committee ([PPMC](http://incubator.apache.org/guides/ppmc.html)) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.
+
+## Code Style
+Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.
+
+The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/incubator-apex-core/blob/devel-3/apex_checks.xml
+
+To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.
+ - [IntelliJ](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/intellij)
+ - [Eclipse](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/eclipse)
+ - [NetBeans](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/netbeans)
 
 ## Opening Pull Requests (contributors)
 
