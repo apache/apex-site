@@ -94,6 +94,15 @@
 <p>We expect committers to subscribe to the <a href="community.html#mailing-lists">project mailing lists</a>.  </p>
 <p>A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.</p>
 <p>The Podling Project Management Committee (<a href="http://incubator.apache.org/guides/ppmc.html">PPMC</a>) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.</p>
+<h2 id="code-style">Code Style</h2>
+<p>Apache Apex follows coding style that is closest to K &amp; R style and uses <a href="http://checkstyle.sourceforge.net/">Checkstyle</a> tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.</p>
+<p>The checkstyle configuration that Apache Apex projects use is present here : <a href="https://github.com/apache/incubator-apex-core/blob/devel-3/apex_checks.xml">https://github.com/apache/incubator-apex-core/blob/devel-3/apex_checks.xml</a></p>
+<p>To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.</p>
+<ul>
+<li><a href="https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/intellij">IntelliJ</a></li>
+<li><a href="https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/eclipse">Eclipse</a></li>
+<li><a href="https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/netbeans">NetBeans</a></li>
+</ul>
 <h2 id="opening-pull-requests-contributors-">Opening Pull Requests (contributors)</h2>
 <p>The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
 <ol>
