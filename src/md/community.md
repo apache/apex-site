@@ -41,7 +41,7 @@ To see upcoming meetup events, please visit [announcements page](/announcements.
 - [El Segundo Chapter]( http://www.meetup.com/Apache-Apex-El-Segundo-Chapter/)
 - [Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
 - [New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
-- [Phoenix Chapter]( http://www.meetup.com/Apache-Apex-Phoenix-Chapter/)
+- [Phoenix Chapter](http://www.meetup.com/Apache-Apex-Phoenix-Chapter/)
+- [Richmond VA Chapter](http://www.meetup.com/Apache-Apex-Richmond-VA-Area-Chapter/)
 - [Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
-
 
