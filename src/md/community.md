@@ -33,7 +33,7 @@ To see upcoming meetup events, please visit [announcements page](/announcements.
 
 - [Austin Chapter]( http://www.meetup.com/Apache-Apex-Austin-Chapter/)
 - [Bay Area Chapter](http://www.meetup.com/Apex-Bay-Area-Chapter)
-- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bangalore-Meetup)
+- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bengaluru-Meetup)
 - [Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
 - [Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
 - [Dallas Chapter]( http://www.meetup.com/Apache-Apex-Dallas-Chapter/)
