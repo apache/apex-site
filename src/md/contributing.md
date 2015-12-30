@@ -46,7 +46,7 @@ The apex-core and apex-malhar repositories both have mirror repositories on gith
 1. Add [incubator apex core](https://github.com/apache/incubator-apex-core) as a remote repository (one time step):  
 `git remote add upstream https://github.com/apache/incubator-apex-core`
 1. Create a new branch from the [devel-3](https://github.com/apache/incubator-apex-core/tree/devel-3) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
-`git checkout -b APEX-123.my-feature -t upstream/devel-3`  
+`git checkout -b APEXCORE-123.my-feature -t upstream/devel-3`  
 Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:  
 `git branch -u upstream/devel-3`
 1. When adding new files, please include the Apache v2.0 license header.
@@ -89,16 +89,16 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
   `git pull upstream devel-3`
 1. If a pull from `devel-3` results in a conflict then resolve it and commit the merge. This results in additional merge commits in the pull request. Following steps help to ensure that the final pull request contains just one commit:
   * Rename the original branch:  
-  `git branch -m APEX-123.my-feature.squash`
+  `git branch -m APEXCORE-123.my-feature.squash`
   * Create a new branch (with the original name) from upstream/devel-3 that has latest changes:   
-  `git checkout -b APEX-123.my-feature -t upstream/devel-3`
+  `git checkout -b APEXCORE-123.my-feature -t upstream/devel-3`
   * Squash merge the old branch which was renamed. When the new branch has the latest changes then this squash will result only in the changes that were made for the feature:  
-  `git merge --squash APEX-123.my-feature.squash`
+  `git merge --squash APEXCORE-123.my-feature.squash`
   * Commit the squash and force push it to the old feature remote branch so that the pull request is automatically updated:    
-  `git commit -m "APEX-123 #comment added my-feature" `  
-  `git push origin +APEX-123.my-feature`
+  `git commit -m "APEXCORE-123 #comment added my-feature" `  
+  `git push origin +APEXCORE-123.my-feature`
   * Delete the extra squash branch:  
-  `git branch -D APEX-123.my-feature.squash`
+  `git branch -D APEXCORE-123.my-feature.squash`
 
 Thanks for contributing!
 
