@@ -110,7 +110,7 @@
 <li>Fork the ASF github mirror (one time step):<br><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
 <li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/incubator-apex-core.git</code></li>
 <li>Add <a href="https://github.com/apache/incubator-apex-core">incubator apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/incubator-apex-core</code></li>
-<li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/devel-3">devel-3</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEX-123.my-feature -t upstream/devel-3</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/devel-3</code></li>
+<li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/devel-3">devel-3</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEXCORE-123.my-feature -t upstream/devel-3</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/devel-3</code></li>
 <li>When adding new files, please include the Apache v2.0 license header.<ul>
 <li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
 <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
@@ -145,11 +145,11 @@ squash 6f98905 change2
 </ul>
 </li>
 <li>If a pull from <code>devel-3</code> results in a conflict then resolve it and commit the merge. This results in additional merge commits in the pull request. Following steps help to ensure that the final pull request contains just one commit:<ul>
-<li>Rename the original branch:<br><code>git branch -m APEX-123.my-feature.squash</code></li>
-<li>Create a new branch (with the original name) from upstream/devel-3 that has latest changes:<br><code>git checkout -b APEX-123.my-feature -t upstream/devel-3</code></li>
-<li>Squash merge the old branch which was renamed. When the new branch has the latest changes then this squash will result only in the changes that were made for the feature:<br><code>git merge --squash APEX-123.my-feature.squash</code></li>
-<li>Commit the squash and force push it to the old feature remote branch so that the pull request is automatically updated:<br><code>git commit -m &quot;APEX-123 #comment added my-feature&quot;</code><br><code>git push origin +APEX-123.my-feature</code></li>
-<li>Delete the extra squash branch:<br><code>git branch -D APEX-123.my-feature.squash</code></li>
+<li>Rename the original branch:<br><code>git branch -m APEXCORE-123.my-feature.squash</code></li>
+<li>Create a new branch (with the original name) from upstream/devel-3 that has latest changes:<br><code>git checkout -b APEXCORE-123.my-feature -t upstream/devel-3</code></li>
+<li>Squash merge the old branch which was renamed. When the new branch has the latest changes then this squash will result only in the changes that were made for the feature:<br><code>git merge --squash APEXCORE-123.my-feature.squash</code></li>
+<li>Commit the squash and force push it to the old feature remote branch so that the pull request is automatically updated:<br><code>git commit -m &quot;APEXCORE-123 #comment added my-feature&quot;</code><br><code>git push origin +APEXCORE-123.my-feature</code></li>
+<li>Delete the extra squash branch:<br><code>git branch -D APEXCORE-123.my-feature.squash</code></li>
 </ul>
 </li>
 </ol>
