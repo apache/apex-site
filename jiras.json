@@ -1,0 +1,720 @@
+{
+  "APEXCORE": [
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919181",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919181",
+      "key": "APEXCORE-3",
+      "fields": {
+        "summary": "Ability for an operator to populate DAG at launch time",
+        "fixVersions": [
+          {
+            "self": "https://issues.apache.org/jira/rest/api/2/version/12333950",
+            "id": "12333950",
+            "name": "3.3.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/2",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/critical.png",
+          "name": "Critical",
+          "id": "2"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/3",
+          "description": "This issue is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919188",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919188",
+      "key": "APEXCORE-10",
+      "fields": {
+        "summary": "Enable non-affinity of operators per node (not containers)",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919232",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919232",
+      "key": "APEXCORE-60",
+      "fields": {
+        "summary": "Iterative processing support",
+        "fixVersions": [
+          {
+            "self": "https://issues.apache.org/jira/rest/api/2/version/12333950",
+            "id": "12333950",
+            "name": "3.3.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919288",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919288",
+      "key": "APEXCORE-119",
+      "fields": {
+        "summary": "Add Support For A New Type Of (Distributed) Operator",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919332",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919332",
+      "key": "APEXCORE-163",
+      "fields": {
+        "summary": "Dynamic application property changes",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919371",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919371",
+      "key": "APEXCORE-202",
+      "fields": {
+        "summary": "Integration with Samoa",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919400",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919400",
+      "key": "APEXCORE-231",
+      "fields": {
+        "summary": "Ability to configure attributes dynamically",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919401",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919401",
+      "key": "APEXCORE-232",
+      "fields": {
+        "summary": "Ability to add new processing code to the DAG",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919402",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919402",
+      "key": "APEXCORE-233",
+      "fields": {
+        "summary": "Ability to specify single instance objects in configuration",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919403",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919403",
+      "key": "APEXCORE-234",
+      "fields": {
+        "summary": "Investigate other ways to specify properties in property files",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12919404",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12919404",
+      "key": "APEXCORE-235",
+      "fields": {
+        "summary": "Explicit support for batch processing",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12922256",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12922256",
+      "key": "APEXCORE-289",
+      "fields": {
+        "summary": "Encrypted Streams in Apex DAG",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12923907",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12923907",
+      "key": "APEXCORE-293",
+      "fields": {
+        "summary": "Add core and malhar documentation to project web site",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,editmeta,changelog,transitions,renderedFields",
+      "id": "12924154",
+      "self": "https://issues.apache.org/jira/rest/api/2/issue/12924154",
+      "key": "APEXCORE-295",
+      "fields": {
+        "summary": "Running a Storm topology on Apex.",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        }
+      }
+    }
+  ],
+  "MLHR": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "21200",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/21200",
+      "key": "MLHR-1720",
+      "fields": {
+        "summary": "Development of Inner Join Operator",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/3",
+          "description": "This issue is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "22414",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/22414",
+      "key": "MLHR-1811",
+      "fields": {
+        "summary": "Add Non-Equality Join Condition",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "22515",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/22515",
+      "key": "MLHR-1818",
+      "fields": {
+        "summary": "Create a Calcite operator to enable SQL commands to be run",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "22805",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/22805",
+      "key": "MLHR-1843",
+      "fields": {
+        "summary": "Split Malhar Library and Malhar Contrib package into baby packages",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/2",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/critical.svg",
+          "name": "Critical",
+          "id": "2"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "23312",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/23312",
+      "key": "MLHR-1873",
+      "fields": {
+        "summary": "Create a fault-tolerant/scalable cache component backed by a persistent store",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/3",
+          "description": "This issue is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "23702",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/23702",
+      "key": "MLHR-1904",
+      "fields": {
+        "summary": "Rewrite kafka input operator to use 0.9.0 new consumer",
+        "fixVersions": [
+          {
+            "self": "https://malhar.atlassian.net/rest/api/2/version/12000",
+            "id": "12000",
+            "name": "3.3.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+          "name": "Major",
+          "id": "3"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "24104",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/24104",
+      "key": "MLHR-1938",
+      "fields": {
+        "summary": "Operator checkpointing in distributed in-memory store",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/minor.svg",
+          "name": "Minor",
+          "id": "4"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "24105",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/24105",
+      "key": "MLHR-1939",
+      "fields": {
+        "summary": "Stream API",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/2",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/critical.svg",
+          "name": "Critical",
+          "id": "2"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
+      "id": "24200",
+      "self": "https://malhar.atlassian.net/rest/api/2/issue/24200",
+      "key": "MLHR-1942",
+      "fields": {
+        "summary": "Apex Operator for Apache Geode.",
+        "fixVersions": [],
+        "priority": {
+          "self": "https://malhar.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/minor.svg",
+          "name": "Minor",
+          "id": "4"
+        },
+        "status": {
+          "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -12,6 +12,8 @@ var fs = require('fs');
 var async = require('async');
 var _ = require('lodash');
 var exec = require('child_process').exec;
+var semver = require('semver'); 
+var naturalSort = require('javascript-natural-sort');
 
 // Constants
 var TEMP_PARTIAL_LOCATION = './.tmp/partials/';
@@ -69,7 +71,11 @@ gulp.task('html', ['md2html'], function() {
 
   // Render the files in pages
   gulp.src('./src/pages/*.html')
-    .pipe(handlebars({ nav: require('./navigation.json'), releases: require('./releases.json') }, options))
+    .pipe(handlebars({ 
+        nav: require('./navigation.json'),
+        releases: require('./releases.json'),
+        jiras: require('./jiras.json')
+      }, options))
     .pipe(gulp.dest(BUILD_LOCATION))
     .on('error', function(err) {
       console.warn(err);
@@ -105,6 +111,170 @@ gulp.task('copy:images', function() {
 
 // Default task is to build the site
 gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
+
+
+// Fetch all JIRAs assodicated with the current project to create a road map
+gulp.task('fetch-jiras', function(taskCb) {
+
+  var projects = [
+    { name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
+    { name: 'MLHR', apiUrl: 'https://malhar.atlassian.net/rest/api/2/', browseUrl: 'https://malhar.atlassian.net/browse/' }
+    // Replace when migration from malhar.atlassian.net to ASF (issues.apache.org) JIRA is complete
+    // { key: 'apex-malhar',   url: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/', project: 'APEXMALHAR' },
+  ];  
+
+
+  // JQL terms are separated with AND/OR and parameters outside JQL are separated with &
+  // 
+  // Query to look up all APEXCORE issues with label of roadmap
+  //    https://issues.apache.org/jira/rest/api/2/search?jql=project=APEXCORE+AND+labels+in+(roadmap)&startAt=0&maxResults=100
+  //
+  // Query which returns only specified fields
+  //    https://issues.apache.org/jira/rest/api/2/search?jql=project=APEXCORE+AND+labels+in+(roadmap)&startAt=0&maxResults=100&fields=summary,priority,status
+  //
+  // Query to get list of all APEXCORE versions
+  //    https://issues.apache.org/jira/rest/api/2/project/APEXCORE/versions
+  //
+  // Browse a single JIRA issue is browseUrl + issue.key
+  //    https://issues.apache.org/jira/browse/APEXCORE-292
+  // 
+  // Browse a version in the roadmap is browseUrl + project + fixforversion + version.id
+  //    https://issues.apache.org/jira/browse/APEXCORE/fixforversion/12333948
+
+
+  // For each project, get the jiras
+  async.map(projects, function(project, cb) {
+
+    console.log('Loading', project.name, 'JIRAs from', project.apiUrl);
+
+    // Request the page that lists the release versions,
+    // e.g. https://dist.apache.org/repos/dist/release/incubator/apex
+    var requestUrl = project.apiUrl + 'project/' + project.name + '/versions';
+    request({
+        url: requestUrl,
+        json: true
+      }, 
+      function(err, httpResponse, versions) {
+    
+        // Abort on error
+        if (err) {
+          console.log('Error when trying to request URL: ', requestUrl);
+          console.log(err);
+          return cb(err);
+        }
+
+        var unreleasedVersions = versions.filter(function(n) {
+          return !n.released;
+        }).sort(function(a,b) {
+          return semver.compare(a.name, b.name);
+        });
+
+        //DEBUG
+        var unreleasedVersionsList = unreleasedVersions.map(function(n){return n.name;}).join(',');
+        console.log(project.name, 'unreleased versions:', unreleasedVersionsList);
+
+        var apiRequest = {
+          jql: 'project = ' + project.name + ' AND labels in (roadmap) AND status NOT IN ( Closed, Resolved )',
+          startAt: 0,
+          maxResults: 1000,
+          fields: ['summary','priority','status', 'fixVersions']
+        };
+
+        request.post({
+          url: project.apiUrl + 'search',
+          json: apiRequest
+        }, 
+        function(err, httpResponse, jiras) {
+          
+          // Abort on error
+          if (err) {
+            return cb(err);
+          }
+
+          var pageCount = (jiras.total && jiras.maxResults) ? Math.ceil(jiras.total / jiras.maxResults) : 1;
+
+          console.log(project.name, 'matching jiras:', jiras.total, 'jiras/page:', jiras.maxResults, 'pages:', pageCount);
+
+          // Iterate over multiple pages if more than one page is available
+          if (pageCount > 1) {
+            var pageCount = Math.ceil(jiras.total / jiras.maxResults);
+            var pageSize = jiras.maxResults;
+
+            var apiRequests = [];
+            for (var i = 1; i < pageCount; i++) {
+              apiRequests[i-1] = _.extend({}, 
+                apiRequest, 
+                { 
+                  startAt: i * pageSize, 
+                  maxResults: pageSize 
+                }
+              );
+            }
+
+            // Execute async page loads for jiras spanning multiple pages
+            async.concat(apiRequests, function(apiPageRequest, pageCb){
+
+              request.post({
+                url: project.apiUrl + 'search',
+                json: apiPageRequest
+              }, 
+              function(err, httpResponse, pageJiras) {
+                
+                // Abort on error
+                if (err) {
+                  return pageCb(err);
+                }
+                pageCb(null, pageJiras.issues);
+              });
+
+            }, function(err, remainingJiras){
+
+              // Abort if error occurred somewhere
+              if (err) {
+                return cb(err);
+              }
+
+              cb(null, _.extend({}, project, {
+                jiras: jiras.issues.concat(remainingJiras).sort(function(a,b) {return naturalSort(a.key, b.key); }) 
+              }));
+
+            });
+
+          } else {
+            // Return with a new project object with jiras.  cb is from async.map call above
+            cb(null, _.extend({}, project, { 
+              jiras: jiras.issues.sort(function(a,b) {return naturalSort(a.key, b.key); }) 
+            }));
+          }
+
+        });
+
+    });
+
+
+
+  }, function(err, projectResults) { // this is the async.map(projects) callback
+
+    if (err) {
+      console.log('Unable to create jiras.json due to errors');
+      return;
+    }
+
+    // This will be written to jiras.json
+    var fileContents = {};
+
+    // Use the project name as key and provide associated array of matching jiras
+    projectResults.forEach(function(project) {
+      _.set(fileContents, project.name, project.jiras);
+    });
+
+    // Write the file to jiras.json
+    fs.writeFile('./jiras.json', JSON.stringify(fileContents, 0, 2), taskCb);
+
+  });
+
+
+});
 
 // Creates releases.json file.
 // 
