@@ -74,7 +74,7 @@ gulp.task('html', ['md2html'], function() {
     .pipe(handlebars({ 
         nav: require('./navigation.json'),
         releases: require('./releases.json'),
-        jiras: require('./jiras.json')
+        jiras: require('./roadmap.json')
       }, options))
     .pipe(gulp.dest(BUILD_LOCATION))
     .on('error', function(err) {
@@ -113,8 +113,8 @@ gulp.task('copy:images', function() {
 gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
 
 
-// Fetch all JIRAs assodicated with the current project to create a road map
-gulp.task('fetch-jiras', function(taskCb) {
+// Fetch all JIRAs assodicated with the projects to create a roadmap file
+gulp.task('fetch-roadmap', function(taskCb) {
 
   var projects = [
     { name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
@@ -169,10 +169,6 @@ gulp.task('fetch-jiras', function(taskCb) {
           return semver.compare(a.name, b.name);
         });
 
-        //DEBUG
-        var unreleasedVersionsList = unreleasedVersions.map(function(n){return n.name;}).join(',');
-        console.log(project.name, 'unreleased versions:', unreleasedVersionsList);
-
         var apiRequest = {
           jql: 'project = ' + project.name + ' AND labels in (roadmap) AND status NOT IN ( Closed, Resolved )',
           startAt: 0,
@@ -192,13 +188,12 @@ gulp.task('fetch-jiras', function(taskCb) {
           }
 
           var pageCount = (jiras.total && jiras.maxResults) ? Math.ceil(jiras.total / jiras.maxResults) : 1;
+          var pageSize = jiras.maxResults;
 
-          console.log(project.name, 'matching jiras:', jiras.total, 'jiras/page:', jiras.maxResults, 'pages:', pageCount);
+          console.log(project.name, 'matching jiras:', jiras.total, 'pageSize:', pageSize, 'pages:', pageCount);
 
           // Iterate over multiple pages if more than one page is available
           if (pageCount > 1) {
-            var pageCount = Math.ceil(jiras.total / jiras.maxResults);
-            var pageSize = jiras.maxResults;
 
             var apiRequests = [];
             for (var i = 1; i < pageCount; i++) {
@@ -235,7 +230,8 @@ gulp.task('fetch-jiras', function(taskCb) {
               }
 
               cb(null, _.extend({}, project, {
-                jiras: jiras.issues.concat(remainingJiras).sort(function(a,b) {return naturalSort(a.key, b.key); }) 
+                jiras: jiras.issues.concat(remainingJiras).sort(function(a,b) {return naturalSort(a.key, b.key); }),
+                versions: unreleasedVersions
               }));
 
             });
@@ -243,7 +239,8 @@ gulp.task('fetch-jiras', function(taskCb) {
           } else {
             // Return with a new project object with jiras.  cb is from async.map call above
             cb(null, _.extend({}, project, { 
-              jiras: jiras.issues.sort(function(a,b) {return naturalSort(a.key, b.key); }) 
+              jiras: jiras.issues.sort(function(a,b) {return naturalSort(a.key, b.key); }),
+              versions: unreleasedVersions
             }));
           }
 
@@ -256,20 +253,23 @@ gulp.task('fetch-jiras', function(taskCb) {
   }, function(err, projectResults) { // this is the async.map(projects) callback
 
     if (err) {
-      console.log('Unable to create jiras.json due to errors');
+      console.log('Unable to create roadmap file due to errors');
       return;
     }
 
-    // This will be written to jiras.json
     var fileContents = {};
 
     // Use the project name as key and provide associated array of matching jiras
     projectResults.forEach(function(project) {
-      _.set(fileContents, project.name, project.jiras);
+      _.set(fileContents, project.name, 
+        {
+          versions: project.versions,
+          jiras: project.jiras
+        });
     });
 
-    // Write the file to jiras.json
-    fs.writeFile('./jiras.json', JSON.stringify(fileContents, 0, 2), taskCb);
+    // Write the file to roadmap.json
+    fs.writeFile('./roadmap.json', JSON.stringify(fileContents, 0, 2), taskCb);
 
   });
 
