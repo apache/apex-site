@@ -1,9 +1,5 @@
 # Documentation
 
-New documentation will be coming soon!
-
-Here are a few resources to get started with Apex:
-
 ### Getting Started
 
 - [Building Your First Apache Apex Application (video)](https://youtu.be/LwRWBudOjg4)
@@ -20,3 +16,6 @@ Here are a few resources to get started with Apex:
 - [JavaDoc](https://www.datatorrent.com/docs/apidocs/)
 - [Benchmarks compare between 2.0 and 3.0](https://www.datatorrent.com/blog-apex-performance-benchmark/)
 
+### Roadmap
+
+- [Apex Roadmap](roadmap.html) comprises key features planned for the future releases

@@ -74,7 +74,7 @@ gulp.task('html', ['md2html'], function() {
     .pipe(handlebars({ 
         nav: require('./navigation.json'),
         releases: require('./releases.json'),
-        jiras: require('./roadmap.json')
+        roadmap: require('./roadmap.json')
       }, options))
     .pipe(gulp.dest(BUILD_LOCATION))
     .on('error', function(err) {
@@ -117,10 +117,10 @@ gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
 gulp.task('fetch-roadmap', function(taskCb) {
 
   var projects = [
-    { name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
-    { name: 'MLHR', apiUrl: 'https://malhar.atlassian.net/rest/api/2/', browseUrl: 'https://malhar.atlassian.net/browse/' }
+    { key: 'core', name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse' },
+    { key: 'malhar', name: 'MLHR', apiUrl: 'https://malhar.atlassian.net/rest/api/2/', browseUrl: 'https://malhar.atlassian.net/browse' }
     // Replace when migration from malhar.atlassian.net to ASF (issues.apache.org) JIRA is complete
-    // { key: 'apex-malhar',   url: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/', project: 'APEXMALHAR' },
+    // { key: 'malhar', name: 'APEXMALHAR', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
   ];  
 
 
@@ -173,7 +173,7 @@ gulp.task('fetch-roadmap', function(taskCb) {
           jql: 'project = ' + project.name + ' AND labels in (roadmap) AND status NOT IN ( Closed, Resolved )',
           startAt: 0,
           maxResults: 1000,
-          fields: ['summary','priority','status', 'fixVersions']
+          fields: ['summary','priority','status','fixVersions','description']
         };
 
         request.post({
@@ -259,12 +259,14 @@ gulp.task('fetch-roadmap', function(taskCb) {
 
     var fileContents = {};
 
-    // Use the project name as key and provide associated array of matching jiras
+    // Use the project key and provide associated arrays of matching jiras and versions
     projectResults.forEach(function(project) {
-      _.set(fileContents, project.name, 
+      _.set(fileContents, project.key, 
         {
-          versions: project.versions,
-          jiras: project.jiras
+          name: project.name,
+          browseUrl: project.browseUrl,
+          jiras: project.jiras,
+          versions: project.versions
         });
     });
 

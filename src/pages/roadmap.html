@@ -1,0 +1,79 @@
+{{> header}}
+
+<div class="container">
+  
+  <h1>Apex Roadmap</h1>
+  
+  <!-- APEX CORE ROADMAP -->
+  {{#if roadmap.core.jiras.length}}
+  <h2>Core</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">JIRA</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each roadmap.core.jiras as |jira jIndex|}}
+      <tr>
+        <td>
+          <a target="_blank" href="{{ ../roadmap.core.browseUrl }}/{{ jira.key }}">{{ jira.key }}</a>
+        </td>
+        <td title="{{ jira.fields.description }}">
+          {{jira.fields.summary}}
+        </td>
+        <td>
+    
+          {{#each jira.fields.fixVersions as |version vIndex|}}
+
+            <a target="_blank" href="{{ ../../roadmap.core.browseUrl }}/{{ ../../roadmap.core.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
+
+          {{/each}}
+
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
+
+  <!-- APEX MALHAR ROADMAP -->
+  {{#if roadmap.malhar.jiras.length}}
+  <h2>Malhar</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">JIRA</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each roadmap.malhar.jiras as |jira jIndex|}}
+      <tr>
+        <td>
+          <a target="_blank" href="{{ ../roadmap.malhar.browseUrl }}/{{ jira.key }}">{{ jira.key }}</a>
+        </td>
+        <td title="{{ jira.fields.description }}">
+          {{jira.fields.summary}}
+        </td>
+        <td>
+    
+          {{#each jira.fields.fixVersions as |version vIndex|}}
+
+            <a target="_blank" href="{{ ../../roadmap.malhar.browseUrl }}/{{ ../../roadmap.malhar.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
+
+          {{/each}}
+
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
+
+</div>
+
+{{> footer}}
