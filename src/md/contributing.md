@@ -54,6 +54,10 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
   - Run `mvn license:format -Dlicense.skip=false` to automatically add the header when missing.
 1. Once your feature is complete, submit the pull request on github against `devel-3`.
 1. If you want specific people to review your pull request, use the `@` notation in Github comments to mention that user, and request that he/she reviews your changes.
+1. Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.
+  - If build fails due to license headers, follow instructions above.
+  - If build fails due to code style violations, run `mvn checkstyle:check -Dcheckstyle.console=true` and correct those issues that were introduced with your changes. 
+1. Add changes after the PR was opened to the same branch, Travis CI will detect changes and build automatically. To force the CI run, close and re-open the PR.
 1. After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but [here is one explanation from git-scm.com](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) and a simple example is illustrated below:
 
   If tracking upstream/devel-3 then run `git rebase -i`. Else run `git rebase -i upstream/devel-3`.  
