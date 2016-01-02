@@ -118,6 +118,12 @@
 </li>
 <li>Once your feature is complete, submit the pull request on github against <code>devel-3</code>.</li>
 <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
+<li>Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.<ul>
+<li>If build fails due to license headers, follow instructions above.</li>
+<li>If build fails due to code style violations, run <code>mvn checkstyle:check -Dcheckstyle.console=true</code> and correct those issues that were introduced with your changes. </li>
+</ul>
+</li>
+<li>Add changes after the PR was opened to the same branch, Travis CI will detect changes and build automatically. To force the CI run, close and re-open the PR.</li>
 <li><p>After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
 <p>If tracking upstream/devel-3 then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/devel-3</code>.<br>This command opens the text editor which lists the multiple commits:</p>
 <pre><code>pick 67cd79b change1
