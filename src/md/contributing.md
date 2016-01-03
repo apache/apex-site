@@ -38,7 +38,7 @@ To make it easier for the users to set up their development environment, setting
 
 The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.
 
-1. Create a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://malhar.atlassian.net/projects/MLHR/issues/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
+1. Create a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://issues.apache.org/jira/browse/APEXMALHAR/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
 1. Fork the ASF github mirror (one time step):
    https://github.com/apache/incubator-apex-core/  
 1. Clone the **fork** on your local workspace (one time step):  

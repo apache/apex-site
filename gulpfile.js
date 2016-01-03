@@ -118,11 +118,8 @@ gulp.task('fetch-roadmap', function(taskCb) {
 
   var projects = [
     { key: 'core', name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse' },
-    { key: 'malhar', name: 'MLHR', apiUrl: 'https://malhar.atlassian.net/rest/api/2/', browseUrl: 'https://malhar.atlassian.net/browse' }
-    // Replace when migration from malhar.atlassian.net to ASF (issues.apache.org) JIRA is complete
-    // { key: 'malhar', name: 'APEXMALHAR', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
+    { key: 'malhar', name: 'APEXMALHAR', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse' }
   ];  
-
 
   // JQL terms are separated with AND/OR and parameters outside JQL are separated with &
   // 
