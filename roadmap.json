@@ -1,7 +1,7 @@
 {
   "core": {
     "name": "APEXCORE",
-    "browseUrl": "https://issues.apache.org/jira/browse",
+    "url": "https://issues.apache.org/jira/",
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
@@ -491,7 +491,7 @@
   },
   "malhar": {
     "name": "APEXMALHAR",
-    "browseUrl": "https://issues.apache.org/jira/browse",
+    "url": "https://issues.apache.org/jira/",
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
@@ -551,6 +551,84 @@
               "key": "new",
               "colorName": "blue-gray",
               "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926158",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926158",
+        "key": "APEXMALHAR-1812",
+        "fields": {
+          "summary": "Support Anti Join",
+          "description": "Create a new operator to anti-join two datasets. An anti-join is the opposite to the regular join. An anti-join of R with S will output a tuple from R if it doesn't join with any tuple in S. This can also be useful if we support (NOT)EXISTS subqueries later.",
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+              "id": "12334589",
+              "name": "3.3.0",
+              "archived": false,
+              "released": false
+            }
+          ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
+            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
+            "name": "Resolved",
+            "id": "5",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926157",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926157",
+        "key": "APEXMALHAR-1813",
+        "fields": {
+          "summary": "Support Semi Join",
+          "description": "Create an new operator to SQL-like semi join two datasets. A semi join of R with S will output a tuple from R if it joins with any tuple in S. This can also be useful if we support IN subqueries later.",
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+              "id": "12334589",
+              "name": "3.3.0",
+              "archived": false,
+              "released": false
+            }
+          ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
+            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
+            "name": "Resolved",
+            "id": "5",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
             }
           }
         }

@@ -123,3 +123,19 @@ This will do the following things:
 
 
 Once you have committed the changes to `releases.json`, follow the steps to contributing steps to publish the site to go live.
+
+
+
+Updating Roadmap Page
+---------------------
+
+The roadmap page uses [roadmap.json](roadmap.json) to populate the Core and Malhar roadmap JIRA list.  The `roadmap.json` can be automatically generated via JIRA API calls by running:
+
+```bash
+gulp fetch-roadmap
+git add roadmap.json
+git commit -m 'Updating roadmap'
+```
+
+Once changes have been committed, follow the regular site publishing steps to update and publish `roadmap.html`.
+
