@@ -117,17 +117,14 @@ gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
 gulp.task('fetch-roadmap', function(taskCb) {
 
   var projects = [
-    { key: 'core', name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse' },
-    { key: 'malhar', name: 'MLHR', apiUrl: 'https://malhar.atlassian.net/rest/api/2/', browseUrl: 'https://malhar.atlassian.net/browse' }
-    // Replace when migration from malhar.atlassian.net to ASF (issues.apache.org) JIRA is complete
-    // { key: 'malhar', name: 'APEXMALHAR', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', browseUrl: 'https://issues.apache.org/jira/browse/' },
+    { key: 'core', name: 'APEXCORE', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', url: 'https://issues.apache.org/jira/' },
+    { key: 'malhar', name: 'APEXMALHAR', apiUrl: 'https://issues.apache.org/jira/rest/api/2/', url: 'https://issues.apache.org/jira/' }
   ];  
-
 
   // JQL terms are separated with AND/OR and parameters outside JQL are separated with &
   // 
-  // Query to look up all APEXCORE issues with label of roadmap
-  //    https://issues.apache.org/jira/rest/api/2/search?jql=project=APEXCORE+AND+labels+in+(roadmap)&startAt=0&maxResults=100
+  // Query to look up all APEXCORE and APEXMALHAR issues with label of roadmap
+  //    https://issues.apache.org/jira/rest/api/2/search?jql=project+in+(APEXCORE,APEXMALHAR)+AND+labels+in+(roadmap)+and+fixVersion+in+(EMPTY,unreleasedVersions())+ORDER+BY+key
   //
   // Query which returns only specified fields
   //    https://issues.apache.org/jira/rest/api/2/search?jql=project=APEXCORE+AND+labels+in+(roadmap)&startAt=0&maxResults=100&fields=summary,priority,status
@@ -135,11 +132,10 @@ gulp.task('fetch-roadmap', function(taskCb) {
   // Query to get list of all APEXCORE versions
   //    https://issues.apache.org/jira/rest/api/2/project/APEXCORE/versions
   //
-  // Browse a single JIRA issue is browseUrl + issue.key
+  // Browse JIRA, version, roadmap
   //    https://issues.apache.org/jira/browse/APEXCORE-292
-  // 
-  // Browse a version in the roadmap is browseUrl + project + fixforversion + version.id
   //    https://issues.apache.org/jira/browse/APEXCORE/fixforversion/12333948
+  //    https://issues.apache.org/jira/issues/?jql=project+in+(APEXCORE,APEXMALHAR)+AND+labels+in+(roadmap)+and+fixVersion+in+(EMPTY,unreleasedVersions())+ORDER+BY+key
 
 
   // For each project, get the jiras
@@ -170,7 +166,7 @@ gulp.task('fetch-roadmap', function(taskCb) {
         });
 
         var apiRequest = {
-          jql: 'project = ' + project.name + ' AND labels in (roadmap) AND status NOT IN ( Closed, Resolved )',
+          jql: 'project = ' + project.name + ' AND labels in (roadmap) AND fixVersion in (EMPTY, unreleasedVersions())',
           startAt: 0,
           maxResults: 1000,
           fields: ['summary','priority','status','fixVersions','description']
@@ -264,7 +260,7 @@ gulp.task('fetch-roadmap', function(taskCb) {
       _.set(fileContents, project.key, 
         {
           name: project.name,
-          browseUrl: project.browseUrl,
+          url: project.url,
           jiras: project.jiras,
           versions: project.versions
         });

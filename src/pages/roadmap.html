@@ -3,7 +3,9 @@
 <div class="container">
   
   <h1>Apex Roadmap</h1>
-  
+
+  Summary of key <a target="_blank" href="{{ roadmap.core.url }}issues/?jql=project+in+({{roadmap.core.name}},{{roadmap.malhar.name}})+AND+labels+in+(roadmap)+and+fixVersion+in+(EMPTY,unreleasedVersions())+ORDER+BY+key">JIRAs</a> planned for future releases of Apex Core and Malhar.
+
   <!-- APEX CORE ROADMAP -->
   {{#if roadmap.core.jiras.length}}
   <h2>Core</h2>
@@ -19,7 +21,7 @@
       {{#each roadmap.core.jiras as |jira jIndex|}}
       <tr>
         <td>
-          <a target="_blank" href="{{ ../roadmap.core.browseUrl }}/{{ jira.key }}">{{ jira.key }}</a>
+          <a target="_blank" href="{{ ../roadmap.core.url }}browse/{{ jira.key }}">{{ jira.key }}</a>
         </td>
         <td title="{{ jira.fields.description }}">
           {{jira.fields.summary}}
@@ -28,7 +30,7 @@
     
           {{#each jira.fields.fixVersions as |version vIndex|}}
 
-            <a target="_blank" href="{{ ../../roadmap.core.browseUrl }}/{{ ../../roadmap.core.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
+            <a target="_blank" href="{{ ../../roadmap.core.url }}browse/{{ ../../roadmap.core.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
 
           {{/each}}
 
@@ -54,7 +56,7 @@
       {{#each roadmap.malhar.jiras as |jira jIndex|}}
       <tr>
         <td>
-          <a target="_blank" href="{{ ../roadmap.malhar.browseUrl }}/{{ jira.key }}">{{ jira.key }}</a>
+          <a target="_blank" href="{{ ../roadmap.malhar.url }}browse/{{ jira.key }}">{{ jira.key }}</a>
         </td>
         <td title="{{ jira.fields.description }}">
           {{jira.fields.summary}}
@@ -63,7 +65,7 @@
     
           {{#each jira.fields.fixVersions as |version vIndex|}}
 
-            <a target="_blank" href="{{ ../../roadmap.malhar.browseUrl }}/{{ ../../roadmap.malhar.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
+            <a target="_blank" href="{{ ../../roadmap.malhar.url }}browse/{{ ../../roadmap.malhar.name }}/fixforversion/{{ version.id }}">{{ version.name }}</a>&nbsp;
 
           {{/each}}
 

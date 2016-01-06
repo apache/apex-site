@@ -1,7 +1,7 @@
 {
   "core": {
     "name": "APEXCORE",
-    "browseUrl": "https://issues.apache.org/jira/browse",
+    "url": "https://issues.apache.org/jira/",
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
@@ -490,32 +490,32 @@
     ]
   },
   "malhar": {
-    "name": "MLHR",
-    "browseUrl": "https://malhar.atlassian.net/browse",
+    "name": "APEXMALHAR",
+    "url": "https://issues.apache.org/jira/",
     "jiras": [
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "21200",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/21200",
-        "key": "MLHR-1720",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926249",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926249",
+        "key": "APEXMALHAR-1720",
         "fields": {
           "summary": "Development of Inner Join Operator",
           "description": null,
           "fixVersions": [],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
             "name": "Major",
             "id": "3"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/3",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/3",
             "description": "This issue is being actively worked on at the moment by the assignee.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/inprogress.png",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
             "name": "In Progress",
             "id": "3",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/4",
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
               "id": 4,
               "key": "indeterminate",
               "colorName": "yellow",
@@ -525,257 +525,335 @@
         }
       },
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "22414",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/22414",
-        "key": "MLHR-1811",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926159",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926159",
+        "key": "APEXMALHAR-1811",
         "fields": {
           "summary": "Add Non-Equality Join Condition",
           "description": "Add new condition for non-equality join predicate (for example, user.zipcode != authzn.zipcode)",
           "fixVersions": [],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
             "name": "Major",
             "id": "3"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
             "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
             "name": "Open",
             "id": "1",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "To Do"
+              "name": "New"
             }
           }
         }
       },
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "22515",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/22515",
-        "key": "MLHR-1818",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926158",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926158",
+        "key": "APEXMALHAR-1812",
         "fields": {
-          "summary": "Create a Calcite operator to enable SQL commands to be run",
-          "description": "Once we have ability to code generate, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "To Do"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "22805",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/22805",
-        "key": "MLHR-1843",
-        "fields": {
-          "summary": "Split Malhar Library and Malhar Contrib package into baby packages",
-          "description": "[~andyp] I am assigning this to you cause you are the one who first said it. So either you lead it or find a willing lead to get this task to completion.\r\n\r\nThe problem with contrib and library modules of malhar is that a ton of dependencies are prescribed as optional. The motive behind it was that the users of these libraries are given an opportunity to keep the size of the dependency-included packages to bare minimum. It  comes at a cost that the dependency now has to be manually figured out. This is a complete misuse of the optional dependency, IMO. It defeats the purpose of maven having dependency management as one of the biggest features of it.\r\n\r\nSo keep things sane - the proposed compromise is that we start creating smaller discreet packages for discrete technologies. ",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/2",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/critical.svg",
-            "name": "Critical",
-            "id": "2"
-          },
-          "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "To Do"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "23312",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/23312",
-        "key": "MLHR-1873",
-        "fields": {
-          "summary": "Create a fault-tolerant/scalable cache component backed by a persistent store",
-          "description": "We need a Scalable Cache component in Malhar. Following are some of the key features of the cache\r\n\r\n1. Cache has limited size and is backed by a persistent store.\r\n2. When there is a cache miss, the data is loaded from backup store.\r\n3. To minimize misses, a range of keys can be loaded.\r\n4. Ability to purge key/values\r\n5. Writing to the backup store should be optimized.\r\n6. It should provide support for fault-tolerance.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/3",
-            "description": "This issue is being actively worked on at the moment by the assignee.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/inprogress.png",
-            "name": "In Progress",
-            "id": "3",
-            "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/4",
-              "id": 4,
-              "key": "indeterminate",
-              "colorName": "yellow",
-              "name": "In Progress"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "23702",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/23702",
-        "key": "MLHR-1904",
-        "fields": {
-          "summary": "Rewrite kafka input operator to use 0.9.0 new consumer",
-          "description": null,
+          "summary": "Support Anti Join",
+          "description": "Create a new operator to anti-join two datasets. An anti-join is the opposite to the regular join. An anti-join of R with S will output a tuple from R if it doesn't join with any tuple in S. This can also be useful if we support (NOT)EXISTS subqueries later.",
           "fixVersions": [
             {
-              "self": "https://malhar.atlassian.net/rest/api/2/version/12000",
-              "id": "12000",
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+              "id": "12334589",
               "name": "3.3.0",
               "archived": false,
               "released": false
             }
           ],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/3",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/major.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
             "name": "Major",
             "id": "3"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
+            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
+            "name": "Resolved",
+            "id": "5",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "To Do"
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
             }
           }
         }
       },
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "24104",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/24104",
-        "key": "MLHR-1938",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926157",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926157",
+        "key": "APEXMALHAR-1813",
         "fields": {
-          "summary": "Operator checkpointing in distributed in-memory store",
-          "description": "Currently Apex engine provides operator checkpointing in Hdfs ( with Hdfs backed StorageAgents i.e. FSStorageAgent & AsyncFSStorageAgent )\r\nAs operator check-pointing is critical functionality of Apex streaming platform to ensure fault tolerant behavior, platform should also provide alternate StorageAgents which will work seamlessly with large applications that requires Exactly once semantics.\r\nHDFS read/write latency is limited and doesn't improve beyond certain point because of disk io & staging writes. Having alternate strategy to this check-pointing in fault tolerant distributed in-memory grid would ensure application stability and performance is not impacted by checkpointing\r\n\r\n*This feature will add below functionalities*\r\n* A KeyValue store interface which is used by In-memory checkpointing storage agent.\r\n* Abstract implementation of KeyValue storage agent which can be configured with concrete implementation of KeyValue store for checkpointing.\r\n* Concrete implementation of In memory storage agent for Apache Geode\r\n\r\n*This feature depends on below APEX core feature* \r\nhttps://issues.apache.org/jira/browse/APEXCORE-283\r\n* Interface for storage agent to provide application id\r\n* Stram client changes to pass applicationId ",
+          "summary": "Support Semi Join",
+          "description": "Create an new operator to SQL-like semi join two datasets. A semi join of R with S will output a tuple from R if it joins with any tuple in S. This can also be useful if we support IN subqueries later.",
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+              "id": "12334589",
+              "name": "3.3.0",
+              "archived": false,
+              "released": false
+            }
+          ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
+            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
+            "name": "Resolved",
+            "id": "5",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926152",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926152",
+        "key": "APEXMALHAR-1818",
+        "fields": {
+          "summary": "Create a Calcite operator to enable SQL commands to be run",
+          "description": "Once we have ability to code generate, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.",
           "fixVersions": [],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/4",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/minor.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926128",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926128",
+        "key": "APEXMALHAR-1843",
+        "fields": {
+          "summary": "Split Malhar Library and Malhar Contrib package into baby packages",
+          "description": "[~andyp] I am assigning this to you cause you are the one who first said it. So either you lead it or find a willing lead to get this task to completion.\r\n\r\nThe problem with contrib and library modules of malhar is that a ton of dependencies are prescribed as optional. The motive behind it was that the users of these libraries are given an opportunity to keep the size of the dependency-included packages to bare minimum. It  comes at a cost that the dependency now has to be manually figured out. This is a complete misuse of the optional dependency, IMO. It defeats the purpose of maven having dependency management as one of the biggest features of it.\r\n\r\nSo keep things sane - the proposed compromise is that we start creating smaller discreet packages for discrete technologies.",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/2",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/critical.png",
+            "name": "Critical",
+            "id": "2"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926099",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926099",
+        "key": "APEXMALHAR-1873",
+        "fields": {
+          "summary": "Create a fault-tolerant/scalable cache component backed by a persistent store",
+          "description": "We need a Scalable Cache component in Malhar. Following are some of the key features of the cache\r\n\r\n1. Cache has limited size and is backed by a persistent store.\r\n2. When there is a cache miss, the data is loaded from backup store.\r\n3. To minimize misses, a range of keys can be loaded.\r\n4. Ability to purge key/values\r\n5. Writing to the backup store should be optimized.\r\n6. It should provide support for fault-tolerance.",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/3",
+            "description": "This issue is being actively worked on at the moment by the assignee.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
+            "name": "In Progress",
+            "id": "3",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Progress"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926072",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926072",
+        "key": "APEXMALHAR-1904",
+        "fields": {
+          "summary": "Rewrite kafka input operator to use 0.9.0 new consumer",
+          "description": null,
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+              "id": "12334589",
+              "name": "3.3.0",
+              "archived": false,
+              "released": false
+            }
+          ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926038",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926038",
+        "key": "APEXMALHAR-1938",
+        "fields": {
+          "summary": "Operator checkpointing in distributed in-memory store",
+          "description": "Currently Apex engine provides operator checkpointing in Hdfs ( with Hdfs backed StorageAgents i.e. FSStorageAgent & AsyncFSStorageAgent )\r\nAs operator check-pointing is critical functionality of Apex streaming platform to ensure fault tolerant behavior, platform should also provide alternate StorageAgents which will work seamlessly with large applications that requires Exactly once semantics.\r\nHDFS read/write latency is limited and doesn't improve beyond certain point because of disk io & staging writes. Having alternate strategy to this check-pointing in fault tolerant distributed in-memory grid would ensure application stability and performance is not impacted by checkpointing\r\n\r\n*This feature will add below functionalities*\r\n* A KeyValue store interface which is used by In-memory checkpointing storage agent.\r\n* Abstract implementation of KeyValue storage agent which can be configured with concrete implementation of KeyValue store for checkpointing.\r\n* Concrete implementation of In memory storage agent for Apache Geode\r\n\r\n*This feature depends on below APEX core feature* \r\nhttps://issues.apache.org/jira/browse/APEXCORE-283\r\n* Interface for storage agent to provide application id\r\n* Stram client changes to pass applicationId",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/4",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/minor.png",
             "name": "Minor",
             "id": "4"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
             "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
             "name": "Open",
             "id": "1",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "To Do"
+              "name": "New"
             }
           }
         }
       },
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "24105",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/24105",
-        "key": "MLHR-1939",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926037",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926037",
+        "key": "APEXMALHAR-1939",
         "fields": {
           "summary": "Stream API",
           "description": null,
           "fixVersions": [],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/2",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/critical.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/2",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/critical.png",
             "name": "Critical",
             "id": "2"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
             "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
             "name": "Open",
             "id": "1",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "To Do"
+              "name": "New"
             }
           }
         }
       },
       {
-        "expand": "operations,versionedRepresentations,editmeta,changelog,transitions,renderedFields",
-        "id": "24200",
-        "self": "https://malhar.atlassian.net/rest/api/2/issue/24200",
-        "key": "MLHR-1942",
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12926034",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926034",
+        "key": "APEXMALHAR-1942",
         "fields": {
           "summary": "Apex Operator for Apache Geode.",
           "description": "We would like to contribute the Apache Geode(http://geode.incubator.apache.org/) Operator support for Apex.\r\nIt will basically be implementation for writing to geode region.\r\nThis is in continuation with the Operator checkpointing alternative under review (MLHR-1938)",
           "fixVersions": [],
           "priority": {
-            "self": "https://malhar.atlassian.net/rest/api/2/priority/4",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/priorities/minor.svg",
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/4",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/minor.png",
             "name": "Minor",
             "id": "4"
           },
           "status": {
-            "self": "https://malhar.atlassian.net/rest/api/2/status/1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
             "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://malhar.atlassian.net/images/icons/statuses/open.png",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
             "name": "Open",
             "id": "1",
             "statusCategory": {
-              "self": "https://malhar.atlassian.net/rest/api/2/statuscategory/2",
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "To Do"
+              "name": "New"
             }
           }
         }
@@ -783,36 +861,36 @@
     ],
     "versions": [
       {
-        "self": "https://malhar.atlassian.net/rest/api/2/version/11604",
-        "id": "11604",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12334585",
+        "id": "12334585",
         "name": "3.0.1",
         "archived": true,
         "released": false,
-        "projectId": 10600
+        "projectId": 12318824
       },
       {
-        "self": "https://malhar.atlassian.net/rest/api/2/version/12001",
-        "id": "12001",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12334590",
+        "id": "12334590",
         "name": "3.2.1",
         "archived": false,
         "released": false,
-        "projectId": 10600
+        "projectId": 12318824
       },
       {
-        "self": "https://malhar.atlassian.net/rest/api/2/version/12000",
-        "id": "12000",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12334589",
+        "id": "12334589",
         "name": "3.3.0",
         "archived": false,
         "released": false,
-        "projectId": 10600
+        "projectId": 12318824
       },
       {
-        "self": "https://malhar.atlassian.net/rest/api/2/version/11703",
-        "id": "11703",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12334588",
+        "id": "12334588",
         "name": "4.0.0",
         "archived": false,
         "released": false,
-        "projectId": 10600
+        "projectId": 12318824
       }
     ]
   }
