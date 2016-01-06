@@ -117,6 +117,6 @@ Thanks for contributing!
 1. Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the `dev@apex.incubator.apache.org` mailing list to see the exact commands to merge the given pull request.
 1. Once done with verification, push the changes to the ASF repository's `devel-3` branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.
-1. The `Fix version` field on the corresponding JIRA ticket needs to be set after pushing the changes.
+1. The `Fix version` field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.
 
 **Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.**
