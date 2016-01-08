@@ -144,8 +144,8 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 
 ## Voting 
 
-PPMC vote call:
-http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser
+PPMC vote call sample:
+http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201601.mbox/%3CCAKJfLDOj58dtfWTw2oBfm5GsyZqsbWCYFSCro9U%2BJw2%2BTFbVpQ%40mail.gmail.com%3E
 
 PPMC vote result:
 http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E
