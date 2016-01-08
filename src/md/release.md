@@ -19,7 +19,7 @@ git grep -l "3.2.0-incubating-SNAPSHOT"
 ```
 For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:
 
-https://malhar.atlassian.net/browse/APEX-34
+https://issues.apache.org/jira/browse/APEXCORE-34
 
 For -core:  
 ```bash
@@ -29,11 +29,11 @@ for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a;
 ```
 For -malhar:
 ```
-mvn versions:set -DnewVersion=${rv}
+mvn versions:set -DnewVersion=${rv} -Pall-modules
 ```
 Commit and push the change:
 ```
-git commit -m "Preparing for 3.3.0 development"
+git commit -am "Preparing for 3.3.0 development"
 git push apache devel-3
 ```
 
@@ -43,42 +43,24 @@ git push apache devel-3
 
 For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as
     
-https://malhar.atlassian.net/browse/APEX-183
+https://issues.apache.org/jira/browse/APEXCORE-183
 
-It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, **do not use this to make changes in Malhar**. Until these problems are resolved, following (convoluted) procedure can be used **only for -core** to get the work done. 
-
-Find the files that need to be modified:
-```
-yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
-```
-The tags were inserted in the wrong place, remove the leading blank line added in previous step and replace `/**` with `/*` for affected files:
-```
-git status -s | awk '{print $2}' | xargs sed -i ':a;N;$!ba;s!^\n/\*\*!/*!'
-```
-Now repeat and insert tags in correct place:
-```
-yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
-```
-Finally restore license headers to what they used to be:
-```
-mvn license:format -Dlicense.skip=false
-```
-Do a git diff to double check, if all looks good commit and create pull request
+It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, **do not use this to make changes in Malhar**. Until these problems are resolved, use the following Ruby script to do the replacement: https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb
 
 ### Update CHANGELOG from JIRA
 
-Navigate to the unreleased version, example for 3.2.0:
+Navigate to the unreleased version, example:
 
-https://malhar.atlassian.net/projects/APEX/versions/11700
+https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589
 
 Obtain the release notes (text mode):
 
-https://malhar.atlassian.net/secure/ReleaseNote.jspa?version=11700&styleName=Text&projectId=10700
+https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12334589&styleName=Text&projectId=12318824
 
 Shorten any wrapping and overly long titles to fit width.  Copy the report and insert new release section into `CHANGELOG.md` with the release date set to 72 hours ahead to reflect the time for the vote.
 
 Create shortlink for the JIRA release notes on http://s.apache.org/ for use in the VOTE thread. 
-Example: http://s.apache.org/SRM
+Example: http://s.apache.org/8uT
 
 Commit tags and change log:
 ```
@@ -97,7 +79,7 @@ for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a;
 ```
 And this for -malhar releases:
 ```
-mvn versions:set -Pall-modules -DnewVersion=${rv}
+mvn versions:set -Pall-modules -DnewVersion=${rv} -Pall-modules
 ```
 Commit version change:
 ```
@@ -156,8 +138,7 @@ gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${
 Check files into the dist staging area:
 
 ```bash
-mkdir svn-dist
-cp ../*-source-* svn-dist/
+mkdir svn-dist && cp *-source-* svn-dist/
 svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m "Apache Apex v${rv}-RC1"
 ```
 
