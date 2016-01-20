@@ -327,7 +327,7 @@ gulp.task('fetch-releases', function(taskCb) {
           var releases = releaseLinks.map(function(el) {
             return {
               // Trim the href attribute of leading "v" and trailing slash
-              version: el.href.trim().replace(/^v/, '').replace(/\/$/, ''),
+              version: el.innerHTML.trim().replace(/^v/, '').replace(/\/$/, ''),
               // Add repo for use in async.each call below
               repo: target.repo
             };
@@ -351,10 +351,13 @@ gulp.task('fetch-releases', function(taskCb) {
 
               // Find hash for this release's tag
               for (var i = 0; i < lines.length; i++) {
-                var parts = lines[i].split('\t');
-                if (parts[1].replace(/^refs\/tags\/v?/, '') === release.version) {
-                  tagHash = parts[0];
-                  break;
+                if (lines[i] && lines[i].trim().length > 0) {
+                  // console.log("Processing line[", i, "] : ", lines[i]);
+                  var parts = lines[i].split('\t');
+                  if (parts[1] && parts[1].replace(/^refs\/tags\/v?/, '') === release.version) {
+                    tagHash = parts[0];
+                    break;
+                  }
                 }
               }
 
