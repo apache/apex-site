@@ -86,38 +86,29 @@ git checkout -b release-3.2 devel-3
 <pre><code>git checkout devel-3
 git grep -l &quot;3.2.0-incubating-SNAPSHOT&quot;
 </code></pre><p>For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:</p>
-<p><a href="https://malhar.atlassian.net/browse/APEX-34">https://malhar.atlassian.net/browse/APEX-34</a></p>
+<p><a href="https://issues.apache.org/jira/browse/APEXCORE-34">https://issues.apache.org/jira/browse/APEXCORE-34</a></p>
 <p>For -core:  </p>
 <pre><code class="lang-bash">dv=3.2.0-incubating-SNAPSHOT
 rv=3.3.0-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
 <p>For -malhar:</p>
-<pre><code>mvn versions:set -DnewVersion=${rv}
+<pre><code>mvn versions:set -DnewVersion=${rv} -Pall-modules
 </code></pre><p>Commit and push the change:</p>
-<pre><code>git commit -m &quot;Preparing for 3.3.0 development&quot;
+<pre><code>git commit -am &quot;Preparing for 3.3.0 development&quot;
 git push apache devel-3
 </code></pre><h2 id="preparing-release-candidate">Preparing Release Candidate</h2>
 <h3 id="add-missing-since-tags">Add missing @since tags</h3>
 <p>For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as</p>
-<p><a href="https://malhar.atlassian.net/browse/APEX-183">https://malhar.atlassian.net/browse/APEX-183</a></p>
-<p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, following (convoluted) procedure can be used <strong>only for -core</strong> to get the work done. </p>
-<p>Find the files that need to be modified:</p>
-<pre><code>yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
-</code></pre><p>The tags were inserted in the wrong place, remove the leading blank line added in previous step and replace <code>/**</code> with <code>/*</code> for affected files:</p>
-<pre><code>git status -s | awk &#39;{print $2}&#39; | xargs sed -i &#39;:a;N;$!ba;s!^\n/\*\*!/*!&#39;
-</code></pre><p>Now repeat and insert tags in correct place:</p>
-<pre><code>yes | mvn javadoc:fix -DdefaultSince=3.2.0 -DfixTags=since -DignoreClirr=true -DfixFieldComment=false -DfixMethodComment=false
-</code></pre><p>Finally restore license headers to what they used to be:</p>
-<pre><code>mvn license:format -Dlicense.skip=false
-</code></pre><p>Do a git diff to double check, if all looks good commit and create pull request</p>
+<p><a href="https://issues.apache.org/jira/browse/APEXCORE-183">https://issues.apache.org/jira/browse/APEXCORE-183</a></p>
+<p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, use the following Ruby script to do the replacement: <a href="https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb">https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb</a></p>
 <h3 id="update-changelog-from-jira">Update CHANGELOG from JIRA</h3>
-<p>Navigate to the unreleased version, example for 3.2.0:</p>
-<p><a href="https://malhar.atlassian.net/projects/APEX/versions/11700">https://malhar.atlassian.net/projects/APEX/versions/11700</a></p>
+<p>Navigate to the unreleased version, example:</p>
+<p><a href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589">https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589</a></p>
 <p>Obtain the release notes (text mode):</p>
-<p><a href="https://malhar.atlassian.net/secure/ReleaseNote.jspa?version=11700&amp;styleName=Text&amp;projectId=10700">https://malhar.atlassian.net/secure/ReleaseNote.jspa?version=11700&amp;styleName=Text&amp;projectId=10700</a></p>
+<p><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12334589&amp;styleName=Text&amp;projectId=12318824">https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12334589&amp;styleName=Text&amp;projectId=12318824</a></p>
 <p>Shorten any wrapping and overly long titles to fit width.  Copy the report and insert new release section into <code>CHANGELOG.md</code> with the release date set to 72 hours ahead to reflect the time for the vote.</p>
-<p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread.<br>Example: <a href="http://s.apache.org/SRM">http://s.apache.org/SRM</a></p>
+<p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread.<br>Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
 <p>Commit tags and change log:</p>
 <pre><code>git commit -am &quot;Add @since tags and update change log for release 3.2.0&quot;
 </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
@@ -126,7 +117,7 @@ rv=3.2.0-incubating
 </code></pre><p>As mentioned earlier, use the following for -core releases:</p>
 <pre><code>for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre><p>And this for -malhar releases:</p>
-<pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv}
+<pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv} -Pall-modules
 </code></pre><p>Commit version change:</p>
 <pre><code>git commit -am &quot;Preparing to release ${rv}-RC1&quot;
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
@@ -164,12 +155,11 @@ gpg  --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar
 gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
 </code></pre>
 <p>Check files into the dist staging area:</p>
-<pre><code class="lang-bash">mkdir svn-dist
-cp ../*-source-* svn-dist/
+<pre><code class="lang-bash">mkdir svn-dist &amp;&amp; cp *-source-* svn-dist/
 svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
-<p>PPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/browser</a></p>
+<p>PPMC vote call sample:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201601.mbox/%3CCAKJfLDOj58dtfWTw2oBfm5GsyZqsbWCYFSCro9U%2BJw2%2BTFbVpQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201601.mbox/%3CCAKJfLDOj58dtfWTw2oBfm5GsyZqsbWCYFSCro9U%2BJw2%2BTFbVpQ%40mail.gmail.com%3E</a></p>
 <p>PPMC vote result:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E</a></p>
 <p>Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).</p>
 <p>IPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E</a></p>
