@@ -14,6 +14,7 @@ var _ = require('lodash');
 var exec = require('child_process').exec;
 var semver = require('semver'); 
 var naturalSort = require('javascript-natural-sort');
+var dateFormat = require('dateformat');
 
 // Constants
 var TEMP_PARTIAL_LOCATION = './.tmp/partials/';
@@ -64,7 +65,7 @@ gulp.task('html', ['md2html'], function() {
     helpers: {
       releaseDate: function(timestamp) {
         var d = new Date(timestamp);
-        return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-');
+        return dateFormat(d, "yyyy-mm-dd");
       }
     }
   };
