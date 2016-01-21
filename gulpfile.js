@@ -280,7 +280,7 @@ gulp.task('fetch-roadmap', function(taskCb) {
 // 2. Queries Github for release tags to find the date they were published to github
 // 3. Writes to releases.json with release information.
 // 
-gulp.task('fetch-versions', function(taskCb) {
+gulp.task('fetch-releases', function(taskCb) {
 
   // The base location for release listings
   var distUrl = 'https://dist.apache.org/repos/dist/';
@@ -326,7 +326,7 @@ gulp.task('fetch-versions', function(taskCb) {
           var releases = releaseLinks.map(function(el) {
             return {
               // Trim the href attribute of leading "v" and trailing slash
-              version: el.innerHTML.trim().replace(/^v/, '').replace(/\/$/, ''),
+              version: el.href.trim().replace(/^v/, '').replace(/\/$/, ''),
               // Add repo for use in async.each call below
               repo: target.repo
             };
@@ -350,13 +350,10 @@ gulp.task('fetch-versions', function(taskCb) {
 
               // Find hash for this release's tag
               for (var i = 0; i < lines.length; i++) {
-                if (lines[i] && lines[i].trim().length > 0) {
-                  // console.log("Processing line[", i, "] : ", lines[i]);
-                  var parts = lines[i].split('\t');
-                  if (parts[1] && parts[1].replace(/^refs\/tags\/v?/, '') === release.version) {
-                    tagHash = parts[0];
-                    break;
-                  }
+                var parts = lines[i].split('\t');
+                if (parts[1].replace(/^refs\/tags\/v?/, '') === release.version) {
+                  tagHash = parts[0];
+                  break;
                 }
               }
 
