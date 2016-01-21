@@ -14,18 +14,16 @@ git checkout -b release-3.2 devel-3
 ```
 Replace version in devel-3 branch:
 ```
+dv=3.2.0-incubating-SNAPSHOT
+rv=3.3.0-incubating-SNAPSHOT
 git checkout devel-3
-git grep -l "3.2.0-incubating-SNAPSHOT"
+git grep -l "${dv}"
 ```
-For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:
-
-https://issues.apache.org/jira/browse/APEXCORE-34
+For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version.
 
 For -core:  
 ```bash
-dv=3.2.0-incubating-SNAPSHOT
-rv=3.3.0-incubating-SNAPSHOT
-for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
+mvn antrun:run@replaceTextVersions versions:set -DnewVersion=${rv}
 ```
 For -malhar:
 ```
@@ -73,9 +71,9 @@ git commit -am "Add @since tags and update change log for release 3.2.0"
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.0-incubating
 ```
-As mentioned earlier, use the following for -core releases:
+Use following for -core releases:
 ```
-for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
+mvn antrun:run@replaceTextVersions versions:set -DnewVersion=${rv}
 ```
 And this for -malhar releases:
 ```
@@ -182,13 +180,23 @@ git tag -a "v3.2.0-incubating" -m "Release 3.2.0-incubating" "v3.2.0-incubating-
 git push apache "v3.2.0-incubating"
 ```
 Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
+
+For -core:
 ```bash
 git checkout release-3.2
-dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
-for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
+mvn antrun:run@replaceTextVersions versions:set -DnewVersion=${rv}
 git commit -am "Preparing for 3.2.1 development"
 ```
+
+For -malhar:
+```bash
+git checkout release-3.2
+rv=3.2.1-incubating-SNAPSHOT
+mvn versions:set -DnewVersion=${rv} -Pall-modules
+git commit -am "Preparing for 3.2.1 development"
+```
+
 Merge `@since` tag and change log changes to `devel-3`
 
 ## Announce Release
