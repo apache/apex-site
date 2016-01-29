@@ -9,12 +9,12 @@ http://www.apache.org/dev/release.html
 If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:
 
 ```bash
-git checkout devel-3 && git pull
-git checkout -b release-3.2 devel-3
+git checkout master && git pull
+git checkout -b release-3.2 master
 ```
-Replace version in devel-3 branch:
+Replace version in master branch:
 ```
-git checkout devel-3
+git checkout master
 git grep -l "3.2.0-incubating-SNAPSHOT"
 ```
 For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:
@@ -34,7 +34,7 @@ mvn versions:set -DnewVersion=${rv} -Pall-modules
 Commit and push the change:
 ```
 git commit -am "Preparing for 3.3.0 development"
-git push apache devel-3
+git push apache master
 ```
 
 ## Preparing Release Candidate
@@ -189,7 +189,7 @@ rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 git commit -am "Preparing for 3.2.1 development"
 ```
-Merge `@since` tag and change log changes to `devel-3`
+Merge `@since` tag and change log changes to `master`
 
 ## Announce Release
 

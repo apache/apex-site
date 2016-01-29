@@ -27,12 +27,12 @@ The Podling Project Management Committee ([PPMC](http://incubator.apache.org/gui
 ## Code Style
 Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.
 
-The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/incubator-apex-core/blob/devel-3/apex_checks.xml
+The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/incubator-apex-core/blob/master/apex_checks.xml
 
 To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.
- - [IntelliJ](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/intellij)
- - [Eclipse](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/eclipse)
- - [NetBeans](https://github.com/apache/incubator-apex-core/tree/devel-3/misc/ide-templates/netbeans)
+ - [IntelliJ](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/intellij)
+ - [Eclipse](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/eclipse)
+ - [NetBeans](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/netbeans)
 
 ## Opening Pull Requests (contributors)
 
@@ -45,14 +45,14 @@ The apex-core and apex-malhar repositories both have mirror repositories on gith
   `git clone https://github.com/{github_username}/incubator-apex-core.git`
 1. Add [incubator apex core](https://github.com/apache/incubator-apex-core) as a remote repository (one time step):  
 `git remote add upstream https://github.com/apache/incubator-apex-core`
-1. Create a new branch from the [devel-3](https://github.com/apache/incubator-apex-core/tree/devel-3) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
-`git checkout -b APEXCORE-123.my-feature -t upstream/devel-3`  
+1. Create a new branch from the [master](https://github.com/apache/incubator-apex-core/tree/master) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
+`git checkout -b APEXCORE-123.my-feature -t upstream/master`  
 Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:  
-`git branch -u upstream/devel-3`
+`git branch -u upstream/master`
 1. When adding new files, please include the Apache v2.0 license header.
   - From the top level directory, run `mvn license:check -Dlicense.skip=false` to check correct header formatting.
   - Run `mvn license:format -Dlicense.skip=false` to automatically add the header when missing.
-1. Once your feature is complete, submit the pull request on github against `devel-3`.
+1. Once your feature is complete, submit the pull request on github against `master`.
 1. If you want specific people to review your pull request, use the `@` notation in Github comments to mention that user, and request that he/she reviews your changes.
 1. Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.
   - If build fails due to license headers, follow instructions above.
@@ -60,7 +60,7 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
 1. Add changes after the PR was opened to the same branch, Travis CI will detect changes and build automatically. To force the CI run, close and re-open the PR.
 1. After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but [here is one explanation from git-scm.com](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) and a simple example is illustrated below:
 
-  If tracking upstream/devel-3 then run `git rebase -i`. Else run `git rebase -i upstream/devel-3`.  
+  If tracking upstream/master then run `git rebase -i`. Else run `git rebase -i upstream/master`.  
   This command opens the text editor which lists the multiple commits:
 
   ```
@@ -86,16 +86,16 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
   squash 6f98905 change2
   ```
 1. If there are multiple contributors in a pull request preserve individual attributions. Try to squash the commits to the minimum number of commits required to preserve attribution and the contribution to still be functionally correct.
-1. Till the review is complete it may happen that working feature branch may diverge from `devel-3` substantially. Therefore, it is recommended to frequently merge `devel-3` to the branch being worked on by:
-  * when the branch tracks upstream/devel-3  
+1. Till the review is complete it may happen that working feature branch may diverge from `master` substantially. Therefore, it is recommended to frequently merge `master` to the branch being worked on by:
+  * when the branch tracks upstream/master  
   `git pull`
   * when the branch doesn't track upstream  
-  `git pull upstream devel-3`
-1. If a pull from `devel-3` results in a conflict then resolve it and commit the merge. This results in additional merge commits in the pull request. Following steps help to ensure that the final pull request contains just one commit:
+  `git pull upstream master`
+1. If a pull from `master` results in a conflict then resolve it and commit the merge. This results in additional merge commits in the pull request. Following steps help to ensure that the final pull request contains just one commit:
   * Rename the original branch:  
   `git branch -m APEXCORE-123.my-feature.squash`
-  * Create a new branch (with the original name) from upstream/devel-3 that has latest changes:   
-  `git checkout -b APEXCORE-123.my-feature -t upstream/devel-3`
+  * Create a new branch (with the original name) from upstream/master that has latest changes:   
+  `git checkout -b APEXCORE-123.my-feature -t upstream/master`
   * Squash merge the old branch which was renamed. When the new branch has the latest changes then this squash will result only in the changes that were made for the feature:  
   `git merge --squash APEXCORE-123.my-feature.squash`
   * Commit the squash and force push it to the old feature remote branch so that the pull request is automatically updated:    
@@ -115,7 +115,7 @@ Thanks for contributing!
   - Ensure appropriate JavaDoc comments have been added
 1. To set up access to the ASF source repository, [follow these steps](https://git-wip-us.apache.org/#committers-getting-started). The ASF master repository is: `https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git`
 1. Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the `dev@apex.incubator.apache.org` mailing list to see the exact commands to merge the given pull request.
-1. Once done with verification, push the changes to the ASF repository's `devel-3` branch. Within a few
+1. Once done with verification, push the changes to the ASF repository's `master` branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.
 1. The `Fix version` field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.
 
