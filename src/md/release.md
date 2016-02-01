@@ -21,7 +21,7 @@ For informational purpose, this should yield the list of files that needs the ve
 
 https://issues.apache.org/jira/browse/APEXCORE-34
 
-For -core:  
+For -core:
 ```bash
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.3.0-incubating-SNAPSHOT
@@ -79,7 +79,7 @@ for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a;
 ```
 And this for -malhar releases:
 ```
-mvn versions:set -Pall-modules -DnewVersion=${rv} -Pall-modules
+mvn versions:set -Pall-modules -DnewVersion=${rv}
 ```
 Commit version change:
 ```
@@ -104,8 +104,14 @@ Build and deploy release candidate from RC tag:
 ```
 git checkout "v${rv}-RC1"
 git clean -d -f
-mvn clean deploy -Papache-release -DskipTests -Dsonatype_user=<user>
+mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype_user=<user>
 ```
+
+Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):
+```
+unzip -l target/apex-*-incubating-source-release.zip | grep -e ".zip\|.jar"
+```
+
 Log on to https://repository.apache.org and look for Staging Repositories. "Close" the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.
 
 Example URL: https://repository.apache.org/content/repositories/orgapacheapex-1000/
@@ -120,8 +126,8 @@ md5sum apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.md5
 md5sum apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.md5
 shasum -a 512 apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.sha
 shasum -a 512 apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.sha
-gpg  --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
-gpg  --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
+gpg --yes --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
+gpg --yes --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
 ```
 
 For -malhar releases:
@@ -131,8 +137,8 @@ md5sum malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.m
 md5sum malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.md5
 shasum -a 512 malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.sha
 shasum -a 512 malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.sha
-gpg  --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
-gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+gpg --yes --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
+gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
 ```
 
 Check files into the dist staging area:
@@ -166,7 +172,7 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 
 Move source release from dist staging to release folder:
 ```
-svn mv  https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
 ```
 
 ### JIRA
