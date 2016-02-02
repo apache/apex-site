@@ -193,9 +193,19 @@ git checkout release-3.2
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
-git commit -am "Preparing for 3.2.1 development"
 ```
-Merge `@since` tag and change log changes to `master`
+The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
+Wait for the published release artifacts to be available in the Apache Maven repository and upgrade base version for semantic versioning maven plugin to
+the published release (X.Y.0). If there are new artifacts published to maven repositories consider enabling semantic versioning check for the newly
+published libraries. Set `<breakBuildOnModifications>` to `true`.
+
+Commit all changes and push them to the remote git repository:
+```bash
+git commit -am "Preparing for 3.2.1 development"
+git push apache
+```
+Merge `@since` tag and change log changes to `master`. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin
+configurations as in the new release branch, except changing `<breakBuildOnModifications>`.
 
 ## Announce Release
 
