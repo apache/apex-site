@@ -87,7 +87,7 @@ git checkout -b release-3.2 master
 git grep -l &quot;3.2.0-incubating-SNAPSHOT&quot;
 </code></pre><p>For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXCORE-34">https://issues.apache.org/jira/browse/APEXCORE-34</a></p>
-<p>For -core:  </p>
+<p>For -core:</p>
 <pre><code class="lang-bash">dv=3.2.0-incubating-SNAPSHOT
 rv=3.3.0-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
@@ -117,7 +117,7 @@ rv=3.2.0-incubating
 </code></pre><p>As mentioned earlier, use the following for -core releases:</p>
 <pre><code>for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre><p>And this for -malhar releases:</p>
-<pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv} -Pall-modules
+<pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv}
 </code></pre><p>Commit version change:</p>
 <pre><code>git commit -am &quot;Preparing to release ${rv}-RC1&quot;
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
@@ -134,7 +134,9 @@ git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 <p>Build and deploy release candidate from RC tag:</p>
 <pre><code>git checkout &quot;v${rv}-RC1&quot;
 git clean -d -f
-mvn clean deploy -Papache-release -DskipTests -Dsonatype_user=&lt;user&gt;
+mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype_user=&lt;user&gt;
+</code></pre><p>Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):</p>
+<pre><code>unzip -l target/apex-*-incubating-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
 <p>Example URL: <a href="https://repository.apache.org/content/repositories/orgapacheapex-1000/">https://repository.apache.org/content/repositories/orgapacheapex-1000/</a></p>
 <p>Copy files to distribution dir and create signatures and checksums.<br>(Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)</p>
@@ -143,16 +145,16 @@ mvn clean deploy -Papache-release -DskipTests -Dsonatype_user=&lt;user&gt;
 md5sum apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.md5
 shasum -a 512 apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.sha
 shasum -a 512 apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.sha
-gpg  --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
-gpg  --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
+gpg --yes --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
+gpg --yes --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
 </code></pre>
 <p>For -malhar releases:</p>
 <pre><code class="lang-bash">md5sum malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.md5
 md5sum malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.md5
 shasum -a 512 malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.sha
 shasum -a 512 malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.sha
-gpg  --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
-gpg  --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+gpg --yes --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
+gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
 </code></pre>
 <p>Check files into the dist staging area:</p>
 <pre><code class="lang-bash">mkdir svn-dist &amp;&amp; cp *-source-* svn-dist/
@@ -168,7 +170,7 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
 <p>Move source release from dist staging to release folder:</p>
-<pre><code>svn mv  https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+<pre><code>svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
 </code></pre><h3 id="jira">JIRA</h3>
 <p>Close release and all associated tickets<br>Create version number X.Y.Z+1 for next release</p>
 <h3 id="git">git</h3>
