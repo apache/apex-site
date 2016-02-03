@@ -29,19 +29,7 @@ The Apex Project is made up of two repositories:
 
 ## Meetup Groups
 
+Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://apache-apex.meetup.com/)
+
+
 To see upcoming meetup events, please visit [announcements page](/announcements.html).
-
-- [Austin Chapter]( http://www.meetup.com/Apache-Apex-Austin-Chapter/)
-- [Bay Area Chapter](http://www.meetup.com/Apex-Bay-Area-Chapter)
-- [Bengaluru Chapter](http://www.meetup.com/Apache-Apex-incubating-Bengaluru-Meetup)
-- [Chicago Chapter](http://www.meetup.com/Apache-Apex-Meetup-Chicago-Chapter)
-- [Columbus Chapter](http://www.meetup.com/Apex-Meetup-Columbus)
-- [Dallas Chapter]( http://www.meetup.com/Apache-Apex-Dallas-Chapter/)
-- [Denver Chapter]( http://www.meetup.com/Apache-Apex-Denver-Chapter/)
-- [El Segundo Chapter]( http://www.meetup.com/Apache-Apex-El-Segundo-Chapter/)
-- [Houston Chapter](http://www.meetup.com/Apex-Meetup-Houston)
-- [New York Chapter](http://www.meetup.com/Apache-Apex-New-York-Chapter)
-- [Phoenix Chapter](http://www.meetup.com/Apache-Apex-Phoenix-Chapter/)
-- [Richmond VA Chapter](http://www.meetup.com/Apache-Apex-Richmond-VA-Area-Chapter/)
-- [Pune Chapter](http://www.meetup.com/Apache-Apex-incubating-Meetup-Pune)
-
