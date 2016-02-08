@@ -2,6 +2,11 @@
   "core": {
     "src": [
       {
+        "version": "3.3.0-incubating",
+        "repo": "incubator-apex-core",
+        "date": 1454908501000
+      },
+      {
         "version": "3.2.0-incubating",
         "repo": "incubator-apex-core",
         "date": 1446268713000

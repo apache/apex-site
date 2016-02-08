@@ -1,5 +1,11 @@
 # Announcements
 
+## Apex Core release 3.3.0-incubating
+
+Feb 8, 2016.  The Apache Apex community is pleased to announce release [3.3.0-incubating](/downloads.html) of the Core.
+
+Changes: https://github.com/apache/incubator-apex-core/blob/v3.3.0-incubating/CHANGELOG.md
+
 
 ## Malhar Library release 3.3.0-incubating
 
@@ -23,7 +29,7 @@ Changes: https://github.com/apache/incubator-apex-malhar/blob/v3.2.0-incubating/
 
 ## Apex Core release 3.2.0-incubating
 
-Oct 30, 2015.  The Apache Apex community is pleased to announce [3.2.0-incubating](/downloads.html) of the Core.  This is the first release of Apex core since incubation.
+Oct 30, 2015.  The Apache Apex community is pleased to announce release [3.2.0-incubating](/downloads.html) of the Core.  This is the first release of Apex core since incubation.
 
 Changes: https://github.com/apache/incubator-apex-core/blob/v3.2.0-incubating/CHANGELOG.md
 
