@@ -183,9 +183,13 @@ git push apache &quot;v3.2.0-incubating&quot;
 dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
-git commit -am &quot;Preparing for 3.2.1 development&quot;
 </code></pre>
-<p>Merge <code>@since</code> tag and change log changes to <code>master</code></p>
+<p>The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.<br>Wait for the published release artifacts to be available in the Apache Maven repository and upgrade base version for semantic versioning maven plugin to<br>the published release (X.Y.0). If there are new artifacts published to maven repositories consider enabling semantic versioning check for the newly<br>published libraries. Set <code>&lt;breakBuildOnModifications&gt;</code> to <code>true</code>.</p>
+<p>Commit all changes and push them to the remote git repository:</p>
+<pre><code class="lang-bash">git commit -am &quot;Preparing for 3.2.1 development&quot;
+git push apache
+</code></pre>
+<p>Merge <code>@since</code> tag and change log changes to <code>master</code>. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin<br>configurations as in the new release branch, except changing <code>&lt;breakBuildOnModifications&gt;</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
 <p><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201511.mbox/%3CCA%2B5xAo1mS-BMT%3DXk_q287_j5m6ngtaT8QEEED0zfQhXtgrnOtA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201511.mbox/%3CCA%2B5xAo1mS-BMT%3DXk_q287_j5m6ngtaT8QEEED0zfQhXtgrnOtA%40mail.gmail.com%3E</a></p>
 
