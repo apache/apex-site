@@ -151,18 +151,18 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 ## Voting 
 
 PPMC vote call sample:
-http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201601.mbox/%3CCAKJfLDOj58dtfWTw2oBfm5GsyZqsbWCYFSCro9U%2BJw2%2BTFbVpQ%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E
 
 PPMC vote result:
-http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201510.mbox/%3CCAKJfLDOY-SpcJfdFiJosoyZ2JidursecietvhT5AgUeX-%3Dw-Tw%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E
 
 Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).
 
 IPMC vote call:
-http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo21vEVw5eggLmmbx4pxwkXNLysTXYa4_hyMbWnpUZSpyQ%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E
 
 IPMC vote result:
-http://mail-archives.apache.org/mod_mbox/incubator-general/201510.mbox/%3CCA%2B5xAo2O8aqg3Z0-y0hiyq5aFskYrMDG-xYbdfQR8YGCiiGAjA%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E
 
 If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.
 
@@ -172,20 +172,22 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 
 Move source release from dist staging to release folder:
 ```
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v3.2.0-incubating-RC2 https://dist.apache.org/repos/dist/release/incubator/apex/v3.2.0-incubating
+rv=3.2.0-incubating
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m "Release Apache Apex ${rv}"
 ```
 
 ### JIRA
 
-Close release and all associated tickets 
+Close release and all associated tickets (use bulk change workflow transition). 
 Create version number X.Y.Z+1 for next release
 
 ### git
 
 Create final release tag:
 ```bash
-git tag -a "v3.2.0-incubating" -m "Release 3.2.0-incubating" "v3.2.0-incubating-RC2"
-git push apache "v3.2.0-incubating"
+rv=3.2.0-incubating
+git tag -a "v${rv}" -m "Release ${rv}" "v${rv}-RC2"
+git push apache "v${rv}"
 ```
 Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
 ```bash
@@ -195,8 +197,8 @@ rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
 The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
-Wait for the published release artifacts to be available in the Apache Maven repository and upgrade base version for semantic versioning maven plugin to
-the published release (X.Y.0). If there are new artifacts published to maven repositories consider enabling semantic versioning check for the newly
+Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to
+the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
 published libraries. Set `<breakBuildOnModifications>` to `true`.
 
 Commit all changes and push them to the remote git repository:
@@ -209,4 +211,5 @@ configurations as in the new release branch, except changing `<breakBuildOnModif
 
 ## Announce Release
 
-http://mail-archives.apache.org/mod_mbox/incubator-general/201511.mbox/%3CCA%2B5xAo1mS-BMT%3DXk_q287_j5m6ngtaT8QEEED0zfQhXtgrnOtA%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E
+
