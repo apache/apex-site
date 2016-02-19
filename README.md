@@ -188,7 +188,7 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
         console.log("Error loading Meetups events: ", data.status + ": " + data.details);
       } else {
           if (data.results.length > 0) {
-              var uniqueEvents = {};
+              var uniqueEventsByTimeName = {};
               for (var i = 0; i < data.results.length; i++) {
                 var event = data.results[i];
                 console.log(event);
@@ -196,16 +196,31 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
                 var city = (venue && venue.city) ? venue.city : 'TBD';
                 var state_country = (venue) ?  venue.state || venue.country : '' ;
                 var location = (state_country) ? city + ", " + state_country.toUpperCase() : city;
+                event.location = location;
                 // Check for duplicate events by event date + event name
-                var eventKey = getFormattedDate(event.time) + event.name;
-                if (uniqueEvents[eventKey]) {
-                  console.log("DUPLICATE EVENT (skipped): ", event.event_url, " matches previous event ", uniqueEvents[eventKey].event_url, " with date:", getFormattedDate(event.time), " and name ", event.name);
-                } else {
-                  uniqueEvents[eventKey] = event;
-                  $('.next-events', ctx).append('<p>'+ addLink(getFormattedDate(event.time) + " - " + location, event.event_url) + " - " + event.name + "</p>");
-                }
+                var eventTimeName = event.time + event.name;
                 
+                if (uniqueEventsByTimeName[eventTimeName]) {
+                  console.log("DUPLICATE EVENT (skipped): ", event.event_url, " matches previous event ", uniqueEventsByTimeName[eventTimeName].event_url, " with date:", getFormattedDate(event.time), " and name ", event.name);
+                } else {
+                  uniqueEventsByTimeName[eventTimeName] = event;
+                }
+
               }
+
+              var uniqueEventsByTimeLocation = {};
+              for (var e in uniqueEventsByTimeName) {
+                var event = uniqueEventsByTimeName[e];
+                // Check for duplicate events by event time + location
+                var eventTimeLocation = event.time + event.location;
+                if (uniqueEventsByTimeLocation[eventTimeLocation]) {
+                  console.log("DUPLICATE EVENT (skipped): ", event.event_url, " matches previous event ", uniqueEventsByTimeLocation[eventTimeLocation].event_url, " with date:", getFormattedDate(event.time), " and location ", event.location);
+                } else {
+                  uniqueEventsByTimeLocation[eventTimeLocation] = event;
+                  $('.next-events', ctx).append('<p>'+ addLink(getFormattedDate(event.time) + " - " + event.location, event.event_url) + " - " + event.name + "</p>");
+                }
+              }
+
             }
       }
     });
