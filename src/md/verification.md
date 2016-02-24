@@ -102,9 +102,9 @@ engine/src/main/scripts/dtcli
 ```
 You will get dtcli prompt, where demos can be launched.
 ```bash
-dt> launch <demo-apk-file>
+dt> launch <demo-apa-file>
 ```
-Demo apk files are typically in incubating-apex-malhar/demos directory.
+Demo apa files are typically in incubating-apex-malhar/demos directory.
 
 
 ## Miscellaneous checks: Part II (Post compilation)
