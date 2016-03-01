@@ -30,6 +30,10 @@ The Apex Project is made up of two repositories:
 - [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
 - [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
 
+## Project Maturity Model
+
+**To see self assessment of the project, [check out project maturity model](/maturity.html)**
+
 ## Meetup Groups
 
 Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://apache-apex.meetup.com/)
