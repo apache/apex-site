@@ -21,14 +21,18 @@ The Apex Project is made up of two repositories:
 
 ## Release Process
 
-**To learn more about the release process for Apex, [check out the release guidelines](/release.html).**
+To learn more about the release process for Apex, [check out the release guidelines](/release.html).
 
-**To learn more about the release candidate verification for Apex, [check out the verification guidelines](/verification.html).**
+To learn more about the release candidate verification for Apex, [check out the verification guidelines](/verification.html).
 
 ## Issue Tracking
 
 - [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
 - [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
+
+## Project Maturity Model
+
+To see self assessment of the project, [check out project maturity model](/maturity.html)
 
 ## Meetup Groups
 

@@ -163,7 +163,7 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
   };
   var $queries = {
     events: function() {
-      return mup_widget.api_call("/2/open_events", {topic: $parameters.topic, page: '20'});
+      return mup_widget.api_call("/2/open_events", {topic: $parameters.topic, page: '1000'});
     }
   };
 </script>
