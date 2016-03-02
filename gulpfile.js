@@ -110,8 +110,17 @@ gulp.task('copy:images', function() {
     .pipe(gulp.dest(path.join(BUILD_LOCATION, 'images')));
 });
 
+// Copies fonts to dist
+gulp.task('copy:fonts', function() {
+  return gulp.src([
+    './bower_components/bootstrap/dist/fonts/*'
+  ])
+    .pipe(gulp.dest(path.join(BUILD_LOCATION, 'fonts')));
+});
+
+
 // Default task is to build the site
-gulp.task('default', ['less', 'html', 'copy:js', 'copy:images']);
+gulp.task('default', ['less', 'html', 'copy:js', 'copy:images', 'copy:fonts']);
 
 
 // Fetch all JIRAs assodicated with the projects to create a roadmap file
