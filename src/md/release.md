@@ -178,7 +178,7 @@ svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist
 
 ### JIRA
 
-Close release and all associated tickets (use bulk change workflow transition). 
+Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
 Create version number X.Y.Z+1 for next release
 
 ### git
@@ -211,5 +211,8 @@ configurations as in the new release branch, except changing `<breakBuildOnModif
 
 ## Announce Release
 
+Update the download page to reflect the new release: https://github.com/apache/incubator-apex-site#updating-downloads-page
+
+Send the announcement email, example:
 http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E
 
