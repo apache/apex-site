@@ -22,7 +22,7 @@ http://files.meetup.com/18978602/University%20program%20-%20Writing%20an%20Apach
 
 ## Webinars
 
-- Amol Kekre and Thomas Weise on "Fault Tolerance and Processing Semantics with Apache Apex" - 02/25/2016 -
+- Amol Kekre and Thomas Weise on "Introducing Apache Apex (incubating)" - 02/25/2016 -
 "https://www.brighttalk.com/webcast/13685/190407
 
 ## Videos
