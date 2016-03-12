@@ -34,6 +34,11 @@ To learn more about the release candidate verification for Apex, [check out the 
 
 To see self assessment of the project, [check out project maturity model](/maturity.html)
 
+### Roadmap
+
+- [Apex Roadmap](roadmap.html) comprises key features planned for the future releases
+
+
 ## Meetup Groups
 
 Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://apache-apex.meetup.com/)
