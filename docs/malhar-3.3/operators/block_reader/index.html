@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Block Reader - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Block Reader";
+    var mkdocs_page_input_path = "operators/block_reader.md";
+    var mkdocs_page_url = "/operators/block_reader/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Block Reader</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#block-reader">Block Reader</a></li>
+                
+                    <li><a class="toctree-l4" href="#why-is-it-needed">Why is it needed?</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-diagram">Class Diagram</a></li>
+                
+                    <li><a class="toctree-l4" href="#abstractblockreader">AbstractBlockReader</a></li>
+                
+                    <li><a class="toctree-l4" href="#example-application">Example Application</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#abstractfsreadaheadlinereader">AbstractFSReadAheadLineReader</a></li>
+                
+                    <li><a class="toctree-l4" href="#readaheadlinereadercontext">ReadAheadLineReaderContext</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#abstractfslinereader">AbstractFSLineReader</a></li>
+                
+                    <li><a class="toctree-l4" href="#linereadercontext">LineReaderContext</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#fsslicereader">FSSliceReader</a></li>
+                
+                    <li><a class="toctree-l4" href="#fixedbytesreadercontext">FixedBytesReaderContext</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration_1">Configuration</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#partitioner-and-statslistener">Partitioner and StatsListener</a></li>
+                
+                    <li><a class="toctree-l4" href="#processstats">processStats </a></li>
+                
+                    <li><a class="toctree-l4" href="#definepartitions">definePartitions</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_output/">File Output</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operators &raquo;</li>
+        
+      
+    
+    <li>Block Reader</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="block-reader">Block Reader</h1>
+<p>This is a scalable operator that reads and parses blocks of data sources into records. A data source can be a file or a message bus that contains records and a block defines a chunk of data in the source by specifying the block offset and the length of the source belonging to the block. </p>
+<h2 id="why-is-it-needed">Why is it needed?</h2>
+<p>A Block Reader is needed to parallelize reading and parsing of a single data source, for example a file. Simple parallelism of reading data sources can be achieved by multiple partitions reading different source of same type (for files see <a href="https://github.com/apache/incubator-apex-malhar/blob/devel-3/library/src/main/java/com/datatorrent/lib/io/fs/AbstractFileInputOperator.java">AbstractFileInputOperator</a>) but Block Reader partitions can read blocks of same source in parallel and parse them for records ensuring that no record is duplicated or missed.</p>
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img alt="BlockReader class diagram" src="../images/blockreader/classdiagram.png" /></p>
+<h2 id="abstractblockreader">AbstractBlockReader</h2>
+<p>This is the abstract implementation that serves as the base for different types of data sources. It defines how a block metadata is processed. The flow diagram below describes the processing of a block metadata.</p>
+<p><img alt="BlockReader flow diagram" src="../images/blockreader/flowdiagram.png" /></p>
+<h3 id="ports">Ports</h3>
+<ul>
+<li>
+<p>blocksMetadataInput: input port on which block metadata are received.</p>
+</li>
+<li>
+<p>blocksMetadataOutput: output port on which block metadata are emitted if the port is connected. This port is useful when a downstream operator that receives records from block reader may also be interested to know the details of the corresponding blocks.</p>
+</li>
+<li>
+<p>messages: output port on which tuples of type <code>com.datatorrent.lib.io.block.AbstractBlockReader.ReaderRecord</code> are emitted. This class encapsulates a <code>record</code> and the <code>blockId</code> of the corresponding block.</p>
+</li>
+</ul>
+<h3 id="readercontext">readerContext</h3>
+<p>This is one of the most important fields in the block reader. It is of type <code>com.datatorrent.lib.io.block.ReaderContext</code> and is responsible for fetching bytes that make a record. It also lets the reader know how many total bytes were consumed which may not be equal to the total bytes in a record because consumed bytes also include bytes for the record delimiter which may not be a part of the actual record.</p>
+<p>Once the reader creates an input stream for the block (or uses the previous opened stream if the current block is successor of the previous block) it initializes the reader context by invoking <code>readerContext.initialize(stream, blockMetadata, consecutiveBlock);</code>. Initialize method is where any implementation of <code>ReaderContext</code> can perform all the operations which have to be executed just before reading the block or create states which are used during the lifetime of reading the block.</p>
+<p>Once the initialization is done, <code>readerContext.next()</code> is called repeatedly until it returns <code>null</code>. It is left to the <code>ReaderContext</code> implementations to decide when a block is completely processed. In cases when a record is split across adjacent blocks, reader context may decide to read ahead of the current block boundary to completely fetch the split record (examples- <code>LineReaderContext</code> and <code>ReadAheadLineReaderContext</code>). In other cases when there isn't a possibility of split record (example- <code>FixedBytesReaderContext</code>), it returns <code>null</code> immediately when the block boundary is reached. The return type of <code>readerContext.next()</code> is of type <code>com.datatorrent.lib.io.block.ReaderContext.Entity</code> which is just a wrapper for a <code>byte[]</code> that represents the record and total bytes used in fetching the record.</p>
+<h3 id="abstract-methods">Abstract methods</h3>
+<ul>
+<li>
+<p><code>STREAM setupStream(B block)</code>: creating a stream for a block is dependent on the type of source which is not known to AbstractBlockReader. Sub-classes which deal with a specific data source provide this implementation.</p>
+</li>
+<li>
+<p><code>R convertToRecord(byte[] bytes)</code><a name="convertToRecord"></a>: this converts the array of bytes into the actual instance of record type.</p>
+</li>
+</ul>
+<h3 id="auto-scalability">Auto-scalability</h3>
+<p>Block reader can auto-scale, that is, depending on the backlog (total number of all the blocks which are waiting in the <code>blocksMetadataInput</code> port queue of all partitions) it can create more partitions or reduce them. Details are discussed in the last section which covers the <a href="#partitioning">partitioner and stats-listener</a>.</p>
+<h3 id="configuration">Configuration</h3>
+<ol>
+<li><a name="maxReaders"></a><strong>maxReaders</strong>: when auto-scaling is enabled, this controls the maximum number of block reader partitions that can be created.</li>
+<li><a name="minReaders"></a><strong>minReaders</strong>: when auto-scaling is enabled, this controls the minimum number of block reader partitions that should always exist.</li>
+<li><a name="collectStats"></a><strong>collectStats</strong>: this enables or disables auto-scaling. When it is set to <code>true</code> the stats (number of blocks in the queue) are collected and this triggers partitioning; otherwise auto-scaling is disabled.</li>
+<li><strong>intervalMillis</strong>: when auto-scaling is enabled, this specifies the interval at which the reader will trigger the logic of computing the backlog and auto-scale.</li>
+</ol>
+<h2 id="abstractfsblockreader"><a name="AbstractFSBlockReader"></a> AbstractFSBlockReader</h2>
+<p>This abstract implementation deals with files. Different types of file systems that are implementations of <code>org.apache.hadoop.fs.FileSystem</code> are supported. The user can override <code>getFSInstance()</code> method to create an instance of a specific <code>FileSystem</code>. By default, filesystem instance is created from the filesytem URI that comes from the default hadoop configuration.</p>
+<pre><code class="java">protected FileSystem getFSInstance() throws IOException
+{
+  return FileSystem.newInstance(configuration);
+}
+</code></pre>
+
+<p>It uses this filesystem instance to setup a stream of type <code>org.apache.hadoop.fs.FSDataInputStream</code> to read the block.</p>
+<pre><code class="java">@Override
+protected FSDataInputStream setupStream(BlockMetadata.FileBlockMetadata block) throws IOException
+{
+  return fs.open(new Path(block.getFilePath()));
+}
+</code></pre>
+
+<p>All the ports and configurations are derived from the super class. It doesn't provide an implementation of <a href="#convertToRecord"><code>convertToRecord(byte[] bytes)</code></a> method which is delegated to concrete sub-classes.</p>
+<h3 id="example-application">Example Application</h3>
+<p>This simple dag demonstrates how any concrete implementation of <code>AbstractFSBlockReader</code> can be plugged into an application. </p>
+<p><img alt="Application with FSBlockReader" src="../images/blockreader/fsreaderexample.png" /></p>
+<p>In the above application, file splitter creates block metadata for files which are sent to block reader. Partitions of the block reader parses the file blocks for records which are filtered, transformed and then persisted to a file (created per block). Therefore block reader is parallel partitioned with the 2 downstream operators - filter/converter and record output operator. The code which implements this dag is below.</p>
+<pre><code class="java">public class ExampleApplication implements StreamingApplication
+{
+  @Override
+  public void populateDAG(DAG dag, Configuration configuration)
+  {
+    FileSplitterInput input = dag.addOperator(&quot;File-splitter&quot;, new FileSplitterInput());
+    //any concrete implementation of AbstractFSBlockReader based on the use-case can be added here.
+    LineReader blockReader = dag.addOperator(&quot;Block-reader&quot;, new LineReader());
+    Filter filter = dag.addOperator(&quot;Filter&quot;, new Filter());
+    RecordOutputOperator recordOutputOperator = dag.addOperator(&quot;Record-writer&quot;, new RecordOutputOperator());
+
+    dag.addStream(&quot;file-block metadata&quot;, input.blocksMetadataOutput, blockReader.blocksMetadataInput);
+    dag.addStream(&quot;records&quot;, blockReader.messages, filter.input);
+    dag.addStream(&quot;filtered-records&quot;, filter.output, recordOutputOperator.input);
+  }
+
+  /**
+   * Concrete implementation of {@link AbstractFSBlockReader} for which a record is a line in the file.
+   */
+  public static class LineReader extends AbstractFSBlockReader.AbstractFSReadAheadLineReader&lt;String&gt;
+  {
+
+    @Override
+    protected String convertToRecord(byte[] bytes)
+    {
+      return new String(bytes);
+    }
+  }
+
+  /**
+   * Considers any line starting with a '.' as invalid. Emits the valid records.
+   */
+  public static class Filter extends BaseOperator
+  {
+    public final transient DefaultOutputPort&lt;AbstractBlockReader.ReaderRecord&lt;String&gt;&gt; output = new DefaultOutputPort&lt;&gt;();
+    public final transient DefaultInputPort&lt;AbstractBlockReader.ReaderRecord&lt;String&gt;&gt; input = new DefaultInputPort&lt;AbstractBlockReader.ReaderRecord&lt;String&gt;&gt;()
+    {
+      @Override
+      public void process(AbstractBlockReader.ReaderRecord&lt;String&gt; stringRecord)
+      {
+        //filter records and transform
+        //if the string starts with a '.' ignore the string.
+        if (!StringUtils.startsWith(stringRecord.getRecord(), &quot;.&quot;)) {
+          output.emit(stringRecord);
+        }
+      }
+    };
+  }
+
+  /**
+   * Persists the valid records to corresponding block files.
+   */
+  public static class RecordOutputOperator extends AbstractFileOutputOperator&lt;AbstractBlockReader.ReaderRecord&lt;String&gt;&gt;
+  {
+    @Override
+    protected String getFileName(AbstractBlockReader.ReaderRecord&lt;String&gt; tuple)
+    {
+      return Long.toHexString(tuple.getBlockId());
+    }
+
+    @Override
+    protected byte[] getBytesForTuple(AbstractBlockReader.ReaderRecord&lt;String&gt; tuple)
+    {
+      return tuple.getRecord().getBytes();
+    }
+  }
+}
+</code></pre>
+
+<p>Configuration to parallel partition block reader with its downstream operators.</p>
+<pre><code class="xml">  &lt;property&gt;
+    &lt;name&gt;dt.operator.Filter.port.input.attr.PARTITION_PARALLEL&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dt.operator.Record-writer.port.input.attr.PARTITION_PARALLEL&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre>
+
+<h2 id="abstractfsreadaheadlinereader">AbstractFSReadAheadLineReader</h2>
+<p>This extension of <a href="#AbstractFSBlockReader"><code>AbstractFSBlockReader</code></a> parses lines from a block and binds the <code>readerContext</code> field to an instance of <code>ReaderContext.ReadAheadLineReaderContext</code>.</p>
+<p>It is abstract because it doesn't provide an implementation of <a href="#convertToRecord"><code>convertToRecord(byte[] bytes)</code></a> since the user may want to convert the bytes that make a line into some other type. </p>
+<h3 id="readaheadlinereadercontext">ReadAheadLineReaderContext</h3>
+<p>In order to handle a line split across adjacent blocks, ReadAheadLineReaderContext always reads beyond the block boundary and ignores the bytes till the first end-of-line character of all the blocks except the first block of the file. This ensures that no line is missed or incomplete.</p>
+<p>This is one of the most common ways of handling a split record. It doesn't require any further information to decide if a line is complete. However, the cost of this consistent way to handle a line split is that it always reads from the next block.</p>
+<h2 id="abstractfslinereader">AbstractFSLineReader</h2>
+<p>Similar to <code>AbstractFSReadAheadLineReader</code>, even this parses lines from a block. However, it binds the <code>readerContext</code> field to an instance of <code>ReaderContext.LineReaderContext</code>.</p>
+<h3 id="linereadercontext">LineReaderContext</h3>
+<p>This handles the line split differently from <code>ReadAheadLineReaderContext</code>. It doesn't always read from the next block. If the end of the last line is aligned with the block boundary then it stops processing the block. It does read from the next block when the boundaries are not aligned, that is, last line extends beyond the block boundary. The result of this is an inconsistency in reading the next block.</p>
+<p>When the boundary of the last line of the previous block was aligned with its block, then the first line of the current block is a valid line. However, in the other case the bytes from the block start offset to the first end-of-line character should be ignored. Therefore, this means that any record formed by this reader context has to be validated. For example, if the lines are of fixed size then size of each record can be validated or if each line begins with a special field then that knowledge can be used to check if a record is complete.</p>
+<p>If the validations of completeness fails for a line then <a href="#convertToRecord"><code>convertToRecord(byte[] bytes)</code></a> should return null.</p>
+<h2 id="fsslicereader">FSSliceReader</h2>
+<p>A concrete extension of <a href="#AbstractFSBlockReader"><code>AbstractFSBlockReader</code></a> that reads fixed-size <code>byte[]</code> from a block and emits the byte array wrapped in <code>com.datatorrent.netlet.util.Slice</code>.</p>
+<p>This operator binds the <code>readerContext</code> to an instance of <code>ReaderContext.FixedBytesReaderContext</code>.</p>
+<h3 id="fixedbytesreadercontext">FixedBytesReaderContext</h3>
+<p>This implementation of <code>ReaderContext</code> never reads beyond a block boundary which can result in the last <code>byte[]</code> of a block to be of a shorter length than the rest of the records.</p>
+<h3 id="configuration_1">Configuration</h3>
+<p><strong>readerContext.length</strong>: length of each record. By default, this is initialized to the default hdfs block size.</p>
+<h2 id="partitioner-and-statslistener">Partitioner and StatsListener</h2>
+<p>The logical instance of the block reader acts as the Partitioner (unless a custom partitioner is set using the operator attribute - <code>PARTITIONER</code>) as well as a StatsListener. This is because the 
+<code>AbstractBlockReader</code> implements both the <code>com.datatorrent.api.Partitioner</code> and <code>com.datatorrent.api.StatsListener</code> interfaces and provides an implementation of <code>definePartitions(...)</code> and <code>processStats(...)</code> which make it auto-scalable.</p>
+<h3 id="processstats">processStats <a name="processStats"></a></h3>
+<p>The application master invokes <code>Response processStats(BatchedOperatorStats stats)</code> method on the logical instance with the stats (<code>tuplesProcessedPSMA</code>, <code>tuplesEmittedPSMA</code>, <code>latencyMA</code>, etc.) of each partition. The data which this operator is interested in is the <code>queueSize</code> of the input port <code>blocksMetadataInput</code>.</p>
+<p>Usually the <code>queueSize</code> of an input port gives the count of waiting control tuples plus data tuples. However, if a stats listener is interested only in the count of data tuples then that can be expressed by annotating the class with <code>@DataQueueSize</code>. In this case <code>AbstractBlockReader</code> itself is the <code>StatsListener</code> which is why it is annotated with <code>@DataQueueSize</code>.</p>
+<p>The logical instance caches the queue size per partition and at regular intervals (configured by <code>intervalMillis</code>) sums these values to find the total backlog which is then used to decide whether re-partitioning is needed. The flow-diagram below describes this logic.</p>
+<p><img alt="Processing of total-backlog" src="../images/blockreader/totalBacklogProcessing.png" /></p>
+<p>The goal of this logic is to create as many partitions within bounds (see <a href="#maxReaders"><code>maxReaders</code></a> and <a href="#minReaders"><code>minReaders</code></a> above) to quickly reduce this backlog or if the backlog is small then remove any idle partitions.</p>
+<h3 id="definepartitions">definePartitions</h3>
+<p>Based on the <code>repartitionRequired</code> field of the <code>Response</code> object which is returned by <em><a href="#processStats">processStats</a></em> method, the application master invokes </p>
+<pre><code class="java">Collection&lt;Partition&lt;AbstractBlockReader&lt;...&gt;&gt;&gt; definePartitions(Collection&lt;Partition&lt;AbstractBlockReader&lt;...&gt;&gt;&gt; partitions, PartitioningContext context)
+</code></pre>
+
+<p>on the logical instance which is also the partitioner instance. The implementation calculates the difference between required partitions and the existing count of partitions. If this difference is negative, then equivalent number of partitions are removed otherwise new partitions are created. </p>
+<p>Please note auto-scaling can be disabled by setting <a href="#collectStats"><code>collectStats</code></a> to <code>false</code>. If the use-case requires only static partitioning, then that can be achieved by setting <a href="https://github.com/chandnisingh/incubator-apex-core/blob/master/common/src/main/java/com/datatorrent/common/partitioner/StatelessPartitioner.java"><code>StatelessPartitioner</code></a> as the operator attribute- <code>PARTITIONER</code> on the block reader.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../file_output/" class="btn btn-neutral float-right" title="File Output">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../file_splitter/" class="btn btn-neutral" title="File Splitter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../file_splitter/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../file_output/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
