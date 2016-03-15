@@ -3,5 +3,16 @@
 This is a list of 3rd party binary packages based on Apache Apex. The Apache Apex project does not endorse or maintain any 3rd party binary packages.
 
 - [DataTorrent RTS](https://www.datatorrent.com/download/) is a binary build of Apache Apex created by [DataTorrent](https://datatorrent.com).
+- [Bigtop](http://bigtop.apache.org/) CI based distribution binaries:
+  - Setup Bigtop Environment:
+    1. Grab the repo/list file for your favourite linux distribution from [here](http://www.apache.org/dist/bigtop/bigtop-1.1.0/repos/)
+    2. Install bigtop hadoop:
+      - For RPM based systems: ** yum install hadoop\* **
+      - For DEB baed systems: ** apt-get install hadoop\* **
+    3. Follow steps [here](https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0#HowtoinstallHadoopdistributionfromBigtop0.5.0-RunningHadoop) to start hadoop services.
+
+  - Apex packages available are:
+    - RPM: [CentOS 6](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=centos-6,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/noarch/apex-3.3.0-1.el6.noarch.rpm), [CentOS 7](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=centos-7,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/noarch/apex-3.3.0-1.el7.centos.noarch.rpm), [Fedora 20](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=fedora-20,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/noarch/apex-3.3.0-1.fc20.noarch.rpm), [OpenSUSE 13.2](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=opensuse-13.2,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/noarch/apex-3.3.0-1.noarch.rpm) 
+    - DEB: [Ubuntu 14.04](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=ubuntu-14.04,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/apex_3.3.0-1_all.deb), [Debian 8](https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/BUILD_ENVIRONMENTS=debian-8,COMPONENTS=apex,label=docker-slave/lastSuccessfulBuild/artifact/output/apex/apex_3.3.0-1_all.)
 
 If you would like to provide your own edition of Apache Apex here, please send email to [dev@apex.incubator.apache.org](mailto:dev@apex.incubator.apache.org).
