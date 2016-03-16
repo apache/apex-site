@@ -2,7 +2,7 @@
 
 This is a list of 3rd party binary packages based on Apache Apex. The Apache Apex project does not endorse or maintain any 3rd party binary packages.
 
-- [DataTorrent RTS](https://www.datatorrent.com/download/) is a binary build of Apache Apex created by [DataTorrent](https://datatorrent.com).
+- <a href="https://www.datatorrent.com/download/" rel="nofollow">DataTorrent RTS</a> is a binary build of Apache Apex created by <a href="https://www.datatorrent.com/" rel="nofollow">DataTorrent</a>.
 - [Bigtop](http://bigtop.apache.org/) CI based distribution binaries:
   - Setup Bigtop Environment:
     1. Grab the repo/list file for your favourite linux distribution from [here](http://www.apache.org/dist/bigtop/bigtop-1.1.0/repos/)

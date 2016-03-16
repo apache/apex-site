@@ -3,7 +3,7 @@
 ### Apex Core
 
 - [apex-3.3-incubating](/docs/apex-3.3/)
-- [JavaDoc](https://www.datatorrent.com/docs/apidocs/)
+- <a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">JavaDoc</a>
 
 ### Apex Malhar
 
@@ -38,13 +38,13 @@
 
 ### Blogs
 
-- [Introducing Apex](https://www.datatorrent.com/blog/introducing-apache-apex-incubating/)
-- [DAG to Execution](https://www.datatorrent.com/blog/tracing-dags-from-specification-to-execution/)
-- [CheckPoint](https://www.datatorrent.com/blog/blog-introduction-to-checkpoint/)
-- [Operability](https://www.datatorrent.com/blog/blog-operability-the-graveyard-of-big-data-projects/)
-- [Security](https://www.datatorrent.com/blog/blog-security-considerations-for-yarn-based-distributed-applications-in-hadoop/)
-- [End to End - Exactly-Once](https://www.datatorrent.com/blog/end-to-end-exactly-once-with-apache-apex/)
-- [Benchmarks compare between 2.0 and 3.0](https://www.datatorrent.com/blog-apex-performance-benchmark/)
+- <a href="https://www.datatorrent.com/blog/introducing-apache-apex-incubating/" rel="nofollow">Introducing Apex</a>
+- <a href="https://www.datatorrent.com/blog/tracing-dags-from-specification-to-execution/" rel="nofollow">DAG to Execution</a>
+- <a href="https://www.datatorrent.com/blog/blog-introduction-to-checkpoint/" rel="nofollow">CheckPoint</a>
+- <a href="https://www.datatorrent.com/blog/blog-operability-the-graveyard-of-big-data-projects/" rel="nofollow">Operability</a>
+- <a href="https://www.datatorrent.com/blog/blog-security-considerations-for-yarn-based-distributed-applications-in-hadoop/" rel="nofollow">Security</a>
+- <a href="https://www.datatorrent.com/blog/end-to-end-exactly-once-with-apache-apex/" rel="nofollow">End to End - Exactly-Once</a>
+- <a href="https://www.datatorrent.com/blog-apex-performance-benchmark/" rel="nofollow">Benchmarks compare between 2.0 and 3.0</a>
 
 ### Troubleshooting
 
