@@ -3,6 +3,14 @@
 This is a list of 3rd party binary packages based on Apache Apex. The Apache Apex project does not endorse or maintain any 3rd party binary packages.
 
 - <a href="https://www.datatorrent.com/download/" rel="nofollow">DataTorrent RTS</a> is a binary build of Apache Apex created by <a href="https://www.datatorrent.com/" rel="nofollow">DataTorrent</a>.
+- Apache Apex Sandbox Docker image using [Bigtop](http://bigtop.apache.org/) packages
+  - This is a ready to use sandbox environment where bigtop-hadoop and bigtop-apex is pre-installed
+  - To use, run following commands and then launch apex cli/dtcli from docker container:
+    ```bash
+    docker pull chinmayk/apex:ubuntu-14.04
+    docker run -it --name=apex-sandbox chinmay/apex:ubuntu-14.04
+    ```
+  - For advanced usage, click [here](https://hub.docker.com/r/chinmayk/apex/)
 - [Bigtop](http://bigtop.apache.org/) CI based distribution binaries:
   - Setup Bigtop Environment:
     1. Grab the repo/list file for your favourite linux distribution from [here](http://www.apache.org/dist/bigtop/bigtop-1.1.0/repos/)
