@@ -2,12 +2,11 @@
 
 ### Apex Core
 
-- [apex-3.3-incubating](/docs/apex-3.3/)
-- <a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">JavaDoc</a>
+Latest documentation is available in [Apex Core Docs](/docs/apex/) and <a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">Apex JavaDoc</a>.
 
 ### Apex Malhar
 
-- [malhar-3.3-incubating](/docs/malhar-3.3/)
+Latest documentation is available in [Apex Malhar Docs](/docs/malhar/).
 
 
 ### Writing Apex Applications
