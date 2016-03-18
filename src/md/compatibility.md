@@ -7,13 +7,13 @@ This document captures the compatibility goals of the Apache Apex project. The d
 * describe the impact on downstream projects or end-users
 * where applicable, call out the policy adopted when incompatible changes are permitted.
 
-Apache Apex follows [semantic versioning](http://semver.org/). Depending in the compatibility type, there may be different tools or mechanisms to ensure compatibility, for example by comparing artifacts during the build process.
+Apache Apex follows [semantic versioning](http://semver.org/). Depending on the compatibility type, there may be different tools or mechanisms to ensure compatibility, for example by comparing artifacts during the build process.
 
 The type of change will inform the required target version number. Given a version number MAJOR.MINOR.PATCH, increment the:
 
 * MAJOR version when you make incompatible API changes,
-* MINOR version when you add functionality in a backwards-compatible manner, and
-* PATCH version when you make backwards-compatible bug fixes.
+* MINOR version when you add functionality in a backward-compatible manner, and
+* PATCH version when you make backward-compatible bug fixes.
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
@@ -34,8 +34,8 @@ Interfaces and classes that are part of the public API and are annotated with [i
 Policy
 
 Changes to the public API must follow semantic versioning. 
-Public APIs must be deprecated for at least one major release prior to their removal in a major release.
-The japicmp plugin is used to enforce compatibility as part of the Travis pre-commit builds.
+Public APIs must be deprecated for at least one minor release prior to their removal in a major release.
+The [japicmp Maven plugin](https://github.com/siom79/japicmp) is used to enforce compatibility as part of the Travis pre-commit builds.
 
 ###Semantic compatibility
 
@@ -43,7 +43,7 @@ The behavior of APIs needs to remain consistent over versions, though changes fo
 
 Policy
 
-The behavior of API may be changed to fix incorrect behavior, changes to be accompanied by tests coverage for the exact behavior.
+The behavior of existing API cannot be modified as it would break existing user code. There are exceptional circumstances that may justify such changes, in which cases they should be discussed on the mailing list before implementation. Examples are bug fixes related to security issues, data corruption/consistency or to correct an unintended change from previous release that violated semantic compatibility. Such changes should be accompanied by test coverage for the exact behavior.
 
 ###REST API
 
@@ -63,15 +63,15 @@ CLI commands are to be deprecated (warning when used) in a prior minor release b
 
 ###Configuration Files
 
-Configuration files are used for engine or application settings. Changes to keys and default values affect users. 
+Configuration files are used for engine or application settings. Changes to keys and default values directly affect users and are hard to diagnose (compared to a compile error, for example).
 
 Policy
 
-Name, location, format, keys of configuration files should be deprecated in a prior minor release and can only be changed in major release. Best effort should be made to support the deprecated behavior for one more major release (not guaranteed). 
+Name, location, format, keys of configuration files should be deprecated in a prior minor release and can only be changed in major release. Best effort should be made to support the deprecated behavior for one more major release (not guaranteed). It is also desirable to provide the user with a migration tool.
 
 ###Internal Wire compatibility
 
-Apex containers internally use RPC communication and netlet for the data flow. The protocols are private and user components are not exposed to it. Apex is a YARN application and automatically deployed. There is currently no situation where containers of different Apex engine versions need to be interoperable. Should such scenario become relevant in the future, wire compatibility needs to be specified.
+Apex containers internally use RPC communication and netlet for the data flow. The protocols are private and user components are not exposed to it. Apex is a YARN application and automatically deployed. There is currently no situation where containers of different Apex engine versions need to be interoperable. Should such a scenario become relevant in the future, wire compatibility needs to be specified.
 
 Policy
 
@@ -79,7 +79,7 @@ N/A
 
 ###Internal File formats
 
-Apex engine stores data in the file system for recovery. When using serialization (Kryo, Java etc.), changes to internal classes may affect the ability to relaunch an application with upgraded engine code from previous state. This is currently not supported. In the future, the serialization mechanism should guarantee backward compatibility.
+Apex engine stores data in the file system for recovery and the data is typically obtained from serialization (from Kryo, Java etc.). Changes to internal classes may affect the ability to relaunch an application with upgraded engine code from previous state. This is currently not supported. In the future, the serialization mechanism should guarantee backward compatibility.
 
 Policy
 
@@ -91,7 +91,7 @@ Apex applications should not bundle Hadoop dependencies or Apex engine dependenc
 
 Policy
 
-Apex engine dependencies can change as per semantic versioning.
+Apex engine dependencies can change as per semantic versioning. Following above guidelines automatically maintains the backward compatibility based on semantic versioning of Apex.
 
 ###Maven Build Artifacts
 
@@ -99,7 +99,7 @@ Downstream projects reference the Apex engine dependencies and Malhar operator l
 
 Policy
 
-The artifacts that contain the classes that form the public API as specified above cannot change on patch releases and should stay compatible within a major release.
+The artifacts that contain the classes that form the public API as specified above cannot change in patch releases and should stay compatible within a major release. Patch releases can change dependencies, but only at the patch level and following semantic versioning.
 
 ###Hardware/Software Requirements
 
