@@ -76,7 +76,7 @@ The project strives to respond to documented bug reports in a timely manner.
 
 ### Community
 
-<i class="glyphicon glyphicon-remove text-danger"></i> **CO10**
+<i class="glyphicon glyphicon-ok text-success"></i> **CO10**
 The project has a well-known homepage that points to all the information required to operate according to this maturity model.
 
 <i class="glyphicon glyphicon-ok text-success"></i> **CO20**
@@ -106,8 +106,8 @@ The project maintains a public list of its contributors who have decision power 
 <i class="glyphicon glyphicon-ok text-success"></i> **CS20**
 Decisions are made by consensus among PMC members 9 and are documented on the project's main communications channel. Community opinions are taken into account but the PMC has the final word if needed.
 
-<i class="glyphicon glyphicon-remove text-danger"></i> **CS30**
-Documented voting rules are used to build consensus when discussion is not sufficient.
+<i class="glyphicon glyphicon-ok text-success"></i> **CS30**
+Documented voting rules are used to build consensus when discussion is not sufficient. [Voting Rules](http://www.apache.org/foundation/voting.html), [Bylaws Draft](https://github.com/apache/incubator-apex-site/pull/22)
 
 <i class="glyphicon glyphicon-ok text-success"></i> **CS40**
 In Apache projects, vetoes are only valid for code commits and are justified by a technical explanation, as per the Apache voting rules defined in CS30.
