@@ -34,6 +34,12 @@ To learn more about the release candidate verification for Apex, [check out the 
 - [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
 - [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
 
+## Security Process
+
+To report security vulnerabilities send an email to [security@apex.incubator.apache.org](mailto:security@apex.incubator.apache.org).
+
+The process for handling security vulnerabilities is the one recommended by Apache, it is described [here](http://www.apache.org/security/committers.html).
+
 ## Project Maturity Model
 
 To see self assessment of the project, [check out project maturity model](/maturity.html)
@@ -41,7 +47,6 @@ To see self assessment of the project, [check out project maturity model](/matur
 ### Roadmap
 
 - [Apex Roadmap](roadmap.html) comprises key features planned for the future releases
-
 
 ## Meetup Groups
 
