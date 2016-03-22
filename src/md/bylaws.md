@@ -44,17 +44,17 @@ timing of such invitations depends on many factors.
 
 ###Committers
 
-The project&rsquo;s Committers are responsible for the project&rsquo;s technical
-management. All committers have write access to the project&rsquo;s source
+The project's committers are responsible for the project's technical
+management. All committers have write access to the project's source
 repositories. Committers may cast binding votes on any technical discussion
 regarding the project.
 
 Committer access is by invitation only and must be approved by lazy consensus of
-the active PMC members. A Committer may request removal of their commit privileges
+the active PMC members. A committer may request removal of their commit privileges
 by their own declaration. A committer will be considered
-&ldquo;emeritus/inactive&rdquo; by not contributing in any form to the project for
-over 1 year. An emeritus committer may request reinstatement of commit access from
-the PMC. Such reinstatement is subject to lazy consensus of active PMC members
+"emeritus/inactive" by not contributing in any form to the project for
+over one year. An emeritus committer may request reinstatement of commit access from
+the PMC. Such reinstatement is subject to lazy consensus of active PMC members.
 
 Commit access can be revoked by a unanimous vote of all the active PMC members
 (except the committer in question if they are also a PMC member).
@@ -64,7 +64,7 @@ Agreement (<a class="externalLink" href=
 "http://www.apache.org/licenses/icla.txt">CLA</a>) on file with the Apache Software
 Foundation. There is a <a class="externalLink" href=
 "http://www.apache.org/dev/committers.html">Committer FAQ</a> which provides more
-details on the requirements for Committers
+details on the requirements for committers
 
 A committer who makes a sustained contribution to the project may be invited to
 become a member of the PMC. The form of contribution is not limited to code. It can
@@ -77,23 +77,25 @@ etc.
 The Project Management Committee (PMC) for Apache Apex was created by a
 resolution of the board of the Apache Software Foundation on ***TBD***. The
 PMC is responsible to the board and the ASF for the management and oversight of the
-Apache Apex codebase. The responsibilities of the PMC include:
+Apache Apex community. The responsibilities of the PMC include:
 
 * Deciding what is distributed as products of the project. In particular all releases must be approved by the PMC
-* Maintaining the project&rsquo;s shared resources, including the codebase repository, mailing lists, websites.
+* Maintaining the project's shared resources, including the codebase repository, mailing lists, websites.
 * Speaking on behalf of the project
 * Resolving license disputes regarding products of the project
 * Nominating new PMC members and committers
+* Keeping the board informed of the status of the project
 * Maintaining these bylaws and other guidelines of the project
 
 Membership of the PMC is by invitation only and must be approved by a lazy
-consensus of active PMC members. A PMC member is considered
-&ldquo;emeritus/inactive&rdquo; by not contributing in any form to the project for
+consensus of active PMC members. Board approval is required for new PMC members.
+A PMC member is considered
+"emeritus/inactive" by not contributing in any form to the project for
 over one year. An emeritus PMC member may request reinstatement to the PMC. Such
 reinstatement is subject to lazy consensus of active PMC members. A PMC member may
 resign their membership from the PMC by their own declaration. Membership of the
 PMC can be revoked by an unanimous vote of all the active PMC members other than
-the member in question.
+the member in question. Removal of PMC members requires board approval.
 
 The chair of the PMC is appointed by the ASF board. The chair is an office
 holder of the Apache Software Foundation (Vice President, Apache Apex) and has
@@ -101,14 +103,14 @@ primary responsibility to the board for the management of the projects within th
 scope of the Apex PMC. The chair reports to the board quarterly on developments
 within the Apex project. The PMC may consider the position of PMC chair annually,
 and if supported by a successful vote to change the PMC chair, may recommend a new
-chair to the board. Ultimately, however, it is the board&rsquo;s responsibility who
+chair to the board. Ultimately, however, it is the board's responsibility who
 it chooses to appoint as the PMC chair.
 
 ##Decision Making
 
 Within the Apex project, different types of decisions require different forms of
 approval. For example, the previous section describes several decisions which require
-&ldquo;lazy consensus&rdquo; approval. This section defines how voting is performed,
+"lazy consensus" approval. This section defines how voting is performed,
 the types of approvals, and which types of decision require which type of
 approval.
 
@@ -116,7 +118,8 @@ approval.
 
 Decisions regarding the project are made by votes on the primary project
 development mailing list (<a class="externalLink" href=
-"mailto:dev@apex.apache.org)">dev@apex.apache.org)</a>. Where necessary, PMC voting
+"mailto:dev@apex.apache.org)">dev@apex.apache.org)</a>.
+When involving personnel or other confidential matters, PMC voting
 may take place on the private Apex PMC mailing list. Votes are clearly indicated by
 subject line starting with [VOTE]. Votes may contain multiple items for approval
 and these should be clearly separated. Voting is carried out by replying to the
@@ -144,7 +147,7 @@ vote mail. Voting may take four flavours:
 
     <td>This vote indicates that the voter does not, in general, agree with the
     proposed action but is not concerned enough to prevent the action going
-    ahead.</td>
+    ahead. The voter should state why it's not a positive vote or why the voter does not agree.</td>
   </tr>
 
   <tr class="b">
@@ -159,7 +162,7 @@ vote mail. Voting may take four flavours:
 </table>
 
 All participants in the Apex project are encouraged to show their agreement with
-or against a particular action by voting. For technical decisions, only the votes
+or against a particular action by voting. For technical (but not PMC) decisions, only the votes
 of active committers are binding. Non binding votes are still useful for those with
 binding votes to understand the perception of an action in the wider Apex community.
 For PMC decisions, only the votes of PMC members are binding.
@@ -193,7 +196,7 @@ different types of approvals:
     <td>Lazy Majority</td>
 
     <td>A lazy majority vote requires 3 binding +1 votes and more binding +1
-    votes that -1 votes.</td>
+    votes than -1 votes. Only binding votes (+1/-1) count. However if there is a number of -1 non binding votes the PMC should take notice of that.</td>
   </tr>
 
   <tr class="b">
@@ -249,12 +252,13 @@ binding votes over the action.
 
 <tbody>
   <tr class="b">
-    <td>Code Change</td>
+    <td>Code Change (<a class="externalLink" href=
+"http://www.apache.org/foundation/glossary.html#ReviewThenCommit">R-T-C</a>)</td>
 
-    <td>A change made to a codebase of the project and committed by a committer.
+    <td>A change made to a codebase of the project and committed (in git "pushed") by a committer.
     This includes source code, documentation, website content, etc.</td>
 
-    <td>Lazy approval and then Lazy consensus.</td>
+    <td>Lazy Approval, no binding vetoes</td>
 
     <td>Active committers</td>
   </tr>
@@ -265,7 +269,7 @@ binding votes over the action.
     <td>A major change made to the codebase of the project done via a branch
     merge.</td>
 
-    <td>Lazy consensus</td>
+    <td>Lazy Consensus</td>
 
     <td>Active committers</td>
   </tr>
@@ -276,7 +280,7 @@ binding votes over the action.
     <td>Defines the timetable and actions for a release. The plan also nominates
     a Release Manager.</td>
 
-    <td>Lazy majority</td>
+    <td>Lazy Majority</td>
 
     <td>Active committers</td>
   </tr>
@@ -300,7 +304,7 @@ binding votes over the action.
     existing code base will continue. This also covers the creation of new
     sub-projects within the project.</td>
 
-    <td>2/3 majority</td>
+    <td>2/3 Majority</td>
 
     <td>Active committers</td>
   </tr>
@@ -310,7 +314,7 @@ binding votes over the action.
 
     <td>When a new committer is proposed for the project</td>
 
-    <td>Lazy consensus</td>
+    <td>Lazy Consensus</td>
 
     <td>Active PMC members</td>
   </tr>
@@ -320,7 +324,7 @@ binding votes over the action.
 
     <td>When a committer is proposed for the PMC</td>
 
-    <td>Lazy consensus</td>
+    <td>Lazy Consensus</td>
 
     <td>Active PMC members</td>
   </tr>
@@ -353,7 +357,7 @@ binding votes over the action.
 
     <td>When a change is needed to the Project&rsquo;s By-Laws.</td>
 
-    <td>Lazy Consensus</td>
+    <td>2/3 Majority</td>
 
     <td>Active PMC Members</td>
   </tr>
