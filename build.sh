@@ -14,7 +14,7 @@ mv content_tmp content
 # Add documentation to content folder
 echo "Adding documentation from docs/ to content/docs."
 rm -rf content/docs
-cp -rp docs content/docs
+cp -R docs content/docs
 git add content
 echo "Commiting changes to asf-site branch from master branch."
 git commit -m "from $COMMIT_HASH"
