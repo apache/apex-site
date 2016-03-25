@@ -1,50 +1,65 @@
 # Documentation
 
-### Apex Core
+Primary documentation for Apache Apex including overviews of the product, security,
+application development, operators and the commandline tool is
+[here](/docs/apex/). Documentation for the Apache Apex Malhar operator library
+including a diagrammatic taxonomy and some in-depth tutorials for selected operators
+(such as Kafka Input) is [here](/docs/malhar/).
 
-Latest documentation is available in [Apex Core Docs](/docs/apex/) and <a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">Apex JavaDoc</a>.
+The Java API for both the platform and the operator library is
+<a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">here</a>.
 
-### Apex Malhar
+The following sections provide links to additional informative material such as
+presentations, videos and blogs.
 
-Latest documentation is available in [Apex Malhar Docs](/docs/malhar/).
-
-
-### Writing Apex Applications
+### Writing Apache Apex Applications
 
 - [Building Your First Apache Apex Application (video)](https://youtu.be/LwRWBudOjg4)
+This video has a hands-on demonstration of how to check out the source code
+repositories and build them, then run the maven archetype command
+to generate a new Apache Apex project, populate the project with Java source files
+for a new application, and finally, build and run the application -- all on a
+virtual machine running Linux with Apache Hadoop installed. 
+
 - [Top N Words Application Tutorial](http://docs.datatorrent.com/tutorials/topnwords/)
+This document provides a detailed step-by-step description of how to build and
+run a word counting application with Apache Apex starting with setting up your
+development, progressing to building, running and monitoring the application,
+visualizing the output and concluding with some advanced features such as
+assessing operator memory requiremnets, partitioning, and debugging.
+
 - [Sales Dimensions Application Tutorial](http://docs.datatorrent.com/tutorials/salesdimensions/)
+Similar to the Top N Words application but covers dimensional computations on a
+simulated sales data stream.
+
 - [Example Applications](https://github.com/DataTorrent/examples)
+A `git` repository with sample code for specialized tutorials covering a
+a variety of topcs such as a high-performance key-value store (HDHT), custom
+partitioning using stream codecs, etc.
+
 - [Malhar Demos](https://github.com/apache/incubator-apex-malhar/tree/master/demos)
+This is part of the source repository for Apache Apex Malhar and contains a number
+of more substantial sample applications that developers will find especially useful.
+They include an application that computes some
+statistics (such as moving averages) from a live stream of stock transactions from
+**Yahoo! Finance**; one that analyzes a synthetic stream of eruption event data for
+the **Old Faithful** geyser; a Twitter stream analyzer; and a simulated fraud
+detector.
 
 ### Presentations
 
-- [Next gen decision making < 2ms](http://www.slideshare.net/ApacheApex/capital-ones-next-generation-decision-in-less-than-2-ms) - Ilya Genelin - Apex Meetup 02/26/2016
-- [Nifi integration with Apex](http://www.slideshare.net/ApacheApex/integrating-ni-fiandapex-by-bryan-bende) - Bryan Bende - Apex Meetup 02/26/2016
-- [Windowing in Apex](http://yogidevendra.ml/2016/03/windowing-in-apex.html) - Yogi Devendra
-- [Introduction to Real-Time data processing](http://yogidevendra.ml/2016/03/windowing-in-apex.html) - Yogi Devendra
-- [Stream Processing with Apache Apex](http://www.slideshare.net/PramodImmaneni/meetup-59089806) - Pramod Immaneni - Phoenix HUG 03/02/2016
-- [Writing an Apache Apex application](http://files.meetup.com/18978602/University%20program%20-%20Writing%20an%20Apache%20Apex%20application.pdf) - Akshay Gore and Bhupesh Chawda - PICT 02/13/2016
+- [Writing an Apache Apex application](http://files.meetup.com/18978602/University%20program%20-%20Writing%20an%20Apache%20Apex%20application.pdf) A PDF document that
+frames a hands-on exercise of building a basic application; also includes a diagram
+illustrating the life-cycle of operators.
 
-### Webinars
+- [Capital One Meetup](https://www.youtube.com/watch?v=KkjhyBLupvs)
+A pair of videos: The first by Capital One discussing their experience
+with Apache Apex and evaluation of competing technologies and the second covering
+integration of Apache Nifi and Apache Apex.
 
-- Amol Kekre and Thomas Weise - [Introducing Apache Apex (incubating)](https://www.brighttalk.com/webcast/13685/190407) - 02/25/2016
+- [Next gen decision making < 2ms](http://www.slideshare.net/ApacheApex/capital-ones-next-generation-decision-in-less-than-2-ms) and
+  [Nifi integration with Apex](http://www.slideshare.net/ApacheApex/integrating-ni-fiandapex-by-bryan-bende) Slide decks that go with the above video.
 
-### Videos
-
-- [Apache Apex meetup 02/26/2016](https://www.youtube.com/watch?v=KkjhyBLupvs)
-- [Building your First Apex App](https://www.youtube.com/watch?v=LwRWBudOjg4)
-
-### Blogs
-
-- <a href="https://www.datatorrent.com/blog/introducing-apache-apex-incubating/" rel="nofollow">Introducing Apex</a>
-- <a href="https://www.datatorrent.com/blog/tracing-dags-from-specification-to-execution/" rel="nofollow">DAG to Execution</a>
-- <a href="https://www.datatorrent.com/blog/blog-introduction-to-checkpoint/" rel="nofollow">CheckPoint</a>
-- <a href="https://www.datatorrent.com/blog/blog-operability-the-graveyard-of-big-data-projects/" rel="nofollow">Operability</a>
-- <a href="https://www.datatorrent.com/blog/blog-security-considerations-for-yarn-based-distributed-applications-in-hadoop/" rel="nofollow">Security</a>
-- <a href="https://www.datatorrent.com/blog/end-to-end-exactly-once-with-apache-apex/" rel="nofollow">End to End - Exactly-Once</a>
-- <a href="https://www.datatorrent.com/blog-apex-performance-benchmark/" rel="nofollow">Benchmarks compare between 2.0 and 3.0</a>
-
-### Troubleshooting
-
-- [Troubelshooting Guide](http://docs.datatorrent.com/troubleshooting/)
+- [Stream Processing with Apache Apex](http://www.slideshare.net/PramodImmaneni/meetup-59089806) A broad overview slide deck covering topics
+such as windowing, static and dynamic partitioning, unification,
+fault tolerance, locality, monitoring, etc.
