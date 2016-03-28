@@ -139,6 +139,12 @@ aggregates, code fragments and, finally, concludes with visualization of the res
 Apache Apex Performance Benchmarks</a>
 Discusses the performance suite used to certify releases.
 
+- <a href="https://blogs.apache.org/foundation/entry/celebrating_17_years_of_the">
+Apache Software Foundation</a>
+Discusses the history of the foundation, guiding principles, current statistics and
+provides numerous additional links for details of how the foundation operates and is
+managed.
+
 ### Trouble Shooting
 
 - <a href="http://docs.datatorrent.com/troubleshooting/" rel="nofollow">
