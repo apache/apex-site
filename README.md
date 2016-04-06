@@ -94,7 +94,8 @@ To test changes:
 
 1. Make your changes to `.md`, `.html`, and `.less` files
 2. Run `./node_modules/.bin/gulp`. This creates a `content` folder 
-3. Serve this folder using something like Python's [Simple HTTP Server](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python).
+3. Serve this folder using something like Python's [Simple HTTP Server](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python). If
+   you have Ruby installed you can simply run: `ruby -run -e httpd . -p 9090` and view the documents in your browser at localhost:9090.
 4. View the changes on the server you started in the previous step
 
 

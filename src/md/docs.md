@@ -20,7 +20,7 @@ to generate a new Apache Apex project, populate the project with Java source fil
 for a new application, and finally, build and run the application -- all on a
 virtual machine running Linux with Apache Hadoop installed. 
 
-- <a href="http://docs.datatorrent.com/tutorials/topnwords/" rel="nofollow">Top N Words Application Tutorial</a>This document provides a detailed step-by-step description of how to build and run a
+- <a href="http://docs.datatorrent.com/tutorials/topnwords/" rel="nofollow">Top N Words Application Tutorial</a> This document provides a detailed step-by-step description of how to build and run a
 word counting application with Apache Apex starting with setting up your development environment,
 progressing to building, running and monitoring the application, visualizing the output and
 concluding with some advanced features such as assessing operator memory requirements,

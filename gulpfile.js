@@ -24,7 +24,7 @@ var BUILD_LOCATION = './content';
 gulp.task('md2html', function() {
   return gulp.src('./src/md/*.md')
     .pipe(marked({
-      breaks: true,
+      breaks: false,
       highlight: function (code, lang) {
         // Only highlight if language was specified and is not bash
         // (bash highlighting is pretty bad right now in highlightjs)
