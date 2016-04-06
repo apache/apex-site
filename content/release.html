@@ -75,7 +75,9 @@
 <div class="container">
   
   <h1 id="how-to-release-apache-apex-incubating-">How to release Apache Apex (incubating)</h1>
-<p>For general information on ASF releases, see:<br><a href="http://incubator.apache.org/guides/releasemanagement.html">http://incubator.apache.org/guides/releasemanagement.html</a><br><a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
+<p>For general information on ASF releases, see:
+<a href="http://incubator.apache.org/guides/releasemanagement.html">http://incubator.apache.org/guides/releasemanagement.html</a>
+<a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
 <h2 id="creating-release-branch">Creating Release Branch</h2>
 <p>If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:</p>
 <pre><code class="lang-bash">git checkout master &amp;&amp; git pull
@@ -107,7 +109,8 @@ git push apache master
 <p>Obtain the release notes (text mode):</p>
 <p><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12334589&amp;styleName=Text&amp;projectId=12318824">https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12334589&amp;styleName=Text&amp;projectId=12318824</a></p>
 <p>Shorten any wrapping and overly long titles to fit width.  Copy the report and insert new release section into <code>CHANGELOG.md</code> with the release date set to 72 hours ahead to reflect the time for the vote.</p>
-<p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread.<br>Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
+<p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread. 
+Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
 <p>Commit tags and change log:</p>
 <pre><code>git commit -am &quot;Add @since tags and update change log for release 3.2.0&quot;
 </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
@@ -138,7 +141,8 @@ mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype
 <pre><code>unzip -l target/apex-*-incubating-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
 <p>Example URL: <a href="https://repository.apache.org/content/repositories/orgapacheapex-1000/">https://repository.apache.org/content/repositories/orgapacheapex-1000/</a></p>
-<p>Copy files to distribution dir and create signatures and checksums.<br>(Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)</p>
+<p>Copy files to distribution dir and create signatures and checksums. 
+(Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)</p>
 <p>For -core releases:</p>
 <pre><code class="lang-bash">md5sum apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.md5
 md5sum apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.md5
@@ -160,11 +164,15 @@ gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malh
 svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
-<p>PPMC vote call sample:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E</a></p>
-<p>PPMC vote result:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E</a></p>
+<p>PPMC vote call sample:
+<a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E</a></p>
+<p>PPMC vote result:
+<a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E</a></p>
 <p>Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).</p>
-<p>IPMC vote call:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E</a></p>
-<p>IPMC vote result:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E</a></p>
+<p>IPMC vote call:
+<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E</a></p>
+<p>IPMC vote result:
+<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E</a></p>
 <p>If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.</p>
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
@@ -172,7 +180,8 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 <pre><code>rv=3.2.0-incubating
 svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m &quot;Release Apache Apex ${rv}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
-<p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page).<br>Create version number X.Y.Z+1 for next release</p>
+<p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
+Create version number X.Y.Z+1 for next release</p>
 <h3 id="git">git</h3>
 <p>Create final release tag:</p>
 <pre><code class="lang-bash">rv=3.2.0-incubating
@@ -185,15 +194,20 @@ dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
-<p>The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.<br>Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to<br>the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly<br>published libraries. Set <code>&lt;breakBuildOnModifications&gt;</code> to <code>true</code>.</p>
+<p>The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
+Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to
+the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
+published libraries. Set <code>&lt;breakBuildOnModifications&gt;</code> to <code>true</code>.</p>
 <p>Commit all changes and push them to the remote git repository:</p>
 <pre><code class="lang-bash">git commit -am &quot;Preparing for 3.2.1 development&quot;
 git push apache
 </code></pre>
-<p>Merge <code>@since</code> tag and change log changes to <code>master</code>. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin<br>configurations as in the new release branch, except changing <code>&lt;breakBuildOnModifications&gt;</code>.</p>
+<p>Merge <code>@since</code> tag and change log changes to <code>master</code>. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin
+configurations as in the new release branch, except changing <code>&lt;breakBuildOnModifications&gt;</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/incubator-apex-site#updating-downloads-page">https://github.com/apache/incubator-apex-site#updating-downloads-page</a></p>
-<p>Send the announcement email, example:<br><a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E</a></p>
+<p>Send the announcement email, example:
+<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E</a></p>
 
 </div>
 

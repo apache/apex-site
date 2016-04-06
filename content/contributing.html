@@ -106,7 +106,8 @@
 <p>The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
 <ol>
 <li>Create a JIRA (<a href="https://issues.apache.org/jira/browse/APEXCORE/">-core</a>,<a href="https://issues.apache.org/jira/browse/APEXMALHAR/">-malhar</a>) for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
-<li>Fork the ASF github mirror (one time step):<br><a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
+<li>Fork the ASF github mirror (one time step):
+<a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
 <li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/incubator-apex-core.git</code></li>
 <li>Add <a href="https://github.com/apache/incubator-apex-core">incubator apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/incubator-apex-core</code></li>
 <li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/master">master</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEXCORE-123.my-feature -t upstream/master</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/master</code></li>
@@ -170,7 +171,8 @@ squash 6f98905 change2
 </li>
 <li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></li>
 <li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.incubator.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
-<li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few<br>seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
+<li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few
+seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
 <li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.</li>
 </ol>
 <p><strong>Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.</strong></p>

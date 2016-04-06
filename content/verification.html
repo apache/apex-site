@@ -77,7 +77,8 @@
   <h1 id="how-to-verify-apache-apex-incubating-release-candidate-builds">How to verify Apache Apex (incubating) release candidate builds</h1>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li><p>Download the KEYS file and import it.  Verify that the key just imported is correct.<br>This is one time activity.</p>
+<li><p>Download the KEYS file and import it.  Verify that the key just imported is correct.
+This is one time activity.</p>
 <pre><code class="lang-bash">wget https://dist.apache.org/repos/dist/release/incubator/apex/KEYS
 gpg --import KEYS
 gpg --fingerprint D920A98C
@@ -123,8 +124,10 @@ sha512sum --check $APEX_RELEASE_CANDIDATE-source-release.zip.sha
 </code></pre>
 <h3 id="miscellaneous-checks-part-i-pre-compilation-">Miscellaneous checks: Part I (Pre Compilation)</h3>
 <ol>
-<li>Existence of DISCLAIMER, LICENSE, NOTICE, README.md and CHANGELOG.md files.<br>Please make sure these files are present in the parent folder after extracting the zip or tar. The CHANGELOG.md file should contain change log for the current release.</li>
-<li>No unexpected binary files in the sources.<br>The extracted directory should not contain any binary. Need to test this before compiling the source code.<pre><code class="lang-bash">find . -type f -name &#39;*.*&#39; | sed &#39;s|.*\.||&#39; | sort -u
+<li>Existence of DISCLAIMER, LICENSE, NOTICE, README.md and CHANGELOG.md files.
+Please make sure these files are present in the parent folder after extracting the zip or tar. The CHANGELOG.md file should contain change log for the current release.</li>
+<li>No unexpected binary files in the sources.
+The extracted directory should not contain any binary. Need to test this before compiling the source code.<pre><code class="lang-bash">find . -type f -name &#39;*.*&#39; | sed &#39;s|.*\.||&#39; | sort -u
 </code></pre>
 Please make sure no binary extension is listed here. Likely candidates are .jar files.  Additionally, for Malhar, demo package files, i.e. .apa files.</li>
 </ol>
@@ -150,7 +153,8 @@ Please make sure no binary extension is listed here. Likely candidates are .jar 
 <p>Demo apa files are typically in incubating-apex-malhar/demos directory.</p>
 <h2 id="miscellaneous-checks-part-ii-post-compilation-">Miscellaneous checks: Part II (Post compilation)</h2>
 <ol>
-<li>Correct artifact names<br>All the apex artifacts generated in local maven build directory should contain classs jar, sources jars, javadocs jar. All the artifacts are under <em>~/.m2/repository/org/apache/apex/</em> directory.</li>
+<li>Correct artifact names
+All the apex artifacts generated in local maven build directory should contain classs jar, sources jars, javadocs jar. All the artifacts are under <em>~/.m2/repository/org/apache/apex/</em> directory.</li>
 </ol>
 
 </div>
