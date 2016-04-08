@@ -79,6 +79,8 @@
                 
                     <li><a class="toctree-l4" href="#creating-new-apex-project">Creating New Apex Project</a></li>
                 
+                    <li><a class="toctree-l4" href="#running-unit-tests">Running Unit Tests</a></li>
+                
                     <li><a class="toctree-l4" href="#building-apex-demos">Building Apex Demos</a></li>
                 
                     <li><a class="toctree-l4" href="#sandbox">Sandbox</a></li>
@@ -205,7 +207,7 @@
 </ol>
 <p>After installing these tools, make sure that the directories containing the executable files are in your PATH environment variable.</p>
 <ul>
-<li><strong>Windows</strong> - Open a console window and enter the command <code>echo %PATH%</code> to see the value of the <code>PATH</code> variable and verify that the above directories for Java, git, and maven executables are present.  JDK executables like <em>java</em> and <em>javac</em>, the directory might be something like <code>C:\\Program Files\\Java\\jdk1.7.0\_80\\bin</code>; for <em>git</em> it might be <code>C:\\Program Files\\Git\\bin</code>; and for maven it might be <code>C:\\Users\\user\\Software\\apache-maven-3.3.3\\bin</code>.  If not, you can change its value clicking on the button at <em>Control Panel</em> &#x21e8; <em>Advanced System Settings</em> &#x21e8; <em>Advanced tab</em> &#x21e8; <em>Environment Variables</em>.</li>
+<li><strong>Windows</strong> - Open a console window and enter the command <code>echo %PATH%</code> to see the value of the <code>PATH</code> variable and verify that the above directories for Java, git, and maven executables are present.  JDK executables like <em>java</em> and <em>javac</em>, the directory might be something like <code>C:\Program Files\Java\jdk1.7.0\_80\bin</code>; for <em>git</em> it might be <code>C:\Program Files\Git\bin</code>; and for maven it might be <code>C:\Users\user\Software\apache-maven-3.3.3\bin</code>.  If not, you can change its value clicking on the button at <em>Control Panel</em> &#x21e8; <em>Advanced System Settings</em> &#x21e8; <em>Advanced tab</em> &#x21e8; <em>Environment Variables</em>.</li>
 <li><strong>Linux and Mac</strong> - Open a console/terminal window and enter the command <code>echo $PATH</code> to see the value of the <code>PATH</code> variable and verify that the above directories for Java, git, and maven executables are present.  If not, make sure software is downloaded and installed, and optionally PATH reference is added and exported  in a <code>~/.profile</code> or <code>~/.bash_profile</code>.  For example to add maven located in <code>/sfw/maven/apache-maven-3.3.3</code> to PATH add the line: <code>export PATH=$PATH:/sfw/maven/apache-maven-3.3.3/bin</code></li>
 </ul>
 <p>Confirm by running the following commands and comparing with output that show in the table below:</p>
@@ -273,6 +275,32 @@ endlocal
 mvn clean package -DskipTests
 </code></pre>
 <p>The build should create the application package file <code>myapexapp/target/myapexapp-1.0-SNAPSHOT.apa</code>. This application package can then be used to launch example application via <strong>dtCli</strong>, or other visual management tools.  When running, this application will generate a stream of random numbers and print them out, each prefixed by the string <code>hello world:</code>.</p>
+<h2 id="running-unit-tests">Running Unit Tests</h2>
+<p>To run unit tests on Linux or OSX, simply run the usual maven command, for example: <code>mvn test</code>.</p>
+<p>On Windows, an additional file, <code>winutils.exe</code>, is required; download it from
+<a href="https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip">https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip</a>
+and unpack the archive to, say, <code>C:\hadoop</code>; this file should be present under
+<code>hadoop-common-2.2.0-bin-master\bin</code> within it.</p>
+<p>Set the <code>HADOOP_HOME</code> environment variable system-wide to
+<code>c:\hadoop\hadoop-common-2.2.0-bin-master</code> as described at:
+<a href="https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx?mfr=true">https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx?mfr=true</a>. You should now be able to run unit tests normally.</p>
+<p>If you prefer not to set the variable globally, you can set it on the command line or within
+your IDE. For example, on the command line, specify the maven
+property <code>hadoop.home.dir</code>:</p>
+<pre><code>mvn -Dhadoop.home.dir=c:\hadoop\hadoop-common-2.2.0-bin-master test
+</code></pre>
+<p>or set the environment variable separately:</p>
+<pre><code>set HADOOP_HOME=c:\hadoop\hadoop-common-2.2.0-bin-master
+mvn test
+</code></pre>
+<p>Within your IDE, set the environment variable and then run the desired
+unit test in the usual way. For example, with NetBeans you can add:</p>
+<pre><code>Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
+</code></pre>
+<p>at <em>Properties &#8658; Actions &#8658; Run project &#8658; Set Properties</em>.</p>
+<p>Similarly, in Eclipse (Mars) add it to the
+project properties at <em>Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
+&#8658; Environment</em> tab.</p>
 <h2 id="building-apex-demos">Building Apex Demos</h2>
 <p>If you want to see more substantial Apex demo applications and the associated source code, you can follow these simple steps to check out and build them.</p>
 <ol>

@@ -271,7 +271,7 @@ Apex installation.</p>
 Artifact ID: apex-app-archetype
 Version: 3.2.0-incubating (or any later version)</p>
 <h2 id="writing-your-own-app-package">Writing Your Own App Package</h2>
-<p>Please refer to the <a href="http://docs.datatorrent.com/create/">Creating Apps</a> on the basics on how to write an Apache Apex application.  In your AppPackage project, you can add custom operators (refer to <a href="../operator_development/">Operator Development Guide</a>, project dependencies, default and required configuration properties, pre-set configurations and other metadata.</p>
+<p>Please refer to the [Application Developer Guide][application_development.md] on the basics on how to write an Apache Apex application. In your AppPackage project, you can add custom operators (refer to <a href="../operator_development/">Operator Development Guide</a>, project dependencies, default and required configuration properties, pre-set configurations and other metadata. Note that you can also specify the DAG using Java, JSON or properties files. </p>
 <h3 id="adding-and-removing-project-dependencies">Adding (and removing) project dependencies</h3>
 <p>Under the project, you can add project dependencies in pom.xml, or do it
 through your IDE.  Here’s the section that describes the dependencies in
@@ -595,7 +595,7 @@ that file is only used for the unit test.</p>
 <p>Apache Apex Application Package files are zip files.  You can examine the content of any Application Package by using unzip -t on your Linux command line.</p>
 <p>There are four top level directories in an Application Package:</p>
 <ol>
-<li>"app" contains the jar files of the DAG code and any custom operators.</li>
+<li>"app" contains the jar files of the DAG code and any custom operators, and any JSON or properties files that specify a DAG.</li>
 <li>"lib" contains all dependency jars</li>
 <li>"conf" contains all the pre-set configuration XML files.</li>
 <li>"META-INF" contains the MANIFEST.MF file and the properties.xml file.</li>
