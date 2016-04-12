@@ -216,3 +216,10 @@ Update the download page to reflect the new release: https://github.com/apache/i
 Send the announcement email, example:
 http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E
 
+## Removing old Releases
+
+As part of publishing new releases, please determine whether old releases should be deleted. See [release archiving policy](http://www.apache.org/dev/release.html#when-to-archive) for details why. 
+
+With a new patch release, the previous patch release can be removed. For example, when releasing 3.3.1 patch release, we no longer need to have 3.3.0 on the download page. 
+
+Once a release branch is no longer supported, we can also remove the last release in that line. For example once `release-3.1` branch is EOL, releases 3.1.1 (or whatever the latest patch was) can be removed from downloads. 
