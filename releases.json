@@ -19,16 +19,6 @@
         "version": "3.3.1-incubating",
         "repo": "incubator-apex-malhar",
         "date": 1456985606000
-      },
-      {
-        "version": "3.3.0-incubating",
-        "repo": "incubator-apex-malhar",
-        "date": 1453081287000
-      },
-      {
-        "version": "3.2.0-incubating",
-        "repo": "incubator-apex-malhar",
-        "date": 1447740738000
       }
     ]
   }
