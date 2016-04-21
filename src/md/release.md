@@ -96,7 +96,7 @@ The only difference between release branch and tag is this final version number 
 Prerequisites:
 
  - GPG key needs to be in https://dist.apache.org/repos/dist/release/incubator/apex/KEYS
- - Credentials for distribution management in `~/.m2/settings.xml`
+ - Credentials for `apache.staging.https` server distribution management in `~/.m2/settings.xml`
  - Tag pushed to ASF git
 
 Build and deploy release candidate from RC tag:
@@ -104,7 +104,7 @@ Build and deploy release candidate from RC tag:
 ```
 git checkout "v${rv}-RC1"
 git clean -d -f
-mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype_user=<user>
+mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 ```
 
 Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):
@@ -196,18 +196,15 @@ dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
-The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
-Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to
-the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
-published libraries. Set `<breakBuildOnModifications>` to `true`.
+If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
+published libraries.
 
 Commit all changes and push them to the remote git repository:
 ```bash
 git commit -am "Preparing for 3.2.1 development"
 git push apache
 ```
-Merge `@since` tag and change log changes to `master`. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin
-configurations as in the new release branch, except changing `<breakBuildOnModifications>`.
+Merge `@since` tag and change log changes to `master`.
 
 ## Announce Release
 
