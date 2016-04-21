@@ -49,9 +49,9 @@
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=incubator-apex-core.git">Apex Core (ASF)</a></li>
               <li><a href="https://github.com/apache/incubator-apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
               <li><a href="https://github.com/apache/incubator-apex-malhar">Apex Malhar (Github Mirror)</a></li>
             </ul>
           </li>
@@ -130,13 +130,13 @@ git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 <p>Prerequisites:</p>
 <ul>
 <li>GPG key needs to be in <a href="https://dist.apache.org/repos/dist/release/incubator/apex/KEYS">https://dist.apache.org/repos/dist/release/incubator/apex/KEYS</a></li>
-<li>Credentials for distribution management in <code>~/.m2/settings.xml</code></li>
+<li>Credentials for <code>apache.staging.https</code> server distribution management in <code>~/.m2/settings.xml</code></li>
 <li>Tag pushed to ASF git</li>
 </ul>
 <p>Build and deploy release candidate from RC tag:</p>
 <pre><code>git checkout &quot;v${rv}-RC1&quot;
 git clean -d -f
-mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype_user=&lt;user&gt;
+mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 </code></pre><p>Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):</p>
 <pre><code>unzip -l target/apex-*-incubating-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
@@ -194,16 +194,13 @@ dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
-<p>The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
-Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to
-the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
-published libraries. Set <code>&lt;breakBuildOnModifications&gt;</code> to <code>true</code>.</p>
+<p>If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
+published libraries.</p>
 <p>Commit all changes and push them to the remote git repository:</p>
 <pre><code class="lang-bash">git commit -am &quot;Preparing for 3.2.1 development&quot;
 git push apache
 </code></pre>
-<p>Merge <code>@since</code> tag and change log changes to <code>master</code>. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin
-configurations as in the new release branch, except changing <code>&lt;breakBuildOnModifications&gt;</code>.</p>
+<p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/incubator-apex-site#updating-downloads-page">https://github.com/apache/incubator-apex-site#updating-downloads-page</a></p>
 <p>Send the announcement email, example:
