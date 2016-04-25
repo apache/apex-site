@@ -16,23 +16,23 @@ People that help with the project in any of the above categories or other ways a
 
 ## Becoming a committer
 
-Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PPMC. A committer has a signed Contributor License Agreement ([CLA](http://www.apache.org/licenses/icla.txt)) on file and an apache.org address.
+Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PMC. A committer has a signed Contributor License Agreement ([CLA](http://www.apache.org/licenses/icla.txt)) on file and an apache.org address.
 
 We expect committers to subscribe to the [project mailing lists](community.html#mailing-lists).  
 
-A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.
+A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PMC. Such reinstatement is subject to lazy consensus of active PMC members.
 
-The Podling Project Management Committee ([PPMC](http://incubator.apache.org/guides/ppmc.html)) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.
+The Project Management Committee ([PMC](http://www.apache.org/dev/pmc.html)) is responsible for the oversight of the project and it also decides who to add as a PMC member. Existing committers may be invited to become a PMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.
 
 ## Code Style
 Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.
 
-The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/incubator-apex-core/blob/master/apex_checks.xml
+The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/apex-core/blob/master/apex_checks.xml
 
 To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.
- - [IntelliJ](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/intellij)
- - [Eclipse](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/eclipse)
- - [NetBeans](https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/netbeans)
+ - [IntelliJ](https://github.com/apache/apex-core/tree/master/misc/ide-templates/intellij)
+ - [Eclipse](https://github.com/apache/apex-core/tree/master/misc/ide-templates/eclipse)
+ - [NetBeans](https://github.com/apache/apex-core/tree/master/misc/ide-templates/netbeans)
 
 ## Opening Pull Requests (contributors)
 
@@ -40,12 +40,12 @@ The apex-core and apex-malhar repositories both have mirror repositories on gith
 
 1. Create a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://issues.apache.org/jira/browse/APEXMALHAR/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
 1. Fork the ASF github mirror (one time step):
-   https://github.com/apache/incubator-apex-core/  
+   https://github.com/apache/apex-core/  
 1. Clone the **fork** on your local workspace (one time step):  
-  `git clone https://github.com/{github_username}/incubator-apex-core.git`
-1. Add [incubator apex core](https://github.com/apache/incubator-apex-core) as a remote repository (one time step):  
-`git remote add upstream https://github.com/apache/incubator-apex-core`
-1. Create a new branch from the [master](https://github.com/apache/incubator-apex-core/tree/master) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
+  `git clone https://github.com/{github_username}/apex-core.git`
+1. Add [apex core](https://github.com/apache/apex-core) as a remote repository (one time step):  
+`git remote add upstream https://github.com/apache/apex-core`
+1. Create a new branch from the [master](https://github.com/apache/apex-core/tree/master) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
 `git checkout -b APEXCORE-123.my-feature -t upstream/master`  
 Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:  
 `git branch -u upstream/master`
@@ -113,8 +113,8 @@ Thanks for contributing!
   - Travis CI pull request build needs to pass
   - Ensure tests are added/modified for new features or fixes
   - Ensure appropriate JavaDoc comments have been added
-1. To set up access to the ASF source repository, [follow these steps](https://git-wip-us.apache.org/#committers-getting-started). The ASF master repository is: `https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git`
-1. Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the `dev@apex.incubator.apache.org` mailing list to see the exact commands to merge the given pull request.
+1. To set up access to the ASF source repository, [follow these steps](https://git-wip-us.apache.org/#committers-getting-started). The ASF master repository is: `https://git-wip-us.apache.org/repos/asf/apex-core.git`
+1. Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the `dev@apex.apache.org` mailing list to see the exact commands to merge the given pull request.
 1. Once done with verification, push the changes to the ASF repository's `master` branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.
 1. The `Fix version` field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.

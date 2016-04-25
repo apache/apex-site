@@ -20,8 +20,8 @@ The following mailing lists are available for Apex.
 
 The Apex Project is made up of two repositories:
 
-- [Apex Core](https://github.com/apache/incubator-apex-core) - The core of the Apex platform.
-- [Apex Malhar](https://github.com/apache/incubator-apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
+- [Apex Core](https://github.com/apache/apex-core) - The core of the Apex platform.
+- [Apex Malhar](https://github.com/apache/apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
 
 ## Release Process
 

@@ -108,7 +108,7 @@ You will get apex prompt, where demos can be launched.
 ```bash
 apex> launch <demo-apa-file>
 ```
-Demo apa files are typically in malhar/demos directory.
+Demo apa files are typically in apex-malhar/demos directory.
 
 
 ## Miscellaneous checks: Part II (Post compilation)

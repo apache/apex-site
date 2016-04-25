@@ -4,16 +4,16 @@ For general information on ASF releases, see: http://www.apache.org/dev/release.
 
 ## Creating Release Branch
 
-If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:
+If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.4.0:
 
 ```bash
 git checkout master && git pull
-git checkout -b release-3.2 master
+git checkout -b release-3.4 master
 ```
 Replace version in master branch:
 ```
 git checkout master
-git grep -l "3.2.0-SNAPSHOT"
+git grep -l "3.4.0-SNAPSHOT"
 ```
 For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:
 
@@ -21,8 +21,8 @@ https://issues.apache.org/jira/browse/APEXCORE-34
 
 For -core:
 ```bash
-dv=3.2.0-SNAPSHOT
-rv=3.3.0-SNAPSHOT
+dv=3.4.0-SNAPSHOT
+rv=3.5.0-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
 For -malhar:
@@ -31,7 +31,7 @@ mvn versions:set -DnewVersion=${rv} -Pall-modules
 ```
 Commit and push the change:
 ```
-git commit -am "Preparing for 3.3.0 development"
+git commit -am "Preparing for 3.5.0 development"
 git push apache master
 ```
 
@@ -72,8 +72,8 @@ git commit -am "Add @since tags and update change log for release 3.2.0"
 ### Update version number for RC
 
 ```
-dv=3.2.0-SNAPSHOT
-rv=3.2.0
+dv=3.4.0-SNAPSHOT
+rv=3.4.0
 ```
 As mentioned earlier, use the following for -core releases:
 ```
@@ -166,7 +166,7 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 
 Move source release from dist staging to release folder:
 ```
-rv=3.2.0
+rv=3.4.0
 RNAME=apache-apex-core-${rv}
 svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m "Release ${RNAME}"
 ```
@@ -180,15 +180,15 @@ Create version number X.Y.Z+1 for next release
 
 Create final release tag:
 ```bash
-rv=3.2.0
+rv=3.4.0
 git tag -a "v${rv}" -m "Release ${rv}" "v${rv}-RC2"
 git push apache "v${rv}"
 ```
 Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
 ```bash
-git checkout release-3.2
-dv=3.2.0-SNAPSHOT
-rv=3.2.1-SNAPSHOT
+git checkout release-3.4
+dv=3.4.0-SNAPSHOT
+rv=3.4.1-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
 If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
@@ -203,9 +203,9 @@ Merge `@since` tag and change log changes to `master`.
 
 ## Announce Release
 
-For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See https://github.com/apache/incubator-apex-core/tree/master/docs#deployment
+For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See https://github.com/apache/apex-core/tree/master/docs#deployment
 
-Update the download page to reflect the new release: https://github.com/apache/incubator-apex-site#updating-downloads-page
+Update the download page to reflect the new release: https://github.com/apache/apex-site#updating-downloads-page
 
 Send the announcement email, example:
 http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E

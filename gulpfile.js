@@ -298,8 +298,8 @@ gulp.task('fetch-releases', function(taskCb) {
   // The release "targets", in this case meaning apex-core and apex-malhar
   var targets = [
     // NOTE: Once apex leaves incubation, this object should be changed to exclude "incubator"
-    { key: 'core.src',   path: 'release/incubator/apex',        repo: 'incubator-apex-core' },
-    { key: 'malhar.src', path: 'release/incubator/apex/malhar', repo: 'incubator-apex-malhar' }
+    { key: 'core.src',   path: 'release/incubator/apex',        repo: 'apex-core' },
+    { key: 'malhar.src', path: 'release/incubator/apex/malhar', repo: 'apex-malhar' }
   ];
 
   // For each target, get the releases
