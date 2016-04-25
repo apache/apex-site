@@ -1,4 +1,4 @@
-# How to verify Apache Apex (incubating) release candidate builds
+# How to verify Apache Apex release candidate builds
 
 ## Prerequisites
 1. Download the KEYS file and import it.  Verify that the key just imported is correct.

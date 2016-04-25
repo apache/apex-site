@@ -1,4 +1,4 @@
-# How to release Apache Apex (incubating)
+# How to release Apache Apex
 
 For general information on ASF releases, see:
 http://incubator.apache.org/guides/releasemanagement.html
