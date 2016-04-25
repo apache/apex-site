@@ -1,6 +1,5 @@
 ## Upcoming Meetups
 
-
 <div id="1458176353510"></div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>jQuery.noConflict();</script>
@@ -17,6 +16,7 @@
   });
 </script>
 
+[July 19, 2016 - München, Germany](http://www.meetup.com/Hadoop-User-Group-Munich/events/230313355/) - Apache Apex: Stream Processing Architecture and Applications
 
 
 [Propose future meetups in one of the Apache Apex groups!](http://apache-apex.meetup.com/)

@@ -1,5 +1,11 @@
 # Announcements
 
+## Apache Apex announced as Top-Level Project
+
+Apr 25, 2016.  The Apache Software Foundation (ASF) announced today that Apache Apex has graduated from the Apache Incubator to become a Top-Level Project (TLP), signifying that the project's community and products have been well-governed under the ASF's meritocratic process and principles. 
+
+https://blogs.apache.org/foundation/entry/the_apache_software_foundation_announces90
+
 ## Apex Core release 3.2.1-incubating
 
 Apr 21, 2016.  The Apache Apex community is pleased to announce release [3.2.1-incubating](/downloads.html) of the Core.
