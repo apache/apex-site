@@ -8,7 +8,7 @@
     <meta name="author" content="Apache Software Foundation">
     <link rel="icon" href="favicon.ico">
 
-    <title>Apache Apex (Incubating)</title>
+    <title>Apache Apex</title>
 
     <!-- Main Stylesheet -->
     <link href="css/main.css" rel="stylesheet">
@@ -28,7 +28,7 @@
         </button>
         <a class="navbar-brand" href="/">
           <img src="images/apex-logo.svg" class="logo" alt="Apache Apex Logo">
-          Apache Apex<span class="trademark">&trade;</span><small> (incubating)</small>
+          Apache Apex<span class="trademark">&trade;</span>
         </a>
       </div>
 
@@ -72,9 +72,10 @@
         
       </div>
     </nav>
+
 <div class="container">
   
-  <h1 id="how-to-release-apache-apex-incubating-">How to release Apache Apex (incubating)</h1>
+  <h1 id="how-to-release-apache-apex">How to release Apache Apex</h1>
 <p>For general information on ASF releases, see:
 <a href="http://incubator.apache.org/guides/releasemanagement.html">http://incubator.apache.org/guides/releasemanagement.html</a>
 <a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
@@ -130,13 +131,13 @@ git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 <p>Prerequisites:</p>
 <ul>
 <li>GPG key needs to be in <a href="https://dist.apache.org/repos/dist/release/incubator/apex/KEYS">https://dist.apache.org/repos/dist/release/incubator/apex/KEYS</a></li>
-<li>Credentials for distribution management in <code>~/.m2/settings.xml</code></li>
+<li>Credentials for <code>apache.staging.https</code> server distribution management in <code>~/.m2/settings.xml</code></li>
 <li>Tag pushed to ASF git</li>
 </ul>
 <p>Build and deploy release candidate from RC tag:</p>
 <pre><code>git checkout &quot;v${rv}-RC1&quot;
 git clean -d -f
-mvn clean rat:check deploy -Papache-release -Pall-modules -DskipTests -Dsonatype_user=&lt;user&gt;
+mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 </code></pre><p>Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):</p>
 <pre><code>unzip -l target/apex-*-incubating-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
@@ -194,16 +195,13 @@ dv=3.2.0-incubating-SNAPSHOT
 rv=3.2.1-incubating-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
-<p>The following steps should be completed only when releasing a new minor release (X.Y.0), otherwise please verify that all necessary changes are already in place.
-Wait for the published release artifacts to be available in the Maven Central repository and upgrade base version for semantic versioning (japicmp-maven-plugin) to
-the newly published release (X.Y.0). If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
-published libraries. Set <code>&lt;breakBuildOnModifications&gt;</code> to <code>true</code>.</p>
+<p>If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
+published libraries.</p>
 <p>Commit all changes and push them to the remote git repository:</p>
 <pre><code class="lang-bash">git commit -am &quot;Preparing for 3.2.1 development&quot;
 git push apache
 </code></pre>
-<p>Merge <code>@since</code> tag and change log changes to <code>master</code>. If release is a new minor release (X.Y.0) implement the same changes in semantic versioning plugin
-configurations as in the new release branch, except changing <code>&lt;breakBuildOnModifications&gt;</code>.</p>
+<p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/incubator-apex-site#updating-downloads-page">https://github.com/apache/incubator-apex-site#updating-downloads-page</a></p>
 <p>Send the announcement email, example:
@@ -223,10 +221,6 @@ configurations as in the new release branch, except changing <code>&lt;breakBuil
         Licensed under the Apache License, Version 2.0<br>
         Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
         <a class="footer-link-img" href="http://apache.org"><img src="/images/asf_logo.svg" alt="The Apache Software Foundation"></a>
-        <a class="footer-link-img" href="http://incubator.apache.org/"><img src="/images/egg-logo2-noborder.png" alt="Apache Incubator"></a>
-      </p>
-      <p class="text-muted">
-        <small>Apache Apex is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</small>
       </p>
     </footer>
   </div> <!-- /container -->
