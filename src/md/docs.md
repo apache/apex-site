@@ -12,7 +12,7 @@
 word counting application with Apache Apex starting with setting up your development environment, progressing to building, running and monitoring the application, visualizing the output and concluding with some advanced features such as assessing operator memory requirements, partitioning, and debugging.
 - <a href="http://docs.datatorrent.com/tutorials/salesdimensions/" rel="nofollow">Sales Dimensions Application Tutorial</a> Similar to the Top N Words application but covers
 dimensional computations on a simulated sales data stream.
-- <a href="https://github.com/DataTorrent/examples" rel="nofollow">Example Applications</a> Sample code for specialized tutorials covering a variety of topics such as a high-performance key-value store (HDHT), custom partitioning using stream codecs, etc.
+- <a href="https://github.com/DataTorrent/examples" rel="nofollow">Example Applications</a> Sample code for specialized tutorials covering a variety of topics such as large key-value state management (HDHT), custom partitioning using stream codecs, etc.
 - [Malhar Demos](https://github.com/apache/incubator-apex-malhar/tree/master/demos) This is part of the source repository for Apache Apex Malhar and contains a number of more substantial sample applications that developers will find especially useful.  They include an application that computes some statistics (such as moving averages) from a live stream of stock transactions from *Yahoo! Finance*; one that analyzes a synthetic stream of eruption event data for the *Old Faithful* geyser; a Twitter stream analyzer; and a simulated fraud detector.
 
 ### Presentations
