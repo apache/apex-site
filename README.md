@@ -1,7 +1,7 @@
 Apache Apex Incubator Website
 =============================
 
-This is the source code for the Apache Apex Incubator website, hosted at [apex.incubator.apache.org](http://apex.incubator.apache.org/). The following tools are used to build the html pages:
+This is the source code for the Apache Apex website, hosted at [apex.apache.org](http://apex.apache.org/). The following tools are used to build the html pages:
 
 - [nodejs + npm](https://nodejs.org/en/)
 - [gulp - nodejs automation tool](http://gulpjs.com/)
@@ -15,7 +15,7 @@ This is the source code for the Apache Apex Incubator website, hosted at [apex.i
 
 How it works
 ------------
-The master branch of this repo contains the source files that are used to generate the HTML that ultimately gets pushed to the incubator site.
+The master branch of this repo contains the source files that are used to generate the HTML that ultimately gets pushed to the site.
 The `asf-site` branch is where the actual generated files are stored. Note that this branch must contain exactly one folder called `content`,
 and so has been checked out as an orphan branch with its own commit history apart from the master branch. See the *Contributing* section below.
 
@@ -133,7 +133,7 @@ Updating Roadmap Page
 The roadmap page uses [roadmap.json](roadmap.json) to populate the Core and Malhar roadmap JIRA list.  The `roadmap.json` can be automatically generated via JIRA API calls by running:
 
 ```bash
-gulp fetch-roadmap
+./node_modules/.bin/gulp fetch-roadmap
 git add roadmap.json
 git commit -m 'Updating roadmap'
 ```
