@@ -2,14 +2,19 @@
   "core": {
     "src": [
       {
-        "version": "3.3.0-incubating",
+        "version": "3.4.0",
         "repo": "incubator-apex-core",
-        "date": 1454908501000
+        "date": 1462902111000
       },
       {
         "version": "3.2.1-incubating",
         "repo": "incubator-apex-core",
         "date": 1461193940000
+      },
+      {
+        "version": "3.3.0-incubating",
+        "repo": "incubator-apex-core",
+        "date": 1454908501000
       }
     ]
   },
