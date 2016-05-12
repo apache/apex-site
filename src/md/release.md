@@ -1,8 +1,6 @@
 # How to release Apache Apex
 
-For general information on ASF releases, see:
-http://incubator.apache.org/guides/releasemanagement.html
-http://www.apache.org/dev/release.html
+For general information on ASF releases, see: http://www.apache.org/dev/release.html
 
 ## Creating Release Branch
 
@@ -15,7 +13,7 @@ git checkout -b release-3.2 master
 Replace version in master branch:
 ```
 git checkout master
-git grep -l "3.2.0-incubating-SNAPSHOT"
+git grep -l "3.2.0-SNAPSHOT"
 ```
 For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:
 
@@ -23,8 +21,8 @@ https://issues.apache.org/jira/browse/APEXCORE-34
 
 For -core:
 ```bash
-dv=3.2.0-incubating-SNAPSHOT
-rv=3.3.0-incubating-SNAPSHOT
+dv=3.2.0-SNAPSHOT
+rv=3.3.0-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
 For -malhar:
@@ -46,6 +44,10 @@ For Java classes added since the last release, the @since tags need to be added.
 https://issues.apache.org/jira/browse/APEXCORE-183
 
 It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, **do not use this to make changes in Malhar**. Until these problems are resolved, use the following Ruby script to do the replacement: https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb
+
+```
+ruby ~/add-since.rb ../apex -s 3.2.0
+```
 
 ### Update CHANGELOG from JIRA
 
@@ -70,8 +72,8 @@ git commit -am "Add @since tags and update change log for release 3.2.0"
 ### Update version number for RC
 
 ```
-dv=3.2.0-incubating-SNAPSHOT
-rv=3.2.0-incubating
+dv=3.2.0-SNAPSHOT
+rv=3.2.0
 ```
 As mentioned earlier, use the following for -core releases:
 ```
@@ -109,7 +111,7 @@ mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 
 Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):
 ```
-unzip -l target/apex-*-incubating-source-release.zip | grep -e ".zip\|.jar"
+unzip -l target/apex-*-source-release.zip | grep -e ".zip\|.jar"
 ```
 
 Log on to https://repository.apache.org and look for Staging Repositories. "Close" the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.
@@ -172,7 +174,7 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 
 Move source release from dist staging to release folder:
 ```
-rv=3.2.0-incubating
+rv=3.2.0
 svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m "Release Apache Apex ${rv}"
 ```
 
@@ -185,15 +187,15 @@ Create version number X.Y.Z+1 for next release
 
 Create final release tag:
 ```bash
-rv=3.2.0-incubating
+rv=3.2.0
 git tag -a "v${rv}" -m "Release ${rv}" "v${rv}-RC2"
 git push apache "v${rv}"
 ```
 Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
 ```bash
 git checkout release-3.2
-dv=3.2.0-incubating-SNAPSHOT
-rv=3.2.1-incubating-SNAPSHOT
+dv=3.2.0-SNAPSHOT
+rv=3.2.1-SNAPSHOT
 for a in `git grep -l "${dv}"`; do echo $a; sed -i 's/'"${dv}"'/'"${rv}"'/g' $a; done
 ```
 If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
@@ -217,6 +219,6 @@ http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5
 
 As part of publishing new releases, please determine whether old releases should be deleted. See [release archiving policy](http://www.apache.org/dev/release.html#when-to-archive) for details why. 
 
-With a new patch release, the previous patch release can be removed. For example, when releasing 3.3.1 patch release, we no longer need to have 3.3.0 on the download page. 
+With a new patch release, the previous patch release can be removed. For example, once 3.3.1 patch is released, we no longer need to have 3.3.0 on the download page. 
 
 Once a release branch is no longer supported, we can also remove the last release in that line. For example once `release-3.1` branch is EOL, releases 3.1.1 (or whatever the latest patch was) can be removed from downloads. 
