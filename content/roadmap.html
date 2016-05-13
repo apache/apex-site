@@ -92,27 +92,6 @@
     <tbody>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-10">APEXCORE-10</a>
-        </td>
-        <td title="The issue happens on cloud which provides virtual cores with software like Xen underneath. In effect if CPU intensive operators land up on same node we have a resource bottleneck,
-
-Need to create an attribute that does the following
-- Operators A &amp; B should not be on same node
-- Stram should use this attribute to try to get containers on different node
-
-It is understood that the user is making an explicit choice to use NIC instead of stream local optimization">
-          Enable non-affinity of operators per node (not containers)
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE/fixforversion/12334813">3.4.0</a>&nbsp;
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-119">APEXCORE-119</a>
         </td>
         <td title="This JIRA Proposes support for a new type of distributed operator. Currently when an operator is partitioned there is no platform supported mechanism through which partitions can talk to each other. A Distributed operator would have an easy to use platform supported mechanism through which operators in a partitioning can exchange information with each other. Eventually Distributed operators would support running plain old single threaded java code transparently across partitions.
@@ -264,21 +243,6 @@ Encrypted for the streams should done at Network/Buffer Server levels.">
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-293">APEXCORE-293</a>
-        </td>
-        <td title="Migrate the subset of documentation that applies to Apex from http://docs.datatorrent.com/ ">
-          Add core and malhar documentation to project web site
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE/fixforversion/12334813">3.4.0</a>&nbsp;
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-414">APEXCORE-414</a>
         </td>
         <td title="Apex core has streaming windows that establish a boundary based on arrival time of events. Many applications require boundaries based on the time of events, which could be a field in the tuple. Some of the operators support this today (time bucketing), but it would be good to provide more generic support for this in the engine itself. ">
@@ -354,8 +318,8 @@ http://mesos.apache.org/documentation/latest/fetcher/
         <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1818">APEXMALHAR-1818</a>
         </td>
-        <td title="Once we have ability to code generate, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.">
-          Create a Calcite operator to enable SQL commands to be run
+        <td title="Once we have ability to generate a subdag, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.">
+          Integrate Calcite to support SQL
         </td>
         <td>
     
@@ -450,6 +414,9 @@ This is in continuation with the Operator checkpointing alternative under review
         </td>
         <td>
     
+
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
+
 
         </td>
       </tr>
