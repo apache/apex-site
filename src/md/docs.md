@@ -4,6 +4,7 @@
 - **[Apache Apex Malhar Documentation](/docs/malhar/)** for the operator library including a diagrammatic taxonomy and some in-depth tutorials for selected operators (such as Kafka Input).
 - **<a href="https://www.datatorrent.com/docs/apidocs/" rel="nofollow">Java API documentation</a>** for both the platform and the operator library.
 
+Documentation for previous releases is available in [Downloads](/downloads.html).
 
 ### Writing Apache Apex Applications
 

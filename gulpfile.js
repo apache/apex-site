@@ -334,9 +334,13 @@ gulp.task('fetch-releases', function(taskCb) {
 
           // Create array of releases from this filtered NodeList
           var releases = releaseLinks.map(function(el) {
+
+            // Trim the href attribute of leading "v" and trailing slash
+            var releaseVersion = el.innerHTML.trim().replace(/^v/, '').replace(/\/$/, '');
+            var docsVersion = semver.major(releaseVersion) + '.' + semver.minor(releaseVersion);
             return {
-              // Trim the href attribute of leading "v" and trailing slash
-              version: el.innerHTML.trim().replace(/^v/, '').replace(/\/$/, ''),
+              version: releaseVersion,
+              docs: docsVersion,
               // Add repo for use in async.each call below
               repo: target.repo
             };

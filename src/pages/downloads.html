@@ -14,6 +14,7 @@
         <th scope="col">Date</th>
         <th scope="col">Source (zip)</th>
         <th scope="col">Source (tarball)</th>
+        <th scope="col">Docs</th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +47,9 @@
             )
           </small>
         </td>
+        <td>
+          <a href="/docs/apex-{{ version.docs }}">apex-{{ version.docs }}</a><br>
+        </td>
       </tr>
       {{/each}}
     </tbody>
@@ -62,6 +66,7 @@
         <th scope="col">Date</th>
         <th scope="col">Source (zip)</th>
         <th scope="col">Source (tarball)</th>
+        <th scope="col">Docs</th>
       </tr>
     </thead>
     <tbody>
@@ -93,6 +98,9 @@
               <a href="https://dist.apache.org/repos/dist/release/incubator/apex/malhar/v{{ version.version }}/malhar-{{ version.version }}-source-release.tar.gz.sha">sha1</a>
             )
           </small>
+        </td>
+        <td>
+          <a href="/docs/malhar-{{ version.docs }}">malhar-{{ version.docs }}</a><br>
         </td>
       </tr>
       {{/each}}
