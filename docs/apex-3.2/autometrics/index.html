@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>AutoMetric API - Apache Apex Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "AutoMetric API";
+    var mkdocs_page_input_path = "autometrics.md";
+    var mkdocs_page_url = "/autometrics/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Apache Apex Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Apache Apex</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Development</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_development_setup/">Development Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_development/">Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_packages/">Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operator_development/">Operators</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">AutoMetric API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apache-apex-autometrics">Apache Apex AutoMetrics</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#introduction">Introduction</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#specifying-autometrics-in-an-operator">Specifying AutoMetrics in an Operator</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#aggregating-autometrics-across-partitions">Aggregating AutoMetrics across Partitions</a></li>
+                
+                    <li><a class="toctree-l4" href="#default-aggregators">Default aggregators</a></li>
+                
+                    <li><a class="toctree-l4" href="#building-custom-aggregators">Building custom aggregators</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#retrieving-autometrics">Retrieving AutoMetrics</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#system-metrics">System Metrics</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operations</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../dtcli/">dtCli</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../compatibility/">Compatibility</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Apache Apex Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Development &raquo;</li>
+        
+      
+    
+    <li>AutoMetric API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="apache-apex-autometrics">Apache Apex AutoMetrics</h1>
+<h1 id="introduction">Introduction</h1>
+<p>Metrics collect various statistical information about a process which can be very useful for diagnosis. Auto Metrics in Apex can help monitor operators in a running application.  The goal of <em>AutoMetric</em> API is to enable operator developer to define relevant metrics for an operator in a simple way which the platform collects and reports automatically.</p>
+<h1 id="specifying-autometrics-in-an-operator">Specifying AutoMetrics in an Operator</h1>
+<p>An <em>AutoMetric</em> can be any object. It can be of a primitive type - int, long, etc. or a complex one. A field or a <code>get</code> method in an operator can be annotated with <code>@AutoMetric</code> to specify that its value is a metric. After every application end window, the platform collects the values of these fields/methods in a map and sends it to application master.</p>
+<pre><code class="java">public class LineReceiver extends BaseOperator
+{
+ @AutoMetric
+ long length;
+
+ @AutoMetric
+ long count;
+
+ public final transient DefaultInputPort&lt;String&gt; input = new DefaultInputPort&lt;String&gt;()
+ {
+   @Override
+   public void process(String s)
+   {
+     length += s.length();
+     count++;
+   }
+ };
+
+ @Override
+ public void beginWindow(long windowId)
+ {
+   length = 0;
+   count = 0;
+ }
+}
+</code></pre>
+
+<p>There are 2 auto-metrics declared in the <code>LineReceiver</code>. At the end of each application window, the platform will send a map with 2 entries - <code>[(length, 100), (count, 10)]</code> to the application master.</p>
+<h1 id="aggregating-autometrics-across-partitions">Aggregating AutoMetrics across Partitions</h1>
+<p>When an operator is partitioned, it is useful to aggregate the values of auto-metrics across all its partitions every window to get a logical view of these metrics. The application master performs these aggregations using metrics aggregators.</p>
+<p>The AutoMetric API helps to achieve this by providing an interface for writing aggregators- <code>AutoMetric.Aggregator</code>. Any implementation of <code>AutoMetric.Aggregator</code> can be set as an operator attribute - <code>METRICS_AGGREGATOR</code> for a particular operator which in turn is used for aggregating physical metrics.</p>
+<h2 id="default-aggregators">Default aggregators</h2>
+<p><a href="https://github.com/apache/incubator-apex-core/blob/devel-3/common/src/main/java/com/datatorrent/common/metric/MetricsAggregator.java"><code>MetricsAggregator</code></a> is a simple implementation of <code>AutoMetric.Aggregator</code> that platform uses as a default for summing up primitive types - int, long, float and double.</p>
+<p><code>MetricsAggregator</code> is just a collection of <code>SingleMetricAggregator</code>s. There are multiple implementations of <code>SingleMetricAggregator</code> that perform sum, min, max, avg which are present in Apex core and Apex malhar.</p>
+<p>For the <code>LineReceiver</code> operator, the application developer need not specify any aggregator. The platform will automatically inject an instance of <code>MetricsAggregator</code> that contains two <code>LongSumAggregator</code>s - one for <code>length</code> and one for <code>count</code>. This aggregator will report sum of length and sum of count across all the partitions of <code>LineReceiver</code>.</p>
+<h2 id="building-custom-aggregators">Building custom aggregators</h2>
+<p>Platform cannot perform any meaningful aggregations for non-numeric metrics. In such cases, the operator or application developer can write custom aggregators. Let’s say, if the <code>LineReceiver</code> was modified to have a complex metric as shown below.</p>
+<pre><code class="java">public class AnotherLineReceiver extends BaseOperator
+{
+  @AutoMetric
+  final LineMetrics lineMetrics = new LineMetrics();
+
+  public final transient DefaultInputPort&lt;String&gt; input = new DefaultInputPort&lt;String&gt;()
+  {
+    @Override
+    public void process(String s)
+    {
+      lineMetrics.length += s.length();
+      lineMetrics.count++;
+    }
+  };
+
+  @Override
+  public void beginWindow(long windowId)
+  {
+    lineMetrics.length = 0;
+    lineMetrics.count = 0;
+  }
+
+  public static class LineMetrics implements Serializable
+  {
+    long length;
+    long count;
+
+    private static final long serialVersionUID = 201511041908L;
+  }
+}
+</code></pre>
+
+<p>Below is a custom aggregator that can calculate average line length across all partitions of <code>AnotherLineReceiver</code>.</p>
+<pre><code class="java">public class AvgLineLengthAggregator implements AutoMetric.Aggregator
+{
+
+  Map&lt;String, Object&gt; result = Maps.newHashMap();
+
+  @Override
+  public Map&lt;String, Object&gt; aggregate(long l, Collection&lt;AutoMetric.PhysicalMetricsContext&gt; collection)
+  {
+    long totalLength = 0;
+    long totalCount = 0;
+    for (AutoMetric.PhysicalMetricsContext pmc : collection) {
+      AnotherLineReceiver.LineMetrics lm = (AnotherLineReceiver.LineMetrics)pmc.getMetrics().get(&quot;lineMetrics&quot;);
+      totalLength += lm.length;
+      totalCount += lm.count;
+    }
+    result.put(&quot;avgLineLength&quot;, totalLength/totalCount);
+    return result;
+  }
+}
+</code></pre>
+
+<p>An instance of above aggregator can be specified as the <code>METRIC_AGGREGATOR</code> for <code>AnotherLineReceiver</code> while creating the DAG as shown below.</p>
+<pre><code class="java">  @Override
+  public void populateDAG(DAG dag, Configuration configuration)
+  {
+    ...
+    AnotherLineReceiver lineReceiver = dag.addOperator(&quot;LineReceiver&quot;, new AnotherLineReceiver());
+    dag.setAttribute(lineReceiver, Context.OperatorContext.METRICS_AGGREGATOR, new AvgLineLengthAggregator());
+    ...
+  }
+</code></pre>
+
+<h1 id="retrieving-autometrics">Retrieving AutoMetrics</h1>
+<p>There are two options for retrieving the AutoMetrics:</p>
+<ul>
+<li>Throught DataTorrent Gateway REST API</li>
+<li>Through REST service on the port of the running STRAM</li>
+</ul>
+<p>The Gateway REST API provides a way to retrieve the latest AutoMetrics for each logical operator.  For example:</p>
+<pre><code>GET /ws/v2/applications/{appid}/logicalPlan/operators/{opName}
+{
+    ...
+    &quot;autoMetrics&quot;: {
+       &quot;count&quot;: &quot;71314&quot;,
+       &quot;length&quot;: &quot;27780706&quot;
+    },
+    &quot;className&quot;: &quot;com.datatorrent.autometric.LineReceiver&quot;,
+    ...
+}
+</code></pre>
+
+<h1 id="system-metrics">System Metrics</h1>
+<p>System metrics are standard operator metrics provided by the system.  Examples include:</p>
+<ul>
+<li>processed tuples per second</li>
+<li>emitted tuples per second</li>
+<li>total tuples processed</li>
+<li>total tuples emitted</li>
+<li>latency</li>
+<li>CPU percentage</li>
+<li>failure count</li>
+<li>checkpoint elapsed time</li>
+</ul>
+<p>The Gateway REST API provides a way to retrieve the latest values for all of the above for each of the logical operators in the application.</p>
+<pre><code>GET /ws/v2/applications/{appid}/logicalPlan/operators/{opName}
+{
+    ...
+    &quot;cpuPercentageMA&quot;: &quot;{cpuPercentageMA}&quot;,
+    &quot;failureCount&quot;: &quot;{failureCount}&quot;,
+    &quot;latencyMA&quot;: &quot;{latencyMA}&quot;,  
+    &quot;totalTuplesEmitted&quot;: &quot;{totalTuplesEmitted}&quot;,
+    &quot;totalTuplesProcessed&quot;: &quot;{totalTuplesProcessed}&quot;,
+    &quot;tuplesEmittedPSMA&quot;: &quot;{tuplesEmittedPSMA}&quot;,
+    &quot;tuplesProcessedPSMA&quot;: &quot;{tuplesProcessedPSMA}&quot;,
+    ...
+}
+</code></pre>
+
+<p>However, just like AutoMetrics, the Gateway only provides the latest metrics.  For historical metrics, we will need the help of <a href="http://docs.datatorrent.com/autometrics/#app-data-tracker">App Data Tracker</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dtcli/" class="btn btn-neutral float-right" title="dtCli">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../operator_development/" class="btn btn-neutral" title="Operators"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../operator_development/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../dtcli/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
