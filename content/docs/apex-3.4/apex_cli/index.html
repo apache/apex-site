@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Apex CLI - Apache Apex Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apex CLI";
+    var mkdocs_page_input_path = "apex_cli.md";
+    var mkdocs_page_url = "/apex_cli/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Apache Apex Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Apache Apex</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Development</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_development_setup/">Development Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_development/">Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_packages/">Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operator_development/">Operators</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../autometrics/">AutoMetric API</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operations</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Apex CLI</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apache-apex-command-line-interface">Apache Apex Command Line Interface</a></li>
+                
+                    <li><a class="toctree-l4" href="#apex-cli-commands">Apex CLI Commands</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../compatibility/">Compatibility</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Apache Apex Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operations &raquo;</li>
+        
+      
+    
+    <li>Apex CLI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="apache-apex-command-line-interface">Apache Apex Command Line Interface</h1>
+<p>Apex CLI, the Apache Apex command line interface, can be used to launch, monitor, and manage Apache Apex applications.  It provides a developer friendly way of interacting with Apache Apex platform.  Another advantage of Apex CLI is to provide scope, by connecting and executing commands in a context of specific application.  Apex CLI enables easy integration with existing enterprise toolset for automated application monitoring and management.  Currently the following high level tasks are supported.</p>
+<ul>
+<li>Launch or kill applications</li>
+<li>View system metrics including load, throughput, latency, etc.</li>
+<li>Start or stop tuple recording</li>
+<li>Read operator, stream, port properties and attributes</li>
+<li>Write to operator properties</li>
+<li>Dynamically change the application logical plan</li>
+<li>Create custom macros</li>
+</ul>
+<h2 id="apex-cli-commands">Apex CLI Commands</h2>
+<p>Apex CLI can be launched by running following command</p>
+<pre><code>apex
+</code></pre>
+<p>Help on all commands is available via “help” command in the CLI</p>
+<h3 id="global-commands">Global Commands</h3>
+<pre><code>GLOBAL COMMANDS EXCEPT WHEN CHANGING LOGICAL PLAN:
+
+alias alias-name command
+    Create a command alias
+
+begin-macro name
+    Begin Macro Definition ($1...$9 to access parameters and type 'end' to end the definition)
+
+connect app-id
+    Connect to an app
+
+dump-properties-file out-file jar-file class-name
+    Dump the properties file of an app class
+
+echo [arg ...]
+    Echo the arguments
+
+exit
+    Exit the CLI
+
+get-app-info app-id
+    Get the information of an app
+
+get-app-package-info app-package-file
+    Get info on the app package file
+
+get-app-package-operator-properties app-package-file operator-class
+    Get operator properties within the given app package
+
+get-app-package-operators [options] app-package-file [search-term]
+    Get operators within the given app package
+    Options:
+            -parent    Specify the parent class for the operators
+
+get-config-parameter [parameter-name]
+    Get the configuration parameter
+
+get-jar-operator-classes [options] jar-files-comma-separated [search-term]
+    List operators in a jar list
+    Options:
+            -parent    Specify the parent class for the operators
+
+get-jar-operator-properties jar-files-comma-separated operator-class-name
+    List properties in specified operator
+
+help [command]
+    Show help
+
+kill-app app-id [app-id ...]
+    Kill an app
+
+  launch [options] jar-file/json-file/properties-file/app-package-file [matching-app-name]
+    Launch an app
+    Options:
+            -apconf &lt;app package configuration file&gt;        Specify an application
+                                                            configuration file
+                                                            within the app
+                                                            package if launching
+                                                            an app package.
+            -archives &lt;comma separated list of archives&gt;    Specify comma
+                                                            separated archives
+                                                            to be unarchived on
+                                                            the compute machines.
+            -conf &lt;configuration file&gt;                      Specify an
+                                                            application
+                                                            configuration file.
+            -D &lt;property=value&gt;                             Use value for given
+                                                            property.
+            -exactMatch                                     Only consider
+                                                            applications with
+                                                            exact app name
+            -files &lt;comma separated list of files&gt;          Specify comma
+                                                            separated files to
+                                                            be copied on the
+                                                            compute machines.
+            -ignorepom                                      Do not run maven to
+                                                            find the dependency
+            -libjars &lt;comma separated list of libjars&gt;      Specify comma
+                                                            separated jar files
+                                                            or other resource
+                                                            files to include in
+                                                            the classpath.
+            -local                                          Run application in
+                                                            local mode.
+            -originalAppId &lt;application id&gt;                 Specify original
+                                                            application
+                                                            identifier for restart.
+            -queue &lt;queue name&gt;                             Specify the queue to
+                                                            launch the application
+
+list-application-attributes
+    Lists the application attributes
+list-apps [pattern]
+    List applications
+list-operator-attributes
+    Lists the operator attributes
+list-port-attributes
+    Lists the port attributes
+set-pager on/off
+    Set the pager program for output
+show-logical-plan [options] jar-file/app-package-file [class-name]
+    List apps in a jar or show logical plan of an app class
+    Options:
+            -exactMatch                                Only consider exact match
+                                                       for app name
+            -ignorepom                                 Do not run maven to find
+                                                       the dependency
+            -libjars &lt;comma separated list of jars&gt;    Specify comma separated
+                                                       jar/resource files to
+                                                       include in the classpath.
+shutdown-app app-id [app-id ...]
+    Shutdown an app
+source file
+    Execute the commands in a file
+</code></pre>
+
+<h3 id="commands-after-connecting-to-an-application">Commands after connecting to an application</h3>
+<pre><code>COMMANDS WHEN CONNECTED TO AN APP (via connect &lt;appid&gt;) EXCEPT WHEN CHANGING LOGICAL PLAN:
+
+begin-logical-plan-change
+    Begin Logical Plan Change
+dump-properties-file out-file [jar-file] [class-name]
+    Dump the properties file of an app class
+get-app-attributes [attribute-name]
+    Get attributes of the connected app
+get-app-info [app-id]
+    Get the information of an app
+get-operator-attributes operator-name [attribute-name]
+    Get attributes of an operator
+get-operator-properties operator-name [property-name]
+    Get properties of a logical operator
+get-physical-operator-properties [options] operator-id
+    Get properties of a physical operator
+    Options:
+            -propertyName &lt;property name&gt;    The name of the property whose
+                                             value needs to be retrieved
+            -waitTime &lt;wait time&gt;            How long to wait to get the result
+get-port-attributes operator-name port-name [attribute-name]
+    Get attributes of a port
+get-recording-info [operator-id] [start-time]
+    Get tuple recording info
+kill-app [app-id ...]
+    Kill an app
+kill-container container-id [container-id ...]
+    Kill a container
+list-containers
+    List containers
+list-operators [pattern]
+    List operators
+set-operator-property operator-name property-name property-value
+    Set a property of an operator
+set-physical-operator-property operator-id property-name property-value
+    Set a property of an operator
+show-logical-plan [options] [jar-file/app-package-file] [class-name]
+    Show logical plan of an app class
+    Options:
+            -exactMatch                                Only consider exact match
+                                                       for app name
+            -ignorepom                                 Do not run maven to find
+                                                       the dependency
+            -libjars &lt;comma separated list of jars&gt;    Specify comma separated
+                                                       jar/resource files to
+                                                       include in the classpath.
+show-physical-plan
+    Show physical plan
+shutdown-app [app-id ...]
+    Shutdown an app
+start-recording operator-id [port-name] [num-windows]
+    Start recording
+stop-recording operator-id [port-name]
+    Stop recording
+wait timeout
+    Wait for completion of current application
+</code></pre>
+
+<h3 id="commands-when-changing-the-logical-plan">Commands when changing the logical plan</h3>
+<pre><code>COMMANDS WHEN CHANGING LOGICAL PLAN (via begin-logical-plan-change):
+
+abort
+    Abort the plan change
+add-stream-sink stream-name to-operator-name to-port-name
+    Add a sink to an existing stream
+create-operator operator-name class-name
+    Create an operator
+create-stream stream-name from-operator-name from-port-name to-operator-name to-port-name
+    Create a stream
+help [command]
+    Show help
+remove-operator operator-name
+    Remove an operator
+remove-stream stream-name
+    Remove a stream
+set-operator-attribute operator-name attr-name attr-value
+    Set an attribute of an operator
+set-operator-property operator-name property-name property-value
+    Set a property of an operator
+set-port-attribute operator-name port-name attr-name attr-value
+    Set an attribute of a port
+set-stream-attribute stream-name attr-name attr-value
+    Set an attribute of a stream
+show-queue
+    Show the queue of the plan change
+submit
+    Submit the plan change
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+<p>An example of defining a custom macro.  The macro updates a running application by inserting a new operator.  It takes three parameters and executes a logical plan changes.</p>
+<pre><code>apex&gt; begin-macro add-console-output
+macro&gt; begin-logical-plan-change
+macro&gt; create-operator $1 com.datatorrent.lib.io.ConsoleOutputOperator
+macro&gt; create-stream stream_$1 $2 $3 $1 in
+macro&gt; submit
+</code></pre>
+
+<p>Then execute the <code>add-console-output</code> macro like this</p>
+<pre><code>apex&gt; add-console-output xyz opername portname
+</code></pre>
+
+<p>This macro then expands to run the following command</p>
+<pre><code>begin-logical-plan-change
+create-operator xyz com.datatorrent.lib.io.ConsoleOutputOperator
+create-stream stream_xyz opername portname xyz in
+submit
+</code></pre>
+
+<p><em>Note</em>:  To perform runtime logical plan changes, like ability to add new operators,
+they must be part of the jar files that were deployed at application launch time.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../security/" class="btn btn-neutral float-right" title="Security">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../autometrics/" class="btn btn-neutral" title="AutoMetric API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../autometrics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../security/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
