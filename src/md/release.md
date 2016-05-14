@@ -152,21 +152,13 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 
 ## Voting 
 
-PPMC vote call sample:
-http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E
+Vote call sample:
+http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E
 
-PPMC vote result:
-http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E
+Vote result:
+http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E
 
-Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).
-
-IPMC vote call:
-http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E
-
-IPMC vote result:
-http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E
-
-If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.
+If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.
 
 ## Promote Release
 
@@ -175,7 +167,7 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 Move source release from dist staging to release folder:
 ```
 rv=3.2.0
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m "Release Apache Apex ${rv}"
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m "Release Apache Apex ${rv}"
 ```
 
 ### JIRA
@@ -210,10 +202,12 @@ Merge `@since` tag and change log changes to `master`.
 
 ## Announce Release
 
+For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See https://github.com/apache/incubator-apex-core/tree/master/docs#deployment
+
 Update the download page to reflect the new release: https://github.com/apache/incubator-apex-site#updating-downloads-page
 
 Send the announcement email, example:
-http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E
+http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E
 
 ## Removing old Releases
 
