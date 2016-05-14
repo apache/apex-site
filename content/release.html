@@ -49,9 +49,9 @@
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=incubator-apex-core.git">Apex Core (ASF)</a></li>
               <li><a href="https://github.com/apache/incubator-apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
               <li><a href="https://github.com/apache/incubator-apex-malhar">Apex Malhar (Github Mirror)</a></li>
             </ul>
           </li>
@@ -164,21 +164,16 @@ gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malh
 svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
-<p>PPMC vote call sample:
-<a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDPjMAZc8-NjjyMgtJGDpHkhVpxv8PYnryfiF4zZZufVmA%40mail.gmail.com%3E</a></p>
-<p>PPMC vote result:
-<a href="http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-apex-dev/201602.mbox/%3CCAKJfLDN4CUVn9cgVhAhqeojP4hDUhwjnWRgXD226VOOBPphmUg%40mail.gmail.com%3E</a></p>
-<p>Once PPMC vote passes, another vote needs to be called for IPMC (only IPMC votes are binding).</p>
-<p>IPMC vote call:
-<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo3UmJoEg-zfC%2BK061cK7fKbNXvD46PmP-QQYqrTTCtbZg%40mail.gmail.com%3E</a></p>
-<p>IPMC vote result:
-<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0s0ae3UU8xDw%2ByhhEkOG4Ha%2B4E1B87Do5wUPGEV%2BAhFw%40mail.gmail.com%3E</a></p>
-<p>If the vote is not successful, a new RC needs to be built. Once IPMC vote passes, proceed with promoting and announcing the release.</p>
+<p>Vote call sample:
+<a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E</a></p>
+<p>Vote result:
+<a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E</a></p>
+<p>If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.</p>
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
 <p>Move source release from dist staging to release folder:</p>
 <pre><code>rv=3.2.0
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv} https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m &quot;Release Apache Apex ${rv}&quot;
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m &quot;Release Apache Apex ${rv}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
 <p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
 Create version number X.Y.Z+1 for next release</p>
@@ -202,9 +197,10 @@ git push apache
 </code></pre>
 <p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
+<p>For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See <a href="https://github.com/apache/incubator-apex-core/tree/master/docs#deployment">https://github.com/apache/incubator-apex-core/tree/master/docs#deployment</a></p>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/incubator-apex-site#updating-downloads-page">https://github.com/apache/incubator-apex-site#updating-downloads-page</a></p>
 <p>Send the announcement email, example:
-<a href="http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/incubator-general/201602.mbox/%3CCA%2B5xAo0NmnkxmdWdxCfcKVKL5%3Dd9ssE74nB%2BB1R6vX1rLaDqNw%40mail.gmail.com%3E</a></p>
+<a href="http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E</a></p>
 <h2 id="removing-old-releases">Removing old Releases</h2>
 <p>As part of publishing new releases, please determine whether old releases should be deleted. See <a href="http://www.apache.org/dev/release.html#when-to-archive">release archiving policy</a> for details why. </p>
 <p>With a new patch release, the previous patch release can be removed. For example, once 3.3.1 patch is released, we no longer need to have 3.3.0 on the download page. </p>
