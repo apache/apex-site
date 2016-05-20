@@ -102,7 +102,7 @@ git push apache master
 <p>For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXCORE-183">https://issues.apache.org/jira/browse/APEXCORE-183</a></p>
 <p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, use the following Ruby script to do the replacement: <a href="https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb">https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb</a></p>
-<pre><code>ruby ~/add-since.rb ../apex -s 3.2.0
+<pre><code>ruby ~/add-since.rb `pwd` -s 3.2.0
 </code></pre><h3 id="update-changelog-from-jira">Update CHANGELOG from JIRA</h3>
 <p>Navigate to the unreleased version, example:</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589">https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589</a></p>
@@ -138,30 +138,26 @@ git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 git clean -d -f
 mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 </code></pre><p>Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):</p>
-<pre><code>unzip -l target/apex-*-source-release.zip | grep -e &quot;.zip\|.jar&quot;
+<pre><code>unzip -l target/*-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
 <p>Example URL: <a href="https://repository.apache.org/content/repositories/orgapacheapex-1000/">https://repository.apache.org/content/repositories/orgapacheapex-1000/</a></p>
 <p>Copy files to distribution dir and create signatures and checksums. 
 (Note this is per policy to stage these files outside of the Maven repository, otherwise everything below would happen automatically as defined in the parent POM.)</p>
 <p>For -core releases:</p>
-<pre><code class="lang-bash">md5sum apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.md5
-md5sum apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.md5
-shasum -a 512 apex-${rv}-source-release.tar.gz &gt; apex-${rv}-source-release.tar.gz.sha
-shasum -a 512 apex-${rv}-source-release.zip &gt; apex-${rv}-source-release.zip.sha
-gpg --yes --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
-gpg --yes --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
-</code></pre>
-<p>For -malhar releases:</p>
-<pre><code class="lang-bash">md5sum malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.md5
-md5sum malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.md5
-shasum -a 512 malhar-${rv}-source-release.tar.gz &gt; malhar-${rv}-source-release.tar.gz.sha
-shasum -a 512 malhar-${rv}-source-release.zip &gt; malhar-${rv}-source-release.zip.sha
-gpg --yes --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
-gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+<pre><code>RNAME=apache-apex-core-${rv}
+</code></pre><p>For -malhar releases:</p>
+<pre><code>RNAME=apache-apex-malhar-${rv}
+</code></pre><pre><code class="lang-bash">cd target
+md5sum ${RNAME}-source-release.tar.gz &gt; ${RNAME}-source-release.tar.gz.md5
+md5sum ${RNAME}-source-release.zip &gt; ${RNAME}-source-release.zip.md5
+shasum -a 512 ${RNAME}-source-release.tar.gz &gt; ${RNAME}-source-release.tar.gz.sha
+shasum -a 512 ${RNAME}-source-release.zip &gt; ${RNAME}-source-release.zip.sha
+gpg --yes --armor --output ${RNAME}-source-release.tar.gz.asc --detach-sig ${RNAME}-source-release.tar.gz
+gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}-source-release.zip
 </code></pre>
 <p>Check files into the dist staging area:</p>
 <pre><code class="lang-bash">mkdir svn-dist &amp;&amp; cp *-source-* svn-dist/
-svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
+svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
 <p>Vote call sample:
@@ -173,7 +169,8 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
 <p>Move source release from dist staging to release folder:</p>
 <pre><code>rv=3.2.0
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m &quot;Release Apache Apex ${rv}&quot;
+RNAME=apache-apex-core-${rv}
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m &quot;Release ${RNAME}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
 <p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
 Create version number X.Y.Z+1 for next release</p>
