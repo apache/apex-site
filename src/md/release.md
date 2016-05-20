@@ -46,7 +46,7 @@ https://issues.apache.org/jira/browse/APEXCORE-183
 It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, **do not use this to make changes in Malhar**. Until these problems are resolved, use the following Ruby script to do the replacement: https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb
 
 ```
-ruby ~/add-since.rb ../apex -s 3.2.0
+ruby ~/add-since.rb `pwd` -s 3.2.0
 ```
 
 ### Update CHANGELOG from JIRA
@@ -111,7 +111,7 @@ mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 
 Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):
 ```
-unzip -l target/apex-*-source-release.zip | grep -e ".zip\|.jar"
+unzip -l target/*-source-release.zip | grep -e ".zip\|.jar"
 ```
 
 Log on to https://repository.apache.org and look for Staging Repositories. "Close" the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.
@@ -123,31 +123,31 @@ Copy files to distribution dir and create signatures and checksums.
 
 For -core releases:
 
-```bash
-md5sum apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.md5
-md5sum apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.md5
-shasum -a 512 apex-${rv}-source-release.tar.gz > apex-${rv}-source-release.tar.gz.sha
-shasum -a 512 apex-${rv}-source-release.zip > apex-${rv}-source-release.zip.sha
-gpg --yes --armor --output apex-${rv}-source-release.tar.gz.asc --detach-sig apex-${rv}-source-release.tar.gz
-gpg --yes --armor --output apex-${rv}-source-release.zip.asc --detach-sig apex-${rv}-source-release.zip
+```
+RNAME=apache-apex-core-${rv}
 ```
 
 For -malhar releases:
 
+```
+RNAME=apache-apex-malhar-${rv}
+```
+
 ```bash
-md5sum malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.md5
-md5sum malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.md5
-shasum -a 512 malhar-${rv}-source-release.tar.gz > malhar-${rv}-source-release.tar.gz.sha
-shasum -a 512 malhar-${rv}-source-release.zip > malhar-${rv}-source-release.zip.sha
-gpg --yes --armor --output malhar-${rv}-source-release.tar.gz.asc --detach-sig malhar-${rv}-source-release.tar.gz
-gpg --yes --armor --output malhar-${rv}-source-release.zip.asc --detach-sig malhar-${rv}-source-release.zip
+cd target
+md5sum ${RNAME}-source-release.tar.gz > ${RNAME}-source-release.tar.gz.md5
+md5sum ${RNAME}-source-release.zip > ${RNAME}-source-release.zip.md5
+shasum -a 512 ${RNAME}-source-release.tar.gz > ${RNAME}-source-release.tar.gz.sha
+shasum -a 512 ${RNAME}-source-release.zip > ${RNAME}-source-release.zip.sha
+gpg --yes --armor --output ${RNAME}-source-release.tar.gz.asc --detach-sig ${RNAME}-source-release.tar.gz
+gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}-source-release.zip
 ```
 
 Check files into the dist staging area:
 
 ```bash
 mkdir svn-dist && cp *-source-* svn-dist/
-svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 -m "Apache Apex v${rv}-RC1"
+svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 -m "Apache Apex v${rv}-RC1"
 ```
 
 ## Voting 
@@ -167,7 +167,8 @@ Release Nexus staging repository: http://central.sonatype.org/pages/releasing-th
 Move source release from dist staging to release folder:
 ```
 rv=3.2.0
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/v${rv}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/v${rv} -m "Release Apache Apex ${rv}"
+RNAME=apache-apex-core-${rv}
+svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m "Release ${RNAME}"
 ```
 
 ### JIRA
