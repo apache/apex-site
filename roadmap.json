@@ -526,12 +526,12 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926099",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926099",
-        "key": "APEXMALHAR-1873",
+        "id": "12926078",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926078",
+        "key": "APEXMALHAR-1897",
         "fields": {
-          "summary": "Create a fault-tolerant/scalable cache component backed by a persistent store",
-          "description": "We need a Scalable Cache component in Malhar. Following are some of the key features of the cache\r\n\r\n1. Cache has limited size and is backed by a persistent store.\r\n2. When there is a cache miss, the data is loaded from backup store.\r\n3. To minimize misses, a range of keys can be loaded.\r\n4. Ability to purge key/values\r\n5. Writing to the backup store should be optimized.\r\n6. It should provide support for fault-tolerance.",
+          "summary": "Large operator state management",
+          "description": "ManagedState is described in the document below:\r\n\r\nhttps://docs.google.com/document/d/1gRWN9ufKSZSZD0N-pthlhpC9TZ8KwJ6hJlAX6nxl5f8/edit#heading=h.z87ti1fwyt0t",
           "fixVersions": [
             {
               "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
@@ -733,6 +733,37 @@
             }
           }
         }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12969033",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12969033",
+        "key": "APEXMALHAR-2089",
+        "fields": {
+          "summary": "Apache Beam support",
+          "description": "Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.\r\n",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
       }
     ],
     "versions": [
@@ -764,6 +795,14 @@
         "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
         "id": "12334637",
         "name": "3.4.0",
+        "archived": false,
+        "released": false,
+        "projectId": 12318824
+      },
+      {
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
+        "id": "12335815",
+        "name": "3.5.0",
         "archived": false,
         "released": false,
         "projectId": 12318824
