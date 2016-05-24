@@ -344,17 +344,12 @@ So keep things sane - the proposed compromise is that we start creating smaller 
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1873">APEXMALHAR-1873</a>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1897">APEXMALHAR-1897</a>
         </td>
-        <td title="We need a Scalable Cache component in Malhar. Following are some of the key features of the cache
+        <td title="ManagedState is described in the document below:
 
-1. Cache has limited size and is backed by a persistent store.
-2. When there is a cache miss, the data is loaded from backup store.
-3. To minimize misses, a range of keys can be loaded.
-4. Ability to purge key/values
-5. Writing to the backup store should be optimized.
-6. It should provide support for fault-tolerance.">
-          Create a fault-tolerant/scalable cache component backed by a persistent store
+https://docs.google.com/document/d/1gRWN9ufKSZSZD0N-pthlhpC9TZ8KwJ6hJlAX6nxl5f8/edit#heading=h.z87ti1fwyt0t">
+          Large operator state management
         </td>
         <td>
     
@@ -455,6 +450,19 @@ This jira item can contain tasks for providing similar support in Apex">
 
 7 - In the future any operator which needs to maintain a data structure larger than the memory available to it will need to spool the data structure.">
           Spill-able Datastructures
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2089">APEXMALHAR-2089</a>
+        </td>
+        <td title="Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.
+">
+          Apache Beam support
         </td>
         <td>
     
