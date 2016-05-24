@@ -97,7 +97,7 @@ The only difference between release branch and tag is this final version number 
 ## Build and Deploy Release Candidate
 Prerequisites:
 
- - GPG key needs to be in https://dist.apache.org/repos/dist/release/incubator/apex/KEYS
+ - GPG key needs to be in https://dist.apache.org/repos/dist/release/apex/KEYS
  - Credentials for `apache.staging.https` server distribution management in `~/.m2/settings.xml`
  - Tag pushed to ASF git
 

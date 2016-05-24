@@ -3,7 +3,7 @@
 ## Prerequisites
 Download the KEYS file and import it.  Verify that the key just imported is correct.
 ```bash
-wget https://dist.apache.org/repos/dist/release/incubator/apex/KEYS
+wget https://dist.apache.org/repos/dist/release/apex/KEYS
 gpg --import KEYS
 gpg --fingerprint <key-id>
 ```
