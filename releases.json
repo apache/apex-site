@@ -24,10 +24,10 @@
   "malhar": {
     "src": [
       {
-        "version": "3.3.1-incubating",
+        "version": "3.4.0",
         "docs": "3.3",
         "repo": "incubator-apex-malhar",
-        "date": 1456985606000
+        "date": 1464108400000
       }
     ]
   }
