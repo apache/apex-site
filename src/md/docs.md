@@ -18,6 +18,7 @@ dimensional computations on a simulated sales data stream.
 
 ### Presentations
 
+- [Slideshare/ApacheApex](http://www.slideshare.net/ApacheApex/presentations) Presentations from past meetup events and other talks covering Apache Apex introduction, feature deep dive, integration, customer use cases and more.
 - [Writing an Apache Apex application](http://files.meetup.com/18978602/University%20program%20-%20Writing%20an%20Apache%20Apex%20application.pdf) A PDF document that frames a hands-on exercise of building a basic application; also includes a diagram illustrating the life-cycle of operators.
 - [Next Gen Decision Making in < 2ms](https://www.youtube.com/watch?v=98EW5NGM3u0) A video discussing CapitalOne's experience with Apache Apex and evaluation of competing technologies along with the [slides](http://www.slideshare.net/ApacheApex/capital-ones-next-generation-decision-in-less-than-2-ms). 
 - [Apache Nifi Integration with Apex](https://www.youtube.com/watch?v=EdBiOnQn3Gw) video and [slide deck](http://www.slideshare.net/ApacheApex/integrating-ni-fiandapex-by-bryan-bende).
