@@ -166,11 +166,17 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
   var $queries = {
     events: function() {
       return mup_widget.api_call("/2/open_events", {topic: $parameters.topic, page: '1000'});
-    }
+    },
+
   };
 </script>
 <link rel="stylesheet" type="text/css" href="https://a248.e.akamai.net/secure.meetupstatic.com/style/widget.css">
 <script type="text/javascript" charset="utf-8">
+
+  // Create a list of official groups and launch their queries
+  var getApexGroupsDfd = $.getJSON("https://api.meetup.com/pro/apacheapex/groups?callback=?&format=json&page=1000&upcoming_events_min=1&sig_id=195396513&sig=abcb7c913f581e4f2efaaaeeac60a5ad0175cce9");
+  var getIngestGroupsDfd = $.getJSON("https://api.meetup.com/pro/BigDataHadoopIngestTransform/groups?callback=?&format=json&page=1000&upcoming_events_min=1&sig_id=203734787&sig=e59b141fca93ddf432efa4b7bb5f3173cce4add6");
+
   mup_widget.with_jquery(function($, ctx) {
     var group = '',
         months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
@@ -185,54 +191,83 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
             return  months[date.getMonth()] + ' ' + addLeadingZero( date.getDate() ) + ', ' + date.getFullYear().toString();
           };
 
-    $.getJSON($queries.events(), function(data) {
-      if (data.status && data.status.match(/^200/) == null) {
-        console.log("Error loading Meetups events: ", data.status + ": " + data.details);
+    $.getJSON($queries.events(), function(events) {
+      if (events.status && events.status.match(/^200/) == null) {
+        console.log("Error loading Meetups events: ", events.status + ": " + events.details);
       } else {
-          if (data.results.length > 0) {
+          if (events.results.length > 0) {
 
-              // Sort results by meeting time, and if times are equal, by event.venue.name based on following ordering.
-              // Venues names are sorted based on array index.  Venues not listed below are index -1, so are sorted higher.
-              var venueNameSortOrder = ['Live Webcast', 'Webinar', 'Webcast'];
-              data.results.sort(function(a, b) {
-                if (a.time > b.time) { 
-                  return 1; 
-                }
-                if (a.time < b.time) { 
-                  return -1; 
-                }
-                if (a.time === b.time) {
-                  if (a.venue && a.venue.name && b.venue && b.venue.name) {
-                    return venueNameSortOrder.indexOf(a.venue.name) - venueNameSortOrder.indexOf(b.venue.name);
+              // Load the list of official groups to filter out non-relevant events
+              $.when(getApexGroupsDfd, getIngestGroupsDfd).done(function(apexGroupsRsp, ingestGroupsRsp){
+
+                var apexGroups = (apexGroupsRsp && apexGroupsRsp[0].data) ? apexGroupsRsp[0].data : [];
+                var ingestGroups = (ingestGroupsRsp && ingestGroupsRsp[0].data) ? ingestGroupsRsp[0].data : [];
+                var officialGroups = apexGroups.concat(ingestGroups).map(function(g) {
+                  return g.urlname;
+                });
+                console.log({"Official Meetup Groups": officialGroups});
+
+
+                // Skip unofficial events based on official groups filter
+                var officialEvents = events.results.filter(function(event){
+                  if (event.group && officialGroups.indexOf(event.group.urlname) >= 0) {
+                    return true;
+                  } else {
+                    console.log("UNOFFICIAL GROUP EVENT (skipped): ", event.event_url, " group urlname: ", event.group.urlname);
+                    return false;
+                  }
+                });
+
+                // Sort results by meeting time, and if times are equal, by event.venue.name based on following ordering.
+                // Venues names are sorted based on array index.  Venues not listed below are index -1, so are sorted higher.
+                var onlineVenues = ['Live Webcast', 'Webinar', 'Webcast'];
+                var venueNameSortOrder = onlineVenues;
+                officialEvents.sort(function(a, b) {
+                  if (a.time > b.time) { 
+                    return 1; 
+                  }
+                  if (a.time < b.time) { 
+                    return -1; 
+                  }
+                  if (a.time === b.time) {
+                    if (a.venue && a.venue.name && b.venue && b.venue.name) {
+                      return venueNameSortOrder.indexOf(a.venue.name) - venueNameSortOrder.indexOf(b.venue.name);
+                    }
+                    return 0;
                   }
                   return 0;
+                });
+
+
+                var uniqueEventsByKey = {};
+                for (var i = 0; i < officialEvents.length; i++) {
+                  var event = officialEvents[i];
+                  var venue = event.venue;
+                  var city = (venue && venue.city) ? venue.city : 'TBD';
+                  var state_country = (venue) ?  venue.state || venue.country : '' ;
+                  var location = (state_country) ? city + ", " + state_country.toUpperCase() : city;
+                  // If venue is online, replace location by venue name
+                  if (venue && venue.name && onlineVenues.indexOf(venue.name) >=0) {
+                    location = venue.name;
+                  }
+                  event.location = location;
+                  // Check for duplicate events by event time
+                  var eventKey = event.time ? event.time : event.name;
+
+                  if (uniqueEventsByKey[eventKey]) {
+                    console.log("DUPLICATE EVENT (skipped): ", event.event_url, " matches previous event ", uniqueEventsByKey[eventKey].event_url, " with date:", getFormattedDate(event.time), " and name ", event.name);
+                  } else {
+                    console.log("VALID EVENT (added): ", event.event_url, event);
+                    uniqueEventsByKey[eventKey] = event;
+                    $('.next-events', ctx).append('<p>'+ addLink(getFormattedDate(event.time) + " - " + event.location, event.event_url) + " - " + event.name + "</p>");
+                  }
+
                 }
-                return 0;
+
+
               });
 
-
-              var uniqueEventsByKey = {};
-              for (var i = 0; i < data.results.length; i++) {
-                var event = data.results[i];
-                console.log(event);
-                var venue = event.venue;
-                var city = (venue && venue.city) ? venue.city : 'TBD';
-                var state_country = (venue) ?  venue.state || venue.country : '' ;
-                var location = (state_country) ? city + ", " + state_country.toUpperCase() : city;
-                event.location = location;
-                // Check for duplicate events by event time
-                var eventKey = event.time ? event.time : event.name;
-                
-                if (uniqueEventsByKey[eventKey]) {
-                  console.log("DUPLICATE EVENT (skipped): ", event.event_url, " matches previous event ", uniqueEventsByKey[eventKey].event_url, " with date:", getFormattedDate(event.time), " and name ", event.name);
-                } else {
-                  uniqueEventsByKey[eventKey] = event;
-                  $('.next-events', ctx).append('<p>'+ addLink(getFormattedDate(event.time) + " - " + event.location, event.event_url) + " - " + event.name + "</p>");
-                }
-
-              }
-
-            }
+          }
       }
     });
 
