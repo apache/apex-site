@@ -147,7 +147,7 @@ Check files into the dist staging area:
 
 ```bash
 mkdir svn-dist && cp *-source-* svn-dist/
-svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 -m "Apache Apex v${rv}-RC1"
+svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m "Apache Apex v${rv}-RC1"
 ```
 
 ## Voting 
@@ -168,7 +168,7 @@ Move source release from dist staging to release folder:
 ```
 rv=3.4.0
 RNAME=apache-apex-core-${rv}
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m "Release ${RNAME}"
+svn mv https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/apex/${RNAME} -m "Release ${RNAME}"
 ```
 
 ### JIRA

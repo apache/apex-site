@@ -4,19 +4,19 @@
       {
         "version": "3.4.0",
         "docs": "3.4",
-        "repo": "incubator-apex-core",
+        "repo": "apex-core",
         "date": 1462902111000
       },
       {
         "version": "3.2.1-incubating",
         "docs": "3.2",
-        "repo": "incubator-apex-core",
+        "repo": "apex-core",
         "date": 1461193940000
       },
       {
         "version": "3.3.0-incubating",
         "docs": "3.3",
-        "repo": "incubator-apex-core",
+        "repo": "apex-core",
         "date": 1454908501000
       }
     ]
@@ -26,7 +26,7 @@
       {
         "version": "3.4.0",
         "docs": "3.3",
-        "repo": "incubator-apex-malhar",
+        "repo": "apex-malhar",
         "date": 1464108400000
       }
     ]
