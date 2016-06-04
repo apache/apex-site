@@ -49,16 +49,15 @@
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-core.git">Apex Core (ASF)</a></li>
-              <li><a href="https://github.com/apache/incubator-apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
-              <li><a href="https://github.com/apache/incubator-apex-malhar">Apex Malhar (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="http://incubator.apache.org/projects/apex.html">Status Page</a></li>
               <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
               <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
               <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
@@ -78,24 +77,24 @@
   <h1 id="how-to-release-apache-apex">How to release Apache Apex</h1>
 <p>For general information on ASF releases, see: <a href="http://www.apache.org/dev/release.html">http://www.apache.org/dev/release.html</a></p>
 <h2 id="creating-release-branch">Creating Release Branch</h2>
-<p>If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.2.0:</p>
+<p>If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.4.0:</p>
 <pre><code class="lang-bash">git checkout master &amp;&amp; git pull
-git checkout -b release-3.2 master
+git checkout -b release-3.4 master
 </code></pre>
 <p>Replace version in master branch:</p>
 <pre><code>git checkout master
-git grep -l &quot;3.2.0-SNAPSHOT&quot;
+git grep -l &quot;3.4.0-SNAPSHOT&quot;
 </code></pre><p>For informational purpose, this should yield the list of files that needs the version number replaced to X.(Y+1).0 next version. Note that the replacement step is different between the repositories due to an open issue. See:</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXCORE-34">https://issues.apache.org/jira/browse/APEXCORE-34</a></p>
 <p>For -core:</p>
-<pre><code class="lang-bash">dv=3.2.0-SNAPSHOT
-rv=3.3.0-SNAPSHOT
+<pre><code class="lang-bash">dv=3.4.0-SNAPSHOT
+rv=3.5.0-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
 <p>For -malhar:</p>
 <pre><code>mvn versions:set -DnewVersion=${rv} -Pall-modules
 </code></pre><p>Commit and push the change:</p>
-<pre><code>git commit -am &quot;Preparing for 3.3.0 development&quot;
+<pre><code>git commit -am &quot;Preparing for 3.5.0 development&quot;
 git push apache master
 </code></pre><h2 id="preparing-release-candidate">Preparing Release Candidate</h2>
 <h3 id="add-missing-since-tags">Add missing @since tags</h3>
@@ -114,8 +113,8 @@ Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
 <p>Commit tags and change log:</p>
 <pre><code>git commit -am &quot;Add @since tags and update change log for release 3.2.0&quot;
 </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
-<pre><code>dv=3.2.0-SNAPSHOT
-rv=3.2.0
+<pre><code>dv=3.4.0-SNAPSHOT
+rv=3.4.0
 </code></pre><p>As mentioned earlier, use the following for -core releases:</p>
 <pre><code>for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre><p>And this for -malhar releases:</p>
@@ -168,7 +167,7 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAM
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
 <p>Move source release from dist staging to release folder:</p>
-<pre><code>rv=3.2.0
+<pre><code>rv=3.4.0
 RNAME=apache-apex-core-${rv}
 svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m &quot;Release ${RNAME}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
@@ -176,14 +175,14 @@ svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https:
 Create version number X.Y.Z+1 for next release</p>
 <h3 id="git">git</h3>
 <p>Create final release tag:</p>
-<pre><code class="lang-bash">rv=3.2.0
+<pre><code class="lang-bash">rv=3.4.0
 git tag -a &quot;v${rv}&quot; -m &quot;Release ${rv}&quot; &quot;v${rv}-RC2&quot;
 git push apache &quot;v${rv}&quot;
 </code></pre>
 <p>Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):</p>
-<pre><code class="lang-bash">git checkout release-3.2
-dv=3.2.0-SNAPSHOT
-rv=3.2.1-SNAPSHOT
+<pre><code class="lang-bash">git checkout release-3.4
+dv=3.4.0-SNAPSHOT
+rv=3.4.1-SNAPSHOT
 for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;${dv}&quot;&#39;/&#39;&quot;${rv}&quot;&#39;/g&#39; $a; done
 </code></pre>
 <p>If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
@@ -194,8 +193,8 @@ git push apache
 </code></pre>
 <p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
 <h2 id="announce-release">Announce Release</h2>
-<p>For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See <a href="https://github.com/apache/incubator-apex-core/tree/master/docs#deployment">https://github.com/apache/incubator-apex-core/tree/master/docs#deployment</a></p>
-<p>Update the download page to reflect the new release: <a href="https://github.com/apache/incubator-apex-site#updating-downloads-page">https://github.com/apache/incubator-apex-site#updating-downloads-page</a></p>
+<p>For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See <a href="https://github.com/apache/apex-core/tree/master/docs#deployment">https://github.com/apache/apex-core/tree/master/docs#deployment</a></p>
+<p>Update the download page to reflect the new release: <a href="https://github.com/apache/apex-site#updating-downloads-page">https://github.com/apache/apex-site#updating-downloads-page</a></p>
 <p>Send the announcement email, example:
 <a href="http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E</a></p>
 <h2 id="removing-old-releases">Removing old Releases</h2>

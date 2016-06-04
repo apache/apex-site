@@ -49,16 +49,15 @@
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-core.git">Apex Core (ASF)</a></li>
-              <li><a href="https://github.com/apache/incubator-apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;incubator-apex-malhar.git">Apex Malhar (ASF)</a></li>
-              <li><a href="https://github.com/apache/incubator-apex-malhar">Apex Malhar (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="http://incubator.apache.org/projects/apex.html">Status Page</a></li>
               <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
               <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
               <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
@@ -90,28 +89,28 @@
 </ul>
 <p>People that help with the project in any of the above categories or other ways are contributors. See the <a href="http://www.apache.org/foundation/how-it-works.html#roles">roles</a> as defined by the ASF.</p>
 <h2 id="becoming-a-committer">Becoming a committer</h2>
-<p>Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PPMC. A committer has a signed Contributor License Agreement (<a href="http://www.apache.org/licenses/icla.txt">CLA</a>) on file and an apache.org address.</p>
+<p>Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PMC. A committer has a signed Contributor License Agreement (<a href="http://www.apache.org/licenses/icla.txt">CLA</a>) on file and an apache.org address.</p>
 <p>We expect committers to subscribe to the <a href="community.html#mailing-lists">project mailing lists</a>.  </p>
-<p>A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PPMC. Such reinstatement is subject to lazy consensus of active PPMC members.</p>
-<p>The Podling Project Management Committee (<a href="http://incubator.apache.org/guides/ppmc.html">PPMC</a>) is responsible for the oversight of the project and it also decides who to add as a PPMC member. Existing committers may be invited to become a PPMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.</p>
+<p>A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PMC. Such reinstatement is subject to lazy consensus of active PMC members.</p>
+<p>The Project Management Committee (<a href="http://www.apache.org/dev/pmc.html">PMC</a>) is responsible for the oversight of the project and it also decides who to add as a PMC member. Existing committers may be invited to become a PMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.</p>
 <h2 id="code-style">Code Style</h2>
 <p>Apache Apex follows coding style that is closest to K &amp; R style and uses <a href="http://checkstyle.sourceforge.net/">Checkstyle</a> tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.</p>
-<p>The checkstyle configuration that Apache Apex projects use is present here : <a href="https://github.com/apache/incubator-apex-core/blob/master/apex_checks.xml">https://github.com/apache/incubator-apex-core/blob/master/apex_checks.xml</a></p>
+<p>The checkstyle configuration that Apache Apex projects use is present here : <a href="https://github.com/apache/apex-core/blob/master/apex_checks.xml">https://github.com/apache/apex-core/blob/master/apex_checks.xml</a></p>
 <p>To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.</p>
 <ul>
-<li><a href="https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/intellij">IntelliJ</a></li>
-<li><a href="https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/eclipse">Eclipse</a></li>
-<li><a href="https://github.com/apache/incubator-apex-core/tree/master/misc/ide-templates/netbeans">NetBeans</a></li>
+<li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/intellij">IntelliJ</a></li>
+<li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/eclipse">Eclipse</a></li>
+<li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/netbeans">NetBeans</a></li>
 </ul>
 <h2 id="opening-pull-requests-contributors-">Opening Pull Requests (contributors)</h2>
 <p>The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
 <ol>
 <li>Create a JIRA (<a href="https://issues.apache.org/jira/browse/APEXCORE/">-core</a>,<a href="https://issues.apache.org/jira/browse/APEXMALHAR/">-malhar</a>) for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
 <li>Fork the ASF github mirror (one time step):
-<a href="https://github.com/apache/incubator-apex-core/">https://github.com/apache/incubator-apex-core/</a>  </li>
-<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/incubator-apex-core.git</code></li>
-<li>Add <a href="https://github.com/apache/incubator-apex-core">incubator apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/incubator-apex-core</code></li>
-<li>Create a new branch from the <a href="https://github.com/apache/incubator-apex-core/tree/master">master</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEXCORE-123.my-feature -t upstream/master</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/master</code></li>
+<a href="https://github.com/apache/apex-core/">https://github.com/apache/apex-core/</a>  </li>
+<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/apex-core.git</code></li>
+<li>Add <a href="https://github.com/apache/apex-core">apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/apex-core</code></li>
+<li>Create a new branch from the <a href="https://github.com/apache/apex-core/tree/master">master</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEXCORE-123.my-feature -t upstream/master</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/master</code></li>
 <li>When adding new files, please include the Apache v2.0 license header.<ul>
 <li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
 <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
@@ -170,8 +169,8 @@ squash 6f98905 change2
 <li>Ensure appropriate JavaDoc comments have been added</li>
 </ul>
 </li>
-<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/incubator-apex-core.git</code></li>
-<li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.incubator.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
+<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/apex-core.git</code></li>
+<li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
 <li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
 <li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.</li>
