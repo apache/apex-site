@@ -156,7 +156,7 @@ gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}
 </code></pre>
 <p>Check files into the dist staging area:</p>
 <pre><code class="lang-bash">mkdir svn-dist &amp;&amp; cp *-source-* svn-dist/
-svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
+svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="voting">Voting</h2>
 <p>Vote call sample:
@@ -169,7 +169,7 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAM
 <p>Move source release from dist staging to release folder:</p>
 <pre><code>rv=3.4.0
 RNAME=apache-apex-core-${rv}
-svn mv https://dist.apache.org/repos/dist/dev/incubator/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/incubator/apex/${RNAME} -m &quot;Release ${RNAME}&quot;
+svn mv https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/apex/${RNAME} -m &quot;Release ${RNAME}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
 <p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
 Create version number X.Y.Z+1 for next release</p>
