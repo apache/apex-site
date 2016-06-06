@@ -11,28 +11,48 @@
         <h1>Apache Apex<span class="banner-trademark">&trade;</span></h1>
         <p>Enterprise-grade unified stream and batch processing engine.</p>
         <p>
+          <a class="btn btn-info btn-lg" href="/community.html" role="button">Community</a>
+          <a class="btn btn-info btn-lg" href="/docs.html" role="button">Documentation</a>
           <a class="btn btn-info btn-lg" href="https://github.com/apache/apex-core" role="button">Github</a>
         </p>
       </div>
     </div>
   </div>
+
+  <div class="break"></div>
+
+  <div class="container">
+    <div class="col-md-4">
+        <h2>Enterprise Grade</h2>
+        <p class="text-regular"><strong>Apex is a Hadoop YARN native platform that unifies stream and batch processing</strong>. It processes big data in-motion in a way that is highly scalable, highly performant, fault tolerant, stateful, secure, distributed, and easily operable.</p>
+    </div>
+    <div class="col-md-4">
+      <h2>Low Barrier-to-Entry</h2>
+      <p class="text-regular"><strong>Write your business logic and leave all operability to the platform.</strong> It provides a simple API that enables developers to write or re-use generic Java code, thereby lowering the expertise needed to write big data applications.</p>
+    </div>
+    <div class="col-md-4">
+      <h2>Modular</h2>
+      <p class="text-regular"><strong>The Apex platform comes with Malhar</strong>, a library of operators (modular units of business logic) that can be leveraged to quickly create new and non-trivial applications.</p>
+    </div>
+  </div>
+
 </div>
 
+
 <div class="container">
-  <div class="col-md-4">
-    <h2>Enterprise Grade</h2>
-    <p><strong>Apex is a <a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html" target="_blank">YARN</a>-native platform that unifies stream and batch processing</strong>. It processes big data in-motion in a way that is highly scalable, highly performant, fault tolerant, stateful, secure, distributed, and easily operable.</p>
+  <div class="col-md-8">
+    {{> announcements-latest }}
+
+    <br/>
+    For a complete list please visit the <a href="/announcements.html">announcements page</a>.
+
   </div>
   <div class="col-md-4">
-    <h2>Low Barrier-to-Entry</h2>
-    <p><strong>Write your business logic and leave all operability to the platform.</strong> It provides a simple API that enables developers to write or re-use generic Java code, thereby lowering the expertise needed to write big data applications.</p>
-    <p><a href="/docs.html">view the docs &raquo;</a></p>
-  </div>
-  <div class="col-md-4">
-    <h2>Modular</h2>
-    <p><strong>The Apex platform comes with Malhar</strong>, a library of operators (modular units of business logic) that can be leveraged to quickly create new and non-trivial applications.</p>
-    <p><a href="/community.html">community resources &raquo;</a></p>
+    {{> upcoming-meetups}}
+    <br/>
+    {{> tweets}}
   </div>
 </div>
+
 
 {{> footer}}
