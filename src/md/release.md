@@ -46,7 +46,7 @@ https://issues.apache.org/jira/browse/APEXCORE-183
 It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, **do not use this to make changes in Malhar**. Until these problems are resolved, use the following Ruby script to do the replacement: https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb
 
 ```
-ruby ~/add-since.rb `pwd` -s 3.2.0
+ruby ~/add-since.rb `pwd` -s 3.4.0
 ```
 
 ### Update CHANGELOG from JIRA
@@ -66,7 +66,7 @@ Example: http://s.apache.org/8uT
 
 Commit tags and change log:
 ```
-git commit -am "Add @since tags and update change log for release 3.2.0"
+git commit -am "Add @since tags and update change log for release 3.4.0"
 ```
 
 ### Update version number for RC
@@ -196,7 +196,7 @@ published libraries.
 
 Commit all changes and push them to the remote git repository:
 ```bash
-git commit -am "Preparing for 3.2.1 development"
+git commit -am "Preparing for 3.4.1 development"
 git push apache
 ```
 Merge `@since` tag and change log changes to `master`.
@@ -214,6 +214,6 @@ http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1Z
 
 As part of publishing new releases, please determine whether old releases should be deleted. See [release archiving policy](http://www.apache.org/dev/release.html#when-to-archive) for details why. 
 
-With a new patch release, the previous patch release can be removed. For example, once 3.3.1 patch is released, we no longer need to have 3.3.0 on the download page. 
+With a new patch release, the previous patch release can be removed. For example, once 3.4.1 patch is released, we no longer need to have 3.4.0 on the download page. 
 
-Once a release branch is no longer supported, we can also remove the last release in that line. For example once `release-3.1` branch is EOL, releases 3.1.1 (or whatever the latest patch was) can be removed from downloads. 
+Once a release branch is no longer supported, we can also remove the last release in that line. For example once `release-3.4` branch is EOL, releases 3.4.1 (or whatever the latest patch was) can be removed from downloads. 
