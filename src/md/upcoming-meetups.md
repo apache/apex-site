@@ -16,6 +16,8 @@
   });
 </script>
 
+[July 14, 2016 - Berlin, Germany](http://www.meetup.com/Big-Data-Berlin/events/231884102/) - Big Data, Berlin v 8.0
+
 [July 19, 2016 - München, Germany](http://www.meetup.com/Hadoop-User-Group-Munich/events/230313355/) - Apache Apex: Stream Processing Architecture and Applications
 
 
