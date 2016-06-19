@@ -101,7 +101,7 @@ git push apache master
 <p>For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXCORE-183">https://issues.apache.org/jira/browse/APEXCORE-183</a></p>
 <p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, use the following Ruby script to do the replacement: <a href="https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb">https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb</a></p>
-<pre><code>ruby ~/add-since.rb `pwd` -s 3.2.0
+<pre><code>ruby ~/add-since.rb `pwd` -s 3.4.0
 </code></pre><h3 id="update-changelog-from-jira">Update CHANGELOG from JIRA</h3>
 <p>Navigate to the unreleased version, example:</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589">https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334589</a></p>
@@ -111,7 +111,7 @@ git push apache master
 <p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread. 
 Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
 <p>Commit tags and change log:</p>
-<pre><code>git commit -am &quot;Add @since tags and update change log for release 3.2.0&quot;
+<pre><code>git commit -am &quot;Add @since tags and update change log for release 3.4.0&quot;
 </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
 <pre><code>dv=3.4.0-SNAPSHOT
 rv=3.4.0
@@ -188,7 +188,7 @@ for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;$
 <p>If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
 published libraries.</p>
 <p>Commit all changes and push them to the remote git repository:</p>
-<pre><code class="lang-bash">git commit -am &quot;Preparing for 3.2.1 development&quot;
+<pre><code class="lang-bash">git commit -am &quot;Preparing for 3.4.1 development&quot;
 git push apache
 </code></pre>
 <p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
@@ -199,8 +199,8 @@ git push apache
 <a href="http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E</a></p>
 <h2 id="removing-old-releases">Removing old Releases</h2>
 <p>As part of publishing new releases, please determine whether old releases should be deleted. See <a href="http://www.apache.org/dev/release.html#when-to-archive">release archiving policy</a> for details why. </p>
-<p>With a new patch release, the previous patch release can be removed. For example, once 3.3.1 patch is released, we no longer need to have 3.3.0 on the download page. </p>
-<p>Once a release branch is no longer supported, we can also remove the last release in that line. For example once <code>release-3.1</code> branch is EOL, releases 3.1.1 (or whatever the latest patch was) can be removed from downloads. </p>
+<p>With a new patch release, the previous patch release can be removed. For example, once 3.4.1 patch is released, we no longer need to have 3.4.0 on the download page. </p>
+<p>Once a release branch is no longer supported, we can also remove the last release in that line. For example once <code>release-3.4</code> branch is EOL, releases 3.4.1 (or whatever the latest patch was) can be removed from downloads. </p>
 
 </div>
 
