@@ -7,10 +7,10 @@ This is a list of 3rd party binary packages based on Apache Apex. The Apache Ape
   - This is a ready to use sandbox environment where bigtop-hadoop and bigtop-apex is pre-installed
   - To use, run following commands and then launch apex cli/dtcli from docker container:
     ```bash
-    docker pull chinmayk/apex:ubuntu-14.04
-    docker run -it --name=apex-sandbox chinmay/apex:ubuntu-14.04
+    docker pull apacheapex/sandbox
+    docker run -it --name=apex-sandbox apacheapex/sandbox
     ```
-  - For advanced usage, click [here](https://hub.docker.com/r/chinmayk/apex/)
+  - For advanced usage, click [here](https://hub.docker.com/r/apacheapex/sandbox/)
 - [Bigtop](http://bigtop.apache.org/) CI based distribution binaries:
   - Setup Bigtop Environment:
     1. Grab the repo/list file for your favourite linux distribution from [here](http://www.apache.org/dist/bigtop/bigtop-1.1.0/repos/)
