@@ -8,6 +8,7 @@ Documentation for previous releases is available in [Downloads](/downloads.html)
 
 ### Writing Apache Apex Applications
 
+- <a href="http://docs.datatorrent.com/beginner/" rel="nofollow">Beginner's Guide to Apache Apex</a> This document provides a comprehensive overview of Apex and is recommended for developers just starting out with Apex.
 - [Building Your First Apache Apex Application](https://youtu.be/LwRWBudOjg4) This video has a hands-on demonstration of how to check out the source code repositories and build them, then run the maven archetype command to generate a new Apache Apex project, populate the project with Java source files for a new application, and finally, build and run the application -- all on a virtual machine running Linux with Apache Hadoop installed.
 - <a href="http://docs.datatorrent.com/tutorials/topnwords/" rel="nofollow">Top N Words Application Tutorial</a> This document provides a detailed step-by-step description of how to build and run a
 word counting application with Apache Apex starting with setting up your development environment, progressing to building, running and monitoring the application, visualizing the output and concluding with some advanced features such as assessing operator memory requirements, partitioning, and debugging.
