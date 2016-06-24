@@ -1,0 +1,496 @@
+<html lang="en"><head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Apex is an enterprise grade native YARN big data-in-motion platform that unifies stream processing as well as batch processing.">
+    <meta name="author" content="Apache Software Foundation">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Apache Apex</title>
+
+    <!-- Main Stylesheet -->
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" id="main-nav">
+      <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="images/apex-logo.svg" class="logo" alt="Apache Apex Logo">
+          Apache Apex<span class="trademark">&trade;</span>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-right navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/announcements.html">Announcements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/docs.html">Docs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+              <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
+              <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
+              <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+              <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+
+<div class="container">
+  
+  <h1>Apex Roadmap</h1>
+
+  Summary of key <a target="_blank" href="https://issues.apache.org/jira/issues/?jql=project+in+(APEXCORE,APEXMALHAR)+AND+labels+in+(roadmap)+and+fixVersion+in+(EMPTY,unreleasedVersions())+ORDER+BY+key">JIRAs</a> planned for future releases of Apex Core and Malhar.
+
+  <!-- APEX CORE ROADMAP -->
+  <h2>Core</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">JIRA</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-119">APEXCORE-119</a>
+        </td>
+        <td title="This JIRA Proposes support for a new type of distributed operator. Currently when an operator is partitioned there is no platform supported mechanism through which partitions can talk to each other. A Distributed operator would have an easy to use platform supported mechanism through which operators in a partitioning can exchange information with each other. Eventually Distributed operators would support running plain old single threaded java code transparently across partitions.
+
+In summary the goals would be to do the following:
+
+1 - provide a platform supported fault tolerant mechanism through which operators in a partitioning can talk to each other.
+2 - provide a platform supported way to run plain old single threaded java code accross all the partitions of a Distributed operator
+
+The benefits of implementing this would be huge:
+
+1 - Using distributed operators we could support large in memory fault tolerant data structures (graphs, maps, arrays) in a fault tolerant way. Like Spark&#x27;s RDD&#x27;s but better.
+2 - Plain old java code could be used to access and manipulate the data structures, without the user having the learn complex API&#x27;s like with Spark.
+
+An implementation proposal and presentation are coming soon.">
+          Add Support For A New Type Of (Distributed) Operator
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-163">APEXCORE-163</a>
+        </td>
+        <td title="Apex support modification of operator properties at runtime but the current implemenations has the following shortcomings.
+
+1. Property is not set across all partitions on the same window as individual partitions can be on different windows when property change is initiated from client resulting in inconsistency of data for those windows. I am being generous using the word inconsistent.
+2. Sometimes properties need to be set on more than one logical operators at the same time to achieve the change the user is seeking. Today they will be two separate changes happening on two different windows again resulting in inconsistent data for some windows. These would need to happen as a single transaction.
+3. If there is an operator failure before a committed checkpoint after an operator property is dynamically changed the operator will restart with the old property and the change will not be re-applied.
+
+Tim and myself did some brainstorming and we have a proposal to overcome these shortcomings. The main problem in all the above cases is that the property changes are happening out-of-band of data flow and hence independent of windowing. The proposal is to bring the property change request into the in-band dataflow so that they are handled consistently with windowing and handled distributively.
+
+The idea is to inject a special property change tuple containing the property changes and the identification information of the operator&#x27;s they affect into the dataflow at the input operator. The tuple will be injected at window boundary after end window and before begin window and as this tuple flows through the DAG the intended operators properties will be modifed. They will all be modified consistently at the same window. The tuple can contain more than one property changes for more than one logical operators and the change will be applied consistently to the different logical operators at the same window. In case of failure the replay of tuples will ensure that the property change gets reapplied at the correct window.">
+          Dynamic application property changes
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-202">APEXCORE-202</a>
+        </td>
+        <td title="Apache Samoa[https://samoa.incubator.apache.org/] is an abstraction of a collections of streaming machine learning Algorithm. By far, it has integration with Samza, Storm and flink, It is a good start point for Apex to support streaming ML.">
+          Integration with Samoa
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-231">APEXCORE-231</a>
+        </td>
+        <td title="The Apex engine supports many platform level attributes like operator memory, application window count, container jvm options etc. Today these can only be set at application launch time and cannot be changed once the application is running.
+
+This issue is to add the ability to change the attributes dynamically even as the application is running. The mechanics of an user requesting the attribute change can be similar to how a user requests property change via the command line client.
+
+Since each attribute is different the actual backend implementation to affect the changes will most likely be custom handling for different attributes but during the implementation process  hopefully some common themes emerge and some amount of reuse possible.">
+          Ability to configure attributes dynamically
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-232">APEXCORE-232</a>
+        </td>
+        <td title="There are scenarios when new processing code needs to be added to an already running application. There are two scenarios.
+
+a. A bug is discovered in an operator and an existing operator in the running DAG needs to be replaced. The platform supports shutting down and resuming an application which could be use as a first cut way to do this but there are a couple of drawbacks.
+       i. This only works when the input source has memory, if it doesn&#x27;t the messages received during the time the application is down are lost.
+      ii. Depending on the complexity and state of the application it may take some time for this entire process and the application to get back to running state and this delay may not be acceptable for the downstream components that depend on the output of this application.
+
+b. A new operator needs to be added to the DAG to take data from an existing operator and do some additional processing. Today this is supported as long as the code for the operator is already in the application libraries. Often this will not be the case as users will not know what the operator will be beforehand when the application is originally launched.">
+          Ability to add new processing code to the DAG
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-233">APEXCORE-233</a>
+        </td>
+        <td title="There are scenarios where the same object instance needs to be specified for two attributes. Example is partitioner and stats listener, for partitioners that need to affect partitoning based on operator stats the same instance needs to be both. This is not possible to specify using a property file today as it will create two separate instances and can only be done in Java code today. The issue is to request adding this feature.">
+          Ability to specify single instance objects in configuration
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-234">APEXCORE-234</a>
+        </td>
+        <td title="The current property file specification follows the hadoop configuration file format and this has led to some drawbacks. 
+    a. The names for the properties and attributes are verbose in the configuration file. 
+    b. When there are nested properties in operators the syntax deviates from the bean specification because it introduces some specific keywords in the specification like .prop and ,attr.
+
+There will already be some changes afoot based on the following
+   a. When adding ability to specify single instance attributes (https://malhar.atlassian.net/browse/APEXCORE-233) implementing it in the current syntax may not be possible or lead to very unwieldy syntax.
+   b. There are also other ideas such as one from David to have the ability to specify global application level attributes which possible require rethinking the current syntax.
+
+Users have also asked for an easier and more consistent way to specify these properties.  This issue is to track the ideas and progress of these changes.">
+          Investigate other ways to specify properties in property files
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-235">APEXCORE-235</a>
+        </td>
+        <td title="Apex can be used for real-time and batch processing as it stands, but there are some aspects of batch processing that can be better supported through explicit constructs. This ticket can serve as umbrella for various features.">
+          Explicit support for batch processing
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-289">APEXCORE-289</a>
+        </td>
+        <td title="We should support encrypted streams in a DAG for Apex.
+Basically there will be 2 ways user can configure the streams for encryption:
+1) App wide attributes- Using which all the stream in the DAG will have encrypted channel.
+2) Stream based attribute - Using this user can set a certain stream to flow over encrypted channel.
+
+Encrypted for the streams should done at Network/Buffer Server levels.">
+          Encrypted Streams in Apex DAG
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-414">APEXCORE-414</a>
+        </td>
+        <td title="Apex core has streaming windows that establish a boundary based on arrival time of events. Many applications require boundaries based on the time of events, which could be a field in the tuple. Some of the operators support this today (time bucketing), but it would be good to provide more generic support for this in the engine itself. ">
+          Native support for event-time windowing
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-418">APEXCORE-418</a>
+        </td>
+        <td title="Today Apex has two modes of execution: Embedded mode (everything running in a single JVM) and YARN. There has been a few questions around native support for Mesos. A cursory look suggests that Mesos support can be added by reimplementing the YARN specific portions in the master (AppMasterService, ContainerLauncher) and limited changes to the streaming container driver.
+
+Mesos has a different model of resource allocation: The master offers resources to the framework while in YARN resources are requested. Apex master needs to implement the &quot;framework scheduler&quot; that is responsible to accept the resources and control the tasks.
+
+http://mesos.apache.org/documentation/latest/app-framework-development-guide/
+
+Tasks are launched through executors, command line and docker executors are provided.  
+
+Apex also requires support to deploy the dependencies to the nodes on which the streaming containers are launched. YARN supports that through resource localization. Mesos supports this through the fetcher, which can copy the resources to the slave node.
+
+http://mesos.apache.org/documentation/latest/fetcher/
+">
+          Support for Mesos
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- APEX MALHAR ROADMAP -->
+  <h2>Malhar</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">JIRA</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1720">APEXMALHAR-1720</a>
+        </td>
+        <td title="">
+          Development of Inner Join Operator
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1811">APEXMALHAR-1811</a>
+        </td>
+        <td title="Add new condition for non-equality join predicate (for example, user.zipcode != authzn.zipcode)">
+          Add Non-Equality Join Condition
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1818">APEXMALHAR-1818</a>
+        </td>
+        <td title="Once we have ability to generate a subdag, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.">
+          Integrate Calcite to support SQL
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1843">APEXMALHAR-1843</a>
+        </td>
+        <td title="[~andyp] I am assigning this to you cause you are the one who first said it. So either you lead it or find a willing lead to get this task to completion.
+
+The problem with contrib and library modules of malhar is that a ton of dependencies are prescribed as optional. The motive behind it was that the users of these libraries are given an opportunity to keep the size of the dependency-included packages to bare minimum. It  comes at a cost that the dependency now has to be manually figured out. This is a complete misuse of the optional dependency, IMO. It defeats the purpose of maven having dependency management as one of the biggest features of it.
+
+So keep things sane - the proposed compromise is that we start creating smaller discreet packages for discrete technologies.">
+          Split Malhar Library and Malhar Contrib package into baby packages
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1897">APEXMALHAR-1897</a>
+        </td>
+        <td title="ManagedState is described in the document below:
+
+https://docs.google.com/document/d/1gRWN9ufKSZSZD0N-pthlhpC9TZ8KwJ6hJlAX6nxl5f8/edit#heading=h.z87ti1fwyt0t">
+          Large operator state management
+        </td>
+        <td>
+    
+
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
+
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1938">APEXMALHAR-1938</a>
+        </td>
+        <td title="Currently Apex engine provides operator checkpointing in Hdfs ( with Hdfs backed StorageAgents i.e. FSStorageAgent &amp; AsyncFSStorageAgent )
+As operator check-pointing is critical functionality of Apex streaming platform to ensure fault tolerant behavior, platform should also provide alternate StorageAgents which will work seamlessly with large applications that requires Exactly once semantics.
+HDFS read/write latency is limited and doesn&#x27;t improve beyond certain point because of disk io &amp; staging writes. Having alternate strategy to this check-pointing in fault tolerant distributed in-memory grid would ensure application stability and performance is not impacted by checkpointing
+
+*This feature will add below functionalities*
+* A KeyValue store interface which is used by In-memory checkpointing storage agent.
+* Abstract implementation of KeyValue storage agent which can be configured with concrete implementation of KeyValue store for checkpointing.
+* Concrete implementation of In memory storage agent for Apache Geode
+
+*This feature depends on below APEX core feature* 
+https://issues.apache.org/jira/browse/APEXCORE-283
+* Interface for storage agent to provide application id
+* Stram client changes to pass applicationId">
+          Operator checkpointing in distributed in-memory store
+        </td>
+        <td>
+    
+
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
+
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1939">APEXMALHAR-1939</a>
+        </td>
+        <td title="">
+          Stream API
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1942">APEXMALHAR-1942</a>
+        </td>
+        <td title="We would like to contribute the Apache Geode(http://geode.incubator.apache.org/) Operator support for Apex.
+It will basically be implementation for writing to geode region.
+This is in continuation with the Operator checkpointing alternative under review (MLHR-1938)">
+          Apex Operator for Apache Geode.
+        </td>
+        <td>
+    
+
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
+
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1999">APEXMALHAR-1999</a>
+        </td>
+        <td title="Flink streaming is compatible with Apache Storm interfaces and therefore allows reusing code that was implemented for Storm.
+Details can be found here.
+https://ci.apache.org/projects/flink/flink-docs-master/apis/storm_compatibility.html
+This jira item can contain tasks for providing similar support in Apex">
+          Running a Storm topology on Apex.
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2026">APEXMALHAR-2026</a>
+        </td>
+        <td title="Add libraryies for spooling datastructures to a key value store. There are several customer use cases which require spooled data structures.
+
+1 - Some operators like AbstractFileInputOperator have ever growing state. This is an issue because eventually the state of the operator will grow larger than the memory allocated to the operator, which will cause the operator to perpetually fail. However if the operator&#x27;s datastructures are spooled then the operator will never run out of memory.
+
+2 - Some users have requested for the ability to maintain a map as well as a list of keys over which to iterate. Most key value stores don&#x27;t provide this functionality. However, with spooled datastructures this functionality can be provided by maintaining a spooled map and an iterable set of keys.
+
+3 - Some users have requested building graph databases within APEX. This would require implementing a spooled graph data structure.
+
+4 - Another use case for spooled data structures is database operators. Database operators need to write data to a data base, but sometimes the database is down. In this case most of the database operators repeatedly fail until the database comes back up. In order to avoid constant failures the database operator need to writes data to a queue when the data base is down, then when the database is up the operator need to take data from the queue and write it to the database. In the case of a database failure this queue will grow larger than the total amount of memory available to the operator, so the queue should be spooled in order to prevent the operator from failing.
+
+5 - Any operator which needs to maintain a large data structure in memory currently needs to have that data serialized and written out to HDFS with every checkpoint. This is costly when the data structure is large. If the data structure is spooled, then only the changes to the data structure are written out to HDFS instead of the entire data structure.
+
+6 - Also building an Apex Native database for aggregations requires indices. These indices need to take the form of spooled data structures.
+
+7 - In the future any operator which needs to maintain a data structure larger than the memory available to it will need to spool the data structure.">
+          Spill-able Datastructures
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2089">APEXMALHAR-2089</a>
+        </td>
+        <td title="Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.
+">
+          Apache Beam support
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+  <hr>
+  <div class="container">
+    <footer id="main-footer">
+      <p>
+        Copyright &copy; <span id="copyright-year">2015</span> <a href="http://apache.org">The Apache Software Foundation</a>,
+        Licensed under the Apache License, Version 2.0<br>
+        Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
+        <a class="footer-link-img" href="http://apache.org"><img src="/images/asf_logo.svg" alt="The Apache Software Foundation"></a>
+      </p>
+    </footer>
+  </div> <!-- /container -->
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script>
+    $('#copyright-year').text((new Date()).getFullYear());
+  </script>
+
+</body>
+</html>
