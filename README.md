@@ -175,7 +175,6 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
 
   // Create a list of official groups and launch their queries
   var getApexGroupsDfd = $.getJSON("https://api.meetup.com/pro/apacheapex/groups?callback=?&format=json&page=1000&upcoming_events_min=1&sig_id=195396513&sig=abcb7c913f581e4f2efaaaeeac60a5ad0175cce9");
-  var getIngestGroupsDfd = $.getJSON("https://api.meetup.com/pro/BigDataHadoopIngestTransform/groups?callback=?&format=json&page=1000&upcoming_events_min=1&sig_id=203734787&sig=e59b141fca93ddf432efa4b7bb5f3173cce4add6");
 
   mup_widget.with_jquery(function($, ctx) {
     var group = '',
@@ -198,11 +197,10 @@ To update the widget, or change the topic, go to the [Meetup Widget Foundry]http
           if (events.results.length > 0) {
 
               // Load the list of official groups to filter out non-relevant events
-              $.when(getApexGroupsDfd, getIngestGroupsDfd).done(function(apexGroupsRsp, ingestGroupsRsp){
+              $.when(getApexGroupsDfd).done(function(apexGroupsRsp){
 
-                var apexGroups = (apexGroupsRsp && apexGroupsRsp[0].data) ? apexGroupsRsp[0].data : [];
-                var ingestGroups = (ingestGroupsRsp && ingestGroupsRsp[0].data) ? ingestGroupsRsp[0].data : [];
-                var officialGroups = apexGroups.concat(ingestGroups).map(function(g) {
+                var apexGroups = (apexGroupsRsp && apexGroupsRsp.data) ? apexGroupsRsp.data : [];
+                var officialGroups = apexGroups.map(function(g) {
                   return g.urlname;
                 });
                 console.log({"Official Meetup Groups": officialGroups});
