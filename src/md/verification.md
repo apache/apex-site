@@ -99,7 +99,7 @@ mvn verify -Papache-release -DskipTests
 
 For verification of Apex build, check backward compatibility with respect to Malhar. Locally update *apex.core.version* in Malhar to point to *to-be released* version of apex-core and recompile Malhar.
 
-Launch few demos to make sure everything is working fine using *apex* utitlity. The apex script is present at <apex-core-folder>/engine/src/main/scripts/apex . If apex-core is being verified, then simply use engine/src/main/scripts/apex to launch the script. Otherwise, prefix it with apex-core folder path.
+Launch few demos to make sure everything is working fine using *apex* utility. The apex script is present at <apex-core-folder>/engine/src/main/scripts/apex . If apex-core is being verified, then simply use engine/src/main/scripts/apex to launch the script. Otherwise, prefix it with apex-core folder path.
 
 ```bash
 engine/src/main/scripts/apex 
