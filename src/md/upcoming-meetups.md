@@ -1,5 +1,7 @@
 ## Upcoming Meetups
 
+[July 19, 2016 - München, Germany](http://www.meetup.com/Hadoop-User-Group-Munich/events/230313355/) - Apache Apex: Stream Processing Architecture and Applications
+
 <div id="1466739839082"></div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>jQuery.noConflict();</script>
@@ -15,10 +17,6 @@
     for (i in scripts) { eval(unescape(scripts[i])) }
   });
 </script>
-
-[July 14, 2016 - Berlin, Germany](http://www.meetup.com/Big-Data-Berlin/events/231884102/) - Big Data, Berlin v 8.0
-
-[July 19, 2016 - München, Germany](http://www.meetup.com/Hadoop-User-Group-Munich/events/230313355/) - Apache Apex: Stream Processing Architecture and Applications
 
 
 [Propose future meetups in one of the Apache Apex groups!](http://apache-apex.meetup.com/)
