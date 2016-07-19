@@ -56,7 +56,7 @@ Apache Apex integrates with
 
 ## Universities & Research Institutes
 
-Apache Apex is under reserach at
+Apache Apex is under research at
 
 * University of California San Diego
 * Dresden University of Technology
