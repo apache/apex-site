@@ -10,12 +10,12 @@ Apache Apex powers
 * GE
 * Capital One
 * Silver Spring Networks
-* Pubmatic
-* ThreatMetrics
+* PubMatic
+* ThreatMetrix
 * FacilitiesSupplies
 * DataTorrent
 * Royal Bank of Canada
-* InfoSys
+* Infosys
 * TechMahindra
 * MammothData
 * CloudWick
@@ -56,7 +56,7 @@ Apache Apex integrates with
 
 ## Universities & Research Institutes
 
-Apache Apex is under reserach by
+Apache Apex is under reserach at
 
 * University of California San Diego
 * Dresden University of Technology
