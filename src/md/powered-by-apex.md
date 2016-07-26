@@ -5,7 +5,7 @@ This page lists organizations and software projects which work with Apache Apex.
 
 ## Companies
 
-Apache Apex powers
+Apex powers
 
 * GE
 * Capital One
@@ -20,11 +20,14 @@ Apache Apex powers
 * MammothData
 * CloudWick
 * Synerzip
+* Trace3
+* LeadFerret
+* Target
 
 
 ## Software Integrations
 
-Apache Apex integrates with
+Apex integrates with
 
 * Apache Beam
 * Apache SAMOA
@@ -56,9 +59,10 @@ Apache Apex integrates with
 
 ## Universities & Research Institutes
 
-Apache Apex is under research at
+Apex is being used in research projects at
 
 * University of California San Diego
 * Dresden University of Technology
 * Delft University of Technology
 * Pune Institute of Computer Technology
+* Vishwakarma Institute of Information Technology, Pune
