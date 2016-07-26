@@ -33,6 +33,10 @@ The Apex Project is made up of two repositories:
 - [Apex Core](https://github.com/apache/apex-core) - The core of the Apex platform.
 - [Apex Malhar](https://github.com/apache/apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
 
+## Malhar contribution
+
+If you are new to the project and thinking about contributing, Apex Malhar is a good place to start. To make contributions to this module, please [follow these guidelines](/malhar-contributing.html).
+
 ## Release Process
 
 To learn more about the release process for Apex, [check out the release guidelines](/release.html).
