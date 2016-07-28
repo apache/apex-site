@@ -49,9 +49,9 @@
           <li class="nav-item">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
              <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
               <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
               <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
             </ul>
           </li>
@@ -158,7 +158,41 @@ gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}
 <pre><code class="lang-bash">mkdir svn-dist &amp;&amp; cp *-source-* svn-dist/
 svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
-<h2 id="voting">Voting</h2>
+<h2 id="build-and-deploy-documentation">Build and Deploy Documentation</h2>
+<p>The documentation will be generated as static HTML files and copied into the <code>apex-site</code> repository. It will be available at an alternate URL path until the release is promoted, at which time it will also be promoted to the main website location.</p>
+<p>Do the following setup steps before building and deploying the documentation. </p>
+<ol>
+<li><p>Clone the apex-site repository into a folder called <code>apex-site</code> at the same level as the current repository. </p>
+</li>
+<li><p>Set the following environment variables.</p>
+<p> For -core releases:</p>
+<pre><code> REPO_NAME=apex-core
+ DOC_NAME=apex
+</code></pre><p> For -malhar releases:</p>
+<pre><code> REPO_NAME=apex-malhar
+ DOC_NAME=malhar
+</code></pre><p> The <code>REPO_NAME</code> variable above should match the folder name of the cloned apex module being built.</p>
+</li>
+</ol>
+<p>To build and deploy the documentation, execute the following commands in the apex module folder specified in <code>REPO_NAME</code> above. <strong>Note</strong>: Until <a href="https://github.com/mkdocs/mkdocs/issues/859">mkdocs #859</a> is resolved and available for download, use mkdocs built against <a href="https://github.com/mkdocs/mkdocs">master</a>.</p>
+<pre><code class="lang-bash"># build docs, they would be generated in a site sub-folder
+mkdocs build --clean
+
+# Calculate the major.minor version
+docv=`echo ${rv} | sed &#39;s/\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\1\.\2/&#39;`
+
+# copy docs from site folder into target folder on apex-site
+cd ../apex-site
+git checkout asf-site
+rm -rf docs/${DOC_NAME}-${docv}
+cp -r ../${REPO_NAME}/site docs/${DOC_NAME}-${docv}
+git add -A
+git commit -m &quot;Adding ${DOC_NAME}-${rv} documentation&quot;
+git push
+</code></pre>
+<p>The documentation is now accessible at the URL location below. For patch releases, however, the documentation changes will already reflect on the website.</p>
+<pre><code>https://apex.apache.org/docs/${DOC_NAME}-${docv}/
+</code></pre><h2 id="voting">Voting</h2>
 <p>Vote call sample:
 <a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E</a></p>
 <p>Vote result:
@@ -192,6 +226,22 @@ published libraries.</p>
 git push apache
 </code></pre>
 <p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
+<h3 id="documentation">Documentation</h3>
+<p>There two steps in promotion. The documentation built during the build step above is made available on the website and then any changes to the rest of the website are deployed.</p>
+<ol>
+<li>If this is a new minor or a major release, under the <code>apex-site</code> folder, run the following commands to point the website to the release documentation folder, otherwise it is a patch release and this step can be skipped as the documentation is already reflected in the website.</li>
+</ol>
+<pre><code class="lang-bash"># docv major.minor version calculated in the build step
+cd docs
+# Set the release version to be the latest available version
+ln -nsf ${DOC_NAME}-${docv} ${DOC_NAME}
+git add -A
+git commit -m &quot;Promoting ${DOC_NAME}-${docv} documentation&quot;
+git push
+</code></pre>
+<ol>
+<li>Refer to the documentation in <a href="https://github.com/apache/apex-site#contributing">apex-site repository</a> to add any new links to the <a href="https://github.com/apache/apex-site/blob/master/src/md/docs.md">docs.md</a> page, follow the committer steps to commit and push these changes, and deploy the site.</li>
+</ol>
 <h2 id="announce-release">Announce Release</h2>
 <p>For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See <a href="https://github.com/apache/apex-core/tree/master/docs#deployment">https://github.com/apache/apex-core/tree/master/docs#deployment</a></p>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/apex-site#updating-downloads-page">https://github.com/apache/apex-site#updating-downloads-page</a></p>
