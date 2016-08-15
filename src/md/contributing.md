@@ -12,19 +12,10 @@ This project welcomes new contributors and invites everyone to participate. Our 
 * Publishing papers and blogs
 * Present at conferences or spread the word in other ways
 
-People that help with the project in any of the above categories or other ways are contributors. See the [roles](http://www.apache.org/foundation/how-it-works.html#roles) as defined by the ASF.
-
-## Becoming a committer
-
-Community members that make sustained, welcome contributions to the project may be invited to become a committer. Committers are voted in by the PMC. A committer has a signed Contributor License Agreement ([CLA](http://www.apache.org/licenses/icla.txt)) on file and an apache.org address.
-
-We expect committers to subscribe to the [project mailing lists](community.html#mailing-lists).  
-
-A committer will be considered “emeritus/inactive” by not contributing in any form to the project for over 1 year. An emeritus committer may request reinstatement of commit access from the PMC. Such reinstatement is subject to lazy consensus of active PMC members.
-
-The Project Management Committee ([PMC](http://www.apache.org/dev/pmc.html)) is responsible for the oversight of the project and it also decides who to add as a PMC member. Existing committers may be invited to become a PMC member after consistent contribution and activity over a period of time and participation in directional and community building discussions.
+People that help with the project in any of the above categories or other ways are contributors. See the [roles](http://www.apache.org/foundation/how-it-works.html#roles) as defined by the ASF. Community members that make sustained, welcome contributions to the project may be invited to become a [committer](/people.html). 
 
 ## Code Style
+
 Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.
 
 The checkstyle configuration that Apache Apex projects use is present here : https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml
@@ -38,13 +29,14 @@ To make it easier for the users to set up their development environment, setting
 
 The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.
 
-1. Create a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://issues.apache.org/jira/browse/APEXMALHAR/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
+1. Create/assign a JIRA ([-core](https://issues.apache.org/jira/browse/APEXCORE/),[-malhar](https://issues.apache.org/jira/browse/APEXMALHAR/)) for the work you plan to do (or assign yourself to an existing JIRA ticket)
 1. Fork the ASF github mirror (one time step):
    https://github.com/apache/apex-core/  
 1. Clone the **fork** on your local workspace (one time step):  
   `git clone https://github.com/{github_username}/apex-core.git`
 1. Add [apex core](https://github.com/apache/apex-core) as a remote repository (one time step):  
 `git remote add upstream https://github.com/apache/apex-core`
+1. Ensure that your git user name and email are [configured](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#Your-Identity), this will make it much easier to keep track of contributors (one time step).
 1. Create a new branch from the [master](https://github.com/apache/apex-core/tree/master) branch. **Name your branch with the JIRA number in it, e.g. `APEXCORE-123.my-feature`.**  
 `git checkout -b APEXCORE-123.my-feature -t upstream/master`  
 Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:  
