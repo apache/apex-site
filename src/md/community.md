@@ -11,7 +11,7 @@ The following mailing lists are available for Apex.
 
 ## Meetup Groups
 
-To see upcoming meetup events, please visit the [announcements page](/announcements.html).  Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://apache-apex.meetup.com/)
+To see upcoming meetup events, please visit the [announcements page](/announcements.html).  Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://www.meetup.com/pro/apacheapex/)
 
 ## People
 
@@ -32,8 +32,6 @@ The Apex Project is made up of two repositories:
 
 - [Apex Core](https://github.com/apache/apex-core) - The core of the Apex platform.
 - [Apex Malhar](https://github.com/apache/apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
-
-## Malhar contribution
 
 If you are new to the project and thinking about contributing, Apex Malhar is a good place to start. To make contributions to this module, please [follow these guidelines](/malhar-contributing.html).
 
