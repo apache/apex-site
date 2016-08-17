@@ -23,10 +23,11 @@ To see upcoming meetup events, please visit the [announcements page](/announceme
 List of organizations using Apache Apex is available at [Powered by Apex](/powered-by-apex.html).
 
 
-
 # Contributing
 
-**To learn more about how we use Github to accept contributions to the project, [check out the contributing guidelines](/contributing.html).**
+Looking for ideas to get involved? Please see [JIRA tickets for newcomers](https://issues.apache.org/jira/issues/?jql=project%20in%20(APEXCORE%2C%20APEXMALHAR)%20and%20labels%20%3D%20newbie) and pick a ticket. Please also sign up to the dev mailing list and JIRA. 
+
+**To learn more about contributing to the project, [check out the contributing guidelines](/contributing.html).**
 
 The Apex Project is made up of two repositories:
 
@@ -35,16 +36,16 @@ The Apex Project is made up of two repositories:
 
 If you are new to the project and thinking about contributing, Apex Malhar is a good place to start. To make contributions to this module, please [follow these guidelines](/malhar-contributing.html).
 
+## Issue Tracking
+
+- [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
+- [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
+
 ## Release Process
 
 To learn more about the release process for Apex, [check out the release guidelines](/release.html).
 
 To learn more about the release candidate verification for Apex, [check out the verification guidelines](/verification.html).
-
-## Issue Tracking
-
-- [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
-- [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
 
 ## Security Process
 
