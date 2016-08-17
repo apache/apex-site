@@ -526,84 +526,6 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926078",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926078",
-        "key": "APEXMALHAR-1897",
-        "fields": {
-          "summary": "Large operator state management",
-          "description": "ManagedState is described in the document below:\r\n\r\nhttps://docs.google.com/document/d/1gRWN9ufKSZSZD0N-pthlhpC9TZ8KwJ6hJlAX6nxl5f8/edit#heading=h.z87ti1fwyt0t",
-          "fixVersions": [
-            {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
-              "id": "12334637",
-              "name": "3.4.0",
-              "archived": false,
-              "released": false
-            }
-          ],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
-            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
-            "name": "Resolved",
-            "id": "5",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926038",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926038",
-        "key": "APEXMALHAR-1938",
-        "fields": {
-          "summary": "Operator checkpointing in distributed in-memory store",
-          "description": "Currently Apex engine provides operator checkpointing in Hdfs ( with Hdfs backed StorageAgents i.e. FSStorageAgent & AsyncFSStorageAgent )\r\nAs operator check-pointing is critical functionality of Apex streaming platform to ensure fault tolerant behavior, platform should also provide alternate StorageAgents which will work seamlessly with large applications that requires Exactly once semantics.\r\nHDFS read/write latency is limited and doesn't improve beyond certain point because of disk io & staging writes. Having alternate strategy to this check-pointing in fault tolerant distributed in-memory grid would ensure application stability and performance is not impacted by checkpointing\r\n\r\n*This feature will add below functionalities*\r\n* A KeyValue store interface which is used by In-memory checkpointing storage agent.\r\n* Abstract implementation of KeyValue storage agent which can be configured with concrete implementation of KeyValue store for checkpointing.\r\n* Concrete implementation of In memory storage agent for Apache Geode\r\n\r\n*This feature depends on below APEX core feature* \r\nhttps://issues.apache.org/jira/browse/APEXCORE-283\r\n* Interface for storage agent to provide application id\r\n* Stram client changes to pass applicationId",
-          "fixVersions": [
-            {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
-              "id": "12334637",
-              "name": "3.4.0",
-              "archived": false,
-              "released": false
-            }
-          ],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
-            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
-            "name": "Resolved",
-            "id": "5",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12926037",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12926037",
         "key": "APEXMALHAR-1939",
@@ -629,45 +551,6 @@
               "key": "new",
               "colorName": "blue-gray",
               "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926034",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926034",
-        "key": "APEXMALHAR-1942",
-        "fields": {
-          "summary": "Apex Operator for Apache Geode.",
-          "description": "We would like to contribute the Apache Geode(http://geode.incubator.apache.org/) Operator support for Apex.\r\nIt will basically be implementation for writing to geode region.\r\nThis is in continuation with the Operator checkpointing alternative under review (MLHR-1938)",
-          "fixVersions": [
-            {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
-              "id": "12334637",
-              "name": "3.4.0",
-              "archived": false,
-              "released": false
-            }
-          ],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/4",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/minor.png",
-            "name": "Minor",
-            "id": "4"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
-            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
-            "name": "Resolved",
-            "id": "5",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
             }
           }
         }
@@ -711,6 +594,45 @@
         "fields": {
           "summary": "Spill-able Datastructures",
           "description": "Add libraryies for spooling datastructures to a key value store. There are several customer use cases which require spooled data structures.\r\n\r\n1 - Some operators like AbstractFileInputOperator have ever growing state. This is an issue because eventually the state of the operator will grow larger than the memory allocated to the operator, which will cause the operator to perpetually fail. However if the operator's datastructures are spooled then the operator will never run out of memory.\r\n\r\n2 - Some users have requested for the ability to maintain a map as well as a list of keys over which to iterate. Most key value stores don't provide this functionality. However, with spooled datastructures this functionality can be provided by maintaining a spooled map and an iterable set of keys.\r\n\r\n3 - Some users have requested building graph databases within APEX. This would require implementing a spooled graph data structure.\r\n\r\n4 - Another use case for spooled data structures is database operators. Database operators need to write data to a data base, but sometimes the database is down. In this case most of the database operators repeatedly fail until the database comes back up. In order to avoid constant failures the database operator need to writes data to a queue when the data base is down, then when the database is up the operator need to take data from the queue and write it to the database. In the case of a database failure this queue will grow larger than the total amount of memory available to the operator, so the queue should be spooled in order to prevent the operator from failing.\r\n\r\n5 - Any operator which needs to maintain a large data structure in memory currently needs to have that data serialized and written out to HDFS with every checkpoint. This is costly when the data structure is large. If the data structure is spooled, then only the changes to the data structure are written out to HDFS instead of the entire data structure.\r\n\r\n6 - Also building an Apex Native database for aggregations requires indices. These indices need to take the form of spooled data structures.\r\n\r\n7 - In the future any operator which needs to maintain a data structure larger than the memory available to it will need to spool the data structure.",
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
+              "id": "12335815",
+              "name": "3.5.0",
+              "archived": false,
+              "released": false
+            }
+          ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
+            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
+            "name": "Resolved",
+            "id": "5",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "12969033",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12969033",
+        "key": "APEXMALHAR-2089",
+        "fields": {
+          "summary": "Apache Beam support",
+          "description": "Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.\r\n",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -736,13 +658,21 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12969033",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12969033",
-        "key": "APEXMALHAR-2089",
+        "id": "12988875",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12988875",
+        "key": "APEXMALHAR-2142",
         "fields": {
-          "summary": "Apache Beam support",
-          "description": "Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.\r\n",
-          "fixVersions": [],
+          "summary": "High-level API window support",
+          "description": null,
+          "fixVersions": [
+            {
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
+              "id": "12335815",
+              "name": "3.5.0",
+              "archived": false,
+              "released": false
+            }
+          ],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
             "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
@@ -792,9 +722,9 @@
         "projectId": 12318824
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12334637",
-        "id": "12334637",
-        "name": "3.4.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12335827",
+        "id": "12335827",
+        "name": "3.4.1",
         "archived": false,
         "released": false,
         "projectId": 12318824
