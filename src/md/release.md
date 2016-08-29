@@ -152,8 +152,13 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m 
 
 ## Build and Deploy Documentation
 
-The documentation will be generated as static HTML files and copied into the `apex-site` repository. It will be available at an alternate URL path until the release is promoted, at which time it will also be promoted to the main website location.
+The documentation will be generated as static HTML files into the `apex-site` repository, [separated by version (X.Y)](https://github.com/apache/apex-site/tree/asf-site/docs).
 
+**Note** You need Python 2.7+ and [mkdocs](http://www.mkdocs.org/) with patch for issue [mkdocs #859](https://github.com/mkdocs/mkdocs/issues/859) on top of the currently available version 0.15.3. After installing mkdocs with pip, run the following to obtain this build:
+
+```
+sudo pip install --upgrade git+https://github.com/sashadt/mkdocs.git
+```
 Do the following setup steps before building and deploying the documentation. 
 
 1. Clone the apex-site repository into a folder called ```apex-site``` at the same level as the current repository. 
@@ -176,10 +181,10 @@ Do the following setup steps before building and deploying the documentation.
 	
 	The `REPO_NAME` variable above should match the folder name of the cloned apex module being built.
 
-To build and deploy the documentation, execute the following commands in the apex module folder specified in `REPO_NAME` above. **Note**: Until [mkdocs #859](https://github.com/mkdocs/mkdocs/issues/859) is resolved and available for download, use mkdocs built against [master](https://github.com/mkdocs/mkdocs).
+Build and deploy the documentation in the release directory:
 
 ```bash
-# build docs, they would be generated in a site sub-folder
+# build docs in ${REPO_NAME}, they will be generated in a site sub-folder
 mkdocs build --clean
 
 # Calculate the major.minor version
@@ -195,11 +200,7 @@ git commit -m "Adding ${DOC_NAME}-${rv} documentation"
 git push
 ```
 
-The documentation is now accessible at the URL location below. For patch releases, however, the documentation changes will already reflect on the website.
- 
-```
-https://apex.apache.org/docs/${DOC_NAME}-${docv}/
-```
+After [publishing the site](https://github.com/apache/apex-site/tree/master#contributing) the new documentation will be available at `https://apex.apache.org/docs/${DOC_NAME}-${docv}/`
 
 ## Voting 
 
