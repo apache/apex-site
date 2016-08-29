@@ -159,8 +159,10 @@ gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}
 svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="build-and-deploy-documentation">Build and Deploy Documentation</h2>
-<p>The documentation will be generated as static HTML files and copied into the <code>apex-site</code> repository. It will be available at an alternate URL path until the release is promoted, at which time it will also be promoted to the main website location.</p>
-<p>Do the following setup steps before building and deploying the documentation. </p>
+<p>The documentation will be generated as static HTML files into the <code>apex-site</code> repository, <a href="https://github.com/apache/apex-site/tree/asf-site/docs">separated by version (X.Y)</a>.</p>
+<p><strong>Note</strong> You need Python 2.7+ and <a href="http://www.mkdocs.org/">mkdocs</a> with patch for issue <a href="https://github.com/mkdocs/mkdocs/issues/859">mkdocs #859</a> on top of the currently available version 0.15.3. After installing mkdocs with pip, run the following to obtain this build:</p>
+<pre><code>sudo pip install --upgrade git+https://github.com/sashadt/mkdocs.git
+</code></pre><p>Do the following setup steps before building and deploying the documentation. </p>
 <ol>
 <li><p>Clone the apex-site repository into a folder called <code>apex-site</code> at the same level as the current repository. </p>
 </li>
@@ -174,8 +176,8 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m 
 </code></pre><p> The <code>REPO_NAME</code> variable above should match the folder name of the cloned apex module being built.</p>
 </li>
 </ol>
-<p>To build and deploy the documentation, execute the following commands in the apex module folder specified in <code>REPO_NAME</code> above. <strong>Note</strong>: Until <a href="https://github.com/mkdocs/mkdocs/issues/859">mkdocs #859</a> is resolved and available for download, use mkdocs built against <a href="https://github.com/mkdocs/mkdocs">master</a>.</p>
-<pre><code class="lang-bash"># build docs, they would be generated in a site sub-folder
+<p>Build and deploy the documentation in the release directory:</p>
+<pre><code class="lang-bash"># build docs in ${REPO_NAME}, they will be generated in a site sub-folder
 mkdocs build --clean
 
 # Calculate the major.minor version
@@ -190,9 +192,8 @@ git add -A
 git commit -m &quot;Adding ${DOC_NAME}-${rv} documentation&quot;
 git push
 </code></pre>
-<p>The documentation is now accessible at the URL location below. For patch releases, however, the documentation changes will already reflect on the website.</p>
-<pre><code>https://apex.apache.org/docs/${DOC_NAME}-${docv}/
-</code></pre><h2 id="voting">Voting</h2>
+<p>After <a href="https://github.com/apache/apex-site/tree/master#contributing">publishing the site</a> the new documentation will be available at <code>https://apex.apache.org/docs/${DOC_NAME}-${docv}/</code></p>
+<h2 id="voting">Voting</h2>
 <p>Vote call sample:
 <a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E</a></p>
 <p>Vote result:

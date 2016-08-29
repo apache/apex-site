@@ -1,0 +1,138 @@
+<html lang="en"><head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Apex is an enterprise grade native YARN big data-in-motion platform that unifies stream processing as well as batch processing.">
+    <meta name="author" content="Apache Software Foundation">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Apache Apex</title>
+
+    <!-- Main Stylesheet -->
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" id="main-nav">
+      <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="images/apex-logo.svg" class="logo" alt="Apache Apex Logo">
+          Apache Apex<span class="trademark">&trade;</span>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-right navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/announcements.html">Announcements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/docs.html">Docs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
+              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
+              <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+              <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
+              <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
+              <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+              <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+
+<div class="container">
+  
+  <h1 id="malhar-contribution-guidelines">Malhar Contribution Guidelines</h1>
+<p>Malhar library predominantly contains different kinds of operators like connectors to messaging systems, databases, key-value and document stores, block i/o operators like various file system operators, analytic and algorithmic operators and other miscellaneous operators. It also provides other components to build applications such as partitioners, stats listeners, stream codecs and state management. This document outlines the general steps for making contributions to Malhar. Even though the processes described in the rest of the document refer to Operators in particular, they also generally apply to other application components mentioned above.</p>
+<h2 id="operators">Operators</h2>
+<ul>
+<li><p>Follow the unix philosophy, design your operator to do one thing and do it well. If the operator is doing multiple things, you may not be taking advantage of platform parallelism aspects like pipelining to the fullest extent (akin to unix pipes). </p>
+</li>
+<li><p>Search Malhar project to see if there is an operator with similar functionality before embarking on writing a new one</p>
+<ul>
+<li>If an operator that is supposed to solve the same problem is already present but isn’t complete or does not have the required functionality, consider making improvements to it. There should be a strong reason to not do this and create a new one. </li>
+<li>If there is an overlap in functionality with an existing operator or an operator that is designed to be extended, do not rewrite that functionality. Create the new operator in such a way that it reuses code already present and implements the new functionality on top of it. This might require refactoring of existing operator(s).</li>
+</ul>
+</li>
+<li>If the functionality requires connecting two or more operators together, do that in the application. If this pattern would be useful to others and can be reused in other applications consider making it a module.</li>
+</ul>
+<h2 id="preparation-for-making-changes">Preparation for making changes</h2>
+<p>If after performing the above analysis, there is a need to write a new operator or update an existing one, follow these steps</p>
+<ul>
+<li>Make the case on <a href="/community.html#mailing-lists">dev mailing list</a> as to why the changes are needed and propose any design that you are thinking of.</li>
+<li>If writing a new operator, mention any existing operators you considered, that have related or partially matching functionality to the desired functionality and why they cannot be improved to meet the requirements.</li>
+<li>Also mention which folder under Malhar the operator would go into. If scalability and recovery features such as partitioning, idempotency etc., are not going to be implemented then the operator should go into <strong>contrib</strong>. For more explanation, see implementing an operator section below.</li>
+<li>Respond to comments and suggestions and make appropriate modifications to design that are consistent with the evolving consensus.</li>
+<li>Summarize the final list of changes in an email.</li>
+<li>Create a <a href="https://issues.apache.org/jira/browse/APEXMALHAR">JIRA</a> to track the work.</li>
+<li>Work on the changes.</li>
+</ul>
+<h2 id="implementing-an-operator">Implementing an operator</h2>
+<ul>
+<li>Look at the <a href="/docs/apex/operator_development">Operator Development Guide</a> and the <a href="/docs/malhar/development_best_practices">Best Practices Guide</a> on how to implement an operator and what the dos and don&#39;ts are.</li>
+<li>Refer to existing operator implementations when in doubt or unsure about how to implement some functionality. You can also email the <a href="/community.html#mailing-lists">dev mailing list</a> with any questions.</li>
+<li>Write unit tests for operators<ul>
+<li>Refer to unit tests for existing operators.</li>
+<li>If possible write a sample application testing the operator.</li>
+<li>Try to keep the tests self contained i.e., avoid the user having to perform additional setup or setup other services before running the tests. This can be done by starting mock versions of the required services from within the test and shutting them down when the test finishes.</li>
+</ul>
+</li>
+<li>Follow the code style guidelines of the Apache Apex project described <a href="http://apex.apache.org/contributing.html#code-style">here</a>.</li>
+<li>If only the core operator business logic for the operator is implemented and advanced platform functionality for scalability and recovery, such as partitioning, idempotence etc., described in the above reference guides are not implemented, make the code submission pull request to the <strong>contrib</strong> folder in Malhar, otherwise make it to an appropriate top-level module or a new one if one is not present.</li>
+</ul>
+
+</div>
+
+  <hr>
+  <div class="container">
+    <footer id="main-footer">
+      <p>
+        Copyright &copy; <span id="copyright-year">2015</span> <a href="http://apache.org">The Apache Software Foundation</a>,
+        Licensed under the Apache License, Version 2.0<br>
+        Apache and the Apache feather logo are trademarks of The Apache Software Foundation.<br>
+        <a class="footer-link-img" href="http://apache.org"><img src="/images/asf_logo.svg" alt="The Apache Software Foundation"></a>
+      </p>
+    </footer>
+  </div> <!-- /container -->
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script>
+    $('#copyright-year').text((new Date()).getFullYear());
+  </script>
+
+</body>
+</html>

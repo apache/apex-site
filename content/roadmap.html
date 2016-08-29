@@ -343,50 +343,6 @@ So keep things sane - the proposed compromise is that we start creating smaller 
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1897">APEXMALHAR-1897</a>
-        </td>
-        <td title="ManagedState is described in the document below:
-
-https://docs.google.com/document/d/1gRWN9ufKSZSZD0N-pthlhpC9TZ8KwJ6hJlAX6nxl5f8/edit#heading=h.z87ti1fwyt0t">
-          Large operator state management
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1938">APEXMALHAR-1938</a>
-        </td>
-        <td title="Currently Apex engine provides operator checkpointing in Hdfs ( with Hdfs backed StorageAgents i.e. FSStorageAgent &amp; AsyncFSStorageAgent )
-As operator check-pointing is critical functionality of Apex streaming platform to ensure fault tolerant behavior, platform should also provide alternate StorageAgents which will work seamlessly with large applications that requires Exactly once semantics.
-HDFS read/write latency is limited and doesn&#x27;t improve beyond certain point because of disk io &amp; staging writes. Having alternate strategy to this check-pointing in fault tolerant distributed in-memory grid would ensure application stability and performance is not impacted by checkpointing
-
-*This feature will add below functionalities*
-* A KeyValue store interface which is used by In-memory checkpointing storage agent.
-* Abstract implementation of KeyValue storage agent which can be configured with concrete implementation of KeyValue store for checkpointing.
-* Concrete implementation of In memory storage agent for Apache Geode
-
-*This feature depends on below APEX core feature* 
-https://issues.apache.org/jira/browse/APEXCORE-283
-* Interface for storage agent to provide application id
-* Stram client changes to pass applicationId">
-          Operator checkpointing in distributed in-memory store
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1939">APEXMALHAR-1939</a>
         </td>
         <td title="">
@@ -394,23 +350,6 @@ https://issues.apache.org/jira/browse/APEXCORE-283
         </td>
         <td>
     
-
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1942">APEXMALHAR-1942</a>
-        </td>
-        <td title="We would like to contribute the Apache Geode(http://geode.incubator.apache.org/) Operator support for Apex.
-It will basically be implementation for writing to geode region.
-This is in continuation with the Operator checkpointing alternative under review (MLHR-1938)">
-          Apex Operator for Apache Geode.
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12334637">3.4.0</a>&nbsp;
-
 
         </td>
       </tr>
@@ -453,6 +392,9 @@ This jira item can contain tasks for providing similar support in Apex">
         <td>
     
 
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12335815">3.5.0</a>&nbsp;
+
+
         </td>
       </tr>
       <tr>
@@ -465,6 +407,21 @@ This jira item can contain tasks for providing similar support in Apex">
         </td>
         <td>
     
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2142">APEXMALHAR-2142</a>
+        </td>
+        <td title="">
+          High-level API window support
+        </td>
+        <td>
+    
+
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12335815">3.5.0</a>&nbsp;
+
 
         </td>
       </tr>
