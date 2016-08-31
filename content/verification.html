@@ -127,10 +127,10 @@ The extracted directory should not contain any binary. Need to test this before 
 </code></pre>
 <p>Please make sure no binary extension is listed here. Likely candidates are .jar files.  Additionally, for Malhar, demo package files, i.e. .apa files.</p>
 <h3 id="check-for-compilation-license-headers-etc-">Check for compilation, license headers, etc.</h3>
-<p>For Apex:</p>
+<p>For Apex Core:</p>
 <pre><code class="lang-bash">mvn clean apache-rat:check verify -Dlicense.skip=false install
 </code></pre>
-<p>For Malhar:</p>
+<p>For Apex Malhar:</p>
 <pre><code class="lang-bash">mvn clean apache-rat:check verify -Dlicense.skip=false -Pall-modules install
 </code></pre>
 <p>Jars should be installed in your maven repository, typically in <em>~/.m2/repository/org/apache/apex/</em> directory</p>
