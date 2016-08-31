@@ -80,11 +80,11 @@ Please make sure no binary extension is listed here. Likely candidates are .jar 
 
 ### Check for compilation, license headers, etc.
 
-For Apex:
+For Apex Core:
 ```bash
 mvn clean apache-rat:check verify -Dlicense.skip=false install
 ```
-For Malhar:
+For Apex Malhar:
 ```bash
 mvn clean apache-rat:check verify -Dlicense.skip=false -Pall-modules install
 ```
