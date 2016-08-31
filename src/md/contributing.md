@@ -44,7 +44,7 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
 1. When adding new files, please include the Apache v2.0 license header.
   - From the top level directory, run `mvn license:check -Dlicense.skip=false` to check correct header formatting.
   - Run `mvn license:format -Dlicense.skip=false` to automatically add the header when missing.
-1. Once your feature is complete, submit the pull request on github against `master`.
+1. Once your feature is complete, submit the pull request on github against `master`. Use the JIRA number (e.g. APEXCORE-123) as prefix in the pull request title. This will ensure the information is attached to the JIRA ticket automatically.
 1. If you want specific people to review your pull request, use the `@` notation in Github comments to mention that user, and request that he/she reviews your changes.
 1. Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.
   - If build fails due to license headers, follow instructions above.
