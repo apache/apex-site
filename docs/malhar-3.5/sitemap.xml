@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,31 +13,37 @@
         
     <url>
      <loc>/operators/kafkaInputOperator/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/operators/file_splitter/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/operators/block_reader/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/operators/file_output/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/operators/enricher/</loc>
-     <lastmod>2016-08-29</lastmod>
+     <lastmod>2016-09-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/operators/deduper/</loc>
+     <lastmod>2016-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
