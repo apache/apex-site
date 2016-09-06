@@ -12,17 +12,17 @@
         "docs": "3.2",
         "repo": "apex-core",
         "date": 1461193940000
-      },
-      {
-        "version": "3.3.0-incubating",
-        "docs": "3.3",
-        "repo": "apex-core",
-        "date": 1454908501000
       }
     ]
   },
   "malhar": {
     "src": [
+      {
+        "version": "3.5.0",
+        "docs": "3.5",
+        "repo": "apex-malhar",
+        "date": 1472622216000
+      },
       {
         "version": "3.4.0",
         "docs": "3.3",
