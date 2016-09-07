@@ -187,6 +187,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
     </ul>
 <li>
           
@@ -278,7 +285,7 @@ operators to the <a href="../operator_development/">Operator Development Guide</
 <h1 id="running-a-test-application">Running A Test Application</h1>
 <p>If you are starting with the Apex platform for the first time,
 it can be informative to launch an existing application and see it run.
-One of the simplest examples provided in <a href="https://github.com/apache/incubator-apex-malhar">Apex-Malhar repository</a> is a Pi demo application,
+One of the simplest examples provided in <a href="https://github.com/apache/apex-malhar">Apex-Malhar repository</a> is a Pi demo application,
 which computes the value of PI using random numbers.  After <a href="../apex_development_setup/">setting up development environment</a>
 Pi demo can be launched as follows:</p>
 <ol>
@@ -907,7 +914,7 @@ project name “Malhar” as part of our efforts to foster community
 innovation. These operators can be used in a DAG as is, while others
 have properties that can be set to specify the
 desired computation. Those interested in details, should refer to
-<a href="https://github.com/apache/incubator-apex-malhar">Apex-Malhar operator library</a>.</p>
+<a href="https://github.com/apache/apex-malhar">Apex-Malhar operator library</a>.</p>
 <p>The platform is a Hadoop YARN native
 application. It runs in a Hadoop cluster just like any
 other YARN application (MapReduce etc.) and is designed to seamlessly
@@ -1281,7 +1288,7 @@ DAG in local mode within the IDE.</p>
 <li>The <code>operators</code> field is the list of operators the application has. You can specifiy the name, the Java class, and the properties of each operator here.</li>
 <li>The <code>streams</code> field is the list of streams that connects the operators together to form the DAG. Each stream consists of the stream name, the operator and port that it connects from, and the list of operators and ports that it connects to. Note that you can connect from <em>one</em> output port of an operator to <em>multiple</em> different input ports of different operators.</li>
 </ul>
-<p>In Apex Malhar, there is an <a href="https://github.com/apache/incubator-apex-malhar/blob/master/demos/pi/src/main/resources/app/PiJsonDemo.json">example</a> in the Pi Demo doing just that.</p>
+<p>In Apex Malhar, there is an <a href="https://github.com/apache/apex-malhar/blob/master/demos/pi/src/main/resources/app/PiJsonDemo.json">example</a> in the Pi Demo doing just that.</p>
 <h3 id="properties-file-dag-specification">Properties File DAG Specification</h3>
 <p>The platform also supports specification of a DAG via a properties
 file. The aim here to make it easy for tools to create and run an
@@ -2625,7 +2632,7 @@ details refer to  <a href="http://docs.datatorrent.com/configuration/">Configura
 <hr />
 <h1 id="demos">Demos</h1>
 <p>The source code for the demos is available in the open-source
-<a href="https://github.com/apache/incubator-apex-malhar">Apache Apex-Malhar repository</a>.
+<a href="https://github.com/apache/apex-malhar">Apache Apex-Malhar repository</a>.
 All of these do computations in real-time. Developers are encouraged to
 review them as they use various features of the platform and provide an
 opportunity for quick learning.</p>

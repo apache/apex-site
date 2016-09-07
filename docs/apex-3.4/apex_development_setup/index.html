@@ -119,6 +119,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
     </ul>
 <li>
           
@@ -306,22 +313,22 @@ project properties at <em>Properties &#8658; Run/Debug Settings &#8658; Applicat
 <ol>
 <li>
 <p>Check out the source code repositories:</p>
-<pre><code>git clone https://github.com/apache/incubator-apex-core
-git clone https://github.com/apache/incubator-apex-malhar
+<pre><code>git clone https://github.com/apache/apex-core
+git clone https://github.com/apache/apex-malhar
 </code></pre>
 </li>
 <li>
 <p>Switch to the appropriate release branch and build each repository:</p>
-<pre><code>cd incubator-apex-core
+<pre><code>cd apex-core
 mvn clean install -DskipTests
 
-cd incubator-apex-malhar
+cd apex-malhar
 mvn clean install -DskipTests
 </code></pre>
 </li>
 </ol>
 <p>The <code>install</code> argument to the <code>mvn</code> command installs resources from each project to your local maven repository (typically <code>.m2/repository</code> under your home directory), and <strong>not</strong> to the system directories, so Administrator privileges are not required. The  <code>-DskipTests</code> argument skips running unit tests since they take a long time. If this is a first-time installation, it might take several minutes to complete because maven will download a number of associated plugins.</p>
-<p>After the build completes, you should see the demo application package files in the target directory under each demo subdirectory in <code>incubator-apex-malhar/demos</code>.</p>
+<p>After the build completes, you should see the demo application package files in the target directory under each demo subdirectory in <code>apex-malhar/demos</code>.</p>
 <h2 id="sandbox">Sandbox</h2>
 <p>To jump start development with an Apache Hadoop single node cluster, <a href="https://www.datatorrent.com/download">DataTorrent Sandbox</a> powered by VirtualBox is available on Windows, Linux, or Mac platforms.  The sandbox is configured by default to run with 6GB RAM; if your development machine has 16GB or more, you can increase the sandbox RAM to 8GB or more using the VirtualBox console.  This will yield better performance and support larger applications.  The advantage of developing in the sandbox is that most of the tools (e.g. <em>jdk</em>, <em>git</em>, <em>maven</em>), Hadoop YARN and HDFS, and a distribution of Apache Apex and DataTorrent RTS are pre-installed.  The disadvantage is that the sandbox is a memory-limited environment, and requires settings changes and restarts to adjust memory available for development and testing.</p>
               

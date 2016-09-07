@@ -102,6 +102,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
     </ul>
 <li>
           
@@ -188,32 +195,11 @@
                 <h1 id="security">Security</h1>
 <p>Applications built on Apex run as native YARN applications on Hadoop. The security framework and apparatus in Hadoop apply to the applications. The default security mechanism in Hadoop is Kerberos.</p>
 <h2 id="kerberos-authentication">Kerberos Authentication</h2>
-<p>Kerberos is a ticket based authentication system that provides authentication in a distributed environment where authentication is needed between multiple users, hosts and services. It is the de-facto authentication mechanism supported in Hadoop. To use Kerberos authentication, the Hadoop installation must first be configured for secure mode with Kerberos. Please refer to the administration guide of your Hadoop distribution on how to do that. Once Hadoop is configured, there is some configuration needed on Apex side as well.</p>
+<p>Kerberos is a ticket based authentication system that provides authentication in a distributed environment where authentication is needed between multiple users, hosts and services. It is the de-facto authentication mechanism supported in Hadoop. To use Kerberos authentication, the Hadoop installation must first be configured for secure mode with Kerberos. Please refer to the administration guide of your Hadoop distribution on how to do that. Once Hadoop is configured, some configuration is needed on the Apex side as well.</p>
 <h2 id="configuring-security">Configuring security</h2>
-<p>There is Hadoop configuration and CLI configuration. Hadoop configuration may be optional.</p>
-<h3 id="hadoop-configuration">Hadoop Configuration</h3>
-<p>An Apex application uses delegation tokens to authenticate with the ResourceManager (YARN) and NameNode (HDFS) and these tokens are issued by those servers respectively. Since the application is long-running,
-the tokens should be valid for the lifetime of the application. Hadoop has a configuration setting for the maximum lifetime of the tokens and they should be set to cover the lifetime of the application. There are separate settings for ResourceManager and NameNode delegation
-tokens.</p>
-<p>The ResourceManager delegation token max lifetime is specified in <code>yarn-site.xml</code> and can be specified as follows for example for a lifetime of 1 year</p>
-<pre><code class="xml">&lt;property&gt;
-  &lt;name&gt;yarn.resourcemanager.delegation.token.max-lifetime&lt;/name&gt;
-  &lt;value&gt;31536000000&lt;/value&gt;
-&lt;/property&gt;
-</code></pre>
-
-<p>The NameNode delegation token max lifetime is specified in
-hdfs-site.xml and can be specified as follows for example for a lifetime of 1 year</p>
-<pre><code class="xml">&lt;property&gt;
-   &lt;name&gt;dfs.namenode.delegation.token.max-lifetime&lt;/name&gt;
-   &lt;value&gt;31536000000&lt;/value&gt;
- &lt;/property&gt;
-</code></pre>
-
+<p>The Apex command line interface (CLI) program, <code>apex</code>, is used to launch applications on the Hadoop cluster along with performing various other operations and administrative tasks on the applications. In a secure cluster additional configuration is needed for the CLI program <code>apex</code>.</p>
 <h3 id="cli-configuration">CLI Configuration</h3>
-<p>The Apex command line interface is used to launch
-applications along with performing various other operations and administrative tasks on the applications.  When Kerberos security is enabled in Hadoop, a Kerberos ticket granting ticket (TGT) or the Kerberos credentials of the user are needed by the CLI program <code>apex</code> to authenticate with Hadoop for any operation. Kerberos credentials are composed of a principal and either a <em>keytab</em> or a password. For security and operational reasons only keytabs are supported in Hadoop and by extension in Apex platform. When user credentials are specified, all operations including launching
-application are performed as that user.</p>
+<p>When Kerberos security is enabled in Hadoop, a Kerberos ticket granting ticket (TGT) or the Kerberos credentials of the user are needed by the CLI program <code>apex</code> to authenticate with Hadoop for any operation. Kerberos credentials are composed of a principal and either a <em>keytab</em> or a password. For security and operational reasons only keytabs are supported in Hadoop and by extension in Apex platform. When user credentials are specified, all operations including launching application are performed as that user.</p>
 <h4 id="using-kinit">Using kinit</h4>
 <p>A Kerberos ticket granting ticket (TGT) can be obtained by using the Kerberos command <code>kinit</code>. Detailed documentation for the command can be found online or in man pages. An sample usage of this command is</p>
 <pre><code>kinit -k -t path-tokeytab-file kerberos-principal
@@ -235,7 +221,96 @@ home directory. The location of this file will be <code>$HOME/.dt/dt-site.xml</c
 </code></pre>
 
 <p>The property <code>dt.authentication.principal</code> specifies the Kerberos user principal and <code>dt.authentication.keytab</code> specifies the absolute path to the keytab file for the user.</p>
+<h3 id="web-services-security">Web Services security</h3>
+<p>Alongside every Apex application is an application master process running called Streaming Container Manager (STRAM). STRAM manages the application by handling the various control aspects of the application such as orchestrating the execution of the application on the cluster, playing a key role in scalability and fault tolerance, providing application insight by collecting statistics among other functionality.</p>
+<p>STRAM provides a web service interface to introspect the state of the application and its various components and to make dynamic changes to the applications. Some examples of supported functionality are getting resource usage and partition information of various operators, getting operator statistics and changing properties of running operators.</p>
+<p>Access to the web services can be secured to prevent unauthorized access. By default it is automatically enabled in Hadoop secure mode environments and not enabled in non-secure environments. How the security actually works is described in <code>Security architecture</code> section below.</p>
+<p>There are additional options available for finer grained control on enabling it. This can be configured on a per-application basis using an application attribute. It can also be enabled or disabled based on Hadoop security configuration. The following security options are available</p>
+<ul>
+<li>Enable - Enable Authentication</li>
+<li>Follow Hadoop Authentication - Enable authentication if secure mode is enabled in Hadoop, the default</li>
+<li>Follow Hadoop HTTP Authentication - Enable authentication only if HTTP authentication is enabled in Hadoop and not just secure mode.</li>
+<li>Disable - Disable Authentication</li>
+</ul>
+<p>To specify the security option for an application the following configuration can be specified in the <code>dt-site.xml</code> file</p>
+<pre><code class="xml">&lt;property&gt;
+        &lt;name&gt;dt.application.name.attr.STRAM_HTTP_AUTHENTICATION&lt;/name&gt;
+        &lt;value&gt;security-option&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>The security option value can be <code>ENABLED</code>, <code>FOLLOW_HADOOP_AUTH</code>, <code>FOLLOW_HADOOP_HTTP_AUTH</code> or <code>DISABLE</code> for the four options above respectively.</p>
 <p>The subsequent sections talk about how security works in Apex. This information is not needed by users but is intended for the inquisitive techical audience who want to know how security works.</p>
+<h3 id="token-refresh">Token Refresh</h3>
+<p>Apex applications, at runtime, use delegation tokens to authenticate with Hadoop services when communicating with them as described in the security architecture section below. The delegation tokens are originally issued by these Hadoop services and have an expiry time period which is typically 7 days. The tokens become invalid beyond this time and the applications will no longer be able to communicate with the Hadoop services. For long running applications this presents a problem.</p>
+<p>To solve this problem one of the two approaches can be used. The first approach is to change the Hadoop configuration itself to extend the token expiry time period. This may not be possible in all environments as it requires a change in the security policy as the tokens will now be valid for a longer period of time and the change also requires administrator privileges to Hadoop. The second approach is to use a feature available in apex to auto-refresh the tokens before they expire. Both the approaches are detailed below and the users can choose the one that works best for them.</p>
+<h4 id="hadoop-configuration-approach">Hadoop configuration approach</h4>
+<p>An Apex application uses delegation tokens to authenticate with Hadoop services, Resource Manager (YARN) and Name Node (HDFS), and these tokens are issued by those services respectively. Since the application is long-running, the tokens can expire while the application is still running. Hadoop uses configuration settings for the maximum lifetime of these tokens. </p>
+<p>There are separate settings for ResourceManager and NameNode delegation tokens. In this approach the user increases the values of these settings to cover the lifetime of the application. Once these settings are changed, the YARN and HDFS services would have to be restarted. The values in these settings are of type <code>long</code> and has an upper limit so applications cannot run forever. This limitation is not present with the next approach described below.</p>
+<p>The Resource Manager delegation token max lifetime is specified in <code>yarn-site.xml</code> and can be specified as follows for a lifetime of 1 year as an example</p>
+<pre><code class="xml">&lt;property&gt;
+  &lt;name&gt;yarn.resourcemanager.delegation.token.max-lifetime&lt;/name&gt;
+  &lt;value&gt;31536000000&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>The Name Node delegation token max lifetime is specified in
+hdfs-site.xml and can be specified as follows for a lifetime of 1 year as an example</p>
+<pre><code class="xml">&lt;property&gt;
+   &lt;name&gt;dfs.namenode.delegation.token.max-lifetime&lt;/name&gt;
+   &lt;value&gt;31536000000&lt;/value&gt;
+ &lt;/property&gt;
+</code></pre>
+
+<h4 id="auto-refresh-approach">Auto-refresh approach</h4>
+<p>In this approach the application, in anticipation of a token expiring, obtains a new token to replace the current one. It keeps repeating the process whenever a token is close to expiry so that the application can continue to run indefinitely.</p>
+<p>This requires the application having access to a keytab file at runtime because obtaining a new token requires a keytab. The keytab file should be present in HDFS so that the application can access it at runtime. The user can provide a HDFS location for the keytab file using a setting otherwise the keytab file specified for the <code>apex</code> CLI program above will be copied from the local filesystem into HDFS before the application is started and made available to the application. There are other optional settings available to configure the behavior of this feature. All the settings are described below.</p>
+<p>The location of the keytab can be specified by using the following setting in <code>dt-site.xml</code>. If it is not specified then the file specified in <code>dt.authentication.keytab</code> is copied into HDFS and used.</p>
+<pre><code class="xml">&lt;property&gt;
+        &lt;name&gt;dt.authentication.store.keytab&lt;/name&gt;
+        &lt;value&gt;hdfs-path-to-keytab-file&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>The expiry period of the Resource Manager and Name Node tokens needs to be known so that the application can renew them before they expire. These are automatically obtained using the <code>yarn.resourcemanager.delegation.token.max-lifetime</code> and <code>dfs.namenode.delegation.token.max-lifetime</code> properties from the hadoop configuration files. Sometimes however these properties are not available or kept up-to-date on the nodes running the applications. If that is the case then the following properties can be used to specify the expiry period, the values are in milliseconds. The example below shows how to specify these with values of 7 days.</p>
+<pre><code class="xml">&lt;property&gt;
+        &lt;name&gt;dt.resourcemanager.delegation.token.max-lifetime&lt;/name&gt;
+        &lt;value&gt;604800000&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+        &lt;name&gt;dt.namenode.delegation.token.max-lifetime&lt;/name&gt;
+        &lt;value&gt;604800000&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>As explained earlier new tokens are obtained before the old ones expire. How early the new tokens are obtained before expiry is controlled by a setting. This setting is specified as a factor of the token expiration with a value between 0.0 and 1.0. The default value is <code>0.7</code>. This factor is multipled with the expiration time to determine when to refresh the tokens. This setting can be changed by the user and the following example shows how this can be done</p>
+<pre><code class="xml">&lt;property&gt;
+        &lt;name&gt;dt.authentication.token.refresh.factor&lt;/name&gt;
+        &lt;value&gt;0.7&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<h3 id="impersonation">Impersonation</h3>
+<p>The CLI program <code>apex</code> supports Hadoop proxy user impersonation, in allowing applications to be launched and other operations to be performed as a different user than the one specified by the Kerberos credentials. The Kerberos credentials are still used for authentication. This is useful in scenarios where a system using <code>apex</code> has to support multiple users but only has a single set of Kerberos credentials, those of a system user.</p>
+<h4 id="usage">Usage</h4>
+<p>To use this feature, the following environment variable should be set to the user name of the user being impersonated, before running <code>apex</code> and the operations will be performed as that user. For example, if launching an application, the application will run as the specified user and not as the user specified by the Kerberos credentials.</p>
+<pre><code>HADOOP_USER_NAME=&lt;username&gt;
+</code></pre>
+
+<h4 id="hadoop-configuration">Hadoop Configuration</h4>
+<p>For this feature to work, additional configuration settings are needed in Hadoop. These settings would allow a specified user, such as a system user, to impersonate other users. The example snippet below shows these settings. In this example, the specified user can impersonate users belonging to any group and can do so running from any host. Note that the user specified here is different from the user specified above in usage, there it is the user that is being impersonated and here it is the impersonating user such as a system user.</p>
+<pre><code class="xml">&lt;property&gt;
+  &lt;name&gt;hadoop.proxyuser.&lt;username&gt;.groups&lt;/name&gt;
+  &lt;value&gt;*&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;name&gt;hadoop.proxyuser.&lt;username&gt;.hosts&lt;/name&gt;
+  &lt;value&gt;*&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
 <h2 id="security-architecture">Security architecture</h2>
 <p>In this section we will see how security works for applications built on Apex. We will look at the different methodologies involved in running the applications and in each case we will look into the different components that are involved. We will go into the architecture of these components and look at the different security mechanisms that are in play.</p>
 <h3 id="application-launch">Application Launch</h3>
@@ -272,8 +347,12 @@ home directory. The location of this file will be <code>$HOME/.dt/dt-site.xml</c
 <p>When operators are running there will be effective processing rate differences between them due to intrinsic reasons such as operator logic or external reasons such as different resource availability of CPU, memory, network bandwidth etc. as the operators are running in different containers. To maximize performance and utilization the data flow is handled asynchronous to the regular operator function and a buffer is used to intermediately store the data that is being produced by the operator. This buffered data is served by a buffer server over the network connection to the downstream streaming container containing the operator that is supposed to receive the data from this operator. This connection is secured by a token called the buffer server token. These tokens are also generated and seeded by STRAM when the streaming containers are deployed and started and it uses different tokens for different buffer servers to have better security.</p>
 <h5 id="namenode-delegation-token">NameNode Delegation Token</h5>
 <p>Like STRAM, streaming containers also need to communicate with NameNode to use HDFS persistence for reasons such as saving the state of the operators. In secure mode they also use NameNode delegation tokens for authentication. These tokens are also seeded by STRAM for the streaming containers.</p>
+<h4 id="stram-web-services">Stram Web Services</h4>
+<p>Clients connect to STRAM and make web service requests to obtain operational information about running applications. When security is enabled we want this connection to also be authenticated. In this mode the client passes a web service token in the request and STRAM checks this token. If the token is valid, then the request is processed else it is denied.</p>
+<p>How does the client get the web service token in the first place? The client will have to first connect to STRAM via the Resource Manager Web Services Proxy which is a service run by Hadoop to proxy requests to application web services. This connection is authenticated by the proxy service using a protocol called SPNEGO when secure mode is enabled. SPNEGO is Kerberos over HTTP and the client also needs to support it. If the authentication is successful the proxy forwards the request to STRAM. STRAM in processing the request generates and sends back a web service token similar to a delegation token. This token is then used by the client in subsequent requests it makes directly to STRAM and STRAM is able to validate it since it generated the token in the first place.</p>
+<p><img alt="" src="../images/security/image03.png" /></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>We looked at the different security requirements for distributed applications when they run in a secure Hadoop environment and looked at how Apex solves this.</p>
+<p>We looked at the different security configuration options that are available in Apex, saw the different security requirements for distributed applications in a secure Hadoop environment in detail and looked at how the various security mechanisms in Apex solves this.</p>
               
             </div>
           </div>
