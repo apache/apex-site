@@ -25,7 +25,7 @@ If after performing the above analysis, there is a need to write a new operator 
 
 ## Implementing an operator
 
-* Look at the [Operator Development Guide](/docs/apex/operator_development) and the [Best Practices Guide](/docs/malhar/development_best_practices) on how to implement an operator and what the dos and don'ts are.
+* Look at the [Operator Development Guide](/docs/apex/operator_development) and the [Best Practices Guide](/docs/apex/development_best_practices) on how to implement an operator and what the dos and don'ts are.
 * Refer to existing operator implementations when in doubt or unsure about how to implement some functionality. You can also email the [dev mailing list](/community.html#mailing-lists) with any questions.
 * Write unit tests for operators
 	* Refer to unit tests for existing operators.

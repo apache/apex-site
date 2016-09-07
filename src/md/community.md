@@ -25,7 +25,7 @@ List of organizations using Apache Apex is available at [Powered by Apex](/power
 
 # Contributing
 
-Looking for ideas to get involved? Please see [JIRA tickets for newcomers](https://issues.apache.org/jira/issues/?jql=project%20in%20%28APEXCORE%2C%20APEXMALHAR%29%20and%20labels%20%3D%20newbie) and pick a ticket. Please also sign up to the dev mailing list and JIRA. 
+Looking for ideas to get involved? Please see [JIRA tickets for newcomers](https://issues.apache.org/jira/issues/?jql=project%20in%20%28APEXCORE%2C%20APEXMALHAR%29%20and%20resolution%20%3D%20Unresolved%20and%20labels%20%3D%20newbie) and pick a ticket. Please also sign up to the dev mailing list and JIRA. 
 
 **To learn more about contributing to the project, [check out the contributing guidelines](/contributing.html).**
 
