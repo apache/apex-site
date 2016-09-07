@@ -128,6 +128,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
     </ul>
 <li>
           
@@ -234,7 +241,7 @@
 <p>When an operator is partitioned, it is useful to aggregate the values of auto-metrics across all its partitions every window to get a logical view of these metrics. The application master performs these aggregations using metrics aggregators.</p>
 <p>The AutoMetric API helps to achieve this by providing an interface for writing aggregators- <code>AutoMetric.Aggregator</code>. Any implementation of <code>AutoMetric.Aggregator</code> can be set as an operator attribute - <code>METRICS_AGGREGATOR</code> for a particular operator which in turn is used for aggregating physical metrics.</p>
 <h2 id="default-aggregators">Default aggregators</h2>
-<p><a href="https://github.com/apache/incubator-apex-core/blob/master/common/src/main/java/com/datatorrent/common/metric/MetricsAggregator.java"><code>MetricsAggregator</code></a> is a simple implementation of <code>AutoMetric.Aggregator</code> that platform uses as a default for summing up primitive types - int, long, float and double.</p>
+<p><a href="https://github.com/apache/apex-core/blob/master/common/src/main/java/com/datatorrent/common/metric/MetricsAggregator.java"><code>MetricsAggregator</code></a> is a simple implementation of <code>AutoMetric.Aggregator</code> that platform uses as a default for summing up primitive types - int, long, float and double.</p>
 <p><code>MetricsAggregator</code> is just a collection of <code>SingleMetricAggregator</code>s. There are multiple implementations of <code>SingleMetricAggregator</code> that perform sum, min, max, avg which are present in Apex core and Apex malhar.</p>
 <p>For the <code>LineReceiver</code> operator, the application developer need not specify any aggregator. The platform will automatically inject an instance of <code>MetricsAggregator</code> that contains two <code>LongSumAggregator</code>s - one for <code>length</code> and one for <code>count</code>. This aggregator will report sum of length and sum of count across all the partitions of <code>LineReceiver</code>.</p>
 <h2 id="building-custom-aggregators">Building custom aggregators</h2>
@@ -358,7 +365,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../apex_cli/" class="btn btn-neutral float-right" title="Apex CLI">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../development_best_practices/" class="btn btn-neutral float-right" title="Best Practices">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../operator_development/" class="btn btn-neutral" title="Operators"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -390,7 +397,7 @@
         <span><a href="../operator_development/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../apex_cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../development_best_practices/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

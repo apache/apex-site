@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,31 +13,37 @@
         
     <url>
      <loc>/apex_development_setup/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/application_development/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/application_packages/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/operator_development/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/autometrics/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/development_best_practices/</loc>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -47,13 +53,13 @@
         
     <url>
      <loc>/apex_cli/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/security/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -62,7 +68,7 @@
     
     <url>
      <loc>/compatibility/</loc>
-     <lastmod>2016-05-13</lastmod>
+     <lastmod>2016-09-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
