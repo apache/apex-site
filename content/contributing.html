@@ -88,25 +88,47 @@
 <li>Present at conferences or spread the word in other ways</li>
 </ul>
 <p>People that help with the project in any of the above categories or other ways are contributors. See the <a href="http://www.apache.org/foundation/how-it-works.html#roles">roles</a> as defined by the ASF. Community members that make sustained, welcome contributions to the project may be invited to become a <a href="/people.html">committer</a>. </p>
-<h2 id="code-style">Code Style</h2>
-<p>Apache Apex follows coding style that is closest to K &amp; R style and uses <a href="http://checkstyle.sourceforge.net/">Checkstyle</a> tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations.</p>
-<p>The checkstyle configuration that Apache Apex projects use is present here : <a href="https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml">https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml</a></p>
+<h2 id="one-time-setup">One-time Setup</h2>
+<h3 id="jira">JIRA</h3>
+<p>Apache JIRA is used for issue tracking. If you do not already have an Apache JIRA account, sign up <a href="https://issues.apache.org/jira/">here</a>. Note that the user name should have no white spaces or other special characters that complicate auto-completion within JIRA comments etc. </p>
+<p>Please use a single JIRA account only (don&#39;t create multiple with different email addresses) to retain the issue history. Please use a permanent email address, for an existing account it can be changed in the profile. If you absolutely have to change your user name, contact INFRA.</p>
+<p>Apex has 2 JIRA projects:</p>
+<ol>
+<li><a href="https://issues.apache.org/jira/browse/APEXCORE/">APEXCORE</a> for <a href="https://github.com/apache/apex-core">apex-core</a> and <a href="https://github.com/apache/apex-site">apex-site</a></li>
+<li><a href="https://issues.apache.org/jira/browse/APEXMALHAR/">APEXMALHAR</a> for <a href="https://github.com/apache/apex-malhar">apex-malhar</a></li>
+</ol>
+<p>Before working on changes for any of the repositories, please locate an existing JIRA ticket or submit a new one. In order to assign an issue to yourself, you need to be listed as contributor in the JIRA project. PMC members have access to add new contributors, please request to be added through a comment on your candidate ticket or send us an email on the dev@ mailing list.</p>
+<h3 id="github-and-git">Github and git</h3>
+<p>We use GitHub’s pull request functionality to review proposed code changes. If you do not already have a personal GitHub account, sign up <a href="https://github.com/join">here</a>. We recommend that you use the same email address and first/lastname for emails, git and JIRA so that contributions can be better tracked and notifications correlated. It is also recommended that you use an email address that is valid permanently (for example your @gmail.com or @apache.org address). Please also see:</p>
+<ul>
+<li><a href="https://help.github.com/articles/setting-your-email-in-git/">https://help.github.com/articles/setting-your-email-in-git/</a></li>
+<li><a href="https://help.github.com/articles/adding-an-email-address-to-your-github-account/">https://help.github.com/articles/adding-an-email-address-to-your-github-account/</a></li>
+<li><a href="https://help.github.com/articles/keeping-your-email-address-private/">https://help.github.com/articles/keeping-your-email-address-private/</a></li>
+</ul>
+<p>If you are new to git, this <a href="https://try.github.io/">tutorial</a> may be helpful.</p>
+<p>The ASF Apex git repositories have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
+<ol>
+<li>Fork the ASF github mirror: <a href="https://github.com/apache/apex-core">https://github.com/apache/apex-core</a> (or <a href="https://github.com/apache/apex-malhar">https://github.com/apache/apex-malhar</a> or <a href="https://github.com/apache/apex-site">https://github.com/apache/apex-site</a>) </li>
+<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br/>
+<code>git clone https://github.com/{github_username}/apex-core.git</code></li>
+<li>Add the mirror as remote repository, here shown for apex-core:<br/>
+<code>git remote add upstream https://github.com/apache/apex-core</code></li>
+</ol>
+<h3 id="java-development-environment">Java Development Environment</h3>
+<p>For prerequisites and setup instructions see: <a href="http://apex.apache.org/docs/apex/apex_development_setup/">http://apex.apache.org/docs/apex/apex_development_setup/</a></p>
+<p>Apache Apex follows coding style that is closest to K &amp; R style and uses <a href="http://checkstyle.sourceforge.net/">Checkstyle</a> tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations. The checkstyle configuration is <a href="https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml">here</a>.</p>
 <p>To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.</p>
 <ul>
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/intellij">IntelliJ</a></li>
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/eclipse">Eclipse</a></li>
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/netbeans">NetBeans</a></li>
 </ul>
-<h2 id="opening-pull-requests-contributors-">Opening Pull Requests (contributors)</h2>
-<p>The apex-core and apex-malhar repositories both have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
+<h2 id="opening-pull-requests">Opening Pull Requests</h2>
 <ol>
-<li>Create/assign a JIRA (<a href="https://issues.apache.org/jira/browse/APEXCORE/">-core</a>,<a href="https://issues.apache.org/jira/browse/APEXMALHAR/">-malhar</a>) for the work you plan to do (or assign yourself to an existing JIRA ticket)</li>
-<li>Fork the ASF github mirror (one time step):
-<a href="https://github.com/apache/apex-core/">https://github.com/apache/apex-core/</a>  </li>
-<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br><code>git clone https://github.com/{github_username}/apex-core.git</code></li>
-<li>Add <a href="https://github.com/apache/apex-core">apex core</a> as a remote repository (one time step):<br><code>git remote add upstream https://github.com/apache/apex-core</code></li>
-<li>Ensure that your git user name and email are <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#Your-Identity">configured</a>, this will make it much easier to keep track of contributors (one time step).</li>
-<li>Create a new branch from the <a href="https://github.com/apache/apex-core/tree/master">master</a> branch. <strong>Name your branch with the JIRA number in it, e.g. <code>APEXCORE-123.my-feature</code>.</strong><br><code>git checkout -b APEXCORE-123.my-feature -t upstream/master</code><br>Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br><code>git branch -u upstream/master</code></li>
+<li>Create a new branch from the <code>master</code> branch, <strong>name it with the JIRA number, e.g. <code>APEXCORE-123.my-feature</code></strong>:<br/>
+<code>git checkout -b APEXCORE-123.my-feature -t upstream/master</code><br/>
+Creating a local branch that tracks a remote makes pull easier (no need to specify the remote branch while pulling). A branch can be made to track a remote branch anytime, not necessarily at its creation by:<br/>
+<code>git branch -u upstream/master</code></li>
 <li>When adding new files, please include the Apache v2.0 license header.<ul>
 <li>From the top level directory, run <code>mvn license:check -Dlicense.skip=false</code> to check correct header formatting.</li>
 <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
@@ -121,7 +143,8 @@
 </li>
 <li>Add changes after the PR was opened to the same branch, Travis CI will detect changes and build automatically. To force the CI run, close and re-open the PR.</li>
 <li><p>After all review is complete, combine all new commits into one squashed commit except when there are multiple contributors, and include the Jira number in the commit message. There are several ways to squash commits, but <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits">here is one explanation from git-scm.com</a> and a simple example is illustrated below:</p>
-<p>If tracking upstream/master then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/master</code>.<br>This command opens the text editor which lists the multiple commits:</p>
+<p>If tracking upstream/master then run <code>git rebase -i</code>. Else run <code>git rebase -i upstream/master</code>.
+This command opens the text editor which lists the multiple commits:</p>
 <pre><code>pick 67cd79b change1
 pick 6f98905 change2
 
@@ -165,7 +188,8 @@ squash 6f98905 change2
 <li>Ensure appropriate JavaDoc comments have been added</li>
 </ul>
 </li>
-<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is: <code>https://git-wip-us.apache.org/repos/asf/apex-core.git</code></li>
+<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is:<br/>
+<code>https://git-wip-us.apache.org/repos/asf/apex-core.git</code></li>
 <li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
 <li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
