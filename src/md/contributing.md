@@ -51,7 +51,7 @@ The ASF Apex git repositories have mirror repositories on github which are used 
 
 For prerequisites and setup instructions see: http://apex.apache.org/docs/apex/apex_development_setup/
 
-Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Travis CI will fail for any pull request that introduces any style violations. The checkstyle configuration is [here](https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml).
+Apache Apex follows coding style that is closest to K & R style and uses [Checkstyle](http://checkstyle.sourceforge.net/) tool to enforce these standards. Apex checkstyle enforces no trailing whitespace. Travis CI will fail for any pull request that introduces any style violations. The checkstyle configuration is [here](https://github.com/apache/apex-core/blob/master/codestyle-config/src/main/resources/apex_checks.xml).
 
 To make it easier for the users to set up their development environment, settings for the following common IDEs are provided in the Apache Apex Core repository with instructions.
  - [IntelliJ](https://github.com/apache/apex-core/tree/master/misc/ide-templates/intellij)
