@@ -275,6 +275,36 @@ http://mesos.apache.org/documentation/latest/fetcher/
 
         </td>
       </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-498">APEXCORE-498</a>
+        </td>
+        <td title="Named Checkpoints 
+
+1. Ability to tag/name the checkpoints
+2. On demand - checkpoint the DAG
+3. Start the app from the named checkpoints
+
+All checkpoints that happened before the committed window is deleted but the named checkpoints won&#x27;t be deleted.">
+          Named Checkpoints - Checkpoint the DAG with a name/tag and start the app from that point
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-536">APEXCORE-536</a>
+        </td>
+        <td title="Currently Apex depends on Hadoop 2.2 and runs on all later 2.x version. Hadoop 2.2 is quite old, most Apex users have more recent Hadoop installs. Latest distro releases are based on 2.6 and 2.7. There are several important features that were added in Hadoop since 2.2 that Apex should be able to leverage.">
+          Upgrade Hadoop dependency
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
     </tbody>
   </table>
 
@@ -370,35 +400,6 @@ This jira item can contain tasks for providing similar support in Apex">
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2026">APEXMALHAR-2026</a>
-        </td>
-        <td title="Add libraryies for spooling datastructures to a key value store. There are several customer use cases which require spooled data structures.
-
-1 - Some operators like AbstractFileInputOperator have ever growing state. This is an issue because eventually the state of the operator will grow larger than the memory allocated to the operator, which will cause the operator to perpetually fail. However if the operator&#x27;s datastructures are spooled then the operator will never run out of memory.
-
-2 - Some users have requested for the ability to maintain a map as well as a list of keys over which to iterate. Most key value stores don&#x27;t provide this functionality. However, with spooled datastructures this functionality can be provided by maintaining a spooled map and an iterable set of keys.
-
-3 - Some users have requested building graph databases within APEX. This would require implementing a spooled graph data structure.
-
-4 - Another use case for spooled data structures is database operators. Database operators need to write data to a data base, but sometimes the database is down. In this case most of the database operators repeatedly fail until the database comes back up. In order to avoid constant failures the database operator need to writes data to a queue when the data base is down, then when the database is up the operator need to take data from the queue and write it to the database. In the case of a database failure this queue will grow larger than the total amount of memory available to the operator, so the queue should be spooled in order to prevent the operator from failing.
-
-5 - Any operator which needs to maintain a large data structure in memory currently needs to have that data serialized and written out to HDFS with every checkpoint. This is costly when the data structure is large. If the data structure is spooled, then only the changes to the data structure are written out to HDFS instead of the entire data structure.
-
-6 - Also building an Apex Native database for aggregations requires indices. These indices need to take the form of spooled data structures.
-
-7 - In the future any operator which needs to maintain a data structure larger than the memory available to it will need to spool the data structure.">
-          Spill-able Datastructures
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12335815">3.5.0</a>&nbsp;
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2089">APEXMALHAR-2089</a>
         </td>
         <td title="Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.
@@ -412,16 +413,54 @@ This jira item can contain tasks for providing similar support in Apex">
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2142">APEXMALHAR-2142</a>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2130">APEXMALHAR-2130</a>
         </td>
-        <td title="">
-          High-level API window support
+        <td title="This feature is used for supporting windowing.
+
+The storage needs to have the following features:
+1. Spillable key value storage (integrate with APEXMALHAR-2026)
+2. Upon checkpoint, it saves a snapshot for the entire data set with the checkpointing window id.  This should be done incrementally (ManagedState) to avoid wasting space with unchanged data
+3. When recovering, it takes the recovery window id and restores to that snapshot
+4. When a window is committed, all windows with a lower ID should be purged from the store.
+5. It should implement the WindowedStorage and WindowedKeyedStorage interfaces, and because of 2 and 3, we may want to add methods to the WindowedStorage interface so that the implementation of WindowedOperator can notify the storage of checkpointing, recovering and committing of a window.
+">
+          Scalable windowed storage
         </td>
         <td>
     
 
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12335815">3.5.0</a>&nbsp;
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12338174">3.6.0</a>&nbsp;
 
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2260">APEXMALHAR-2260</a>
+        </td>
+        <td title="Support execution of Python code in an operator. 
+
+https://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E
+">
+          Python execution for operator logic 
+        </td>
+        <td>
+    
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2261">APEXMALHAR-2261</a>
+        </td>
+        <td title="A high level API similar to the Apex Java stream API that lets users specify an application in Python.
+
+https://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E
+">
+          Python binding for high level API
+        </td>
+        <td>
+    
 
         </td>
       </tr>
