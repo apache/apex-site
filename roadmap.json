@@ -284,12 +284,12 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12955374",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12955374",
-        "key": "APEXCORE-414",
+        "id": "12955475",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12955475",
+        "key": "APEXCORE-418",
         "fields": {
-          "summary": "Native support for event-time windowing",
-          "description": "Apex core has streaming windows that establish a boundary based on arrival time of events. Many applications require boundaries based on the time of events, which could be a field in the tuple. Some of the operators support this today (time bucketing), but it would be good to provide more generic support for this in the engine itself. ",
+          "summary": "Support for Mesos",
+          "description": "Today Apex has two modes of execution: Embedded mode (everything running in a single JVM) and YARN. There has been a few questions around native support for Mesos. A cursory look suggests that Mesos support can be added by reimplementing the YARN specific portions in the master (AppMasterService, ContainerLauncher) and limited changes to the streaming container driver.\r\n\r\nMesos has a different model of resource allocation: The master offers resources to the framework while in YARN resources are requested. Apex master needs to implement the \"framework scheduler\" that is responsible to accept the resources and control the tasks.\r\n\r\nhttp://mesos.apache.org/documentation/latest/app-framework-development-guide/\r\n\r\nTasks are launched through executors, command line and docker executors are provided.  \r\n\r\nApex also requires support to deploy the dependencies to the nodes on which the streaming containers are launched. YARN supports that through resource localization. Mesos supports this through the fetcher, which can copy the resources to the slave node.\r\n\r\nhttp://mesos.apache.org/documentation/latest/fetcher/\r\n",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -315,12 +315,43 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12955475",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12955475",
-        "key": "APEXCORE-418",
+        "id": "12992322",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12992322",
+        "key": "APEXCORE-498",
         "fields": {
-          "summary": "Support for Mesos",
-          "description": "Today Apex has two modes of execution: Embedded mode (everything running in a single JVM) and YARN. There has been a few questions around native support for Mesos. A cursory look suggests that Mesos support can be added by reimplementing the YARN specific portions in the master (AppMasterService, ContainerLauncher) and limited changes to the streaming container driver.\r\n\r\nMesos has a different model of resource allocation: The master offers resources to the framework while in YARN resources are requested. Apex master needs to implement the \"framework scheduler\" that is responsible to accept the resources and control the tasks.\r\n\r\nhttp://mesos.apache.org/documentation/latest/app-framework-development-guide/\r\n\r\nTasks are launched through executors, command line and docker executors are provided.  \r\n\r\nApex also requires support to deploy the dependencies to the nodes on which the streaming containers are launched. YARN supports that through resource localization. Mesos supports this through the fetcher, which can copy the resources to the slave node.\r\n\r\nhttp://mesos.apache.org/documentation/latest/fetcher/\r\n",
+          "summary": "Named Checkpoints - Checkpoint the DAG with a name/tag and start the app from that point",
+          "description": "Named Checkpoints \r\n\r\n1. Ability to tag/name the checkpoints\r\n2. On demand - checkpoint the DAG\r\n3. Start the app from the named checkpoints\r\n\r\nAll checkpoints that happened before the committed window is deleted but the named checkpoints won't be deleted.",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "13005178",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/13005178",
+        "key": "APEXCORE-536",
+        "fields": {
+          "summary": "Upgrade Hadoop dependency",
+          "description": "Currently Apex depends on Hadoop 2.2 and runs on all later 2.x version. Hadoop 2.2 is quite old, most Apex users have more recent Hadoop installs. Latest distro releases are based on 2.6 and 2.7. There are several important features that were added in Hadoop since 2.2 that Apex should be able to leverage.",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -402,37 +433,6 @@
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926249",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926249",
-        "key": "APEXMALHAR-1720",
-        "fields": {
-          "summary": "Development of Inner Join Operator",
-          "description": null,
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/3",
-            "description": "This issue is being actively worked on at the moment by the assignee.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
-            "name": "In Progress",
-            "id": "3",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
-              "id": 4,
-              "key": "indeterminate",
-              "colorName": "yellow",
-              "name": "In Progress"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12926159",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12926159",
         "key": "APEXMALHAR-1811",
@@ -478,17 +478,17 @@
             "id": "3"
           },
           "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/3",
+            "description": "This issue is being actively worked on at the moment by the assignee.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
+            "name": "In Progress",
+            "id": "3",
             "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Progress"
             }
           }
         }
@@ -588,45 +588,6 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12953482",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12953482",
-        "key": "APEXMALHAR-2026",
-        "fields": {
-          "summary": "Spill-able Datastructures",
-          "description": "Add libraryies for spooling datastructures to a key value store. There are several customer use cases which require spooled data structures.\r\n\r\n1 - Some operators like AbstractFileInputOperator have ever growing state. This is an issue because eventually the state of the operator will grow larger than the memory allocated to the operator, which will cause the operator to perpetually fail. However if the operator's datastructures are spooled then the operator will never run out of memory.\r\n\r\n2 - Some users have requested for the ability to maintain a map as well as a list of keys over which to iterate. Most key value stores don't provide this functionality. However, with spooled datastructures this functionality can be provided by maintaining a spooled map and an iterable set of keys.\r\n\r\n3 - Some users have requested building graph databases within APEX. This would require implementing a spooled graph data structure.\r\n\r\n4 - Another use case for spooled data structures is database operators. Database operators need to write data to a data base, but sometimes the database is down. In this case most of the database operators repeatedly fail until the database comes back up. In order to avoid constant failures the database operator need to writes data to a queue when the data base is down, then when the database is up the operator need to take data from the queue and write it to the database. In the case of a database failure this queue will grow larger than the total amount of memory available to the operator, so the queue should be spooled in order to prevent the operator from failing.\r\n\r\n5 - Any operator which needs to maintain a large data structure in memory currently needs to have that data serialized and written out to HDFS with every checkpoint. This is costly when the data structure is large. If the data structure is spooled, then only the changes to the data structure are written out to HDFS instead of the entire data structure.\r\n\r\n6 - Also building an Apex Native database for aggregations requires indices. These indices need to take the form of spooled data structures.\r\n\r\n7 - In the future any operator which needs to maintain a data structure larger than the memory available to it will need to spool the data structure.",
-          "fixVersions": [
-            {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
-              "id": "12335815",
-              "name": "3.5.0",
-              "archived": false,
-              "released": false
-            }
-          ],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/5",
-            "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/resolved.png",
-            "name": "Resolved",
-            "id": "5",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12969033",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12969033",
         "key": "APEXMALHAR-2089",
@@ -658,21 +619,83 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12988875",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12988875",
-        "key": "APEXMALHAR-2142",
+        "id": "12985430",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/12985430",
+        "key": "APEXMALHAR-2130",
         "fields": {
-          "summary": "High-level API window support",
-          "description": null,
+          "summary": "Scalable windowed storage",
+          "description": "This feature is used for supporting windowing.\r\n\r\nThe storage needs to have the following features:\r\n1. Spillable key value storage (integrate with APEXMALHAR-2026)\r\n2. Upon checkpoint, it saves a snapshot for the entire data set with the checkpointing window id.  This should be done incrementally (ManagedState) to avoid wasting space with unchanged data\r\n3. When recovering, it takes the recovery window id and restores to that snapshot\r\n4. When a window is committed, all windows with a lower ID should be purged from the store.\r\n5. It should implement the WindowedStorage and WindowedKeyedStorage interfaces, and because of 2 and 3, we may want to add methods to the WindowedStorage interface so that the implementation of WindowedOperator can notify the storage of checkpointing, recovering and committing of a window.\r\n",
           "fixVersions": [
             {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
-              "id": "12335815",
-              "name": "3.5.0",
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12338174",
+              "id": "12338174",
+              "name": "3.6.0",
               "archived": false,
               "released": false
             }
           ],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/4",
+            "description": "This issue was once resolved, but the resolution was deemed incorrect. From here issues are either marked assigned or resolved.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/reopened.png",
+            "name": "Reopened",
+            "id": "4",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "13006875",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/13006875",
+        "key": "APEXMALHAR-2260",
+        "fields": {
+          "summary": "Python execution for operator logic ",
+          "description": "Support execution of Python code in an operator. \r\n\r\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\r\n",
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "New"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "13006876",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/13006876",
+        "key": "APEXMALHAR-2261",
+        "fields": {
+          "summary": "Python binding for high level API",
+          "description": "A high level API similar to the Apex Java stream API that lets users specify an application in Python.\r\n\r\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\r\n",
+          "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
             "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
@@ -717,22 +740,22 @@
         "self": "https://issues.apache.org/jira/rest/api/2/version/12334968",
         "id": "12334968",
         "name": "3.3.2",
-        "archived": false,
+        "archived": true,
         "released": false,
         "projectId": 12318824
       },
       {
         "self": "https://issues.apache.org/jira/rest/api/2/version/12335827",
         "id": "12335827",
-        "name": "3.4.1",
+        "name": "3.5.1",
         "archived": false,
         "released": false,
         "projectId": 12318824
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12335815",
-        "id": "12335815",
-        "name": "3.5.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12338174",
+        "id": "12338174",
+        "name": "3.6.0",
         "archived": false,
         "released": false,
         "projectId": 12318824
