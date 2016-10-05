@@ -1,7 +1,12 @@
 [
   { "id": "index", "label": "Home", "href": "/" },
+  { "id": "Powered by Apex", "label": "Powered By Apex", "href": "/powered-by-apex.html" },
+  { "id": "roadmap", "label": "Roadmap", "href": "/roadmap.html" },
   { "id": "announcements", "label": "Announcements", "href": "/announcements.html" },
-  { "id": "community", "label": "Community", "href": "/community.html" },
+  { "id": "community", "label": "Community", "href": "/community.html", "items": [
+    { "label": "Contributing", "href": "/community.html#contributing" },
+    { "label": "Newest \"apache-apex\" Questions - Stack Overflow", "href": "http://stackoverflow.com/questions/tagged/apache-apex" }
+  ]},
   { "id": "docs", "label": "Docs", "href": "/docs.html" },
   { "id": "source", "label": "Source", "items": [
     { "label": "Apex Core (ASF)", "href": "https://git-wip-us.apache.org/repos/asf?p=apex-core.git" },

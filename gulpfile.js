@@ -99,7 +99,8 @@ gulp.task('less', function () {
 // Copies necessary dependencies to dist
 gulp.task('copy:js', function() {
   return gulp.src([
-    './bower_components/bootstrap/dist/js/bootstrap.min.js'
+    './bower_components/bootstrap/dist/js/bootstrap.min.js',
+    './src/js/*.js'
   ])
     .pipe(gulp.dest(path.join(BUILD_LOCATION, 'js')));
 });
