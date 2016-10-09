@@ -7,10 +7,10 @@ This page lists organizations and software projects which work with Apache Apex.
 
 Apex powers
 
-* GE
-* Capital One
-* Silver Spring Networks
-* PubMatic
+* GE - use case presentation <a href="http://www.slideshare.net/ApacheApex/ge-iot-predix-time-series-data-ingestion-service-using-apache-apex-hadoop">slides</a> and <a href="https://www.youtube.com/watch?v=hmaSkXhHNu0">video</a> 
+* Capital One - use case presentation <a href="http://www.slideshare.net/ApacheApex/capital-ones-next-generation-decision-in-less-than-2-ms">slides</a> and <a href="https://www.youtube.com/watch?v=98EW5NGM3u0">video</a> 
+* Silver Spring Networks - use case presentation <a href="http://www.slideshare.net/ApacheApex/iot-big-data-ingestion-and-processing-in-hadoop-by-silver-spring-networks">slides</a> and <a href="https://www.youtube.com/watch?v=8VORISKeSjI">video</a>
+* PubMatic - use case presentation <a href="https://www.youtube.com/watch?v=JSXpgfQFcU8">video</a>
 * ThreatMetrix
 * FacilitiesSupplies
 * DataTorrent
@@ -25,7 +25,7 @@ Apex powers
 * Target
 
 
-## Software Integrations
+## Integrations
 
 Apex integrates with
 
