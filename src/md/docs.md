@@ -1,4 +1,4 @@
-# Documentation
+### Documentation
 
 - **[Apache Apex Core Documentation](/docs/apex/)** including overviews of the product, security, application development, operators and the commandline tool.
 - **[Apache Apex Malhar Documentation](/docs/malhar/)** for the operator library including a diagrammatic taxonomy and some in-depth tutorials for selected operators (such as Kafka Input).
