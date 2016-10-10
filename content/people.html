@@ -12,7 +12,7 @@
 
     <!-- Main Stylesheet -->
     <link href="css/main.css" rel="stylesheet">
-
+    
   </head>
 
   <body>
@@ -38,32 +38,48 @@
             <a class="nav-link " href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/announcements.html">Announcements</a>
+            <a class="nav-link " href="/powered-by-apex.html">Powered By Apex</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/community.html">Community</a>
+            <a class="nav-link " href="/roadmap.html">Roadmap</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/announcements.html">Announcements</a>
+          </li>
+
+            <li class="nav-item nav-mouseover">
+              <ul class="dropdown-menu">
+                <li><a href="/community.html#contributing">Contributing</a></li>
+                <li><a href="http://stackoverflow.com/questions/tagged/apache-apex">Newest &quot;apache-apex&quot; Questions - Stack Overflow</a></li>
+              </ul>
+              <a href="/community.html" class="nav-link">Community</a>
+            </li>
+          
           <li class="nav-item">
             <a class="nav-link " href="/docs.html">Docs</a>
           </li>
-          <li class="nav-item">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
-             <ul class="dropdown-menu">
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
-              <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
-              <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
-              <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
-             <ul class="dropdown-menu">
-              <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
-              <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
-              <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
-              <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
-            </ul>
-          </li>
+
+            <li class="nav-item">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Source<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-core.git">Apex Core (ASF)</a></li>
+                <li><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
+                <li><a href="https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git">Apex Malhar (ASF)</a></li>
+                <li><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
+              </ul>
+            </li>
+          
+
+            <li class="nav-item">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link">Apache<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://www.apache.org/foundation/how-it-works.html">Apache Foundation</a></li>
+                <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
+                <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
+              </ul>
+            </li>
+          
           <li class="nav-item">
             <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
           </li>
@@ -136,6 +152,8 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="js/docs.js"></script>
+
   <script>
     $('#copyright-year').text((new Date()).getFullYear());
   </script>
