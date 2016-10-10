@@ -150,7 +150,8 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
 <li>Run <code>mvn license:format -Dlicense.skip=false</code> to automatically add the header when missing.</li>
 </ul>
 </li>
-<li>Once your feature is complete, submit the pull request on github against <code>master</code>. Use the JIRA number (e.g. APEXCORE-123) as prefix in the pull request title. This will ensure the information is attached to the JIRA ticket automatically.</li>
+<li>Once your feature is complete, submit the pull request on github against <code>master</code>. <strong>Use the JIRA number (e.g. APEXCORE-123) as prefix in the pull request title</strong>. This will ensure the information is attached to the JIRA ticket automatically. If commits result from running scripts, file formatting or similar, use following attribution:<br/>
+<code>git commit --amend --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot;</code></li>
 <li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
 <li>Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.<ul>
 <li>If build fails due to license headers, follow instructions above.</li>
@@ -202,11 +203,12 @@ squash 6f98905 change2
 <li>Travis CI pull request build needs to pass</li>
 <li>Ensure tests are added/modified for new features or fixes</li>
 <li>Ensure appropriate JavaDoc comments have been added</li>
+<li>Nice to have: Ensure the PR is rebased to apache/master to avoid extra merge commits (especially if the contributor is right next to you).</li>
 </ul>
 </li>
 <li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is:<br/>
 <code>https://git-wip-us.apache.org/repos/asf/apex-core.git</code></li>
-<li>Use the git command line to pull in the changes from the pull requests. You can refer to the corresponding email that will be automatically sent to the <code>dev@apex.apache.org</code> mailing list to see the exact commands to merge the given pull request.</li>
+<li>Use the git command line to pull in the changes from the pull requests. You can refer to opened PR notification that was automatically sent to the <code>dev@apex.apache.org</code> mailing list to see the exact merge commands.</li>
 <li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few
 seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
 <li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.</li>
