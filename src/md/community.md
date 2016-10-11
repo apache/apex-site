@@ -9,37 +9,52 @@ The following mailing lists are available for Apex.
 - [commits@apex.apache.org](http://mail-archives.apache.org/mod_mbox/apex-commits/) is for commit messages and patches to Apex. [subscribe](mailto:commits-subscribe@apex.apache.org?subject=send%20this%20email%20to%20subscribe), [unsubscribe](mailto:commits-unsubscribe@apex.apache.org?subject=send%20this%20email%20to%20unsubscribe), [ponymail](https://lists.apache.org/list.html?commits@apex.apache.org), [nabble](https://s.apache.org/apex-commits), [archives](http://mail-archives.apache.org/mod_mbox/apex-commits/)
 - [security@apex.apache.org](mailto:security@apex.apache.org) is for reporting security related issues with Apex. It is a private list to discuss security related issues. Please post potential security vulnerabilities to this list so that they can be investigated and fixed before the vulnerabilities are published to the public. You can post to the list without subscribing to it.
 
-## Meetup Groups
+## Events
 
-To see upcoming meetup events, please visit the [announcements page](/announcements.html).  Full list of Apache Apex meetup groups is available at [Apache Apex Meetup Groups](http://www.meetup.com/pro/apacheapex/)
+### Meetup Groups
+
+Meetups are events organized and hosted by community members world-wide. They are a great platform to present the project and use cases. See http://apache-apex.meetup.com to find a meetup in your area. Here is a list of large Apache Apex meetups:
+
+- [Bay Area Apex Meetup](https://www.meetup.com/Apache-Apex-Bay-Area/) - the first Apex meetup group ever!
+- [Pune Apex Meetup](https://www.meetup.com/Apache-Apex-Pune/)
+- [Bangalore Apex Meetup](https://www.meetup.com/Apache-Apex-Bengaluru/)
+- [Hyderabad Apex Meetup](https://www.meetup.com/Apache-Apex-Hyderabad/)
+- [Chennai Apex Meetup](https://www.meetup.com/Apache-Apex-Chennai/)
+- [New York Apex Meetup](https://www.meetup.com/Apache-Apex-New-York/)
+- [Chicago Apex Meetup](https://www.meetup.com/Apache-Apex-Chicago/)
+- [Mumbai Apex Meetup](https://www.meetup.com/Apache-Apex-Mumbai/)
+- [Delhi Apex Meetup](https://www.meetup.com/Apache-Apex-Delhi/)
+- [Dallas Apex Meetup](https://www.meetup.com/Apache-Apex-Dallas/)
+- [Boston Apex Meetup](https://www.meetup.com/Apache-Apex-Boston/)
+- [Paris Apex Meetup](https://www.meetup.com/Apache-Apex-Next-Gen-Native-Hadoop-Big-Data-Paris-Chapter/)
+- [Seattle Apex Meetup](https://www.meetup.com/Apache-Apex-Seattle/)
+- [Toronto Apex Meetup](https://www.meetup.com/Apache-Apex-Toronto/)
+- [San Francisco Apex Meetup](https://www.meetup.com/Apache-Apex-SF/)
 
 ## People
 
 [List of committers](/people.html)
 
-
 ## Powered By Apex
 
 List of organizations using Apache Apex is available at [Powered by Apex](/powered-by-apex.html).
 
-
-# Contributing
+## Contributing
 
 Looking for ideas to get involved? Please see [JIRA tickets for newcomers](https://issues.apache.org/jira/issues/?jql=project%20in%20%28APEXCORE%2C%20APEXMALHAR%29%20and%20resolution%20%3D%20Unresolved%20and%20labels%20%3D%20newbie) and pick a ticket. Please also sign up to the dev mailing list and JIRA. 
 
 **To learn more about contributing to the project, [check out the contributing guidelines](/contributing.html).**
 
-The Apex Project is made up of two repositories:
-
-- [Apex Core](https://github.com/apache/apex-core) - The core of the Apex platform.
-- [Apex Malhar](https://github.com/apache/apex-malhar) - Community-driven set of open-source "operators" and utilities for use in your Apex applications.
-
-If you are new to the project and thinking about contributing, Apex Malhar is a good place to start. To make contributions to this module, please [follow these guidelines](/malhar-contributing.html).
+For contributions to the Apex Malhar library (operators, connectors etc.), please [see these guidelines](/malhar-contributing.html).
 
 ## Issue Tracking
 
 - [Apex Core JIRA](https://issues.apache.org/jira/browse/APEXCORE/)
 - [Apex Malhar JIRA](https://issues.apache.org/jira/browse/APEXMALHAR/)
+
+### Roadmap
+
+- [Apex Roadmap](roadmap.html) comprises key features planned for the future releases
 
 ## Release Process
 
@@ -56,8 +71,4 @@ The process for handling security vulnerabilities is the one recommended by Apac
 ## Project Maturity Model
 
 To see self assessment of the project, [check out project maturity model](/maturity.html)
-
-### Roadmap
-
-- [Apex Roadmap](roadmap.html) comprises key features planned for the future releases
 
