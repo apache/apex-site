@@ -41,7 +41,11 @@
             <li class="nav-item nav-mouseover">
               <ul class="dropdown-menu">
                 {{#each items}}
-                <li><a href="{{href}}">{{label}}</a></li>
+                {{#if href}}
+                <li class="{{classes}}"><a href="{{href}}">{{label}}</a></li>
+                {{else}}
+                <li class="{{classes}}"><strong>{{label}}</strong></li>
+                {{/if}}
                 {{/each}}
               </ul>
               <a href="{{href}}" class="nav-link">{{label}}</a>

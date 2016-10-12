@@ -1,24 +1,22 @@
 [
   { "id": "index", "label": "Home", "href": "/" },
+  { "id": "docs", "label": "Documentation", "href": "/docs.html" },
   { "id": "Powered by Apex", "label": "Powered By Apex", "href": "/powered-by-apex.html" },
   { "id": "roadmap", "label": "Roadmap", "href": "/roadmap.html" },
   { "id": "announcements", "label": "Announcements", "href": "/announcements.html" },
   { "id": "community", "label": "Community", "href": "/community.html", "items": [
-    { "label": "Contributing", "href": "/community.html#contributing" },
-    { "label": "Newest \"apache-apex\" Questions - Stack Overflow", "href": "http://stackoverflow.com/questions/tagged/apache-apex" }
+    { "label": "Mailing Lists", "href": "/community.html#mailing-lists" },
+    { "label": "Issue Tracking", "href": "/community.html#issue-tracking" },
+    { "label": "Stack Overflow", "href": "http://stackoverflow.com/questions/tagged/apache-apex"},
+    { "label": "Contributing", "href": "/community.html#contributing"},
+    { "label": "Apache", "classes":  "dropdown-header"},
+    { "label": "Apache Foundation", "href": "http://www.apache.org/foundation/how-it-works.html" }
   ]},
-  { "id": "docs", "label": "Docs", "href": "/docs.html" },
-  { "id": "source", "label": "Source", "items": [
+  { "id": "source", "label": "Github", "href": "https://github.com/apache/apex-core", "items": [
     { "label": "Apex Core (ASF)", "href": "https://git-wip-us.apache.org/repos/asf?p=apex-core.git" },
     { "label": "Apex Core (Github Mirror)", "href": "https://github.com/apache/apex-core" },
     { "label": "Apex Malhar (ASF)", "href": "https://git-wip-us.apache.org/repos/asf?p=apex-malhar.git" },
     { "label": "Apex Malhar (Github Mirror)", "href": "https://github.com/apache/apex-malhar" }
   ] },
-  { "id": "apache", "label": "Apache", "items": [
-    { "label": "Apache Foundation", "href": "http://www.apache.org/foundation/how-it-works.html" },
-    { "label": "Apache License", "href": "http://www.apache.org/licenses/" },
-    { "label": "Sponsorship", "href": "http://www.apache.org/foundation/sponsorship.html" },
-    { "label": "Thanks", "href": "http://www.apache.org/foundation/thanks.html" }
-  ]},
   { "id": "download", "label": "Download", "href": "/downloads.html", "classes": "btn btn-success" }
 ]

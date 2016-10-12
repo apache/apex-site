@@ -43,6 +43,6 @@ use them via callbacks. Contrasts windows with micro-batches.
 - <a href="https://blogs.apache.org/foundation/entry/celebrating_17_years_of_the">Apache Software Foundation</a> Discusses the history of the foundation, guiding principles, current statistics and provides numerous additional links for details of how the foundation operates and is managed.
 - <a href="https://techblog.xavient.com/real-time-data-ingestion-dip-apache-apex-co-dev-opportunity">Data Ingestion Platform  - Xavient Information Systems</a> Discusses usage of Apache Apex in their data ingestion platform.
 
-### Trouble Shooting
+### Troubleshooting
 
 - <a href="http://docs.datatorrent.com/troubleshooting/" rel="nofollow">Troubleshooting Guide</a>
