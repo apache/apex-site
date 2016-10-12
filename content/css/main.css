@@ -6828,6 +6828,12 @@ button.close {
   left: 0 !important;
   right: auto !important;
 }
+.dropdown-header {
+  margin: 10px 0 0 20px;
+  padding: 5px 0 0;
+  border-top: 1px solid #dad9d6;
+  font-size: 14px;
+}
 #main-footer {
   text-align: center;
   color: #777777;
@@ -6929,8 +6935,8 @@ table > tbody > tr:nth-of-type(odd) {
     display: none;
   }
 }
-.fixed-links {
-  text-align: center;
+.fixed-links ul {
+  padding-left: 0;
 }
 div.docs-nav ul li {
   display: inline-block;
@@ -6938,6 +6944,10 @@ div.docs-nav ul li {
   width: 160px;
   margin: 0 -4px;
   padding: 0;
+  text-align: center;
+}
+div.docs-nav ul li.docs {
+  margin-left: 0;
 }
 div.docs-nav ul li.write-apex {
   width: 250px;
@@ -6957,7 +6967,7 @@ div.docs-nav ul li a {
   background-color: whitesmoke;
   position: fixed;
   width: 100%;
-  left: 0;
+  left: 58px;
   top: 0;
   z-index: 100;
 }
