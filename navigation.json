@@ -3,13 +3,12 @@
   { "id": "docs", "label": "Documentation", "href": "/docs.html" },
   { "id": "Powered by Apex", "label": "Powered By Apex", "href": "/powered-by-apex.html" },
   { "id": "roadmap", "label": "Roadmap", "href": "/roadmap.html" },
-  { "id": "announcements", "label": "Announcements", "href": "/announcements.html" },
   { "id": "community", "label": "Community", "href": "/community.html", "items": [
     { "label": "Mailing Lists", "href": "/community.html#mailing-lists" },
     { "label": "Issue Tracking", "href": "/community.html#issue-tracking" },
     { "label": "Stack Overflow", "href": "http://stackoverflow.com/questions/tagged/apache-apex"},
+    { "label": "Events", "href": "/community.html#events" },
     { "label": "Contributing", "href": "/community.html#contributing"},
-    { "label": "Apache", "classes":  "dropdown-header"},
     { "label": "Apache Foundation", "href": "http://www.apache.org/foundation/how-it-works.html" }
   ]},
   { "id": "source", "label": "Github", "href": "https://github.com/apache/apex-core", "items": [
