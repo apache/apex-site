@@ -11,6 +11,7 @@ Apex powers
 * Capital One - use case presentation <a href="http://www.slideshare.net/ApacheApex/capital-ones-next-generation-decision-in-less-than-2-ms">slides</a> and <a href="https://www.youtube.com/watch?v=98EW5NGM3u0">video</a> 
 * Silver Spring Networks - use case presentation <a href="http://www.slideshare.net/ApacheApex/iot-big-data-ingestion-and-processing-in-hadoop-by-silver-spring-networks">slides</a> and <a href="https://www.youtube.com/watch?v=8VORISKeSjI">video</a>
 * PubMatic - use case presentation <a href="https://www.youtube.com/watch?v=JSXpgfQFcU8">video</a>
+* Xavient - Blog on <a href="https://techblog.xavient.com/real-time-data-ingestion-dip-apache-apex-co-dev-opportunity/"> Real Time Data Ingestion</a>
 * ThreatMetrix
 * FacilitiesSupplies
 * DataTorrent
@@ -66,3 +67,4 @@ Apex is being used in research projects at
 * Delft University of Technology
 * Pune Institute of Computer Technology
 * Vishwakarma Institute of Information Technology, Pune
+* Symbiosis Institute of Technology, Lavale, Pune
