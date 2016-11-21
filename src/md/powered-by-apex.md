@@ -24,6 +24,9 @@ Apex powers
 * Trace3
 * LeadFerret
 * Target
+* geniSIGHTS
+* Aaum Analytics
+* Genius Minds
 
 
 ## Integrations
