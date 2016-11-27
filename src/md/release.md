@@ -31,11 +31,15 @@ mvn versions:set -DnewVersion=${rv} -Pall-modules
 ```
 Commit and push the change:
 ```
-git commit -am "Preparing for 3.5.0 development"
+git commit --author "Apex Dev <dev@apex.apache.org>" -am "Preparing for 3.5.0 development"
 git push apache master
 ```
 
 ## Preparing Release Candidate
+
+```
+git checkout release-3.4
+```
 
 ### Add missing @since tags
 
@@ -66,7 +70,7 @@ Example: http://s.apache.org/8uT
 
 Commit tags and change log:
 ```
-git commit -am "Add @since tags and update change log for release 3.4.0"
+git commit --author "Apex Dev <dev@apex.apache.org>" -am "Add @since tags and update change log for release 3.4.0"
 ```
 
 ### Update version number for RC
@@ -85,7 +89,7 @@ mvn versions:set -Pall-modules -DnewVersion=${rv}
 ```
 Commit version change:
 ```
-git commit -am "Preparing to release ${rv}-RC1"
+git commit --author "Apex Dev <dev@apex.apache.org>" -am "Preparing to release ${rv}-RC1"
 git tag -a "v${rv}-RC1" -m "Release ${rv}-RC1"
 ```
 Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.
@@ -196,7 +200,7 @@ git checkout asf-site
 rm -rf docs/${DOC_NAME}-${docv}
 cp -r ../${REPO_NAME}/site docs/${DOC_NAME}-${docv}
 git add -A
-git commit -m "Adding ${DOC_NAME}-${rv} documentation"
+git commit --author "Apex Dev <dev@apex.apache.org>" -m "Adding ${DOC_NAME}-${rv} documentation"
 git push
 ```
 
@@ -248,7 +252,7 @@ published libraries.
 
 Commit all changes and push them to the remote git repository:
 ```bash
-git commit -am "Preparing for 3.4.1 development"
+git commit --author "Apex Dev <dev@apex.apache.org>" -am "Preparing for 3.4.1 development"
 git push apache
 ```
 Merge `@since` tag and change log changes to `master`.
@@ -265,7 +269,7 @@ cd docs
 # Set the release version to be the latest available version
 ln -nsf ${DOC_NAME}-${docv} ${DOC_NAME}
 git add -A
-git commit -m "Promoting ${DOC_NAME}-${docv} documentation"
+git commit --author "Apex Dev <dev@apex.apache.org>" -m "Promoting ${DOC_NAME}-${docv} documentation"
 git push
 ```
 
