@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Json Parser - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Json Parser";
+    var mkdocs_page_input_path = "operators/jsonParser.md";
+    var mkdocs_page_url = "/operators/jsonParser/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jmsInputOperator/">JMS Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../block_reader/">Block Reader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../fsInputOperator/">File Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvParserOperator/">Csv Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../enricher/">Enricher</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../filter/">Filter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../deduper/">Deduper</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../windowedOperator/">Windowed Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Json Parser</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#json-parser">Json Parser</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-objective">Operator Objective</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-diagram">Class Diagram</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-information">Operator Information</a></li>
+                
+                    <li><a class="toctree-l4" href="#properties-attributes-and-ports">Properties, Attributes and Ports</a></li>
+                
+                    <li><a class="toctree-l4" href="#partitioning">Partitioning</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonFormatter/">Json Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../transform/">Transform Operator</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operators &raquo;</li>
+        
+      
+    
+    <li>Json Parser</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="json-parser">Json Parser</h1>
+<h2 id="operator-objective">Operator Objective</h2>
+<p>Purpose of JsonParser operator is to parse JSON records and construct a Plain Old Java Object ("POJO") out of it. The operator also emits each record as JSONObject if the relevant output port is connected. User can also provide a schema describing JSON data to validate incoming JSON records. Valid records will be emitted as POJO / JSONObject while invalid ones are emitted on error port with the error message if the error port is connected.</p>
+<p>Json Parser is <strong>idempotent</strong>, <strong>fault-tolerant</strong> &amp; <strong>statically/dynamically partitionable</strong>.</p>
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img alt="" src="../images/jsonParser/JsonParser.png" /></p>
+<h2 id="operator-information">Operator Information</h2>
+<ol>
+<li>Operator location:<strong><em>malhar-contrib</em></strong></li>
+<li>Available since:<strong><em>3.2.0</em></strong></li>
+<li>Operator state:<strong><em>Evolving</em></strong></li>
+<li>Java Package:<a href="https://github.com/apache/apex-malhar/blob/master/contrib/src/main/java/com/datatorrent/contrib/parser/JsonParser.java">com.datatorrent.contrib.parser.JsonParser</a></li>
+</ol>
+<h2 id="properties-attributes-and-ports">Properties, Attributes and Ports</h2>
+<h3 id="properties-of-json-parser"><a name="props"></a>Properties of Json Parser</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+<th><strong>Default Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>jsonSchema</em></td>
+<td><a href="http://json-schema.org/">Schema</a>  describing JSON data. Incoming records can be validated using the jsonSchema. If the data is not as per the requirements specified in jsonSchema, they are emitted on the error port.This is an optional property. If the schema is not provided, incoming tuples are simply converted to POJO or JSONObject without any validations</td>
+<td>String</td>
+<td>NO</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>out.TUPLE_CLASS</em></td>
+<td>TUPLE_CLASS attribute on output port which tells operator the class of POJO which needs to be emitted. The name of the field members of the class must match with the names in incoming POJO. The operator ignores unknown properties.</td>
+<td>Class or FQCN</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ports">Ports</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Port</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>in</em></td>
+<td>Tuples that needs to be parsed are recieved on this port</td>
+<td>byte[]</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><em>out</em></td>
+<td>Valid Tuples that are emitted as pojo. Tuples are converted to POJO only if the port is connected.</td>
+<td>Object (POJO)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>parsedOutput</em></td>
+<td>Valid Tuples that are emitted as JSONObject. Tuples are converted to JSONObject only if the port is connected.</td>
+<td>JSONObject</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>err</em></td>
+<td>Invalid Tuples are emitted with error message. Invaid tuples are discarded if the port is not connected.</td>
+<td>KeyValPair &lt;String, String></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="partitioning">Partitioning</h2>
+<p>JSON Parser is both statically and dynamically partitionable.</p>
+<h3 id="static-partitioning">Static Partitioning</h3>
+<p>This can be achieved in 2 ways</p>
+<ol>
+<li>Specifying the partitioner and number of partitions in the populateDAG() method</li>
+</ol>
+<pre><code class="java">JsonParser jsonParser = dag.addOperator(&quot;jsonParser&quot;, JsonParser.class);
+StatelessPartitioner&lt;JsonParser&gt; partitioner1 = new StatelessPartitioner&lt;JsonParser&gt;(2);
+dag.setAttribute(jsonParser, Context.OperatorContext.PARTITIONER, partitioner1 );
+</code></pre>
+
+<ol>
+<li>Specifying the partitioner in properties file.</li>
+</ol>
+<pre><code class="xml"> &lt;property&gt;
+   &lt;name&gt;dt.operator.{OperatorName}.attr.PARTITIONER&lt;/name&gt;
+   &lt;value&gt;com.datatorrent.common.partitioner.StatelessPartitioner:2&lt;/value&gt;
+ &lt;/property&gt;
+</code></pre>
+
+<p>where {OperatorName} is the name of the JsonParser operator.
+ Above lines will partition JsonParser statically 2 times. Above value can be changed accordingly to change the number of static partitions.</p>
+<h3 id="dynamic-paritioning">Dynamic Paritioning</h3>
+<p>JsonParser can be dynamically partitioned using an out-of-the-box partitioner:</p>
+<h4 id="throughput-based">Throughput based</h4>
+<p>Following code can be added to populateDAG method of application to dynamically partition JsonParser:</p>
+<pre><code class="java">JsonParser jsonParser = dag.addOperator(&quot;jsonParser&quot;, JsonParser.class);
+StatelessThroughputBasedPartitioner&lt;JsonParser&gt; partitioner = new StatelessThroughputBasedPartitioner&lt;&gt;();
+partitioner.setCooldownMillis(conf.getLong(COOL_DOWN_MILLIS, 10000));
+partitioner.setMaximumEvents(conf.getLong(MAX_THROUGHPUT, 30000));
+partitioner.setMinimumEvents(conf.getLong(MIN_THROUGHPUT, 10000));
+dag.setAttribute(jsonParser, OperatorContext.STATS_LISTENERS, Arrays.asList(new StatsListener[]{partitioner}));
+dag.setAttribute(jsonParser, OperatorContext.PARTITIONER, partitioner);
+</code></pre>
+
+<p>Above code will dynamically partition JsonParser when the throughput changes.
+If the overall throughput of JsonParser goes beyond 30000 or less than 10000, the platform will repartition JsonParser
+to balance throughput of a single partition to be between 10000 and 30000.
+CooldownMillis of 10000 will be used as the threshold time for which the throughput change is observed.</p>
+<h2 id="example">Example</h2>
+<p>Example for Json Parser can be found at: <a href="https://github.com/DataTorrent/examples/tree/master/tutorials/parser">https://github.com/DataTorrent/examples/tree/master/tutorials/parser</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../jsonFormatter/" class="btn btn-neutral float-right" title="Json Formatter">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../windowedOperator/" class="btn btn-neutral" title="Windowed Operator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../windowedOperator/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../jsonFormatter/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

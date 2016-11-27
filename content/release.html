@@ -100,10 +100,11 @@ for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;$
 <p>For -malhar:</p>
 <pre><code>mvn versions:set -DnewVersion=${rv} -Pall-modules
 </code></pre><p>Commit and push the change:</p>
-<pre><code>git commit -am &quot;Preparing for 3.5.0 development&quot;
+<pre><code>git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Preparing for 3.5.0 development&quot;
 git push apache master
 </code></pre><h2 id="preparing-release-candidate">Preparing Release Candidate</h2>
-<h3 id="add-missing-since-tags">Add missing @since tags</h3>
+<pre><code>git checkout release-3.4
+</code></pre><h3 id="add-missing-since-tags">Add missing @since tags</h3>
 <p>For Java classes added since the last release, the @since tags need to be added. The javadoc plugin inserts missing tags, but does not play well with the license header when no class level documentation block is present. This is tracked as</p>
 <p><a href="https://issues.apache.org/jira/browse/APEXCORE-183">https://issues.apache.org/jira/browse/APEXCORE-183</a></p>
 <p>It also removes the custom @tags doclet tag when the existing JavaDoc is malformed, <strong>do not use this to make changes in Malhar</strong>. Until these problems are resolved, use the following Ruby script to do the replacement: <a href="https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb">https://issues.apache.org/jira/secure/attachment/12781158/add-since.rb</a></p>
@@ -117,7 +118,7 @@ git push apache master
 <p>Create shortlink for the JIRA release notes on <a href="http://s.apache.org/">http://s.apache.org/</a> for use in the VOTE thread. 
 Example: <a href="http://s.apache.org/8uT">http://s.apache.org/8uT</a></p>
 <p>Commit tags and change log:</p>
-<pre><code>git commit -am &quot;Add @since tags and update change log for release 3.4.0&quot;
+<pre><code>git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Add @since tags and update change log for release 3.4.0&quot;
 </code></pre><h3 id="update-version-number-for-rc">Update version number for RC</h3>
 <pre><code>dv=3.4.0-SNAPSHOT
 rv=3.4.0
@@ -126,7 +127,7 @@ rv=3.4.0
 </code></pre><p>And this for -malhar releases:</p>
 <pre><code>mvn versions:set -Pall-modules -DnewVersion=${rv}
 </code></pre><p>Commit version change:</p>
-<pre><code>git commit -am &quot;Preparing to release ${rv}-RC1&quot;
+<pre><code>git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Preparing to release ${rv}-RC1&quot;
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 </code></pre><p>Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
 <pre><code>git push apache &quot;v${rv}-RC1&quot;
@@ -195,7 +196,7 @@ git checkout asf-site
 rm -rf docs/${DOC_NAME}-${docv}
 cp -r ../${REPO_NAME}/site docs/${DOC_NAME}-${docv}
 git add -A
-git commit -m &quot;Adding ${DOC_NAME}-${rv} documentation&quot;
+git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -m &quot;Adding ${DOC_NAME}-${rv} documentation&quot;
 git push
 </code></pre>
 <p>After <a href="https://github.com/apache/apex-site/tree/master#contributing">publishing the site</a> the new documentation will be available at <code>https://apex.apache.org/docs/${DOC_NAME}-${docv}/</code></p>
@@ -229,7 +230,7 @@ for a in `git grep -l &quot;${dv}&quot;`; do echo $a; sed -i &#39;s/&#39;&quot;$
 <p>If there are new artifacts published to Maven repositories consider enabling semantic versioning check for the newly
 published libraries.</p>
 <p>Commit all changes and push them to the remote git repository:</p>
-<pre><code class="lang-bash">git commit -am &quot;Preparing for 3.4.1 development&quot;
+<pre><code class="lang-bash">git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Preparing for 3.4.1 development&quot;
 git push apache
 </code></pre>
 <p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
@@ -243,7 +244,7 @@ cd docs
 # Set the release version to be the latest available version
 ln -nsf ${DOC_NAME}-${docv} ${DOC_NAME}
 git add -A
-git commit -m &quot;Promoting ${DOC_NAME}-${docv} documentation&quot;
+git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -m &quot;Promoting ${DOC_NAME}-${docv} documentation&quot;
 git push
 </code></pre>
 <ol>
