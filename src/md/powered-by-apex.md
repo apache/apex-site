@@ -27,6 +27,8 @@ Apex powers
 * geniSIGHTS
 * Aaum Analytics
 * Genius Minds
+* Fidelity National Information Services Inc (FIS Global)
+* Oraxi
 
 
 ## Integrations
