@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Compatibility - Apache Apex Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Compatibility";
+    var mkdocs_page_input_path = "compatibility.md";
+    var mkdocs_page_url = "/compatibility/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Apache Apex Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Apache Apex</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Development</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_development_setup/">Development Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_development/">Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_packages/">Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operator_development/">Operators</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../autometrics/">AutoMetric API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operations</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_cli/">Apex CLI</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Compatibility</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apache-apex-compatibility">Apache Apex Compatibility</a></li>
+                
+                    <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
+                
+                    <li><a class="toctree-l4" href="#compatibility-types">Compatibility types</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Apache Apex Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Compatibility</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="apache-apex-compatibility">Apache Apex Compatibility</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This document captures the compatibility goals of the Apache Apex project. The different types of compatibility between Apex releases that affect contributors, downstream projects, and end-users are enumerated. For each type of compatibility we:</p>
+<ul>
+<li>describe the impact on downstream projects or end-users</li>
+<li>where applicable, call out the policy adopted when incompatible changes are permitted.</li>
+</ul>
+<p>Apache Apex follows <a href="http://semver.org/">semantic versioning</a>. Depending on the compatibility type, there may be different tools or mechanisms to ensure compatibility, for example by comparing artifacts during the build process.</p>
+<p>The type of change will inform the required target version number. Given a version number MAJOR.MINOR.PATCH, increment the:</p>
+<ul>
+<li>MAJOR version when you make incompatible API changes,</li>
+<li>MINOR version when you add functionality in a backward-compatible manner, and</li>
+<li>PATCH version when you make backward-compatible bug fixes.</li>
+</ul>
+<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
+<p>The overall goal is to avoid backward incompatible changes and major release upgrades. Accordingly we attempt to release new features with minor versions that are incremental to the prior release and offer our users a frictionless upgrade path. When planning contributions, please consider compatibility and release road map upfront. Specifically, certain changes that conflict with the versioning may need to be documented in JIRA and deferred until a future major release. </p>
+<h2 id="compatibility-types">Compatibility types</h2>
+<h3 id="java-api">Java API</h3>
+<p>Public API compatibility is required to ensure end-user programs and downstream projects continue to work without modification.
+The public API consists of:</p>
+<ul>
+<li>apex-core: all interfaces and classes in <code>api</code> and <code>common</code> modules</li>
+<li>apex-malhar: all interfaces and classes in all modules except <code>demos</code>, <code>samples</code>, <code>benchmark</code> </li>
+</ul>
+<p>Interfaces and classes that are part of the public API and are annotated with <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/InterfaceClassification.html">interface stability</a> are treated according to the rules defined by the annotation.  </p>
+<p>Policy</p>
+<p>Changes to the public API must follow semantic versioning. 
+Public APIs must be deprecated for at least one minor release prior to their removal in a major release.
+The <a href="https://github.com/siom79/japicmp">japicmp Maven plugin</a> is used to enforce compatibility as part of the Travis pre-commit builds.</p>
+<h3 id="semantic-compatibility">Semantic compatibility</h3>
+<p>The behavior of APIs needs to remain consistent over versions, though changes for correctness may result in changes in behavior. Tests and javadocs specify the behavior. Over time, test suites should be expanded to verify compliance with the specification, effectively creating a formal specification for the subset of behaviors that can be easily tested.</p>
+<p>Policy</p>
+<p>The behavior of existing API cannot be modified as it would break existing user code. There are exceptional circumstances that may justify such changes, in which cases they should be discussed on the mailing list before implementation. Examples are bug fixes related to security issues, data corruption/consistency or to correct an unintended change from previous release that violated semantic compatibility. Such changes should be accompanied by test coverage for the exact behavior.</p>
+<h3 id="rest-api">REST API</h3>
+<p>REST API compatibility corresponds to both the URLs and request/response content over the wire. REST APIs are specifically meant for stable use by clients across releases, even major releases. </p>
+<p>Policy</p>
+<p>The REST API is separately versioned. This is to allow for co-existence of old and new API should there be a need for backward incompatible changes in the future.</p>
+<h3 id="command-line-interface-cli">Command Line Interface (CLI)</h3>
+<p>The CLI may be used either directly via the system shell or via shell scripts. Changing the path, removing or renaming command line options, the order of arguments, or the command return code and output break compatibility and may adversely affect users.</p>
+<p>Policy</p>
+<p>CLI commands are to be deprecated (warning when used) in a prior minor release before they are removed or incompatibly modified in a subsequent major release.</p>
+<h3 id="configuration-files">Configuration Files</h3>
+<p>Configuration files are used for engine or application settings. Changes to keys and default values directly affect users and are hard to diagnose (compared to a compile error, for example).</p>
+<p>Policy</p>
+<p>Name, location, format, keys of configuration files should be deprecated in a prior minor release and can only be changed in major release. Best effort should be made to support the deprecated behavior for one more major release (not guaranteed). It is also desirable to provide the user with a migration tool.</p>
+<h3 id="internal-wire-compatibility">Internal Wire compatibility</h3>
+<p>Apex containers internally use RPC communication and netlet for the data flow. The protocols are private and user components are not exposed to it. Apex is a YARN application and automatically deployed. There is currently no situation where containers of different Apex engine versions need to be interoperable. Should such a scenario become relevant in the future, wire compatibility needs to be specified.</p>
+<p>Policy</p>
+<p>N/A</p>
+<h3 id="internal-file-formats">Internal File formats</h3>
+<p>Apex engine stores data in the file system for recovery and the data is typically obtained from serialization (from Kryo, Java etc.). Changes to internal classes may affect the ability to relaunch an application with upgraded engine code from previous state. This is currently not supported. In the future, the serialization mechanism should guarantee backward compatibility.</p>
+<p>Policy</p>
+<p>Currently no compatibility guarantee. User to cold-restart application on engine upgrade.</p>
+<h3 id="java-classpath">Java Classpath</h3>
+<p>Apex applications should not bundle Hadoop dependencies or Apex engine dependencies but use the dependencies provided in the target environment to avoid conflicts. The Apex application archetype can be used to generate a compliant project.  </p>
+<p>Policy</p>
+<p>Apex engine dependencies can change as per semantic versioning. Following above guidelines automatically maintains the backward compatibility based on semantic versioning of Apex.</p>
+<h3 id="maven-build-artifacts">Maven Build Artifacts</h3>
+<p>Downstream projects reference the Apex engine dependencies and Malhar operator libraries for application development etc. Changes to the packaging (which classes are in which jar), the groupId, artifactId and which artifacts are deployed to Maven central impact upgrades.</p>
+<p>Policy</p>
+<p>The artifacts that contain the classes that form the public API as specified above cannot change in patch releases and should stay compatible within a major release. Patch releases can change dependencies, but only at the patch level and following semantic versioning.</p>
+<h3 id="hardwaresoftware-requirements">Hardware/Software Requirements</h3>
+<p>Apex depends on Apache Hadoop. The community intends to support all major Hadoop distros and current versions. Apex currently supports Hadoop 2.2.0 and higher and Java 7 and higher. Apex is written in Java and has been tested on Linux based Hadoop clusters. There are no additional restrictions on the hardware architecture.  </p>
+<p>To keep up with the latest advances in hardware, operating systems, JVMs, Hadoop and other software, new Apex releases may require higher versions. Upgrading Apex may require upgrading other dependent software components.</p>
+<p>Policy</p>
+<p>The JVM and Hadoop minimum version requirements are not expected to change outside major releases.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../security/" class="btn btn-neutral" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../security/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
