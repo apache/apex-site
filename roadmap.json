@@ -5,37 +5,6 @@
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12919288",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12919288",
-        "key": "APEXCORE-119",
-        "fields": {
-          "summary": "Add Support For A New Type Of (Distributed) Operator",
-          "description": "This JIRA Proposes support for a new type of distributed operator. Currently when an operator is partitioned there is no platform supported mechanism through which partitions can talk to each other. A Distributed operator would have an easy to use platform supported mechanism through which operators in a partitioning can exchange information with each other. Eventually Distributed operators would support running plain old single threaded java code transparently across partitions.\r\n\r\nIn summary the goals would be to do the following:\r\n\r\n1 - provide a platform supported fault tolerant mechanism through which operators in a partitioning can talk to each other.\r\n2 - provide a platform supported way to run plain old single threaded java code accross all the partitions of a Distributed operator\r\n\r\nThe benefits of implementing this would be huge:\r\n\r\n1 - Using distributed operators we could support large in memory fault tolerant data structures (graphs, maps, arrays) in a fault tolerant way. Like Spark's RDD's but better.\r\n2 - Plain old java code could be used to access and manipulate the data structures, without the user having the learn complex API's like with Spark.\r\n\r\nAn implementation proposal and presentation are coming soon.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12919332",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919332",
         "key": "APEXCORE-163",
@@ -81,17 +50,17 @@
             "id": "3"
           },
           "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/6",
+            "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/closed.png",
+            "name": "Closed",
+            "id": "6",
             "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
             }
           }
         }
@@ -102,7 +71,7 @@
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919400",
         "key": "APEXCORE-231",
         "fields": {
-          "summary": "Ability to configure attributes dynamically",
+          "summary": "Ability to change attributes at runtime",
           "description": "The Apex engine supports many platform level attributes like operator memory, application window count, container jvm options etc. Today these can only be set at application launch time and cannot be changed once the application is running.\r\n\r\nThis issue is to add the ability to change the attributes dynamically even as the application is running. The mechanics of an user requesting the attribute change can be similar to how a user requests property change via the command line client.\r\n\r\nSince each attribute is different the actual backend implementation to affect the changes will most likely be custom handling for different attributes but during the implementation process  hopefully some common themes emerge and some amount of reuse possible.",
           "fixVersions": [],
           "priority": {
@@ -226,7 +195,7 @@
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919404",
         "key": "APEXCORE-235",
         "fields": {
-          "summary": "Explicit support for batch processing",
+          "summary": "Improve support for batch processing",
           "description": "Apex can be used for real-time and batch processing as it stands, but there are some aspects of batch processing that can be better supported through explicit constructs. This ticket can serve as umbrella for various features.",
           "fixVersions": [],
           "priority": {
@@ -343,37 +312,6 @@
             }
           }
         }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "13005178",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/13005178",
-        "key": "APEXCORE-536",
-        "fields": {
-          "summary": "Upgrade Hadoop dependency",
-          "description": "Currently Apex depends on Hadoop 2.2 and runs on all later 2.x version. Hadoop 2.2 is quite old, most Apex users have more recent Hadoop installs. Latest distro releases are based on 2.6 and 2.7. There are several important features that were added in Hadoop since 2.2 that Apex should be able to leverage.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
       }
     ],
     "versions": [
@@ -404,15 +342,15 @@
       {
         "self": "https://issues.apache.org/jira/rest/api/2/version/12335725",
         "id": "12335725",
-        "name": "3.4.1",
+        "name": "3.5.1",
         "archived": false,
         "released": false,
         "projectId": 12318823
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12335724",
-        "id": "12335724",
-        "name": "3.5.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12338818",
+        "id": "12338818",
+        "name": "3.6.0",
         "archived": false,
         "released": false,
         "projectId": 12318823
@@ -431,68 +369,6 @@
     "name": "APEXMALHAR",
     "url": "https://issues.apache.org/jira/",
     "jiras": [
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926159",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926159",
-        "key": "APEXMALHAR-1811",
-        "fields": {
-          "summary": "Add Non-Equality Join Condition",
-          "description": "Add new condition for non-equality join predicate (for example, user.zipcode != authzn.zipcode)",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926152",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926152",
-        "key": "APEXMALHAR-1818",
-        "fields": {
-          "summary": "Integrate Calcite to support SQL",
-          "description": "Once we have ability to generate a subdag, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/3",
-            "description": "This issue is being actively worked on at the moment by the assignee.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/inprogress.png",
-            "name": "In Progress",
-            "id": "3",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/4",
-              "id": 4,
-              "key": "indeterminate",
-              "colorName": "yellow",
-              "name": "In Progress"
-            }
-          }
-        }
-      },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12926128",
@@ -602,17 +478,17 @@
             "id": "3"
           },
           "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
+            "self": "https://issues.apache.org/jira/rest/api/2/status/6",
+            "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/closed.png",
+            "name": "Closed",
+            "id": "6",
             "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Complete"
             }
           }
         }
@@ -627,9 +503,9 @@
           "description": "This feature is used for supporting windowing.\r\n\r\nThe storage needs to have the following features:\r\n1. Spillable key value storage (integrate with APEXMALHAR-2026)\r\n2. Upon checkpoint, it saves a snapshot for the entire data set with the checkpointing window id.  This should be done incrementally (ManagedState) to avoid wasting space with unchanged data\r\n3. When recovering, it takes the recovery window id and restores to that snapshot\r\n4. When a window is committed, all windows with a lower ID should be purged from the store.\r\n5. It should implement the WindowedStorage and WindowedKeyedStorage interfaces, and because of 2 and 3, we may want to add methods to the WindowedStorage interface so that the implementation of WindowedOperator can notify the storage of checkpointing, recovering and committing of a window.\r\n",
           "fixVersions": [
             {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12338174",
-              "id": "12338174",
-              "name": "3.6.0",
+              "self": "https://issues.apache.org/jira/rest/api/2/version/12338771",
+              "id": "12338771",
+              "name": "3.7.0",
               "archived": false,
               "released": false
             }
@@ -745,17 +621,9 @@
         "projectId": 12318824
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12335827",
-        "id": "12335827",
-        "name": "3.5.1",
-        "archived": false,
-        "released": false,
-        "projectId": 12318824
-      },
-      {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12338174",
-        "id": "12338174",
-        "name": "3.6.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12338771",
+        "id": "12338771",
+        "name": "3.7.0",
         "archived": false,
         "released": false,
         "projectId": 12318824

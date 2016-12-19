@@ -2,16 +2,16 @@
   "core": {
     "src": [
       {
+        "version": "3.5.0",
+        "docs": "3.5",
+        "repo": "apex-core",
+        "date": 1481089442000
+      },
+      {
         "version": "3.4.0",
         "docs": "3.4",
         "repo": "apex-core",
         "date": 1462902111000
-      },
-      {
-        "version": "3.2.1-incubating",
-        "docs": "3.2",
-        "repo": "apex-core",
-        "date": 1461193940000
       }
     ]
   },
