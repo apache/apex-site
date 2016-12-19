@@ -97,30 +97,6 @@
     <tbody>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-119">APEXCORE-119</a>
-        </td>
-        <td title="This JIRA Proposes support for a new type of distributed operator. Currently when an operator is partitioned there is no platform supported mechanism through which partitions can talk to each other. A Distributed operator would have an easy to use platform supported mechanism through which operators in a partitioning can exchange information with each other. Eventually Distributed operators would support running plain old single threaded java code transparently across partitions.
-
-In summary the goals would be to do the following:
-
-1 - provide a platform supported fault tolerant mechanism through which operators in a partitioning can talk to each other.
-2 - provide a platform supported way to run plain old single threaded java code accross all the partitions of a Distributed operator
-
-The benefits of implementing this would be huge:
-
-1 - Using distributed operators we could support large in memory fault tolerant data structures (graphs, maps, arrays) in a fault tolerant way. Like Spark&#x27;s RDD&#x27;s but better.
-2 - Plain old java code could be used to access and manipulate the data structures, without the user having the learn complex API&#x27;s like with Spark.
-
-An implementation proposal and presentation are coming soon.">
-          Add Support For A New Type Of (Distributed) Operator
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-163">APEXCORE-163</a>
         </td>
         <td title="Apex support modification of operator properties at runtime but the current implemenations has the following shortcomings.
@@ -160,7 +136,7 @@ The idea is to inject a special property change tuple containing the property ch
 This issue is to add the ability to change the attributes dynamically even as the application is running. The mechanics of an user requesting the attribute change can be similar to how a user requests property change via the command line client.
 
 Since each attribute is different the actual backend implementation to affect the changes will most likely be custom handling for different attributes but during the implementation process  hopefully some common themes emerge and some amount of reuse possible.">
-          Ability to configure attributes dynamically
+          Ability to change attributes at runtime
         </td>
         <td>
     
@@ -222,7 +198,7 @@ Users have also asked for an easier and more consistent way to specify these pro
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-235">APEXCORE-235</a>
         </td>
         <td title="Apex can be used for real-time and batch processing as it stands, but there are some aspects of batch processing that can be better supported through explicit constructs. This ticket can serve as umbrella for various features.">
-          Explicit support for batch processing
+          Improve support for batch processing
         </td>
         <td>
     
@@ -287,18 +263,6 @@ All checkpoints that happened before the committed window is deleted but the nam
 
         </td>
       </tr>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-536">APEXCORE-536</a>
-        </td>
-        <td title="Currently Apex depends on Hadoop 2.2 and runs on all later 2.x version. Hadoop 2.2 is quite old, most Apex users have more recent Hadoop installs. Latest distro releases are based on 2.6 and 2.7. There are several important features that were added in Hadoop since 2.2 that Apex should be able to leverage.">
-          Upgrade Hadoop dependency
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
     </tbody>
   </table>
 
@@ -313,30 +277,6 @@ All checkpoints that happened before the committed window is deleted but the nam
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1811">APEXMALHAR-1811</a>
-        </td>
-        <td title="Add new condition for non-equality join predicate (for example, user.zipcode != authzn.zipcode)">
-          Add Non-Equality Join Condition
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1818">APEXMALHAR-1818</a>
-        </td>
-        <td title="Once we have ability to generate a subdag, we should take a look at integrating Calcite into Apex. The operator that enables populate DAG, should use Calcite to generate the DAG, given a SQL query.">
-          Integrate Calcite to support SQL
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
       <tr>
         <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1843">APEXMALHAR-1843</a>
@@ -411,7 +351,7 @@ The storage needs to have the following features:
         <td>
     
 
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12338174">3.6.0</a>&nbsp;
+            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12338771">3.7.0</a>&nbsp;
 
 
         </td>
