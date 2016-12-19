@@ -177,7 +177,7 @@ gulp.task('fetch-roadmap', function(taskCb) {
         });
 
         var apiRequest = {
-          jql: 'project = ' + project.name + ' AND labels in (roadmap) AND fixVersion in (EMPTY, unreleasedVersions())',
+          jql: 'project = ' + project.name + ' AND labels in (roadmap) AND resolution = Unresolved AND fixVersion in (EMPTY, unreleasedVersions())',
           startAt: 0,
           maxResults: 1000,
           fields: ['summary','priority','status','fixVersions','description']

@@ -36,37 +36,6 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12919371",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12919371",
-        "key": "APEXCORE-202",
-        "fields": {
-          "summary": "Integration with Samoa",
-          "description": "Apache Samoa[https://samoa.incubator.apache.org/] is an abstraction of a collections of streaming machine learning Algorithm. By far, it has integration with Samza, Storm and flink, It is a good start point for Apex to support streaming ML.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/6",
-            "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/closed.png",
-            "name": "Closed",
-            "id": "6",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12919400",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919400",
         "key": "APEXCORE-231",
@@ -458,37 +427,6 @@
               "key": "new",
               "colorName": "blue-gray",
               "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12969033",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12969033",
-        "key": "APEXMALHAR-2089",
-        "fields": {
-          "summary": "Apache Beam support",
-          "description": "Apex should provide a runner for Beam. This ticket is a proxy for BEAM-261 as the implementation should probably live in the Beam repository.\r\n",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/6",
-            "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/closed.png",
-            "name": "Closed",
-            "id": "6",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/3",
-              "id": 3,
-              "key": "done",
-              "colorName": "green",
-              "name": "Complete"
             }
           }
         }
