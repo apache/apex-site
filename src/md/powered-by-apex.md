@@ -26,9 +26,11 @@ Apex powers
 * Target
 * geniSIGHTS
 * Aaum Analytics
-* Genius Minds
+* <a href="http://www.genius-minds.com/">Genius Minds</a>
 * Fidelity National Information Services Inc (FIS Global)
 * Oraxi
+* <a href="http://www.thinkbumblebee.com/">ThinkBumbleBee</a>
+* <a href="http://www.ellicium.com/">Ellicium</a>
 
 
 ## Integrations
