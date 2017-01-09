@@ -13,23 +13,7 @@ The following mailing lists are available for Apex.
 
 ### Meetup Groups
 
-Meetups are events organized and hosted by community members world-wide. They are a great platform to present the project and use cases. See http://apache-apex.meetup.com to find a meetup in your area. Here is a list of large Apache Apex meetups:
-
-- [Bay Area Apex Meetup](https://www.meetup.com/Apache-Apex-Bay-Area/) - the first Apex meetup group ever!
-- [Pune Apex Meetup](https://www.meetup.com/Apache-Apex-Pune/)
-- [Bangalore Apex Meetup](https://www.meetup.com/Apache-Apex-Bengaluru/)
-- [Hyderabad Apex Meetup](https://www.meetup.com/Apache-Apex-Hyderabad/)
-- [Chennai Apex Meetup](https://www.meetup.com/Apache-Apex-Chennai/)
-- [New York Apex Meetup](https://www.meetup.com/Apache-Apex-New-York/)
-- [Chicago Apex Meetup](https://www.meetup.com/Apache-Apex-Chicago/)
-- [Mumbai Apex Meetup](https://www.meetup.com/Apache-Apex-Mumbai/)
-- [Delhi Apex Meetup](https://www.meetup.com/Apache-Apex-Delhi/)
-- [Dallas Apex Meetup](https://www.meetup.com/Apache-Apex-Dallas/)
-- [Boston Apex Meetup](https://www.meetup.com/Apache-Apex-Boston/)
-- [Paris Apex Meetup](https://www.meetup.com/Apache-Apex-Next-Gen-Native-Hadoop-Big-Data-Paris-Chapter/)
-- [Seattle Apex Meetup](https://www.meetup.com/Apache-Apex-Seattle/)
-- [Toronto Apex Meetup](https://www.meetup.com/Apache-Apex-Toronto/)
-- [San Francisco Apex Meetup](https://www.meetup.com/Apache-Apex-SF/)
+Meetups are events organized and hosted by community members world-wide. They are a great platform to present the project and use cases. See http://apache-apex.meetup.com to find a meetup in your area.
 
 ## People
 
