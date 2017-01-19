@@ -16,5 +16,5 @@
     { "label": "Apex Malhar", "href": "https://github.com/apache/apex-malhar" },
     { "label": "Apex Site", "href": "https://github.com/apache/apex-site" }
   ] },
-  { "id": "download", "label": "Download", "href": "/downloads.html", "classes": "btn btn-success" }
+  { "id": "download", "label": "Download", "href": "/downloads.html", "classes": "btn btn-success btn-download" }
 ]
