@@ -156,6 +156,14 @@ svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m 
 
 ## Build and Deploy Documentation
 
+### Javadoc
+
+Javadoc will be automatically deployed for registered branches. For minor releases, add the new branch to the buildbot configuration:
+
+https://svn.apache.org/repos/infra/infrastructure/buildbot/aegis/buildmaster/master1/projects/apex.conf
+
+### User Documentation
+
 The documentation will be generated as static HTML files into the `apex-site` repository, [separated by version (X.Y)](https://github.com/apache/apex-site/tree/asf-site/docs).
 
 **Note** You need Python 2.7+ and [mkdocs](http://www.mkdocs.org/) with patch for issue [mkdocs #859](https://github.com/mkdocs/mkdocs/issues/859) on top of the currently available version 0.15.3. After installing mkdocs with pip, run the following to obtain this build:
