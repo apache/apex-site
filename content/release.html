@@ -176,6 +176,10 @@ gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}
 svn import svn-dist https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 -m &quot;Apache Apex v${rv}-RC1&quot;
 </code></pre>
 <h2 id="build-and-deploy-documentation">Build and Deploy Documentation</h2>
+<h3 id="javadoc">Javadoc</h3>
+<p>Javadoc will be automatically deployed for registered branches. For minor releases, add the new branch to the buildbot configuration:</p>
+<p><a href="https://svn.apache.org/repos/infra/infrastructure/buildbot/aegis/buildmaster/master1/projects/apex.conf">https://svn.apache.org/repos/infra/infrastructure/buildbot/aegis/buildmaster/master1/projects/apex.conf</a></p>
+<h3 id="user-documentation">User Documentation</h3>
 <p>The documentation will be generated as static HTML files into the <code>apex-site</code> repository, <a href="https://github.com/apache/apex-site/tree/asf-site/docs">separated by version (X.Y)</a>.</p>
 <p><strong>Note</strong> You need Python 2.7+ and <a href="http://www.mkdocs.org/">mkdocs</a> with patch for issue <a href="https://github.com/mkdocs/mkdocs/issues/859">mkdocs #859</a> on top of the currently available version 0.15.3. After installing mkdocs with pip, run the following to obtain this build:</p>
 <pre><code>sudo pip install --upgrade git+https://github.com/sashadt/mkdocs.git
