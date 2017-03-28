@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>SQL - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "SQL";
+    var mkdocs_page_input_path = "apis/calcite.md";
+    var mkdocs_page_url = "/apis/calcite/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIs</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">SQL</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apex-calcite-integration">Apex-Calcite Integration</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#sql-apis-for-apache-apex">SQL APIs for Apache Apex</a></li>
+                
+                    <li><a class="toctree-l4" href="#example-1-pure-style-sql-application">Example 1: Pure Style SQL Application</a></li>
+                
+                    <li><a class="toctree-l4" href="#example-2-fusion-style-sql-application">Example 2: Fusion Style SQL Application</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#ongoing-efforts">Ongoing efforts</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/block_reader/">Block Reader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/csvformatter/">CSV Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/csvParserOperator/">CSV Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/deduper/">Deduper</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/enricher/">Enricher</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/fsInputOperator/">File Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/filter/">Filter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/AbstractJdbcTransactionableOutputOperator/">Jdbc Output Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jdbcPollInputOperator/">JDBC Poller Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jmsInputOperator/">JMS Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jsonFormatter/">JSON Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jsonParser/">JSON Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/transform/">Transformer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/windowedOperator/">Windowed Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/xmlParserOperator/">XML Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jsonParser/">Json Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/jsonFormatter/">Json Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/transform/">Transform Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/csvformatter/">Csv Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../operators/s3outputmodule/">S3 Output Module</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>APIs &raquo;</li>
+        
+      
+    
+    <li>SQL</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Apache Apex is a unified stream and batch processing engine that enables application developers to process data at very high throughput with low latency. Although the different types of data have different processing needs, SQL remains a popular and a generic way for processing data. To ensure that existing ETL developers and developers who are well versed with Database applications adopt stream processing application development with ease, integration of SQL with Apex was needed. Being a popular Apache project, Apache Calcite was chosen for this purpose and its integration with Apex is described below.</p>
+<h1 id="apex-calcite-integration">Apex-Calcite Integration</h1>
+<p>Apache Calcite is a highly customizable engine for parsing and planning queries on relational data from various data sources; it provides storage independent optimization of queries and ways to integrate them into other frameworks which would like to take advantage and expose SQL capability to their users. For details, please read at <a href="https://calcite.apache.org/">Apache Calcite Website</a>. </p>
+<p>Particularly in SQL on Apex, Calcite processes a query and then creates relational algebra to create processing pipelines. These relational algebra processing pipelines are converted to a DAG with a set of operators to perform business logic on streaming data.</p>
+<p><img alt="image alt text" src="../images/calcite-apex.png" /></p>
+<p>Above figure explains how SQL query gets converted to Apex DAG.</p>
+<ol>
+<li>User specified query is processed by Calcite Query planner; this involves parsing and optimizing the query to generate Relation Expression Tree. </li>
+<li>This Relation Expression Tree is received by Apache Apex’s SQL module to finally convert to an Apex DAG having series of operators.</li>
+</ol>
+<p>One peculiarity of Calcite queries is that the data source and destination need not be RDBMS systems; in the above example, <code>File</code> refers to a file in the filesystem and <code>Kafka</code> to a Kafka message broker. Calcite allows Apex to register table sources and destinations as anything which can return a row type results. So a “scan” relational expression gets converted to “KafkaInputOperator + ParseOperator”, a result of which is series of POJOs reflecting a Row Type. Similarly, the “insert” Relational Expression translated to “FormatOperator + FileOutputOperator”.</p>
+<p>For more details about the integration, click <a href="https://github.com/apache/apex-malhar/tree/master/sql">here</a>.</p>
+<h1 id="sql-apis-for-apache-apex">SQL APIs for Apache Apex</h1>
+<p>Listed below are the Java APIs which can be used by SQL/Apex users to create a DAG in the implementation of the <em>populateDAG</em> method of the <code>StreamingApplication</code> interface.</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SQLExecEnvironment.getEnvironment()</strong></td>
+<td align="center">Creates a new SQL execution environment</td>
+</tr>
+<tr>
+<td><strong>SQLExecEnvironment.registerTable(tableName, endpointInstance)</strong></td>
+<td align="center">Registers a new abstract table with existing environment. <em>endpointInstance</em> is an object of type <a href="https://github.com/apache/apex-malhar/blob/master/sql/src/main/java/org/apache/apex/malhar/sql/table/Endpoint.java">Endpoint</a> which defines a table.</td>
+</tr>
+<tr>
+<td><strong>SQLExecEnvironment.registerFunction(sqlFunctionName, holderClass, staticFunctionName)</strong></td>
+<td align="center">Registers a new User Defined Scalar function</td>
+</tr>
+<tr>
+<td><strong>SQLExecEnvironment.executeSQL(dag, sqlStatement)</strong></td>
+<td align="center">Creates a DAG for a particular SQL statement</td>
+</tr>
+</tbody>
+</table>
+<p>Usage of above APIs is described in detail in following sections.</p>
+<h2 id="example-1-pure-style-sql-application">Example 1: Pure Style SQL Application</h2>
+<p>With Apache Calcite Integration, you can use SQL queries across different data sources and provide UDFs (User Defined Functions) as per your business logic. This example will use a Kafka topic as the source and a HDFS file as the destination.
+Following application code will be used to explain APIs. Actual source code can be found <a href="https://github.com/apache/apex-malhar/blob/master/demos/sql/src/main/java/org/apache/apex/malhar/sql/sample/PureStyleSQLApplication.java">here</a>.</p>
+<pre><code class="java">  public class PureStyleSQLApplication implements StreamingApplication
+  {
+    @Override
+    public void populateDAG(DAG dag, Configuration conf)
+    {
+       // Create new SQLExecEnvironment
+       SQLExecEnvironment sqlEnv = SQLExecEnvironment.getEnvironment();
+
+      // This is a string that defines a schema and is discussed in more detail in &quot;Registering tables with SQLExecEnvironment&quot; section 
+      String inputSchemaString = &quot;...&quot;;
+
+      // similar to inputSchemaString, we also need to define outputSchemaString
+      String outputSchemaString = &quot;...&quot;;
+
+       // Register KafkaEnpoint as &quot;ORDERS&quot; table with kafka topic and data format as CSV
+       sqlEnv = sqlEnv.registerTable( 
+                                    &quot;ORDERS&quot;, 
+                                    new KafkaEndpoint(&quot;localhost:9090&quot;, 
+                                                      &quot;inputTopic&quot;, 
+                                                      new CSVMessageFormat(inputSchemaString))
+                                  );
+
+       // Register FileEndpoint as &quot;SALES&quot; table with file path and data format as CSV
+       sqlEnv = sqlEnv.registerTable( 
+                                    &quot;SALES&quot;, 
+                                    new FileEndpoint(&quot;/tmp/output&quot;, 
+                                                     &quot;out.file&quot;, 
+                                                     new CSVMessageFormat(outputSchemaString))
+                                  );
+
+       // Register scalar SQL UDF 
+       sqlEnv = sqlEnv.registerFunction(&quot;APEXCONCAT&quot;, PureStyleSQLApplication.class, &quot;apex_concat_str&quot;);
+
+       // Converting SQL statement to DAG 
+       String sql = &quot;INSERT INTO SALES 
+                       SELECT STREAM ROWTIME, FLOOR(ROWTIME TO DAY), APEXCONCAT('OILPAINT', SUBSTRING(PRODUCT, 6, 7)) 
+                       FROM ORDERS 
+                       WHERE ID &gt; 3 AND PRODUCT LIKE 'paint%'&quot;;
+       sqlEnv.executeSQL(dag, sql);
+    }// populateDAG finished
+
+    public static String apex_concat_str(String s1, String s2)
+    {
+        return s1 + s2;
+    } 
+  }
+</code></pre>
+
+<h3 id="constructing-sqlexecenvironment">Constructing SQLExecEnvironment</h3>
+<p>The class <em><strong>SQLExecEnvironment</strong></em> provides a starting point and a simple way to define metadata needed for running a SQL statement; a new instance of this class is returned by the <code>getEnvironment</code> static method.  </p>
+<pre><code class="java">  // Creates SQLExecEnvironment instance by using static method getEnvironment
+  SQLExecEnvironment sqlEnv = SQLExecEnvironment.getEnvironment();
+</code></pre>
+
+<h3 id="registering-tables-with-sqlexecenvironment">Registering tables with SQLExecEnvironment</h3>
+<p>Next, we need to register tables which can be used in a query. For this purpose, we can use <em>registerTable</em> method from SQLExecEnvironment.</p>
+<pre><code class="java">  // Register KafkaEnpoint as &quot;ORDERS&quot; table with kafka topic and data format as CSV
+  sqlEnv = sqlEnv.registerTable( 
+                              &quot;ORDERS&quot;, 
+                              new KafkaEndpoint(&quot;localhost:9090&quot;, 
+                                                &quot;inputTopic&quot;, 
+                                                new CSVMessageFormat(inputSchemaString))
+                            );
+
+  // Register FileEndpoint as &quot;SALES&quot; table with file path and data format as CSV
+  sqlEnv = sqlEnv.registerTable( 
+                              &quot;SALES&quot;, 
+                              new FileEndpoint(&quot;/tmp/output&quot;, 
+                                               &quot;out.file&quot;, 
+                                               new CSVMessageFormat(inputSchemaString))
+                            );
+</code></pre>
+
+<p><strong><em>"registerTable"</em></strong> method takes the name of the table and an instance of endpoint as parameters. Endpoint signifies data storage mechanism and type of source/destination for the data. These endpoints require different types of configurations and possibly data formats. The data format is defined using an implementation of the <code>MessageFormat</code> interface; the <code>CSVMessageFormat</code> implementation can be configured with a schema string as follows:</p>
+<pre><code class="sql">{
+  &quot;separator&quot;: &quot;,&quot;,
+  &quot;quoteChar&quot;: &quot;\&quot;&quot;,
+  &quot;fields&quot;: [
+    {
+      &quot;name&quot;: &quot;RowTime&quot;,
+      &quot;type&quot;: &quot;Date&quot;,
+      &quot;constraints&quot;: {
+        &quot;format&quot;: &quot;dd/MM/yyyy hh:mm:ss Z&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;id&quot;,
+      &quot;type&quot;: &quot;Integer&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Product&quot;,
+      &quot;type&quot;: &quot;String&quot;
+    },
+    {
+      &quot;name&quot;: &quot;units&quot;,
+      &quot;type&quot;: &quot;Integer&quot;
+    }
+  ]
+}
+</code></pre>
+
+<p>The schema string is a JSON string defining a separator character, quote character for fields with String type and a list of fields where, for each field, its name, type and any additional constraints are specified.</p>
+<p>Following data endpoints are supported: </p>
+<ul>
+<li><strong>KafkaEnpoint</strong>
+: To define a Kafka Endpoint we need to specify the Kafka broker (as host:port), topic name and MessageFormat as seen in line 1 in the code above.</li>
+<li><strong>FileEndpoint</strong>
+: It needs to be configured with the filesystem path, file name and MessageFormat as in line 2 in the code above. </li>
+<li><strong>StreamEndpoint</strong> 
+: This allows us to connect existing operator output or input ports to the SQL query as a data source or sink respectively. StreamEndpoint needs immediate downstream operator's input port or immediate upstream operator's output port and the field mapping for CSV data or POJO class. This will be explained in detail in next <a href="#fusion-style-sql-application">example</a>.</li>
+</ul>
+<h3 id="using-user-defined-functions-udf-in-a-sql-query">Using User Defined Functions (UDF) in a SQL query</h3>
+<p>We can use our own scalar UDF, implemented in Java, in a SQL statement for data manipulation but first, we need to register the function with the execution environment by using the <code>registerFunction</code> method.</p>
+<pre><code class="java">  sqlEnv = sqlEnv.registerFunction(&quot;APEXCONCAT&quot;, PureStyleSQLApplication.class, &quot;apex_concat_str&quot;);
+</code></pre>
+
+<p>In above code, <strong><em>registerFunction</em></strong> takes the UDF name to be used in SQL, JAVA class which implements the static method and name of that method as parameters. 
+The static method <code>apex_concat_str</code> takes two String objects as input parameters from the SQL query.</p>
+<pre><code class="java">  public static String apex_concat_str(String s1, String s2)
+  {
+    return s1 + s2;
+  }
+</code></pre>
+
+<p>The scalar UDF "APEXCONCAT" that was registered above can be used in SQL as described below. FLOOR and SUBSTRING are standard SQL scalar functions supported by Apache Calcite.</p>
+<pre><code class="sql">INSERT INTO SALES 
+       SELECT STREAM ROWTIME, FLOOR(ROWTIME TO DAY), APEXCONCAT('OILPAINT', SUBSTRING(PRODUCT, 6, 7)) 
+       FROM ORDERS 
+       WHERE ID &gt; 3 AND PRODUCT LIKE 'paint%'
+</code></pre>
+
+<p>To read about all functions and operators supported by Apache Calcite, click <a href="https://calcite.apache.org/docs/reference.html#operators-and-functions">here</a>.</p>
+<h3 id="executing-sql-query">Executing SQL Query</h3>
+<p>Finally to execute the query we need to use <strong><em>executeSQL</em></strong> function with a DAG and SQL statement as parameters.</p>
+<pre><code class="java">  // Converting SQL statement to DAG 
+  String sql = &quot;INSERT INTO SALES 
+                SELECT STREAM ROWTIME, FLOOR(ROWTIME TO DAY), APEXCONCAT('OILPAINT', SUBSTRING(PRODUCT, 6, 7)) 
+                FROM ORDERS 
+                WHERE ID &gt; 3 AND PRODUCT LIKE 'paint%'&quot;;
+  sqlEnv.executeSQL(dag, sql);
+</code></pre>
+
+<p>When executeSQL method is called, the query goes through various phases like conversion to relational algebra, optimization and planning in Calcite to generate Relation Expression Tree. 
+The generated Relation Expression Tree is consumed by Apex SQL and converted to a DAG using operators available in Apache Malhar. In the above example, the ORDERS and SALES tables will be converted to the operators KafkaInputOperator and FileOutputFormatter respectively, paired with the CSVParser formatter in both cases.</p>
+<p>A <em>WHERE</em> clause is used in this query; it defines the desired filter for rows and is converted to a <em>FilterTransformOperator</em> in the DAG. Similarly, the projection defining desired columns is converted into another instance of the <em>FilterTransformOperator</em>. The DAG created for this application will look like this:</p>
+<p><img alt="image alt text" src="../images/image_2.jpg" title="DAG for Pure Style SQL Application" /></p>
+<p><a name="fusion-style-sql-application"></a></p>
+<h2 id="example-2-fusion-style-sql-application">Example 2: Fusion Style SQL Application</h2>
+<p>As described in Pure Style SQL application, we can use different data sources as source and sink while developing Apex Applications with Calcite. This example will describe how we can develop Apex application with Apex stream as abstract table for SQL query. Actual source code can be found <a href="https://github.com/apache/apex-malhar/blob/master/demos/sql/src/main/java/org/apache/apex/malhar/sql/sample/FusionStyleSQLApplication.java">here</a>.</p>
+<pre><code class="java">  // Define Kafka Input Operator for reading data from Kafka
+  KafkaSinglePortInputOperator kafkaInput = dag.addOperator(&quot;KafkaInput&quot;, 
+                                                           KafkaSinglePortInputOperator.class);
+
+  kafkaInput.setInitialOffset(&quot;EARLIEST&quot;);
+
+  // Add CSVParser
+  CsvParser csvParser = dag.addOperator(&quot;CSVParser&quot;, CsvParser.class);
+  dag.addStream(&quot;KafkaToCSV&quot;, kafkaInput.outputPort, csvParser.in);
+</code></pre>
+
+<p>Once we define DAG with KafkaInputOperator and CSVParser, it can parse data from Kafka topic. Upto this point, this is a regular Apex application without SQL. After this, we can register the output of CSVParser as a table using <a href="https://github.com/apache/apex-malhar/blob/master/sql/src/main/java/org/apache/apex/malhar/sql/table/StreamEndpoint.java">StreamEndpoint</a> to run a SQL statement. This way we can develop applications in fusion style where the DAG is part SQL and part regular Apex DAG.</p>
+<p>The following code will describe how we can define StreamEndpoint. </p>
+<pre><code class="java">  SQLExecEnvironment sqlEnv = sqlEnv.getEnvironment();
+  Map&lt;String, Class&gt; fieldMapping = ImmutableMap.&lt;String, Class&gt;of(&quot;RowTime&quot;, Date.class,
+                                                                 &quot;id&quot;, Integer.class,
+                                                                 &quot;Product&quot;, String.class,
+                                                                 &quot;units&quot;, Integer.class);
+  sqlEnv = sqlEnv.registerTable(&quot;FROMCSV&quot;, new StreamEndpoint(csvParser.out, fieldMapping));
+</code></pre>
+
+<p>To read existing data stream, we need to register it as a table with SQL execution environment with the name of the table and StreamEndpoint. StreamEndpoint can serve as input table or output table in SQL. For input table configuration we need to initialise StreamEndpoint with immediate upstream operator's output port and fieldMapping or POJO class for input tuple(as shown above). For output table configuration, we need to initialise StreamEndpoint with immediate downstream operator's input port and fieldMapping or POJO class for output tuple. Once we register StreamEndpoint as a table with a name in SQL Execution Environment, it can be used as a table in SQL statement similar to other endpoints.</p>
+<p>When executeSQL method is called, the specified SQL is converted to DAG as described in the previous section. Both examples read CSV data from Kafka. But in the pure style SQL example the <code>KafkaInputOperator</code> and <code>CSVParser</code> in the DAG are created implicitly by the use of the KafkaEndpoint usage while in the fusion style example, they are explicitly defined as part of the DAG which is then extended with other operators as shown in the image below. </p>
+<p><img alt="image alt text" src="../images/image_2.jpg" title="DAG for Fusion Style SQL Application" /></p>
+<p>For all Apex-Calcite integration examples, click <a href="https://github.com/apache/apex-malhar/tree/master/demos/sql">here</a>. </p>
+<h1 id="ongoing-efforts">Ongoing efforts</h1>
+<p>Apache Apex-Calcite integration provides support for basic queries and efforts are underway to extend support for aggregations, sorting and other features using Tumbling, Hopping and Session Windows.
+Support for JSON, XML and JDBC endpoint are also planned. The goal of this integration is to make developing a streaming application using SQL easy so that SQL Developers don't have to write any java code at all.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../operators/block_reader/" class="btn btn-neutral float-right" title="Block Reader">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Apache Apex Malhar"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../operators/block_reader/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

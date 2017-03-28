@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Filter - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Filter";
+    var mkdocs_page_input_path = "operators/filter.md";
+    var mkdocs_page_url = "/operators/filter/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIs</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../apis/calcite/">SQL</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../block_reader/">Block Reader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvformatter/">CSV Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvParserOperator/">CSV Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../deduper/">Deduper</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../enricher/">Enricher</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../fsInputOperator/">File Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Filter</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#filter">Filter</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-objective">Operator Objective</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-usecase">Operator Usecase</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-information">Operator Information</a></li>
+                
+                    <li><a class="toctree-l4" href="#properties-attributes-and-ports">Properties, Attributes and Ports</a></li>
+                
+                    <li><a class="toctree-l4" href="#limitations">Limitations</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../AbstractJdbcTransactionableOutputOperator/">Jdbc Output Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jdbcPollInputOperator/">JDBC Poller Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jmsInputOperator/">JMS Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonFormatter/">JSON Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonParser/">JSON Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../transform/">Transformer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../windowedOperator/">Windowed Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../xmlParserOperator/">XML Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonParser/">Json Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonFormatter/">Json Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../transform/">Transform Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvformatter/">Csv Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../s3outputmodule/">S3 Output Module</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operators &raquo;</li>
+        
+      
+    
+    <li>Filter</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="filter">Filter</h1>
+<h2 id="operator-objective">Operator Objective</h2>
+<p>This operator receives an POJO (<a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object">Plain Old Java Object</a>) as an incoming tuple
+and based on the filter condition it emits filtered tuples on one output port and rest on another output port.</p>
+<p>Filter operator supports quasi Java expressions to specify filter rule.</p>
+<p>Filter operator does not hold any state and is <strong>idempotent</strong>, <strong>fault-tolerant</strong> and <strong>statically/dynamically partitionable</strong>.</p>
+<h2 id="operator-usecase">Operator Usecase</h2>
+<ol>
+<li><strong><em>Customer data</em></strong> usually contains a field customer category/segment. One wants some analysis to be done for specific customer segment. One could use this filter operator to filter the records based on segment for some analysis for specific customer segment. </li>
+<li><strong><em>Log data</em></strong> processing pipeline may want to filter logs from specific machine/router/switch.</li>
+</ol>
+<h2 id="operator-information">Operator Information</h2>
+<ol>
+<li>Operator location: <strong><em><a href="https://github.com/apache/apex-malhar/tree/master/library">malhar-library</a></em></strong></li>
+<li>Available since: <strong><em>3.5.0</em></strong></li>
+<li>Operator state: <strong><em>Evolving</em></strong></li>
+<li>Java Packages:<ul>
+<li>Operator: <strong><em><a href="https://www.datatorrent.com/docs/apidocs/com/datatorrent/lib/filter/FilterOperator.html">com.datatorrent.lib.filter.FilterOperator</a></em></strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="properties-attributes-and-ports">Properties, Attributes and Ports</h2>
+<h3 id="properties-of-filteroperator"><a name="props"></a>Properties of FilterOperator</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+<th><strong>Default Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>condition</em></td>
+<td>condition/expression with which Filtering is done.</td>
+<td>String</td>
+<td>Yes</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><em>additionalExpressionFunctions</em></td>
+<td>List of import classes/method that should be made statically available to expression to use.</td>
+<td><code>List&lt;String&gt;</code></td>
+<td>No</td>
+<td>Empty List</td>
+</tr>
+</tbody>
+</table>
+<h3 id="platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>port.input.attr.TUPLE_CLASS</em></td>
+<td>TUPLE_CLASS attribute on input port indicates the class of POJO which incoming tuple</td>
+<td>Class or FQCN</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ports">Ports</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Port</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Connection Required</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>input</em></td>
+<td>Tuple which needs to be filtered are received on this port</td>
+<td>Object (POJO)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><em>truePort</em></td>
+<td>Tuples which satisfies <a href="#props">condition</a> are emitted on this port</td>
+<td>Object (POJO)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>falsePort</em></td>
+<td>Tuples which does not satisfy <a href="#props">condition</a> are emitted on this port</td>
+<td>Object (POJO)</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="limitations">Limitations</h2>
+<p>Current <code>FilterOperator</code> has following limitation:</p>
+<ol>
+<li><a href="https://issues.apache.org/jira/browse/APEXMALHAR-2175">APEXMALHAR-2175</a> : Filter condition is not able to correctly handle java reserved words.</li>
+</ol>
+<h2 id="example">Example</h2>
+<p>Example for <code>FilterOperator</code> can be found at: <a href="https://github.com/DataTorrent/examples/tree/master/tutorials/filter">https://github.com/DataTorrent/examples/tree/master/tutorials/filter</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../AbstractJdbcTransactionableOutputOperator/" class="btn btn-neutral float-right" title="Jdbc Output Operator">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../file_splitter/" class="btn btn-neutral" title="File Splitter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../file_splitter/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../AbstractJdbcTransactionableOutputOperator/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
