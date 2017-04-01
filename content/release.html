@@ -247,12 +247,11 @@ published libraries.</p>
 <pre><code class="lang-bash">git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Preparing for 3.4.1 development&quot;
 git push apache
 </code></pre>
-<p>Merge <code>@since</code> tag and change log changes to <code>master</code>.</p>
+<p>Cherry-pick <code>@since</code> tag and change log changes from release tag to <code>master</code>.</p>
 <h3 id="documentation">Documentation</h3>
 <p>There two steps in promotion. The documentation built during the build step above is made available on the website and then any changes to the rest of the website are deployed.</p>
-<ol>
-<li>If this is a new minor or a major release, under the <code>apex-site</code> folder, run the following commands to point the website to the release documentation folder, otherwise it is a patch release and this step can be skipped as the documentation is already reflected in the website.</li>
-</ol>
+<p>If this is a minor or a major release, link the release documentation as latest on the web site. Otherwise it is a patch release and this step can be skipped (documentation is already reflected in the website).</p>
+<p>Under the <code>apex-site</code> folder (<code>asf-site</code> branch):</p>
 <pre><code class="lang-bash"># docv major.minor version calculated in the build step
 cd docs
 # Set the release version to be the latest available version
@@ -261,12 +260,10 @@ git add -A
 git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -m &quot;Promoting ${DOC_NAME}-${docv} documentation&quot;
 git push
 </code></pre>
-<ol>
-<li>Refer to the documentation in <a href="https://github.com/apache/apex-site#contributing">apex-site repository</a> to add any new links to the <a href="https://github.com/apache/apex-site/blob/master/src/md/docs.md">docs.md</a> page, follow the committer steps to commit and push these changes, and deploy the site.</li>
-</ol>
-<h2 id="announce-release">Announce Release</h2>
-<p>For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See <a href="https://github.com/apache/apex-core/tree/master/docs#deployment">https://github.com/apache/apex-core/tree/master/docs#deployment</a></p>
+<h3 id="update-web-site">Update Web Site</h3>
 <p>Update the download page to reflect the new release: <a href="https://github.com/apache/apex-site#updating-downloads-page">https://github.com/apache/apex-site#updating-downloads-page</a></p>
+<p>Publish the web site, see <a href="https://github.com/apache/apex-site#contributing">apex-site repository</a> for instructions.</p>
+<h2 id="announce-release">Announce Release</h2>
 <p>Send the announcement email, example:
 <a href="http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E</a></p>
 <h2 id="removing-old-releases">Removing old Releases</h2>
