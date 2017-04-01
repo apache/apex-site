@@ -107,6 +107,10 @@ This way you make your change and refresh the page to see the effect immediately
 Updating Downloads Page
 -----------------------
 
+The instructions below to automatically update releases are currently broken: APEXCORE-469
+
+Until that is resolved, update the file manually. To find the release date, use `git cat-file tag <tagname>`
+
 The downloads page uses the content of `./releases.json` to populate the tables found there.
 Care has been taken to automatically generate this releases.json file. To do so, run:
 
