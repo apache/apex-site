@@ -263,13 +263,13 @@ Commit all changes and push them to the remote git repository:
 git commit --author "Apex Dev <dev@apex.apache.org>" -am "Preparing for 3.4.1 development"
 git push apache
 ```
-Merge `@since` tag and change log changes to `master`.
+Cherry-pick `@since` tag and change log changes from release tag to `master`.
 
 ### Documentation
 
-There two steps in promotion. The documentation built during the build step above is made available on the website and then any changes to the rest of the website are deployed.
+If this is a minor or a major release, link the release documentation as latest on the web site. Otherwise it is a patch release and this step can be skipped (documentation is already reflected in the website).
 
-1. If this is a new minor or a major release, under the `apex-site` folder, run the following commands to point the website to the release documentation folder, otherwise it is a patch release and this step can be skipped as the documentation is already reflected in the website.
+Under the `apex-site` folder (`asf-site` branch):
 
 ```bash
 # docv major.minor version calculated in the build step
@@ -281,13 +281,13 @@ git commit --author "Apex Dev <dev@apex.apache.org>" -m "Promoting ${DOC_NAME}-$
 git push
 ```
 
-2. Refer to the documentation in [apex-site repository](https://github.com/apache/apex-site#contributing) to add any new links to the [docs.md](https://github.com/apache/apex-site/blob/master/src/md/docs.md) page, follow the committer steps to commit and push these changes, and deploy the site.
-
-## Announce Release
-
-For minor or major release, publish the documentation to the web site prior to updating download page (which will automatically link the documentation). See https://github.com/apache/apex-core/tree/master/docs#deployment
+### Update Web Site
 
 Update the download page to reflect the new release: https://github.com/apache/apex-site#updating-downloads-page
+
+Publish the web site, see [apex-site repository](https://github.com/apache/apex-site#contributing) for instructions.
+
+## Announce Release
 
 Send the announcement email, example:
 http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E
