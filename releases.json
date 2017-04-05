@@ -5,7 +5,7 @@
         "version": "3.5.0",
         "docs": "3.5",
         "repo": "apex-core",
-        "date": 1481089442000
+        "date": 1481394284000
       },
       {
         "version": "3.4.0",
@@ -27,7 +27,13 @@
         "version": "3.6.0",
         "docs": "3.6",
         "repo": "apex-malhar",
-        "date": 1480203354000
+        "date": 1480713577000
+      },
+      {
+        "version": "3.5.0",
+        "docs": "3.5",
+        "repo": "apex-malhar",
+        "date": 1472969775000
       }
     ]
   }

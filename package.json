@@ -32,6 +32,7 @@
     "javascript-natural-sort": "^0.7.1",
     "jsdom": "3.1.2",
     "lodash": "^3.10.1",
+    "q": "^1.5.0",
     "request": "^2.65.0",
     "semver": "^5.1.0"
   }
