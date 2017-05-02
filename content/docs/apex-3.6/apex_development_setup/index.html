@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Development Setup - Apache Apex Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Development Setup";
+    var mkdocs_page_input_path = "apex_development_setup.md";
+    var mkdocs_page_url = "/apex_development_setup/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Apache Apex Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Apache Apex</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Development</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Development Setup</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apache-apex-development-environment-setup">Apache Apex Development Environment Setup</a></li>
+                
+                    <li><a class="toctree-l4" href="#development-tools">Development Tools</a></li>
+                
+                    <li><a class="toctree-l4" href="#creating-new-apex-project">Creating New Apex Project</a></li>
+                
+                    <li><a class="toctree-l4" href="#running-unit-tests">Running Unit Tests</a></li>
+                
+                    <li><a class="toctree-l4" href="#building-apex-demos">Building Apex Demos</a></li>
+                
+                    <li><a class="toctree-l4" href="#sandbox">Sandbox</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_development/">Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_packages/">Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operator_development/">Operators</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../autometrics/">AutoMetric API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../control_tuples/">Custom Control Tuples</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operations</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_cli/">Apex CLI</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../compatibility/">Compatibility</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Apache Apex Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Development &raquo;</li>
+        
+      
+    
+    <li>Development Setup</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="apache-apex-development-environment-setup">Apache Apex Development Environment Setup</h1>
+<p>This document discusses the steps needed for setting up a development environment for creating applications that run on the Apache Apex platform.</p>
+<h2 id="development-tools">Development Tools</h2>
+<p>There are a few tools that will be helpful when developing Apache Apex applications, including:</p>
+<ol>
+<li>
+<p><strong>git</strong> - A revision control system (version 1.7.1 or later). There are multiple git clients available for Windows (<a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a> for example), so download and install a client of your choice.</p>
+</li>
+<li>
+<p><strong>java JDK</strong> (not JRE) - Includes the Java Runtime Environment as well as the Java compiler and a variety of tools (version 1.7.0_79 or later). Can be downloaded from the Oracle website.</p>
+</li>
+<li>
+<p><strong>maven</strong> - Apache Maven is a build system for Java projects (version 3.0.5 or later). It can be downloaded from <a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a>.</p>
+</li>
+<li>
+<p><strong>IDE</strong> (Optional) - If you prefer to use an IDE (Integrated Development Environment) such as <em>NetBeans</em>, <em>Eclipse</em> or <em>IntelliJ</em>, install that as well.</p>
+</li>
+</ol>
+<p>After installing these tools, make sure that the directories containing the executable files are in your PATH environment variable.</p>
+<ul>
+<li><strong>Windows</strong> - Open a console window and enter the command <code>echo %PATH%</code> to see the value of the <code>PATH</code> variable and verify that the above directories for Java, git, and maven executables are present.  JDK executables like <em>java</em> and <em>javac</em>, the directory might be something like <code>C:\Program Files\Java\jdk1.7.0\_80\bin</code>; for <em>git</em> it might be <code>C:\Program Files\Git\bin</code>; and for maven it might be <code>C:\Users\user\Software\apache-maven-3.3.3\bin</code>.  If not, you can change its value clicking on the button at <em>Control Panel</em> &#x21e8; <em>Advanced System Settings</em> &#x21e8; <em>Advanced tab</em> &#x21e8; <em>Environment Variables</em>.</li>
+<li><strong>Linux and Mac</strong> - Open a console/terminal window and enter the command <code>echo $PATH</code> to see the value of the <code>PATH</code> variable and verify that the above directories for Java, git, and maven executables are present.  If not, make sure software is downloaded and installed, and optionally PATH reference is added and exported  in a <code>~/.profile</code> or <code>~/.bash_profile</code>.  For example to add maven located in <code>/sfw/maven/apache-maven-3.3.3</code> to PATH add the line: <code>export PATH=$PATH:/sfw/maven/apache-maven-3.3.3/bin</code></li>
+</ul>
+<p>Confirm by running the following commands and comparing with output that show in the table below:</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><p>Command</p></td>
+<td align="left"><p>Output</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p><tt>javac -version</tt></p></td>
+<td align="left"><p>javac 1.7.0_80</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p><tt>java -version</tt></p></td>
+<td align="left"><p>java version &quot;1.7.0_80&quot;</p>
+<p>Java(TM) SE Runtime Environment (build 1.7.0_80-b15)</p>
+<p>Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p><tt>git --version</tt></p></td>
+<td align="left"><p>git version 2.6.1.windows.1</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p><tt>mvn --version</tt></p></td>
+<td align="left"><p>Apache Maven 3.3.3 (7994120775791599e205a5524ec3e0dfe41d4a06; 2015-04-22T06:57:37-05:00)</p>
+<p>...</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="creating-new-apex-project">Creating New Apex Project</h2>
+<p>After development tools are configured, you can now use the maven archetype to create a basic Apache Apex project.  <strong>Note:</strong> When executing the commands below, replace <code>3.4.0</code> by <a href="http://apex.apache.org/downloads.html">latest available version</a> of Apache Apex.</p>
+<ul>
+<li>
+<p><strong>Windows</strong> - Create a new Windows command file called <code>newapp.cmd</code> by copying the lines below, and execute it.  When you run this file, the properties will be displayed and you will be prompted with <code>Y: :</code>; just press <strong>Enter</strong> to complete the project generation.  The caret (^) at the end of some lines indicates that a continuation line follows. </p>
+<pre><code>@echo off
+@rem Script for creating a new application
+setlocal
+mvn archetype:generate ^
+ -DarchetypeGroupId=org.apache.apex ^
+ -DarchetypeArtifactId=apex-app-archetype -DarchetypeVersion=3.4.0 ^
+ -DgroupId=com.example -Dpackage=com.example.myapexapp -DartifactId=myapexapp ^
+ -Dversion=1.0-SNAPSHOT
+endlocal
+</code></pre>
+</li>
+<li>
+<p><strong>Linux</strong> - Execute the lines below in a terminal window.  New project will be created in the curent working directory.  The backslash (\) at the end of the lines indicates continuation.</p>
+<pre><code>mvn archetype:generate \
+ -DarchetypeGroupId=org.apache.apex \
+ -DarchetypeArtifactId=apex-app-archetype -DarchetypeVersion=3.4.0 \
+ -DgroupId=com.example -Dpackage=com.example.myapexapp -DartifactId=myapexapp \
+ -Dversion=1.0-SNAPSHOT
+</code></pre>
+</li>
+</ul>
+<p>When the run completes successfully, you should see a new directory named <code>myapexapp</code> containing a maven project for building a basic Apache Apex application. It includes 3 source files:<strong>Application.java</strong>,  <strong>RandomNumberGenerator.java</strong> and <strong>ApplicationTest.java</strong>. You can now build the application by stepping into the new directory and running the maven package command:</p>
+<pre><code>cd myapexapp
+mvn clean package -DskipTests
+</code></pre>
+<p>The build should create the application package file <code>myapexapp/target/myapexapp-1.0-SNAPSHOT.apa</code>. This application package can then be used to launch example application via <strong>apex</strong> CLI, or other visual management tools.  When running, this application will generate a stream of random numbers and print them out, each prefixed by the string <code>hello world:</code>.</p>
+<h2 id="running-unit-tests">Running Unit Tests</h2>
+<p>To run unit tests on Linux or OSX, simply run the usual maven command, for example: <code>mvn test</code>.</p>
+<p>On Windows, an additional file, <code>winutils.exe</code>, is required; download it from
+<a href="https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip">https://github.com/srccodes/hadoop-common-2.2.0-bin/archive/master.zip</a>
+and unpack the archive to, say, <code>C:\hadoop</code>; this file should be present under
+<code>hadoop-common-2.2.0-bin-master\bin</code> within it.</p>
+<p>Set the <code>HADOOP_HOME</code> environment variable system-wide to
+<code>c:\hadoop\hadoop-common-2.2.0-bin-master</code> as described at:
+<a href="https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx?mfr=true">https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx?mfr=true</a>. You should now be able to run unit tests normally.</p>
+<p>If you prefer not to set the variable globally, you can set it on the command line or within
+your IDE. For example, on the command line, specify the maven
+property <code>hadoop.home.dir</code>:</p>
+<pre><code>mvn -Dhadoop.home.dir=c:\hadoop\hadoop-common-2.2.0-bin-master test
+</code></pre>
+<p>or set the environment variable separately:</p>
+<pre><code>set HADOOP_HOME=c:\hadoop\hadoop-common-2.2.0-bin-master
+mvn test
+</code></pre>
+<p>Within your IDE, set the environment variable and then run the desired
+unit test in the usual way. For example, with NetBeans you can add:</p>
+<pre><code>Env.HADOOP_HOME=c:/hadoop/hadoop-common-2.2.0-bin-master
+</code></pre>
+<p>at <em>Properties &#8658; Actions &#8658; Run project &#8658; Set Properties</em>.</p>
+<p>Similarly, in Eclipse (Mars) add it to the
+project properties at <em>Properties &#8658; Run/Debug Settings &#8658; ApplicationTest
+&#8658; Environment</em> tab.</p>
+<h2 id="building-apex-demos">Building Apex Demos</h2>
+<p>If you want to see more substantial Apex demo applications and the associated source code, you can follow these simple steps to check out and build them.</p>
+<ol>
+<li>
+<p>Check out the source code repositories:</p>
+<pre><code>git clone https://github.com/apache/apex-core
+git clone https://github.com/apache/apex-malhar
+</code></pre>
+</li>
+<li>
+<p>Switch to the appropriate release branch and build each repository:</p>
+<pre><code>cd apex-core
+mvn clean install -DskipTests
+
+cd apex-malhar
+mvn clean install -DskipTests
+</code></pre>
+</li>
+</ol>
+<p>The <code>install</code> argument to the <code>mvn</code> command installs resources from each project to your local maven repository (typically <code>.m2/repository</code> under your home directory), and <strong>not</strong> to the system directories, so Administrator privileges are not required. The  <code>-DskipTests</code> argument skips running unit tests since they take a long time. If this is a first-time installation, it might take several minutes to complete because maven will download a number of associated plugins.</p>
+<p>After the build completes, you should see the demo application package files in the target directory under each demo subdirectory in <code>apex-malhar/demos</code>.</p>
+<h2 id="sandbox">Sandbox</h2>
+<p>To jump-start development with Apex, please refer to the <a href="https://apex.apache.org/downloads.html">Downloads</a> section of the Apache Apex website, which provides a list of 3rd party Apex binary packages and sandbox environments.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../application_development/" class="btn btn-neutral float-right" title="Applications">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Apache Apex"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../application_development/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
