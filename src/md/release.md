@@ -9,6 +9,7 @@ If this is a minor release (X.Y.0), start with creating a new branch. Example fo
 ```bash
 git checkout master && git pull
 git checkout -b release-3.4 master
+git push apache release-3.4
 ```
 Replace version in master branch:
 ```
@@ -96,7 +97,7 @@ Push to fork (as temporary branch), open pull request, wait for Travis CI build 
 ```
 git push apache "v${rv}-RC1" 
 ```
-The only difference between release branch and tag is this final version number change. The branch stays at `-SNAPSHOT` version.
+The only difference between release branch and tag are this final version number change and the change log commit. The branch stays at `-SNAPSHOT` version.
 
 ## Build and Deploy Release Candidate
 Prerequisites:
@@ -222,13 +223,15 @@ http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfs
 Vote result:
 http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E
 
+Note that the vote result email should have the subject prefixed with `[RESULT]`.
+
 If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.
 
 ## Promote Release
 
 Release Nexus staging repository: http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository
 
-Move source release from dist staging to release folder:
+Move source release from dist staging to release folder (to be done by PMC member):
 ```
 rv=3.4.0
 RNAME=apache-apex-core-${rv}
@@ -237,8 +240,8 @@ svn mv https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 https://dist.apa
 
 ### JIRA
 
-Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
-Create version number X.Y.Z+1 for next release
+Close release and all associated tickets (use bulk change workflow transition and **turn off notification** at bottom of page to not flood the mailing list). 
+Create version number X.Y.Z+1 for next release (to be done by PMC member).
 
 ### git
 
@@ -248,7 +251,7 @@ rv=3.4.0
 git tag -a "v${rv}" -m "Release ${rv}" "v${rv}-RC2"
 git push apache "v${rv}"
 ```
-Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
+Cherry-pick `@since` tag and change log commit from release tag and bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):
 ```bash
 git checkout release-3.4
 dv=3.4.0-SNAPSHOT

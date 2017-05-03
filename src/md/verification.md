@@ -27,9 +27,9 @@ wget -r -np -nd <staging-area-link>/
 ```
 Note the link should end with "/".
 
-Define the apex release candidate variable. We will set it up *apex-3.4.0* as an example.
+Define the apex release candidate variable. We will use *apache-apex-core-3.6.0* as an example.
 ```bash
-APEX_RELEASE_CANDIDATE=apex-3.4.0
+APEX_RELEASE_CANDIDATE=apache-apex-core-3.6.0
 ```
 
 Verify integrity of tar.gz file:
