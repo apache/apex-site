@@ -108,8 +108,8 @@ gpg --fingerprint &lt;key-id&gt;
 <pre><code class="lang-bash">wget -r -np -nd &lt;staging-area-link&gt;/
 </code></pre>
 <p>Note the link should end with &quot;/&quot;.</p>
-<p>Define the apex release candidate variable. We will set it up <em>apex-3.4.0</em> as an example.</p>
-<pre><code class="lang-bash">APEX_RELEASE_CANDIDATE=apex-3.4.0
+<p>Define the apex release candidate variable. We will use <em>apache-apex-core-3.6.0</em> as an example.</p>
+<pre><code class="lang-bash">APEX_RELEASE_CANDIDATE=apache-apex-core-3.6.0
 </code></pre>
 <p>Verify integrity of tar.gz file:</p>
 <pre><code class="lang-bash">gpg --verify $APEX_RELEASE_CANDIDATE-source-release.tar.gz.asc

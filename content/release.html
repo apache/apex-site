@@ -96,6 +96,7 @@
 <p>If this is a minor release (X.Y.0), start with creating a new branch. Example for 3.4.0:</p>
 <pre><code class="lang-bash">git checkout master &amp;&amp; git pull
 git checkout -b release-3.4 master
+git push apache release-3.4
 </code></pre>
 <p>Replace version in master branch:</p>
 <pre><code>git checkout master
@@ -141,7 +142,7 @@ rv=3.4.0
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 </code></pre><p>Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
 <pre><code>git push apache &quot;v${rv}-RC1&quot;
-</code></pre><p>The only difference between release branch and tag is this final version number change. The branch stays at <code>-SNAPSHOT</code> version.</p>
+</code></pre><p>The only difference between release branch and tag are this final version number change and the change log commit. The branch stays at <code>-SNAPSHOT</code> version.</p>
 <h2 id="build-and-deploy-release-candidate">Build and Deploy Release Candidate</h2>
 <p>Prerequisites:</p>
 <ul>
@@ -219,23 +220,24 @@ git push
 <a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E</a></p>
 <p>Vote result:
 <a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E</a></p>
+<p>Note that the vote result email should have the subject prefixed with <code>[RESULT]</code>.</p>
 <p>If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.</p>
 <h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
-<p>Move source release from dist staging to release folder:</p>
+<p>Move source release from dist staging to release folder (to be done by PMC member):</p>
 <pre><code>rv=3.4.0
 RNAME=apache-apex-core-${rv}
 svn mv https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/apex/${RNAME} -m &quot;Release ${RNAME}&quot;
 </code></pre><h3 id="jira">JIRA</h3>
-<p>Close release and all associated tickets (use bulk change workflow transition and turn off notification at bottom of page). 
-Create version number X.Y.Z+1 for next release</p>
+<p>Close release and all associated tickets (use bulk change workflow transition and <strong>turn off notification</strong> at bottom of page to not flood the mailing list). 
+Create version number X.Y.Z+1 for next release (to be done by PMC member).</p>
 <h3 id="git">git</h3>
 <p>Create final release tag:</p>
 <pre><code class="lang-bash">rv=3.4.0
 git tag -a &quot;v${rv}&quot; -m &quot;Release ${rv}&quot; &quot;v${rv}-RC2&quot;
 git push apache &quot;v${rv}&quot;
 </code></pre>
-<p>Bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):</p>
+<p>Cherry-pick <code>@since</code> tag and change log commit from release tag and bump patch version number in release branch (X.Y.Z+1 - otherwise same as when creating new release branch):</p>
 <pre><code class="lang-bash">git checkout release-3.4
 dv=3.4.0-SNAPSHOT
 rv=3.4.1-SNAPSHOT

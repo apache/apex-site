@@ -107,26 +107,6 @@
     <tbody>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-163">APEXCORE-163</a>
-        </td>
-        <td title="Apex support modification of operator properties at runtime but the current implemenations has the following shortcomings.
-
-1. Property is not set across all partitions on the same window as individual partitions can be on different windows when property change is initiated from client resulting in inconsistency of data for those windows. I am being generous using the word inconsistent.
-2. Sometimes properties need to be set on more than one logical operators at the same time to achieve the change the user is seeking. Today they will be two separate changes happening on two different windows again resulting in inconsistent data for some windows. These would need to happen as a single transaction.
-3. If there is an operator failure before a committed checkpoint after an operator property is dynamically changed the operator will restart with the old property and the change will not be re-applied.
-
-Tim and myself did some brainstorming and we have a proposal to overcome these shortcomings. The main problem in all the above cases is that the property changes are happening out-of-band of data flow and hence independent of windowing. The proposal is to bring the property change request into the in-band dataflow so that they are handled consistently with windowing and handled distributively.
-
-The idea is to inject a special property change tuple containing the property changes and the identification information of the operator&#x27;s they affect into the dataflow at the input operator. The tuple will be injected at window boundary after end window and before begin window and as this tuple flows through the DAG the intended operators properties will be modifed. They will all be modified consistently at the same window. The tuple can contain more than one property changes for more than one logical operators and the change will be applied consistently to the different logical operators at the same window. In case of failure the replay of tuples will ensure that the property change gets reapplied at the correct window.">
-          Dynamic application property changes
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-231">APEXCORE-231</a>
         </td>
         <td title="The Apex engine supports many platform level attributes like operator memory, application window count, container jvm options etc. Today these can only be set at application launch time and cannot be changed once the application is running.
@@ -161,18 +141,6 @@ b. A new operator needs to be added to the DAG to take data from an existing ope
       </tr>
       <tr>
         <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-233">APEXCORE-233</a>
-        </td>
-        <td title="There are scenarios where the same object instance needs to be specified for two attributes. Example is partitioner and stats listener, for partitioners that need to affect partitoning based on operator stats the same instance needs to be both. This is not possible to specify using a property file today as it will create two separate instances and can only be done in Java code today. The issue is to request adding this feature.">
-          Ability to specify single instance objects in configuration
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXCORE-234">APEXCORE-234</a>
         </td>
         <td title="The current property file specification follows the hadoop configuration file format and this has led to some drawbacks. 
@@ -184,7 +152,7 @@ There will already be some changes afoot based on the following
    b. There are also other ideas such as one from David to have the ability to specify global application level attributes which possible require rethinking the current syntax.
 
 Users have also asked for an easier and more consistent way to specify these properties.  This issue is to track the ideas and progress of these changes.">
-          Investigate other ways to specify properties in property files
+          Better application configuration specification
         </td>
         <td>
     
@@ -315,29 +283,6 @@ This jira item can contain tasks for providing similar support in Apex">
         </td>
         <td>
     
-
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-2130">APEXMALHAR-2130</a>
-        </td>
-        <td title="This feature is used for supporting windowing.
-
-The storage needs to have the following features:
-1. Spillable key value storage (integrate with APEXMALHAR-2026)
-2. Upon checkpoint, it saves a snapshot for the entire data set with the checkpointing window id.  This should be done incrementally (ManagedState) to avoid wasting space with unchanged data
-3. When recovering, it takes the recovery window id and restores to that snapshot
-4. When a window is committed, all windows with a lower ID should be purged from the store.
-5. It should implement the WindowedStorage and WindowedKeyedStorage interfaces, and because of 2 and 3, we may want to add methods to the WindowedStorage interface so that the implementation of WindowedOperator can notify the storage of checkpointing, recovering and committing of a window.
-">
-          Scalable windowed storage
-        </td>
-        <td>
-    
-
-            <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR/fixforversion/12338771">3.7.0</a>&nbsp;
-
 
         </td>
       </tr>
