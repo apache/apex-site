@@ -5,37 +5,6 @@
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12919332",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12919332",
-        "key": "APEXCORE-163",
-        "fields": {
-          "summary": "Dynamic application property changes",
-          "description": "Apex support modification of operator properties at runtime but the current implemenations has the following shortcomings.\r\n\r\n1. Property is not set across all partitions on the same window as individual partitions can be on different windows when property change is initiated from client resulting in inconsistency of data for those windows. I am being generous using the word inconsistent.\r\n2. Sometimes properties need to be set on more than one logical operators at the same time to achieve the change the user is seeking. Today they will be two separate changes happening on two different windows again resulting in inconsistent data for some windows. These would need to happen as a single transaction.\r\n3. If there is an operator failure before a committed checkpoint after an operator property is dynamically changed the operator will restart with the old property and the change will not be re-applied.\r\n\r\nTim and myself did some brainstorming and we have a proposal to overcome these shortcomings. The main problem in all the above cases is that the property changes are happening out-of-band of data flow and hence independent of windowing. The proposal is to bring the property change request into the in-band dataflow so that they are handled consistently with windowing and handled distributively.\r\n\r\nThe idea is to inject a special property change tuple containing the property changes and the identification information of the operator's they affect into the dataflow at the input operator. The tuple will be injected at window boundary after end window and before begin window and as this tuple flows through the DAG the intended operators properties will be modifed. They will all be modified consistently at the same window. The tuple can contain more than one property changes for more than one logical operators and the change will be applied consistently to the different logical operators at the same window. In case of failure the replay of tuples will ensure that the property change gets reapplied at the correct window.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12919400",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919400",
         "key": "APEXCORE-231",
@@ -98,42 +67,11 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12919402",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12919402",
-        "key": "APEXCORE-233",
-        "fields": {
-          "summary": "Ability to specify single instance objects in configuration",
-          "description": "There are scenarios where the same object instance needs to be specified for two attributes. Example is partitioner and stats listener, for partitioners that need to affect partitoning based on operator stats the same instance needs to be both. This is not possible to specify using a property file today as it will create two separate instances and can only be done in Java code today. The issue is to request adding this feature.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12919403",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12919403",
         "key": "APEXCORE-234",
         "fields": {
-          "summary": "Investigate other ways to specify properties in property files",
+          "summary": "Better application configuration specification",
           "description": "The current property file specification follows the hadoop configuration file format and this has led to some drawbacks. \r\n    a. The names for the properties and attributes are verbose in the configuration file. \r\n    b. When there are nested properties in operators the syntax deviates from the bean specification because it introduces some specific keywords in the specification like .prop and ,attr.\r\n\r\nThere will already be some changes afoot based on the following\r\n   a. When adding ability to specify single instance attributes (https://malhar.atlassian.net/browse/APEXCORE-233) implementing it in the current syntax may not be possible or lead to very unwieldy syntax.\r\n   b. There are also other ideas such as one from David to have the ability to specify global application level attributes which possible require rethinking the current syntax.\r\n\r\nUsers have also asked for an easier and more consistent way to specify these properties.  This issue is to track the ideas and progress of these changes.",
           "fixVersions": [],
           "priority": {
@@ -309,6 +247,14 @@
         "projectId": 12318823
       },
       {
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12339675",
+        "id": "12339675",
+        "name": "3.4.1",
+        "archived": false,
+        "released": false,
+        "projectId": 12318823
+      },
+      {
         "self": "https://issues.apache.org/jira/rest/api/2/version/12335725",
         "id": "12335725",
         "name": "3.5.1",
@@ -317,9 +263,17 @@
         "projectId": 12318823
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12338818",
-        "id": "12338818",
-        "name": "3.6.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12340525",
+        "id": "12340525",
+        "name": "3.6.1",
+        "archived": false,
+        "released": false,
+        "projectId": 12318823
+      },
+      {
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12340522",
+        "id": "12340522",
+        "name": "3.7.0",
         "archived": false,
         "released": false,
         "projectId": 12318823
@@ -433,45 +387,6 @@
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12985430",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12985430",
-        "key": "APEXMALHAR-2130",
-        "fields": {
-          "summary": "Scalable windowed storage",
-          "description": "This feature is used for supporting windowing.\r\n\r\nThe storage needs to have the following features:\r\n1. Spillable key value storage (integrate with APEXMALHAR-2026)\r\n2. Upon checkpoint, it saves a snapshot for the entire data set with the checkpointing window id.  This should be done incrementally (ManagedState) to avoid wasting space with unchanged data\r\n3. When recovering, it takes the recovery window id and restores to that snapshot\r\n4. When a window is committed, all windows with a lower ID should be purged from the store.\r\n5. It should implement the WindowedStorage and WindowedKeyedStorage interfaces, and because of 2 and 3, we may want to add methods to the WindowedStorage interface so that the implementation of WindowedOperator can notify the storage of checkpointing, recovering and committing of a window.\r\n",
-          "fixVersions": [
-            {
-              "self": "https://issues.apache.org/jira/rest/api/2/version/12338771",
-              "id": "12338771",
-              "name": "3.7.0",
-              "archived": false,
-              "released": false
-            }
-          ],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
-            "name": "Major",
-            "id": "3"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/4",
-            "description": "This issue was once resolved, but the resolution was deemed incorrect. From here issues are either marked assigned or resolved.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/reopened.png",
-            "name": "Reopened",
-            "id": "4",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "New"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "13006875",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/13006875",
         "key": "APEXMALHAR-2260",
@@ -559,9 +474,9 @@
         "projectId": 12318824
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12338771",
-        "id": "12338771",
-        "name": "3.7.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12340282",
+        "id": "12340282",
+        "name": "3.8.0",
         "archived": false,
         "released": false,
         "projectId": 12318824
