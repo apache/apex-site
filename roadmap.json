@@ -29,7 +29,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -60,7 +60,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -91,7 +91,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -122,7 +122,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -153,7 +153,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -184,19 +184,19 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
       },
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12992322",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12992322",
-        "key": "APEXCORE-498",
+        "id": "13073313",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/13073313",
+        "key": "APEXCORE-724",
         "fields": {
-          "summary": "Named Checkpoints - Checkpoint the DAG with a name/tag and start the app from that point",
-          "description": "Named Checkpoints \r\n\r\n1. Ability to tag/name the checkpoints\r\n2. On demand - checkpoint the DAG\r\n3. Start the app from the named checkpoints\r\n\r\nAll checkpoints that happened before the committed window is deleted but the named checkpoints won't be deleted.",
+          "summary": "Support for Kubernetes",
+          "description": "It should be possible to run Apex applications on Kubernetes. This will also require that Apex applications can be packaged as containers (Docker or other supported container).",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -215,7 +215,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -318,7 +318,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -349,7 +349,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -380,7 +380,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -411,7 +411,7 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
             }
           }
         }
@@ -442,7 +442,38 @@
               "id": 2,
               "key": "new",
               "colorName": "blue-gray",
-              "name": "New"
+              "name": "To Do"
+            }
+          }
+        }
+      },
+      {
+        "expand": "operations,editmeta,changelog,transitions,renderedFields",
+        "id": "13073312",
+        "self": "https://issues.apache.org/jira/rest/api/2/issue/13073312",
+        "key": "APEXMALHAR-2495",
+        "fields": {
+          "summary": "Apex SQL: Add support for windowing",
+          "description": null,
+          "fixVersions": [],
+          "priority": {
+            "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/major.png",
+            "name": "Major",
+            "id": "3"
+          },
+          "status": {
+            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
+            "name": "Open",
+            "id": "1",
+            "statusCategory": {
+              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
             }
           }
         }

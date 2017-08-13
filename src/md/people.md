@@ -14,7 +14,7 @@ The Project Management Committee (PMC) is responsible for the oversight of the p
 
 List of all Apache Apex committers and PMC members:  [https://projects.apache.org/committee.html?apex](https://projects.apache.org/committee.html?apex)
 
-A good place to see all contributors and other project stats is [Open Hub](https://www.openhub.net/p/apache_apex)
+A good place to see all contributors and other project stats is [Open Hub](https://www.openhub.net/p/apache-apex)
 
 ## Former Mentors
 
