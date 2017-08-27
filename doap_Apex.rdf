@@ -36,13 +36,13 @@
     <category rdf:resource="http://projects.apache.org/category/big-data" />
     <repository>
       <GitRepository>
-        <location rdf:resource="https://git-wip-us.apache.org/repos/asf/apex-core.git"/>
+        <location rdf:resource="https://github.com/apache/apex-core.git"/>
         <browse rdf:resource="https://github.com/apache/apex-core.git"/>
       </GitRepository>
     </repository>
     <repository>
       <GitRepository>
-        <location rdf:resource="https://git-wip-us.apache.org/repos/asf/apex-malhar.git"/>
+        <location rdf:resource="https://github.com/apache/apex-malhar.git"/>
         <browse rdf:resource="https://github.com/apache/apex-malhar.git"/>
       </GitRepository>
     </repository>

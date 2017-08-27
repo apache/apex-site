@@ -294,37 +294,6 @@
     "jiras": [
       {
         "expand": "operations,editmeta,changelog,transitions,renderedFields",
-        "id": "12926128",
-        "self": "https://issues.apache.org/jira/rest/api/2/issue/12926128",
-        "key": "APEXMALHAR-1843",
-        "fields": {
-          "summary": "Split Malhar Library and Malhar Contrib package into baby packages",
-          "description": "[~andyp] I am assigning this to you cause you are the one who first said it. So either you lead it or find a willing lead to get this task to completion.\r\n\r\nThe problem with contrib and library modules of malhar is that a ton of dependencies are prescribed as optional. The motive behind it was that the users of these libraries are given an opportunity to keep the size of the dependency-included packages to bare minimum. It  comes at a cost that the dependency now has to be manually figured out. This is a complete misuse of the optional dependency, IMO. It defeats the purpose of maven having dependency management as one of the biggest features of it.\r\n\r\nSo keep things sane - the proposed compromise is that we start creating smaller discreet packages for discrete technologies.",
-          "fixVersions": [],
-          "priority": {
-            "self": "https://issues.apache.org/jira/rest/api/2/priority/2",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/priorities/critical.png",
-            "name": "Critical",
-            "id": "2"
-          },
-          "status": {
-            "self": "https://issues.apache.org/jira/rest/api/2/status/1",
-            "description": "The issue is open and ready for the assignee to start work on it.",
-            "iconUrl": "https://issues.apache.org/jira/images/icons/statuses/open.png",
-            "name": "Open",
-            "id": "1",
-            "statusCategory": {
-              "self": "https://issues.apache.org/jira/rest/api/2/statuscategory/2",
-              "id": 2,
-              "key": "new",
-              "colorName": "blue-gray",
-              "name": "To Do"
-            }
-          }
-        }
-      },
-      {
-        "expand": "operations,editmeta,changelog,transitions,renderedFields",
         "id": "12926037",
         "self": "https://issues.apache.org/jira/rest/api/2/issue/12926037",
         "key": "APEXMALHAR-1939",

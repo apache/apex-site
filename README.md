@@ -59,7 +59,7 @@ Contributing
 ------------
 If you would like to make a change to the site:
 
-1. Fork the [github mirror](https://github.com/apache/apex-site)
+1. Fork the [Apex site repository](https://github.com/apache/apex-site) to your github account.
 2. Create a new branch from `master`
 3. Add commit(s) to your branch
 4. Test your changes locally (see Development section below)
@@ -69,7 +69,7 @@ If you would like to make a change to the site:
 If you are a committer, do the following:
 
 1. Update the master branch with your (or a Pull Request's) change.
-2. Push updated master to the asf remote master (https://git-wip-us.apache.org/repos/asf/apex-site.git)
+2. Merge the pull request to the [Apex site repository](https://github.com/apache/apex-site) 
 2. Run `build.sh` from the master branch directory (requires nodejs and npm). This will:
   - ensure the necessary npm and bower dependencies are installed
   - checks out and updates the `asf-site` branch with a new commit of the build from the current branch
