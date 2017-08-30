@@ -72,10 +72,9 @@
 
             <li class="nav-item nav-mouseover">
               <ul class="dropdown-menu">
-                <li class=""><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-core.git">Apex Core (ASF)</a></li>
-                <li class=""><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
-                <li class=""><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-malhar.git">Apex Malhar (ASF)</a></li>
-                <li class=""><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
+                <li class=""><a href="https://github.com/apache/apex-core">Apex Core</a></li>
+                <li class=""><a href="https://github.com/apache/apex-malhar">Apex Malhar</a></li>
+                <li class=""><a href="https://github.com/apache/apex-site">Apex Site</a></li>
               </ul>
               <a href="https://github.com/apache/apex-core" class="nav-link">Github</a>
             </li>
@@ -237,22 +236,6 @@ http://mesos.apache.org/documentation/latest/fetcher/
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1843">APEXMALHAR-1843</a>
-        </td>
-        <td title="[~andyp] I am assigning this to you cause you are the one who first said it. So either you lead it or find a willing lead to get this task to completion.
-
-The problem with contrib and library modules of malhar is that a ton of dependencies are prescribed as optional. The motive behind it was that the users of these libraries are given an opportunity to keep the size of the dependency-included packages to bare minimum. It  comes at a cost that the dependency now has to be manually figured out. This is a complete misuse of the optional dependency, IMO. It defeats the purpose of maven having dependency management as one of the biggest features of it.
-
-So keep things sane - the proposed compromise is that we start creating smaller discreet packages for discrete technologies.">
-          Split Malhar Library and Malhar Contrib package into baby packages
-        </td>
-        <td>
-    
-
-        </td>
-      </tr>
       <tr>
         <td>
           <a target="_blank" href="https://issues.apache.org/jira/browse/APEXMALHAR-1939">APEXMALHAR-1939</a>

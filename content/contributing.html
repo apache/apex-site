@@ -72,10 +72,9 @@
 
             <li class="nav-item nav-mouseover">
               <ul class="dropdown-menu">
-                <li class=""><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-core.git">Apex Core (ASF)</a></li>
-                <li class=""><a href="https://github.com/apache/apex-core">Apex Core (Github Mirror)</a></li>
-                <li class=""><a href="https://git-wip-us.apache.org/repos/asf?p&#x3D;apex-malhar.git">Apex Malhar (ASF)</a></li>
-                <li class=""><a href="https://github.com/apache/apex-malhar">Apex Malhar (Github Mirror)</a></li>
+                <li class=""><a href="https://github.com/apache/apex-core">Apex Core</a></li>
+                <li class=""><a href="https://github.com/apache/apex-malhar">Apex Malhar</a></li>
+                <li class=""><a href="https://github.com/apache/apex-site">Apex Site</a></li>
               </ul>
               <a href="https://github.com/apache/apex-core" class="nav-link">Github</a>
             </li>
@@ -113,7 +112,8 @@
 <li><a href="https://issues.apache.org/jira/browse/APEXCORE/">APEXCORE</a> for <a href="https://github.com/apache/apex-core">apex-core</a> and <a href="https://github.com/apache/apex-site">apex-site</a></li>
 <li><a href="https://issues.apache.org/jira/browse/APEXMALHAR/">APEXMALHAR</a> for <a href="https://github.com/apache/apex-malhar">apex-malhar</a></li>
 </ol>
-<p>Before working on changes for any of the repositories, please locate an existing JIRA ticket or submit a new one. In order to assign an issue to yourself, you need to be listed as contributor in the JIRA project. PMC members have access to add new contributors, please request to be added through a comment on your candidate ticket or send us an email on the dev@ mailing list.</p>
+<p>Before working on changes for any of the repositories, please locate an existing JIRA ticket or submit a new one.
+Before a ticket can be assigned, you need to be listed as contributor in the JIRA project. PMC members have access to add new contributors, please request to be added through a comment on your candidate ticket or send us an email on the dev@ mailing list.</p>
 <h3 id="github-and-git">Github and git</h3>
 <p>We use GitHub’s pull request functionality to review proposed code changes. If you do not already have a personal GitHub account, sign up <a href="https://github.com/join">here</a>. We recommend that you use the same email address and first/lastname for emails, git and JIRA so that contributions can be better tracked and notifications correlated. It is also recommended that you use an email address that is valid permanently (for example your @gmail.com or @apache.org address). Please also see:</p>
 <ul>
@@ -122,13 +122,10 @@
 <li><a href="https://help.github.com/articles/keeping-your-email-address-private/">https://help.github.com/articles/keeping-your-email-address-private/</a></li>
 </ul>
 <p>If you are new to git, this <a href="https://try.github.io/">tutorial</a> may be helpful.</p>
-<p>The ASF Apex git repositories have mirror repositories on github which are used to review pull requests and provide a second remote endpoint for the codebase.</p>
 <ol>
-<li>Fork the ASF github mirror: <a href="https://github.com/apache/apex-core">https://github.com/apache/apex-core</a> (or <a href="https://github.com/apache/apex-malhar">https://github.com/apache/apex-malhar</a> or <a href="https://github.com/apache/apex-site">https://github.com/apache/apex-site</a>) </li>
-<li>Clone the <strong>fork</strong> on your local workspace (one time step):<br/>
+<li>Fork the ASF repository: <a href="https://github.com/apache/apex-core">Apex Core</a> or <a href="https://github.com/apache/apex-malhar">Apex Malhar</a> or <a href="https://github.com/apache/apex-site">Apex Site</a> into your github account. </li>
+<li>Clone the <strong>fork</strong> on your local workspace:<br/>
 <code>git clone https://github.com/{github_username}/apex-core.git</code></li>
-<li>Add the mirror as remote repository, here shown for apex-core:<br/>
-<code>git remote add upstream https://github.com/apache/apex-core</code></li>
 </ol>
 <h3 id="java-development-environment">Java Development Environment</h3>
 <p>For prerequisites and setup instructions see: <a href="http://apex.apache.org/docs/apex/apex_development_setup/">http://apex.apache.org/docs/apex/apex_development_setup/</a></p>
@@ -138,6 +135,24 @@
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/intellij">IntelliJ</a></li>
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/eclipse">Eclipse</a></li>
 <li><a href="https://github.com/apache/apex-core/tree/master/misc/ide-templates/netbeans">NetBeans</a></li>
+</ul>
+<h2 id="before-coding">Before Coding</h2>
+<p>Before starting work, have a JIRA assigned to yourself. If you want to work on a ticket that is assigned to someone else,
+send a courtesy e-mail to the assignee to check if you can take it over. 
+Confirm type, priority and other JIRA fields (often default values are not the best fit).</p>
+<p>Before implementing non-trivial changes that result in potentially large code modifications:</p>
+<ul>
+<li>Engage on the mailing list to ensure your time will be well spent, the proposal is welcome by the community
+and does not overlap or conflict with other initiatives.</li>
+<li>Discuss the design aspects, the larger picture. This may involve discussion, questions,
+suggestions, consensus building towards agreed approach. Or possibly some prototyping. </li>
+<li>Capture the outcome or final approach on your JIRA ticket, this will help others to see important
+information without getting into details (including users that may lookup a JIRA from release notes).</li>
+<li>Certain licenses cannot be used in ASF projects. Ensure contributions don&#39;t introduce such dependencies. See</li>
+<li><a href="https://www.apache.org/legal/resolved.html#category-x">https://www.apache.org/legal/resolved.html#category-x</a></li>
+<li><a href="https://www.apache.org/legal/">https://www.apache.org/legal/</a></li>
+<li><a href="https://www.apache.org/legal/resolved.html">https://www.apache.org/legal/resolved.html</a></li>
+<li><a href="https://issues.apache.org/jira/browse/LEGAL">https://issues.apache.org/jira/browse/LEGAL</a></li>
 </ul>
 <h2 id="opening-pull-requests">Opening Pull Requests</h2>
 <ol>
@@ -152,8 +167,8 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
 </li>
 <li>Once your feature is complete, submit the pull request on github against <code>master</code>. <strong>Use the JIRA number (e.g. APEXCORE-123) as prefix in the pull request title</strong>. This will ensure the information is attached to the JIRA ticket automatically. If commits result from running scripts, file formatting or similar, use following attribution:<br/>
 <code>git commit --amend --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot;</code></li>
-<li>If you want specific people to review your pull request, use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
-<li>Check the status of the pull request and ensure the Travis CI build is successful. If not, inspect the linked build log for details.<ul>
+<li>If you want specific people to review the work, request reviewers or assignees on the pull request (Github will make suggestions). You can also use the <code>@</code> notation in Github comments to mention that user, and request that he/she reviews your changes.</li>
+<li>Check the status of the pull request and ensure the Travis CI and Jenkins builds are successful. If not, inspect the linked build log for details.<ul>
 <li>If build fails due to license headers, follow instructions above.</li>
 <li>If build fails due to code style violations, run <code>mvn checkstyle:check -Dcheckstyle.console=true</code> and correct those issues that were introduced with your changes. </li>
 </ul>
@@ -198,22 +213,21 @@ squash 6f98905 change2
 <p>Thanks for contributing!</p>
 <h2 id="merging-a-pull-request-committers-">Merging a Pull Request (committers)</h2>
 <ol>
-<li>Ensure that the basic requirements for a pull request are met. This includes:<ul>
-<li>Commit messages need to reference JIRA (pull requests will be linked to ticket)</li>
-<li>Travis CI pull request build needs to pass</li>
+<li>Ensure that basic requirements for a pull request are met. This includes:<ul>
+<li>Sufficient time has passed for others to review </li>
+<li>PR was suffiently reviewed and comments were addressed. See <a href="https://www.apache.org/foundation/voting.html">voting policy</a>. </li>
+<li>When there are multiple reviewers, wait till other reviewers approve, with timeout of 48 hours before merging</li>
+<li>If the PR was open for a long time, email dev@ declaring intent to merge</li>
+<li>Commit messages and PR title need to reference JIRA (pull requests will be linked to ticket)</li>
+<li>Travis CI and Jenkins pull request build needs to pass</li>
 <li>Ensure tests are added/modified for new features or fixes</li>
 <li>Ensure appropriate JavaDoc comments have been added</li>
-<li>Nice to have: Ensure the PR is rebased to apache/master to avoid extra merge commits (especially if the contributor is right next to you).</li>
+<li>Verify contributions don&#39;t depend on incompatible licences (see <a href="https://www.apache.org/legal/resolved.html#category-x">https://www.apache.org/legal/resolved.html#category-x</a>)</li>
 </ul>
 </li>
-<li>To set up access to the ASF source repository, <a href="https://git-wip-us.apache.org/#committers-getting-started">follow these steps</a>. The ASF master repository is:<br/>
-<code>https://git-wip-us.apache.org/repos/asf/apex-core.git</code></li>
-<li>Use the git command line to pull in the changes from the pull requests. You can refer to opened PR notification that was automatically sent to the <code>dev@apex.apache.org</code> mailing list to see the exact merge commands.</li>
-<li>Once done with verification, push the changes to the ASF repository&#39;s <code>master</code> branch. Within a few
-seconds, the changes will propagate back to the github mirror and the pull requests be closed and marked merged automatically.</li>
-<li>The <code>Fix version</code> field on the corresponding JIRA ticket needs to be set and the ticket resolved after pushing the changes.</li>
+<li>Use the github <em>rebase and merge</em> option or the git command line to merge the pull request (see link <code>view command line options</code> on the PR).</li>
+<li>Update JIRA after pushing the changes. Set the <code>Fix version</code> field and resolve the JIRA with proper resolution. Also verify that other fields (type, priority, assignee) are correct.</li>
 </ol>
-<p><strong>Note: since none of us has write access to the mirror, only the author of a pull request can close it if it was not merged.</strong></p>
 
 </div>
 
