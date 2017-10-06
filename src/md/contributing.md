@@ -136,6 +136,8 @@ Creating a local branch that tracks a remote makes pull easier (no need to speci
   `git push origin +APEXCORE-123.my-feature`
   * Delete the extra squash branch:  
   `git branch -D APEXCORE-123.my-feature.squash`
+1. In case you need more time to work on the PR after receiving review feedback and anticipate some period of inactivity, please close the PR and let the reviewers know if you plan to work on the PR later. Once you have time to resume
+   work on the issue, please re-open existing PR prior to updating your remote branch. When a PR is inactive longer than 2 months, it may be closed by a committer.  
 
 Thanks for contributing!
 
