@@ -80,7 +80,7 @@
             </li>
           
           <li class="nav-item">
-            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+            <a class="nav-link btn btn-success btn-download" href="/downloads.html">Download</a>
           </li>
         </ul>
         
@@ -209,6 +209,8 @@ squash 6f98905 change2
 <li>Delete the extra squash branch:<br><code>git branch -D APEXCORE-123.my-feature.squash</code></li>
 </ul>
 </li>
+<li>In case you need more time to work on the PR after receiving review feedback and anticipate some period of inactivity, please close the PR and let the reviewers know if you plan to work on the PR later. Once you have time to resume
+work on the issue, please re-open existing PR prior to updating your remote branch. When a PR is inactive longer than 2 months, it may be closed by a committer.  </li>
 </ol>
 <p>Thanks for contributing!</p>
 <h2 id="merging-a-pull-request-committers-">Merging a Pull Request (committers)</h2>
@@ -250,6 +252,16 @@ squash 6f98905 change2
 
   <script>
     $('#copyright-year').text((new Date()).getFullYear());
+
+    $('.btn-download').click(function(e){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Download Button',
+        eventAction: 'Button Click',
+        eventLabel: 'Page Header'
+      });
+    });
+
   </script>
 
 </body>

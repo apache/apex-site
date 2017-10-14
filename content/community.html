@@ -80,7 +80,7 @@
             </li>
           
           <li class="nav-item">
-            <a class="nav-link btn btn-success" href="/downloads.html">Download</a>
+            <a class="nav-link btn btn-success btn-download" href="/downloads.html">Download</a>
           </li>
         </ul>
         
@@ -148,6 +148,16 @@
 
   <script>
     $('#copyright-year').text((new Date()).getFullYear());
+
+    $('.btn-download').click(function(e){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Download Button',
+        eventAction: 'Button Click',
+        eventLabel: 'Page Header'
+      });
+    });
+
   </script>
 
 </body>
