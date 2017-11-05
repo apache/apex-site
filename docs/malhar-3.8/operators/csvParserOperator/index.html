@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>CSV Parser - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CSV Parser";
+    var mkdocs_page_input_path = "operators/csvParserOperator.md";
+    var mkdocs_page_url = "/operators/csvParserOperator/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIs</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../apis/calcite/">SQL</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../block_reader/">Block Reader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvformatter/">CSV Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">CSV Parser</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#csv-parser-operator">Csv Parser Operator</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-objective">Operator Objective</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-diagram">Class Diagram</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-information">Operator Information</a></li>
+                
+                    <li><a class="toctree-l4" href="#platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</a></li>
+                
+                    <li><a class="toctree-l4" href="#ports">Ports</a></li>
+                
+                    <li><a class="toctree-l4" href="#partitioning">Partitioning</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../deduper/">Deduper</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../enricher/">Enricher</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../fsInputOperator/">File Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../filter/">Filter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../fixedWidthParserOperator/">Fixed Width Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ftpInputOperator/">FTP Input Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../AbstractJdbcTransactionableOutputOperator/">Jdbc Output Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jdbcPollInputOperator/">JDBC Poller Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jmsInputOperator/">JMS Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonFormatter/">JSON Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonParser/">JSON Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../regexparser/">Regex Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../s3outputmodule/">S3 Output Module</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../transform/">Transformer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../windowedOperator/">Windowed Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../xmlParserOperator/">XML Parser</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operators &raquo;</li>
+        
+      
+    
+    <li>CSV Parser</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="csv-parser-operator">Csv Parser Operator</h1>
+<h2 id="operator-objective">Operator Objective</h2>
+<p>This operator is designed to parse delimited records and construct a map or concrete java class also known as <a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object">"POJO"</a> out of it. User need to provide the schema to describe the delimited data. Based on schema definition the operator will parse the incoming record to object map and POJO.  User can also provide constraints if any, in the schema. The supported constraints are listed in <a href="#constraints">constraints table</a>. The incoming record will be validated against those constraints. Valid records will be emitted as POJO / map while invalid ones are emitted on error port with error message.</p>
+<p><strong>Note</strong>: field names of POJO must match field names in schema and in the same order as it appears in the incoming data.</p>
+<h2 id="overview">Overview</h2>
+<p>The operator is <strong>idempotent</strong>, <strong>fault-tolerant</strong> and <strong>partitionable</strong>.</p>
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img alt="" src="../images/csvParser/CSVParser.png" /></p>
+<h2 id="operator-information">Operator Information</h2>
+<ol>
+<li>Operator location:<strong><em>malhar-contrib</em></strong></li>
+<li>Available since:<strong><em>3.2.0</em></strong></li>
+<li>Operator state:<strong><em>Evolving</em></strong></li>
+<li>Java Package:<a href="https://github.com/apache/apex-malhar/blob/master/contrib/src/main/java/com/datatorrent/contrib/parser/CsvParser.java">com.datatorrent.contrib.parser.CsvParser</a></li>
+</ol>
+<h2 id="properties-of-csv-parser"><a name="props"></a>Properties of Csv Parser</h2>
+<p>User need to set the schema which describes delimited data as well as specifies constraints on values if any.
+e.g.</p>
+<pre><code class="xml">{
+  &quot;separator&quot;:&quot;,&quot;,
+  &quot;quoteChar&quot;:&quot;\&quot;&quot;,
+  &quot;fields&quot;:[
+    {
+      &quot;name&quot;:&quot;adId&quot;,
+      &quot;type&quot;:&quot;Integer&quot;,
+      &quot;constraints&quot;:{
+         &quot;required&quot;:&quot;true&quot;
+      }
+    },
+    {
+      &quot;name&quot;:&quot;adName&quot;,
+      &quot;type&quot;:&quot;String&quot;,
+      &quot;constraints&quot;:{
+         &quot;required&quot;:&quot;true&quot;,
+         &quot;pattern&quot;:&quot;[a-z].*[a-z]$&quot;,
+         &quot;maxLength&quot;:&quot;10&quot;
+      }
+    },
+    {
+      &quot;name&quot;:&quot;bidPrice&quot;,
+      &quot;type&quot;:&quot;Double&quot;,
+      &quot;constraints&quot;:{
+         &quot;required&quot;:&quot;true&quot;,
+         &quot;minValue&quot;:&quot;0.1&quot;,
+         &quot;maxValue&quot;:&quot;3.2&quot;
+      }
+    },
+    {
+      &quot;name&quot;:&quot;startDate&quot;,
+      &quot;type&quot;:&quot;Date&quot;,
+      &quot;constraints&quot;:{
+         &quot;format&quot;:&quot;yyyy-MM-dd HH:mm:ss&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+<th><strong>Default Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>schema</em></td>
+<td><a href="https://github.com/apache/apex-malhar/blob/master/contrib/src/main/java/com/datatorrent/contrib/parser/DelimitedSchema.java">Schema</a>  describing delimited data</td>
+<td>String</td>
+<td>YES</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>out.TUPLE_CLASS</em></td>
+<td>TUPLE_CLASS attribute on output port which tells operator the class of POJO which need to be emitted</td>
+<td>Class</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-datatypes-in-schema"><a name="dataTypes"></a>Supported DataTypes in Schema</h2>
+<ul>
+<li>Integer</li>
+<li>Long</li>
+<li>Double</li>
+<li>Character</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Date</li>
+<li>Float</li>
+</ul>
+<h2 id="schema-constraints"><a name="constraints"></a>Schema Constraints</h2>
+<table>
+<thead>
+<tr>
+<th><strong>DataType</strong></th>
+<th><strong>Constraints</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>All data Types</em></td>
+<td>required</td>
+<td>If mentioned, indicates that the data type constraints that follow are required. It cannot be blank/null. It may or may not satisfy other constraints ( like equals/minVal/maxVal etc )</td>
+</tr>
+<tr>
+<td><em>All data Types</em></td>
+<td>equals</td>
+<td>If mentioned, indicates that the data string or value declared in the data type constraints must be an exact match with the specified value. <code>Note: This constraints is not applicable for data type boolean and date</code></td>
+</tr>
+<tr>
+<td><em>String</em></td>
+<td>Length</td>
+<td>The string must be of the length that is specified.</td>
+</tr>
+<tr>
+<td><em>String</em></td>
+<td>minLength</td>
+<td>The string is at least the length specified as minLength value.</td>
+</tr>
+<tr>
+<td><em>String</em></td>
+<td>maxLength</td>
+<td>The string can be at the most the length specified as maxLength value.</td>
+</tr>
+<tr>
+<td><em>String</em></td>
+<td>pattern</td>
+<td>The string must match the specified regular expression.</td>
+</tr>
+<tr>
+<td><em>Long</em></td>
+<td>maxValue</td>
+<td>The numeric can be at the most the value specified as maxValue.</td>
+</tr>
+<tr>
+<td><em>Long</em></td>
+<td>minValue</td>
+<td>The numeric is at least the value specified as minValue.</td>
+</tr>
+<tr>
+<td><em>Double</em></td>
+<td>maxValue</td>
+<td>The numeric can be at the most the value specified as maxValue.</td>
+</tr>
+<tr>
+<td><em>Double</em></td>
+<td>minValue</td>
+<td>The numeric is at least the value specified as minValue.</td>
+</tr>
+<tr>
+<td><em>Float</em></td>
+<td>maxValue</td>
+<td>The numeric can be at the most the value specified as maxValue.</td>
+</tr>
+<tr>
+<td><em>Float</em></td>
+<td>minValue</td>
+<td>The numeric is at least the value specified as minValue.</td>
+</tr>
+<tr>
+<td><em>Integer</em></td>
+<td>maxValue</td>
+<td>The numeric can be at the most the value specified as maxValue.</td>
+</tr>
+<tr>
+<td><em>Integer</em></td>
+<td>minValue</td>
+<td>The numeric is at least the value specified as minValue.</td>
+</tr>
+<tr>
+<td><em>Date</em></td>
+<td>format</td>
+<td>A simple date format as specified in the SimpleDateFormat class: http://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html?is-external=true</td>
+</tr>
+<tr>
+<td><em>Boolean</em></td>
+<td>trueValue</td>
+<td>String for which boolean value is true. The default values are: true, 1, y, and t. <code>Note: If you specify trueValue, you must also specify falseValue.</code></td>
+</tr>
+<tr>
+<td><em>Boolean</em></td>
+<td>falseValue</td>
+<td>String for which boolean value is false. The default values are: false, 0, n, and f. <code>Note: If you specify falseValue, you must also specify trueValue.</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ports">Ports</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Port</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>in</em></td>
+<td>Tuples that needs to be parsed are recieved on this port</td>
+<td>byte[]</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><em>out</em></td>
+<td>Valid Tuples that are emitted as pojo</td>
+<td>Object (POJO)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>parsedOutput</em></td>
+<td>Valid Tuples that are emitted as map</td>
+<td>Map</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>err</em></td>
+<td>Invalid Tuples are emitted with error message</td>
+<td>KeyValPair &lt;String, String></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="partitioning">Partitioning</h2>
+<p>CSV Parser is both statically and dynamically partitionable.</p>
+<h3 id="static-partitioning">Static Partitioning</h3>
+<p>This can be achieved in 2 ways as shown below.</p>
+<p>Specifying the partitioner and number of partitions in the populateDAG() method</p>
+<pre><code class="java">    CsvParser csvParser = dag.addOperator(&quot;csvParser&quot;, CsvParser.class);
+    StatelessPartitioner&lt;CsvParser&gt; partitioner1 = new StatelessPartitioner&lt;CsvParser&gt;(2);
+    dag.setAttribute(csvParser, Context.OperatorContext.PARTITIONER, partitioner1);
+</code></pre>
+
+<p>Specifying the partitioner in properties file.</p>
+<pre><code class="xml">   &lt;property&gt;
+     &lt;name&gt;dt.operator.{OperatorName}.attr.PARTITIONER&lt;/name&gt;
+     &lt;value&gt;com.datatorrent.common.partitioner.StatelessPartitioner:2&lt;/value&gt;
+   &lt;/property&gt;
+</code></pre>
+
+<p>where {OperatorName} is the name of the CsvParser operator.
+ Above lines will partition CsvParser statically 2 times. Above value can be changed accordingly to change the number of static partitions.</p>
+<h3 id="dynamic-paritioning">Dynamic Paritioning</h3>
+<p>CsvParser can be dynamically partitioned using out-of-the-box partitioner:</p>
+<h4 id="throughput-based">Throughput based</h4>
+<p>Following code can be added to populateDAG method of application to dynamically partition CsvParser:</p>
+<pre><code class="java">CsvParser csvParser = dag.addOperator(&quot;csvParser&quot;, CsvParser.class);
+StatelessThroughputBasedPartitioner&lt;CsvParser&gt; partitioner = new StatelessThroughputBasedPartitioner&lt;&gt;();
+partitioner.setCooldownMillis(conf.getLong(COOL_DOWN_MILLIS, 10000));
+partitioner.setMaximumEvents(conf.getLong(MAX_THROUGHPUT, 30000));
+partitioner.setMinimumEvents(conf.getLong(MIN_THROUGHPUT, 10000));
+dag.setAttribute(csvParser, OperatorContext.STATS_LISTENERS, Arrays.asList(new StatsListener[]{partitioner}));
+dag.setAttribute(csvParser, OperatorContext.PARTITIONER, partitioner);
+</code></pre>
+
+<p>Above code will dynamically partition csvParser when the throughput changes.
+If the overall throughput of csvParser goes beyond 30000 or less than 10000, the platform will repartition CsvParser
+to balance throughput of a single partition to be between 10000 and 30000.
+CooldownMillis of 10000 will be used as the threshold time for which the throughput change is observed.</p>
+<h2 id="example">Example</h2>
+<p>Example for Csv Parser can be found at: <a href="https://github.com/DataTorrent/examples/tree/master/tutorials/parser">https://github.com/DataTorrent/examples/tree/master/tutorials/parser</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../deduper/" class="btn btn-neutral float-right" title="Deduper">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../csvformatter/" class="btn btn-neutral" title="CSV Formatter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../csvformatter/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../deduper/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
