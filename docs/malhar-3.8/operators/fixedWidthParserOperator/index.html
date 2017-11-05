@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Fixed Width Parser - Apache Apex Malhar Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Fixed Width Parser";
+    var mkdocs_page_input_path = "operators/fixedWidthParserOperator.md";
+    var mkdocs_page_url = "/operators/fixedWidthParserOperator/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apache Apex Malhar Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Apache Apex Malhar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>APIs</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../apis/calcite/">SQL</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operators</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../block_reader/">Block Reader</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvformatter/">CSV Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../csvParserOperator/">CSV Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../deduper/">Deduper</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../enricher/">Enricher</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../fsInputOperator/">File Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_output/">File Output</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../file_splitter/">File Splitter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../filter/">Filter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Fixed Width Parser</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#fixed-width-parser-operator">Fixed Width Parser Operator</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-objective">Operator Objective</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-diagram">Class Diagram</a></li>
+                
+                    <li><a class="toctree-l4" href="#operator-information">Operator Information</a></li>
+                
+                    <li><a class="toctree-l4" href="#platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</a></li>
+                
+                    <li><a class="toctree-l4" href="#ports">Ports</a></li>
+                
+                    <li><a class="toctree-l4" href="#partitioning">Partitioning</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ftpInputOperator/">FTP Input Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../AbstractJdbcTransactionableOutputOperator/">Jdbc Output Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jdbcPollInputOperator/">JDBC Poller Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jmsInputOperator/">JMS Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonFormatter/">JSON Formatter</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../jsonParser/">JSON Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../kafkaInputOperator/">Kafka Input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../regexparser/">Regex Parser</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../s3outputmodule/">S3 Output Module</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../transform/">Transformer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../windowedOperator/">Windowed Operator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../xmlParserOperator/">XML Parser</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apache Apex Malhar Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Operators &raquo;</li>
+        
+      
+    
+    <li>Fixed Width Parser</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="fixed-width-parser-operator">Fixed Width Parser Operator</h1>
+<h2 id="operator-objective">Operator Objective</h2>
+<p>This operator is designed to parse fixed width records and construct a map or concrete java class also known as <a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object">"POJO"</a> out of it. User needs to provide the schema to describe the fixed width data. The incoming records will be parsed according to the schema and either a map or a POJO (or both) is emitted.
+Invalid records will be emitted on the error port along with an error message.</p>
+<p><strong>Note</strong>: field names in the schema must match field names of the POJO and must be in the same order as it appears in the incoming data.</p>
+<p>FixedWidthParser is <strong>idempotent</strong>, <strong>fault-tolerant</strong> and <strong>statically/dynamically partitionable</strong>.</p>
+<h2 id="class-diagram">Class Diagram</h2>
+<p><img alt="" src="../images/fixedWidthParser/fixedWidthParser.png" /></p>
+<h2 id="operator-information">Operator Information</h2>
+<ol>
+<li>Operator location:<strong><em>malhar-contrib</em></strong></li>
+<li>Available since:<strong><em>3.8.0</em></strong></li>
+<li>Operator state:<strong><em>Evolving</em></strong></li>
+<li>Java Package:<a href="https://github.com/apache/apex-malhar/blob/master/contrib/src/main/java/com/datatorrent/contrib/parser/FixedWidthParser.java">com.datatorrent.contrib.parser.FixedWidthParser</a></li>
+</ol>
+<h2 id="properties-of-fixedwidthparser"><a name="props"></a>Properties of FixedWidthParser</h2>
+<p>Data in a fixed-width text file is arranged in rows and columns, with one entry per row. Fixed width record is one row in a fixed-width file.  Each column has a fixed width, specified in characters, which determines the maximum amount of data it can contain.  No delimiters are used to separate the fields in the file.  Instead, the data is left- or right- justified in its column as specified by the <code>alignment</code> value of the schema and the remaining space is filled by the padding character also specified in the schema, such that the start of a given column can always be specified as an offset from the beginning of a line.</p>
+<p>User needs to set the schema which describes fixed width data.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+<th><strong>Default Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>jsonSchema</em></td>
+<td><a href="https://github.com/apache/apex-malhar/blob/master/contrib/src/main/java/com/datatorrent/contrib/parser/FixedWidthSchema.java">Schema</a>  describing fixed width data. Based on schema definition the operator will parse the incoming record to object map and POJO. Valid records will be emitted as POJO / map while invalid ones are emitted on error port with error message.</td>
+<td>String</td>
+<td>YES</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>User can set this property in <code>properties.xml</code> in the following way:</p>
+<pre><code class="xml">&lt;property&gt;
+    &lt;name&gt;
+      dt.application.{ApplicationName}.operator.{OperatorName}.prop.jsonSchema
+    &lt;/name&gt;
+    &lt;value&gt;
+    {
+      &quot;padding&quot;: &quot;_&quot;,
+      &quot;alignment&quot;: &quot;left&quot;,
+      &quot;fields&quot;:
+      [
+        {
+          &quot;name&quot;: &quot;adId&quot;,
+          &quot;type&quot;: &quot;Integer&quot;,
+          &quot;length&quot;: &quot;3&quot;,
+          &quot;padding&quot;: &quot;0&quot;
+        },
+        {
+          &quot;name&quot;: &quot;campaignId&quot;,
+          &quot;type&quot;: &quot;Integer&quot;,
+          &quot;length&quot;: &quot;3&quot;,
+          &quot;padding&quot;: &quot; &quot;
+        },
+        {
+          &quot;name&quot;: &quot;adName&quot;,
+          &quot;type&quot;: &quot;String&quot;,
+          &quot;length&quot;: &quot;10&quot;,
+          &quot;alignment&quot;:&quot;right&quot;
+        },
+        {
+          &quot;name&quot;: &quot;bidPrice&quot;,
+          &quot;type&quot;: &quot;Double&quot;,
+          &quot;length&quot;: &quot;3&quot;
+        },
+        {
+          &quot;name&quot;: &quot;startDate&quot;,
+          &quot;type&quot;: &quot;Date&quot;,
+          &quot;format&quot;: &quot;yyyy-MM-dd HH:mm:ss&quot;,
+          &quot;length&quot;: &quot;19&quot;
+        },
+        {
+          &quot;name&quot;: &quot;endDate&quot;,
+          &quot;type&quot;: &quot;Date&quot;,
+          &quot;format&quot;: &quot;dd/MM/yyyy&quot;,
+          &quot;length&quot;: &quot;10&quot;
+        },
+        {
+          &quot;name&quot;: &quot;securityCode&quot;,
+          &quot;type&quot;: &quot;Long&quot;,
+          &quot;length&quot;: &quot;5&quot;
+        },
+        {
+          &quot;name&quot;: &quot;active&quot;,
+          &quot;type&quot;: &quot;Boolean&quot;,
+          &quot;length&quot;: &quot;5&quot;,
+          &quot;trueValue&quot;: &quot;true&quot;,
+          &quot;falseValue&quot;: &quot;false&quot;
+        },
+        {
+          &quot;name&quot;: &quot;optimized&quot;,
+          &quot;type&quot;: &quot;Boolean&quot;,
+          &quot;length&quot;: &quot;1&quot;,
+          &quot;trueValue&quot;: &quot;y&quot;,
+          &quot;falseValue&quot;: &quot;n&quot;
+        },
+        {
+          &quot;name&quot;: &quot;parentCampaign&quot;,
+          &quot;type&quot;: &quot;String&quot;,
+          &quot;length&quot;: &quot;10&quot;
+        },
+        {
+          &quot;name&quot;: &quot;weatherTargeted&quot;,
+          &quot;type&quot;: &quot;Character&quot;,
+          &quot;length&quot;: &quot;1&quot;
+        }
+      ]
+    }
+    &lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>Where {OperatorName} is the name of the Operator and {ApplicationName} is the name of the application.
+As explained earlier padding is a character used to specify padding used in the incoming records to fill the fixed width if required. User has the flexibility to specify a single padding character for the entire file or the user can choose to provide separate padding character for separate fields (columns of the record). The padding value for separate fields (if specified) over rides the padding value (global) (if specified) for the entire file.
+Similar to padding character user also has the flexibility to define the alignment of the incoming records, user can choose whether the record is left,centre or right aligned. Note that currently only British spelling for 'centre' is accepted.</p>
+<p>The sample json schema for records having 3 fields 'Occupation', 'Age' and 'Gender' with field widths 20,2 and 6, padding characters '#','$' and '@' and alignments 'left', 'centre' and 'right' will be as follows:</p>
+<pre><code>{
+  &quot;fields&quot;:
+  [
+    {
+      &quot;name&quot;: &quot;Occupation&quot;,
+      &quot;type&quot;: &quot;String&quot;,
+      &quot;length&quot;: &quot;20&quot;,
+      &quot;padding&quot;: &quot;#&quot;,
+      &quot;alignment&quot;:&quot;left&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Age&quot;,
+      &quot;type&quot;: &quot;Integer&quot;,
+      &quot;length&quot;: &quot;2&quot;,
+      &quot;padding&quot;: &quot;$&quot;,
+      &quot;alignment&quot;:&quot;centre&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Gender&quot;,
+      &quot;type&quot;: &quot;String&quot;,
+      &quot;length&quot;: &quot;6&quot;,
+      &quot;padding&quot;: &quot;@&quot;,
+      &quot;alignment&quot;:&quot;right&quot;
+    }
+}
+</code></pre>
+
+<p>The corresponding record with values for 'Occupation' as Engineer, 'Age' as 30 and 'Gender' as Male would be as follows:</p>
+<pre><code>Engineer############30@@Male
+</code></pre>
+
+<h2 id="platform-attributes-that-influences-operator-behavior">Platform Attributes that influences operator behavior</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>TUPLE_CLASS</em></td>
+<td>TUPLE_CLASS attribute on output port which tells operator the class of POJO which need to be emitted</td>
+<td>Class</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>User can set this property in <code>properties.xml</code> in the following way:
+In the examples below, {OperatorName} is the name of the Operator, {ApplicationName} is the name of the application and "com.datatorrent.tutorial.fixedwidthparser.Ad" is the fully qualified name of the Tuple class</p>
+<pre><code class="xml">&lt;property&gt;
+    &lt;name&gt;dt.application.{ApplicationName}.operator.{OperatorName}.port.out.attr.TUPLE_CLASS&lt;/name&gt;
+    &lt;value&gt;com.datatorrent.tutorial.fixedwidthparser.Ad&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>Following code can be added to <code>populateDAG()</code> method of application to set Tuple Class:</p>
+<pre><code class="java">dag.setOutputPortAttribute({OperatorName}.out, Context.PortContext.TUPLE_CLASS, com.datatorrent.tutorial.fixedwidthparser.Ad.class);
+</code></pre>
+
+<h2 id="supported-datatypes-in-schema"><a name="dataTypes"></a>Supported DataTypes in Schema</h2>
+<ul>
+<li>Integer</li>
+<li>Long</li>
+<li>Double</li>
+<li>Character</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Date</li>
+<li>Float</li>
+</ul>
+<h2 id="ports">Ports</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Port</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Mandatory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>in</em></td>
+<td>Tuples that needs to be parsed are received on this port</td>
+<td>byte[]</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><em>out</em></td>
+<td>Valid Tuples that are emitted as pojo</td>
+<td>Object (POJO)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>parsedOutput</em></td>
+<td>Valid Tuples that are emitted as maps</td>
+<td>Map</td>
+<td>No</td>
+</tr>
+<tr>
+<td><em>err</em></td>
+<td>Invalid Tuples are emitted with error message</td>
+<td>KeyValPair &lt;String, String></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="partitioning">Partitioning</h2>
+<p>Fixed Width Parser is both statically and dynamically partitionable.</p>
+<h3 id="static-partitioning">Static Partitioning</h3>
+<p>Static partitioning can be achieved by specifying the partitioner and number of partitions in the populateDAG() method.</p>
+<pre><code class="java">FixedWidthParser fixedWidthParser = dag.addOperator(&quot;fixedWidthParser&quot;, FixedWidthParser.class);
+StatelessPartitioner&lt;FixedWidthParser&gt; partitioner1 = new StatelessPartitioner&lt;FixedWidthParser&gt;(2);
+dag.setAttribute(fixedWidthParser, Context.OperatorContext.PARTITIONER, partitioner1);
+</code></pre>
+
+<p>Static partitioning can also be achieved by specifying the partitioner in properties file.</p>
+<pre><code class="xml">&lt;property&gt;
+    &lt;name&gt;dt.operator.{OperatorName}.attr.PARTITIONER&lt;/name&gt;
+    &lt;value&gt;com.datatorrent.common.partitioner.StatelessPartitioner:2&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
+<p>where {OperatorName} is the name of the FixedWidthParser operator. Above lines will partition FixedWidthParser statically 2 times. Above value can be changed accordingly to change the number of static partitions.</p>
+<h3 id="dynamic-partioning">Dynamic Partioning</h3>
+<p>FixedWidthParser can be dynamically partitioned using out-of-the-box partitioner:</p>
+<h4 id="throughput-based">Throughput based</h4>
+<p>Following code can be added to <code>populateDAG()</code> method of application to dynamically partition FixedWidthParser:</p>
+<pre><code class="java">FixedWidthParser fixedWidthParser = dag.addOperator(&quot;fixedWidthParser&quot;, FixedWidthParser.class);
+StatelessThroughputBasedPartitioner&lt;FixedWidthParser&gt; partitioner = new StatelessThroughputBasedPartitioner&lt;&gt;();
+partitioner.setCooldownMillis(conf.getLong(&quot;dt.cooldown&quot;, 10000));
+partitioner.setMaximumEvents(conf.getLong(&quot;dt.maxThroughput&quot;, 30000));
+partitioner.setMinimumEvents(conf.getLong(&quot;dt.minThroughput&quot;, 10000));
+dag.setAttribute(fixedWidthParser, OperatorContext.STATS_LISTENERS, Arrays.asList(new StatsListener[]{partitioner}));
+dag.setAttribute(fixedWidthParser, OperatorContext.PARTITIONER, partitioner);
+</code></pre>
+
+<p>Above code will dynamically partition FixedWidthParser when the throughput changes.
+If the overall throughput of FixedWidthParser goes beyond 30000 or less than 10000, the platform will repartition FixedWidthParser
+to balance throughput of a single partition to be between 10000 and 30000.
+CooldownMillis of 10000 will be used as the threshold time for which the throughput change is observed.</p>
+<h2 id="example">Example</h2>
+<p>Example for Fixed Width Parser can be found at: <a href="https://github.com/DataTorrent/examples/tree/master/tutorials/parser">https://github.com/DataTorrent/examples/tree/master/tutorials/parser</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ftpInputOperator/" class="btn btn-neutral float-right" title="FTP Input Operator">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../filter/" class="btn btn-neutral" title="Filter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../filter/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ftpInputOperator/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
