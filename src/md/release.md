@@ -105,6 +105,7 @@ Prerequisites:
  - GPG key needs to be in https://dist.apache.org/repos/dist/release/apex/KEYS
  - Credentials for `apache.staging.https` server distribution management in `~/.m2/settings.xml`
  - Tag pushed to ASF git
+ - The correct version of the JDK is installed and maven is using the right java version
 
 Build and deploy release candidate from RC tag:
 
@@ -113,6 +114,15 @@ git checkout "v${rv}-RC1"
 git clean -d -f
 mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 ```
+Some recent versions of the GPG might result in the following error message when the above maven deploy command is invoked.
+```
+gpg: signing failed: Inappropriate ioctl for device
+```
+Setting the GPG terminal fixes this. GPG terminal can be set using 
+```
+GPG_TTY=$(tty)
+export GPG_TTY
+``` 
 
 Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):
 ```
@@ -142,8 +152,8 @@ RNAME=apache-apex-malhar-${rv}
 cd target
 md5sum ${RNAME}-source-release.tar.gz > ${RNAME}-source-release.tar.gz.md5
 md5sum ${RNAME}-source-release.zip > ${RNAME}-source-release.zip.md5
-shasum -a 512 ${RNAME}-source-release.tar.gz > ${RNAME}-source-release.tar.gz.sha
-shasum -a 512 ${RNAME}-source-release.zip > ${RNAME}-source-release.zip.sha
+shasum -a 512 ${RNAME}-source-release.tar.gz > ${RNAME}-source-release.tar.gz.sha512
+shasum -a 512 ${RNAME}-source-release.zip > ${RNAME}-source-release.zip.sha512
 gpg --yes --armor --output ${RNAME}-source-release.tar.gz.asc --detach-sig ${RNAME}-source-release.tar.gz
 gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}-source-release.zip
 ```
@@ -218,10 +228,10 @@ After [publishing the site](https://github.com/apache/apex-site/tree/master#cont
 ## Voting 
 
 Vote call sample:
-http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E
+https://lists.apache.org/thread.html/bee03103dfdd94ffeb9dafdd2e0e468609948f59649534db2d99b464@%3Cdev.apex.apache.org%3E
 
 Vote result:
-http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E
+https://lists.apache.org/thread.html/2887965dba350e181d06aa02af19d8d47c82eb6f0b47eef8dce14fe8@%3Cdev.apex.apache.org%3E
 
 Note that the vote result email should have the subject prefixed with `[RESULT]`.
 
