@@ -36,14 +36,14 @@ Verify integrity of tar.gz file:
 ```bash
 gpg --verify $APEX_RELEASE_CANDIDATE-source-release.tar.gz.asc
 md5sum --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.md5
-sha512sum --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.sha
+shasum -a 512 --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.sha512
 ```
 
 Verify integrity of .zip file:
 ```bash
 gpg --verify $APEX_RELEASE_CANDIDATE-source-release.zip.asc
 md5sum --check $APEX_RELEASE_CANDIDATE-source-release.zip.md5
-sha512sum --check $APEX_RELEASE_CANDIDATE-source-release.zip.sha
+shasum -a 512  --check $APEX_RELEASE_CANDIDATE-source-release.zip.sha512
 ```
 
 ## Source code verification
