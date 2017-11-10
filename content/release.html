@@ -148,11 +148,17 @@ git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 <li>GPG key needs to be in <a href="https://dist.apache.org/repos/dist/release/apex/KEYS">https://dist.apache.org/repos/dist/release/apex/KEYS</a></li>
 <li>Credentials for <code>apache.staging.https</code> server distribution management in <code>~/.m2/settings.xml</code></li>
 <li>Tag pushed to ASF git</li>
+<li>The correct version of the JDK is installed and maven is using the right java version</li>
 </ul>
 <p>Build and deploy release candidate from RC tag:</p>
 <pre><code>git checkout &quot;v${rv}-RC1&quot;
 git clean -d -f
 mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
+</code></pre><p>Some recent versions of the GPG might result in the following error message when the above maven deploy command is invoked.</p>
+<pre><code>gpg: signing failed: Inappropriate ioctl for device
+</code></pre><p>Setting the GPG terminal fixes this. GPG terminal can be set using </p>
+<pre><code>GPG_TTY=$(tty)
+export GPG_TTY
 </code></pre><p>Confirm no archives are included in source release (rat:check reports them in target/rat.txt but does not fail the build):</p>
 <pre><code>unzip -l target/*-source-release.zip | grep -e &quot;.zip\|.jar&quot;
 </code></pre><p>Log on to <a href="https://repository.apache.org">https://repository.apache.org</a> and look for Staging Repositories. &quot;Close&quot; the newly created orgapacheapex-xxxx staging repository to obtain the temporary URL, note it down for the VOTE thread.</p>
@@ -166,8 +172,8 @@ mvn clean apache-rat:check deploy -Papache-release -Pall-modules -DskipTests
 </code></pre><pre><code class="lang-bash">cd target
 md5sum ${RNAME}-source-release.tar.gz &gt; ${RNAME}-source-release.tar.gz.md5
 md5sum ${RNAME}-source-release.zip &gt; ${RNAME}-source-release.zip.md5
-shasum -a 512 ${RNAME}-source-release.tar.gz &gt; ${RNAME}-source-release.tar.gz.sha
-shasum -a 512 ${RNAME}-source-release.zip &gt; ${RNAME}-source-release.zip.sha
+shasum -a 512 ${RNAME}-source-release.tar.gz &gt; ${RNAME}-source-release.tar.gz.sha512
+shasum -a 512 ${RNAME}-source-release.zip &gt; ${RNAME}-source-release.zip.sha512
 gpg --yes --armor --output ${RNAME}-source-release.tar.gz.asc --detach-sig ${RNAME}-source-release.tar.gz
 gpg --yes --armor --output ${RNAME}-source-release.zip.asc --detach-sig ${RNAME}-source-release.zip
 </code></pre>
@@ -216,9 +222,9 @@ git push
 <p>After <a href="https://github.com/apache/apex-site/tree/master#contributing">publishing the site</a> the new documentation will be available at <code>https://apex.apache.org/docs/${DOC_NAME}-${docv}/</code></p>
 <h2 id="voting">Voting</h2>
 <p>Vote call sample:
-<a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDPr3CBCfstQJWjchG-ZEYw5P%2Bwv5jN0tfy3EL%2BU%3DBUQgQ%40mail.gmail.com%3E</a></p>
+<a href="https://lists.apache.org/thread.html/bee03103dfdd94ffeb9dafdd2e0e468609948f59649534db2d99b464@%3Cdev.apex.apache.org%3E">https://lists.apache.org/thread.html/bee03103dfdd94ffeb9dafdd2e0e468609948f59649534db2d99b464@%3Cdev.apex.apache.org%3E</a></p>
 <p>Vote result:
-<a href="http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/apex-dev/201605.mbox/%3CCAKJfLDNQzMN4zcuTHosU%2BCepF38A_2VL03GOYSc2%3DxxV-9iqMw%40mail.gmail.com%3E</a></p>
+<a href="https://lists.apache.org/thread.html/2887965dba350e181d06aa02af19d8d47c82eb6f0b47eef8dce14fe8@%3Cdev.apex.apache.org%3E">https://lists.apache.org/thread.html/2887965dba350e181d06aa02af19d8d47c82eb6f0b47eef8dce14fe8@%3Cdev.apex.apache.org%3E</a></p>
 <p>Note that the vote result email should have the subject prefixed with <code>[RESULT]</code>.</p>
 <p>If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.</p>
 <h2 id="promote-release">Promote Release</h2>

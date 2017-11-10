@@ -113,12 +113,12 @@ gpg --fingerprint &lt;key-id&gt;
 <p>Verify integrity of tar.gz file:</p>
 <pre><code class="lang-bash">gpg --verify $APEX_RELEASE_CANDIDATE-source-release.tar.gz.asc
 md5sum --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.md5
-sha512sum --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.sha
+shasum -a 512 --check $APEX_RELEASE_CANDIDATE-source-release.tar.gz.sha512
 </code></pre>
 <p>Verify integrity of .zip file:</p>
 <pre><code class="lang-bash">gpg --verify $APEX_RELEASE_CANDIDATE-source-release.zip.asc
 md5sum --check $APEX_RELEASE_CANDIDATE-source-release.zip.md5
-sha512sum --check $APEX_RELEASE_CANDIDATE-source-release.zip.sha
+shasum -a 512  --check $APEX_RELEASE_CANDIDATE-source-release.zip.sha512
 </code></pre>
 <h2 id="source-code-verification">Source code verification</h2>
 <p>You can extract source either using .tar.gz file or .zip file.</p>
