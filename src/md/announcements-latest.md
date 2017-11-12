@@ -1,5 +1,12 @@
 # Announcements
 
+## Apache Apex Malhar Library release 3.8.0
+
+Nov 12, 2017.  The Apache Apex community is pleased to announce release [3.8.0](/downloads.html) of the Malhar Library.
+
+Changes: https://github.com/apache/apex-malhar/blob/v3.8.0/CHANGELOG.md
+
+
 ## Apex at Strata New York
 
 Sep 28, 2017. Exactly once, more than once: Apache Kafka, Heron, and Apache Apex.
