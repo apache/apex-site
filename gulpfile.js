@@ -321,7 +321,7 @@ gulp.task('fetch-releases', function(taskCb) {
   function getRepoTags(repoName) {
     var dfd = Q.defer();
     // Get the tags for the repo
-    var gitCommand = 'git ls-remote --tags "git://git.apache.org/' + repoName + '.git"';
+    var gitCommand = 'git ls-remote --tags "http://gitbox.apache.org/repos/asf/' + repoName + '.git"';
     exec(gitCommand, function(err, stdout, stderr) {
       // Abort if tags not found or something bad happened with the git ls-remote command
       if (err || stderr) {
