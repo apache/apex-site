@@ -10,7 +10,7 @@
         "key": "APEXCORE-231",
         "fields": {
           "summary": "Ability to change attributes at runtime",
-          "description": "The Apex engine supports many platform level attributes like operator memory, application window count, container jvm options etc. Today these can only be set at application launch time and cannot be changed once the application is running.\r\n\r\nThis issue is to add the ability to change the attributes dynamically even as the application is running. The mechanics of an user requesting the attribute change can be similar to how a user requests property change via the command line client.\r\n\r\nSince each attribute is different the actual backend implementation to affect the changes will most likely be custom handling for different attributes but during the implementation process  hopefully some common themes emerge and some amount of reuse possible.",
+          "description": "The Apex engine supports many platform level attributes like operator memory, application window count, container jvm options etc. Today these can only be set at application launch time and cannot be changed once the application is running.\n\nThis issue is to add the ability to change the attributes dynamically even as the application is running. The mechanics of an user requesting the attribute change can be similar to how a user requests property change via the command line client.\n\nSince each attribute is different the actual backend implementation to affect the changes will most likely be custom handling for different attributes but during the implementation process  hopefully some common themes emerge and some amount of reuse possible.",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -41,7 +41,7 @@
         "key": "APEXCORE-232",
         "fields": {
           "summary": "Ability to add new processing code to the DAG",
-          "description": "There are scenarios when new processing code needs to be added to an already running application. There are two scenarios.\r\n\r\na. A bug is discovered in an operator and an existing operator in the running DAG needs to be replaced. The platform supports shutting down and resuming an application which could be use as a first cut way to do this but there are a couple of drawbacks.\r\n       i. This only works when the input source has memory, if it doesn't the messages received during the time the application is down are lost.\r\n      ii. Depending on the complexity and state of the application it may take some time for this entire process and the application to get back to running state and this delay may not be acceptable for the downstream components that depend on the output of this application.\r\n\r\nb. A new operator needs to be added to the DAG to take data from an existing operator and do some additional processing. Today this is supported as long as the code for the operator is already in the application libraries. Often this will not be the case as users will not know what the operator will be beforehand when the application is originally launched.",
+          "description": "There are scenarios when new processing code needs to be added to an already running application. There are two scenarios.\n\na. A bug is discovered in an operator and an existing operator in the running DAG needs to be replaced. The platform supports shutting down and resuming an application which could be use as a first cut way to do this but there are a couple of drawbacks.\n       i. This only works when the input source has memory, if it doesn't the messages received during the time the application is down are lost.\n      ii. Depending on the complexity and state of the application it may take some time for this entire process and the application to get back to running state and this delay may not be acceptable for the downstream components that depend on the output of this application.\n\nb. A new operator needs to be added to the DAG to take data from an existing operator and do some additional processing. Today this is supported as long as the code for the operator is already in the application libraries. Often this will not be the case as users will not know what the operator will be beforehand when the application is originally launched.",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -72,7 +72,7 @@
         "key": "APEXCORE-234",
         "fields": {
           "summary": "Better application configuration specification",
-          "description": "The current property file specification follows the hadoop configuration file format and this has led to some drawbacks. \r\n    a. The names for the properties and attributes are verbose in the configuration file. \r\n    b. When there are nested properties in operators the syntax deviates from the bean specification because it introduces some specific keywords in the specification like .prop and ,attr.\r\n\r\nThere will already be some changes afoot based on the following\r\n   a. When adding ability to specify single instance attributes (https://malhar.atlassian.net/browse/APEXCORE-233) implementing it in the current syntax may not be possible or lead to very unwieldy syntax.\r\n   b. There are also other ideas such as one from David to have the ability to specify global application level attributes which possible require rethinking the current syntax.\r\n\r\nUsers have also asked for an easier and more consistent way to specify these properties.  This issue is to track the ideas and progress of these changes.",
+          "description": "The current property file specification follows the hadoop configuration file format and this has led to some drawbacks. \n    a. The names for the properties and attributes are verbose in the configuration file. \n    b. When there are nested properties in operators the syntax deviates from the bean specification because it introduces some specific keywords in the specification like .prop and ,attr.\n\nThere will already be some changes afoot based on the following\n   a. When adding ability to specify single instance attributes (https://malhar.atlassian.net/browse/APEXCORE-233) implementing it in the current syntax may not be possible or lead to very unwieldy syntax.\n   b. There are also other ideas such as one from David to have the ability to specify global application level attributes which possible require rethinking the current syntax.\n\nUsers have also asked for an easier and more consistent way to specify these properties.  This issue is to track the ideas and progress of these changes.",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -134,7 +134,7 @@
         "key": "APEXCORE-289",
         "fields": {
           "summary": "Encrypted Streams in Apex DAG",
-          "description": "We should support encrypted streams in a DAG for Apex.\r\nBasically there will be 2 ways user can configure the streams for encryption:\r\n1) App wide attributes- Using which all the stream in the DAG will have encrypted channel.\r\n2) Stream based attribute - Using this user can set a certain stream to flow over encrypted channel.\r\n\r\nEncrypted for the streams should done at Network/Buffer Server levels.",
+          "description": "We should support encrypted streams in a DAG for Apex.\nBasically there will be 2 ways user can configure the streams for encryption:\n1) App wide attributes- Using which all the stream in the DAG will have encrypted channel.\n2) Stream based attribute - Using this user can set a certain stream to flow over encrypted channel.\n\nEncrypted for the streams should done at Network/Buffer Server levels.",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -165,7 +165,7 @@
         "key": "APEXCORE-418",
         "fields": {
           "summary": "Support for Mesos",
-          "description": "Today Apex has two modes of execution: Embedded mode (everything running in a single JVM) and YARN. There has been a few questions around native support for Mesos. A cursory look suggests that Mesos support can be added by reimplementing the YARN specific portions in the master (AppMasterService, ContainerLauncher) and limited changes to the streaming container driver.\r\n\r\nMesos has a different model of resource allocation: The master offers resources to the framework while in YARN resources are requested. Apex master needs to implement the \"framework scheduler\" that is responsible to accept the resources and control the tasks.\r\n\r\nhttp://mesos.apache.org/documentation/latest/app-framework-development-guide/\r\n\r\nTasks are launched through executors, command line and docker executors are provided.  \r\n\r\nApex also requires support to deploy the dependencies to the nodes on which the streaming containers are launched. YARN supports that through resource localization. Mesos supports this through the fetcher, which can copy the resources to the slave node.\r\n\r\nhttp://mesos.apache.org/documentation/latest/fetcher/\r\n",
+          "description": "Today Apex has two modes of execution: Embedded mode (everything running in a single JVM) and YARN. There has been a few questions around native support for Mesos. A cursory look suggests that Mesos support can be added by reimplementing the YARN specific portions in the master (AppMasterService, ContainerLauncher) and limited changes to the streaming container driver.\n\nMesos has a different model of resource allocation: The master offers resources to the framework while in YARN resources are requested. Apex master needs to implement the \"framework scheduler\" that is responsible to accept the resources and control the tasks.\n\nhttp://mesos.apache.org/documentation/latest/app-framework-development-guide/\n\nTasks are launched through executors, command line and docker executors are provided.  \n\nApex also requires support to deploy the dependencies to the nodes on which the streaming containers are launched. YARN supports that through resource localization. Mesos supports this through the fetcher, which can copy the resources to the slave node.\n\nhttp://mesos.apache.org/documentation/latest/fetcher/\n",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -330,7 +330,7 @@
         "key": "APEXMALHAR-1999",
         "fields": {
           "summary": "Running a Storm topology on Apex.",
-          "description": "Flink streaming is compatible with Apache Storm interfaces and therefore allows reusing code that was implemented for Storm.\r\nDetails can be found here.\r\nhttps://ci.apache.org/projects/flink/flink-docs-master/apis/storm_compatibility.html\r\nThis jira item can contain tasks for providing similar support in Apex",
+          "description": "Flink streaming is compatible with Apache Storm interfaces and therefore allows reusing code that was implemented for Storm.\nDetails can be found here.\nhttps://ci.apache.org/projects/flink/flink-docs-master/apis/storm_compatibility.html\nThis jira item can contain tasks for providing similar support in Apex",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -361,7 +361,7 @@
         "key": "APEXMALHAR-2260",
         "fields": {
           "summary": "Python execution for operator logic ",
-          "description": "Support execution of Python code in an operator. \r\n\r\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\r\n",
+          "description": "Support execution of Python code in an operator. \n\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\n",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -392,7 +392,7 @@
         "key": "APEXMALHAR-2261",
         "fields": {
           "summary": "Python binding for high level API",
-          "description": "A high level API similar to the Apex Java stream API that lets users specify an application in Python.\r\n\r\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\r\n",
+          "description": "A high level API similar to the Apex Java stream API that lets users specify an application in Python.\n\nhttps://lists.apache.org/thread.html/9837b1dee8f909ed400c6030ce5c6a94a12f43183718019dd0bfd228@%3Cdev.apex.apache.org%3E\n",
           "fixVersions": [],
           "priority": {
             "self": "https://issues.apache.org/jira/rest/api/2/priority/3",
@@ -474,9 +474,9 @@
         "projectId": 12318824
       },
       {
-        "self": "https://issues.apache.org/jira/rest/api/2/version/12340282",
-        "id": "12340282",
-        "name": "3.8.0",
+        "self": "https://issues.apache.org/jira/rest/api/2/version/12342092",
+        "id": "12342092",
+        "name": "3.9.0",
         "archived": false,
         "released": false,
         "projectId": 12318824
