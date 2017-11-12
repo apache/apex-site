@@ -18,22 +18,16 @@
   "malhar": {
     "src": [
       {
+        "version": "3.8.0",
+        "docs": "3.8",
+        "repo": "apex-malhar",
+        "date": 1510420542000
+      },
+      {
         "version": "3.7.0",
         "docs": "3.7",
         "repo": "apex-malhar",
         "date": 1491025960000
-      },
-      {
-        "version": "3.6.0",
-        "docs": "3.6",
-        "repo": "apex-malhar",
-        "date": 1480713577000
-      },
-      {
-        "version": "3.5.0",
-        "docs": "3.5",
-        "repo": "apex-malhar",
-        "date": 1472969775000
       }
     ]
   }
