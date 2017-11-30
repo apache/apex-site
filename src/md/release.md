@@ -173,6 +173,9 @@ Javadoc will be automatically deployed for registered branches. For minor releas
 
 https://svn.apache.org/repos/infra/infrastructure/buildbot/aegis/buildmaster/master1/projects/apex.conf
 
+This essentially means that the file above needs to be edited for the release number in the array of releases. Ensure that you verify the success of the build in the build bot [url](https://ci.apache.org/builders)
+Also note that the build bot is a nightly trigger. Wait for atleast the next build trigger to kick in before raising a ticket with the infra team if you see that the javadoc is not appearing as expected.
+
 ### User Documentation
 
 The documentation will be generated as static HTML files into the `apex-site` repository, [separated by version (X.Y)](https://github.com/apache/apex-site/tree/asf-site/docs).
@@ -237,7 +240,7 @@ Note that the vote result email should have the subject prefixed with `[RESULT]`
 
 If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.
 
-## Promote Release
+## Promote Release (To be done by a PMC member)
 
 Release Nexus staging repository: http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository
 
@@ -248,14 +251,17 @@ RNAME=apache-apex-core-${rv}
 svn mv https://dist.apache.org/repos/dist/dev/apex/${RNAME}-RC1 https://dist.apache.org/repos/dist/release/apex/${RNAME} -m "Release ${RNAME}"
 ```
 
-### JIRA
+### JIRA (To be done by a PMC member)
 
-Close release and all associated tickets (use bulk change workflow transition and **turn off notification** at bottom of page to not flood the mailing list). 
-Create version number X.Y.Z+1 for next release (to be done by PMC member).
+The closing of the JIRA item has to be done by a PMC member as the turn off notification for bulk changes in JIRA is an option available only for the PMC members.
+Request a PMC member to close release and all associated tickets (using bulk change workflow transition and **turn off notification** at bottom of page to not flood the mailing list). 
+Create version number X.Y.Z+1 for next release (also to be done by PMC member).
 
 ### git
 
 Create final release tag:
+
+Note that the value of RC2 in the example below assumes that the second release candidate RC2 is the final release tag. Change this value accordingly.
 ```bash
 rv=3.4.0
 git tag -a "v${rv}" -m "Release ${rv}" "v${rv}-RC2"
@@ -277,6 +283,7 @@ git commit --author "Apex Dev <dev@apex.apache.org>" -am "Preparing for 3.4.1 de
 git push apache
 ```
 Cherry-pick `@since` tag and change log changes from release tag to `master`.
+Push the changes to apache
 
 ### Documentation
 
@@ -300,10 +307,19 @@ Update the download page to reflect the new release: https://github.com/apache/a
 
 Publish the web site, see [apex-site repository](https://github.com/apache/apex-site#contributing) for instructions.
 
+Publishing the site involves running the build.sh script from the master branch and performing a git push from the asf-site branch. The local repo is automatically switched to the asf-site branch when the build.sh script is invoked from the master.
+
 ## Announce Release
 
 Send the announcement email, example:
 http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E
+
+Please include the announce@apache.org as one of the recipients. Also make sure that the email is being sent from the youremail@apache.org email id. Note that the email to announce@apache.org will bounce back if youremail@apache.org email is not configured for the alias address from which you are sending this email.
+The release email must be visible under [announce mailing list](https://lists.apache.org/list.html?announce@apache.org)
+ 
+## Anouncements page
+
+Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree.
 
 ## Removing old Releases
 
