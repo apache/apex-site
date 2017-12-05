@@ -240,7 +240,7 @@ Note that the vote result email should have the subject prefixed with `[RESULT]`
 
 If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.
 
-## Promote Release (To be done by a PMC member)
+## Promote Release
 
 Release Nexus staging repository: http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository
 
@@ -319,7 +319,7 @@ The release email must be visible under [announce mailing list](https://lists.ap
  
 ## Anouncements page
 
-Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree.
+Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree. Consider removing one or multiple old announcements at the same time.
 
 ## Removing old Releases
 
