@@ -153,6 +153,11 @@ Thanks for contributing!
   - Ensure tests are added/modified for new features or fixes
   - Ensure appropriate JavaDoc comments have been added
   - Verify contributions don't depend on incompatible licences (see https://www.apache.org/legal/resolved.html#category-x)
+1. If the CI build fails because of the presence of a CVE vulnerability, further analysis needs to be performed
+  - If the CVE is unrelated to the changes in the PR i.e., the changes in the PR are not the cause then it can be merged
+  - If the vulnerability is in a dependency added by the PR then the committer should ask the contributor to address it. If there are no good alternatives, then a discussion should happen in the security list whether to allow the PR, before it can be merged
+  - If it is determined that a vulnerability is not applicable to the project for a reason such as the code paths corresponding to it are not exercised by the software or for any other reason, the vulnerability can be added to the whitelist file `dependency-check-whitelist.xml` to ignore it for future builds 
+  - In any case, if the vulnerability affects the software, a JIRA should to be created to address the vulnerability in an appropriate way
 1. Use the github *rebase and merge* option or the git command line to merge the pull request (see link `view command line options` on the PR).
 1. Update JIRA after pushing the changes. Set the `Fix version` field and resolve the JIRA with proper resolution. Also verify that other fields (type, priority, assignee) are correct.
 
