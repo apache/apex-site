@@ -229,7 +229,7 @@ git push
 <a href="https://lists.apache.org/thread.html/2887965dba350e181d06aa02af19d8d47c82eb6f0b47eef8dce14fe8@%3Cdev.apex.apache.org%3E">https://lists.apache.org/thread.html/2887965dba350e181d06aa02af19d8d47c82eb6f0b47eef8dce14fe8@%3Cdev.apex.apache.org%3E</a></p>
 <p>Note that the vote result email should have the subject prefixed with <code>[RESULT]</code>.</p>
 <p>If the vote is not successful, a new RC needs to be built and new vote called. Once the PMC vote passes, proceed with promoting and announcing the release.</p>
-<h2 id="promote-release-to-be-done-by-a-pmc-member-">Promote Release (To be done by a PMC member)</h2>
+<h2 id="promote-release">Promote Release</h2>
 <p>Release Nexus staging repository: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository">http://central.sonatype.org/pages/releasing-the-deployment.html#close-and-drop-or-release-your-staging-repository</a></p>
 <p>Move source release from dist staging to release folder (to be done by PMC member):</p>
 <pre><code>rv=3.4.0
@@ -281,7 +281,7 @@ git push
 <p>Please include the announce@apache.org as one of the recipients. Also make sure that the email is being sent from the youremail@apache.org email id. Note that the email to announce@apache.org will bounce back if youremail@apache.org email is not configured for the alias address from which you are sending this email.
 The release email must be visible under <a href="https://lists.apache.org/list.html?announce@apache.org">announce mailing list</a></p>
 <h2 id="anouncements-page">Anouncements page</h2>
-<p>Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree.</p>
+<p>Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree. Consider removing one or multiple old announcements at the same time.</p>
 <h2 id="removing-old-releases">Removing old Releases</h2>
 <p>As part of publishing new releases, please determine whether old releases should be deleted. See <a href="http://www.apache.org/dev/release.html#when-to-archive">release archiving policy</a> for details why. </p>
 <p>With a new patch release, the previous patch release can be removed. For example, once 3.4.1 patch is released, we no longer need to have 3.4.0 on the download page. </p>
