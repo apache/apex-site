@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Custom Control Tuples - Apache Apex Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Custom Control Tuples";
+    var mkdocs_page_input_path = "control_tuples.md";
+    var mkdocs_page_url = "/control_tuples/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Apache Apex Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Apache Apex</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Development</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_development_setup/">Development Setup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_development/">Applications</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../application_packages/">Packages</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../operator_development/">Operators</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../autometrics/">AutoMetric API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Custom Control Tuples</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#user-defined-control-tuples">User Defined Control Tuples</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
+                
+                    <li><a class="toctree-l4" href="#terminology">Terminology</a></li>
+                
+                    <li><a class="toctree-l4" href="#use-cases">Use cases</a></li>
+                
+                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
+                
+                    <li><a class="toctree-l4" href="#propagation-of-control-tuples">Propagation of Control Tuples</a></li>
+                
+                    <li><a class="toctree-l4" href="#delivery-semantics">Delivery Semantics</a></li>
+                
+                    <li><a class="toctree-l4" href="#assumptions">Assumptions</a></li>
+                
+                    <li><a class="toctree-l4" href="#jira">JIRA</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../development_best_practices/">Best Practices</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Operations</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../apex_cli/">Apex CLI</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../compatibility/">Compatibility</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Apache Apex Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Development &raquo;</li>
+        
+      
+    
+    <li>Custom Control Tuples</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="user-defined-control-tuples">User Defined Control Tuples</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Custom control tuple support in Apache Apex gives the user the capability to insert user defined control tuples in the data flow. For analogy, the engine already supports a few pre-defined control tuples like BEGIN_WINDOW, END_WINDOW, etc. Until now, we did not have the support for applications to insert their own control tuples.</p>
+<h2 id="terminology">Terminology</h2>
+<p>All discussion in this document is related to Control Tuples generated by user defined logic. The document may refer to these tuples as <em>Control Tuples</em>, <em>User Defined Control Tuples</em> or <em>Custom Control Tuples</em> interchangeably.</p>
+<h3 id="definition">Definition</h3>
+<p>A user defined control tuple could be any user defined object which implements a ControlTuple interface.</p>
+<p>See <a href="#delivery-semantics">Delivery Semantics</a> for details on DeliveryType</p>
+<pre><code>public interface ControlTuple
+{
+  DeliveryType getDeliveryType();
+
+  enum DeliveryType
+  {
+    IMMEDIATE,
+    END_WINDOW
+  }
+}
+
+</code></pre>
+
+<p>Example user defined control tuple:</p>
+<pre><code>public class TestControlTuple implements ControlTuple
+{
+  public long data;
+  public boolean immediate;
+
+  // For Kryo
+  public TestControlTuple()
+  {
+    data = 0;
+  }
+
+  // Constructor
+  public TestControlTuple(long data, boolean immediate)
+  {
+    this.data = data;
+    this.immediate = immediate;
+  }
+
+  @Override
+  public DeliveryType getDeliveryType()
+  {
+    if (immediate) {
+      return DeliveryType.IMMEDIATE;
+    } else {
+      return DeliveryType.END_WINDOW;
+    }
+  }
+}
+</code></pre>
+
+<h2 id="use-cases">Use cases</h2>
+<p>A control tuple may be used in an application to trigger some sort of action in a downstream operator. For example, the source operator might want to notify the last operator that it has emitted all the data in a file and that the file has now ended. Let's call this an <em>End-Of-File</em> control tuple. Once the last operator gets the <em>End-Of-File</em> tuple, it would, say, close the destination file it was writing and create a new file.</p>
+<p>More use cases which were discussed during the requirements of this feature are as follows:</p>
+<ol>
+<li><strong>Batch support</strong> - We need to tell all operators of the physical DAG when a
+batch starts and ends, so the operators can do whatever is needed upon
+the start or the end of a batch.</li>
+<li><strong>Watermark</strong> - To support the concepts of event time windowing, the
+watermark control tuple is needed to identify late windows.</li>
+<li><strong>Changing operator properties</strong> - We do have the support of changing
+operator properties on the fly, but with a custom control tuple, the
+command to change operator properties can be window aligned for all
+partitions and also across the DAG. In other words, the properties of <em>all</em> physical partitions can be aligned to a particular window. In case the behavior of the application needs to change, we may also be able to change properties of multiple logical operators aligned to a particular window.</li>
+<li><strong>Recording tuples</strong> - Like changing operator properties, we do have this
+support now but only at the individual physical operator level, and without
+control of which window to record tuples for. With a custom control tuple,
+because a control tuple must belong to a window, all operators in the DAG
+can start (and stop) recording for the same windows.</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<h3 id="generating-a-control-tuple">Generating a Control Tuple</h3>
+<p>There is no restriction on which operator in the DAG can or can not generate a control tuple. The operator which needs to generate a control tuple should declare a port whose type is <code>ControlAwareDefaultOutputPort</code>; the user could simply call the <code>emitControl(ControlTuple t)</code> method on this port.</p>
+<p>Example: In the code snippet below, the <code>Generator</code> operator declares a <code>ControlAwareDefaultOutputPort</code> called <code>output</code> which can emit a data tuple as well as a control tuple.</p>
+<pre><code>public class Generator extends BaseOperator implements InputOperator
+{
+  private long data;
+  private long count;
+
+  public final transient ControlAwareDefaultOutputPort&lt;Double&gt; output =
+      new ControlAwareDefaultOutputPort&lt;&gt;();
+
+  @Override
+  public void emitTuples()
+  {
+    // Can emit a data tuple using output.emit()
+    output.emit(data++);
+    count++;
+  }
+
+  @Override
+  public void endWindow()
+  {
+    // Can also emit a control tuple using output.emitControl()
+    output.emitControl(new TestControlTuple(count, immediate));
+  }
+}
+</code></pre>
+
+<p><strong>Note</strong> - User defined control tuples and control aware ports can only be used in operators which use the apex-core dependency which has control tuple support, viz. 3.6.0 or above. Previous versions of apex-core would not be able to support an application which uses user defined control tuples or control aware ports and would crash at launch time.</p>
+<h3 id="receiving-a-control-tuple">Receiving a Control Tuple</h3>
+<p>Any downstream operator which wants to receive a user defined control tuple, should declare an input port which is <em>Control Aware</em>. A <code>ControlAwareDefaultInputPort</code> would have the necessary capability to process a control tuple in addition to a regular data tuple.</p>
+<p>Example: Below code snippet illustrates the use of <code>processControl</code> method of <code>ControlAwareDefaultInputPort</code> to receive / handle user defined control tuples.</p>
+<pre><code>public final transient ControlAwareDefaultInputPort&lt;Double&gt; input =
+    new ControlAwareDefaultInputPort&lt;Double&gt;()
+{
+  // Process a data tuple
+  @Override
+  public void process(Double tuple)
+  {
+    output.emit(tuple);
+  }
+
+  // Process a control tuple
+  @Override
+  public boolean processControl(ControlTuple userControlTuple)
+  {
+    // process control tuple here
+    return false;
+    // indicates whether or not the engine
+    // should propagate the tuple automatically to downstream operators
+    // Discussed in later sections
+  }
+};
+
+</code></pre>
+
+<p>Note that the pre-defined control tuples like <code>BEGIN_WINDOW</code> and <code>END_WINDOW</code> would not be handled by the <code>processControl()</code> method since these used only by the engine and are not meant to be delivered to user logic in operators. Custom control tuples on the other hand are generated by the operators and need to be delivered to downstream operators.</p>
+<h4 id="return-value-of-processcontrol">Return value of <code>processControl</code></h4>
+<p>Following are the semantics:</p>
+<ol>
+<li>true - Operator would handle propagation explicitly</li>
+<li>false - Operator would not handle propagation. Engine will automatically forward.</li>
+</ol>
+<p>See <a href="#propagation-of-control-tuples">Propagation of Control Tuples</a> for more details</p>
+<h3 id="serialization-requirements">Serialization requirements</h3>
+<p>A control tuple generated by some operator of the application needs to traverse the same path as that traversed by other data tuples transmitted by the application. For this reason, similar to the other data tuples, the control tuple needs to be Kryo serializable since the default serializer used by the platform is Kryo.</p>
+<h2 id="propagation-of-control-tuples">Propagation of Control Tuples</h2>
+<p>A control tuple emitted by an operator can be propagated downstream automatically. This is in line with the automatic propagation of other pre-defined control tuples in the engine. However, some use cases require that the control tuple need not be propagated further in the DAG. We support this behavior for user defined control tuples.</p>
+<p>Once the control tuple is processed in the <code>processControl</code> method, a return value is expected by the engine. This return value indicates whether or not the operator wishes to handle the propagation of the control tuple or let the engine proceed with the default auto-propagation of the control tuple.</p>
+<p>The <code>processControl</code> method of the <code>ControlAwareDefaultInputPort</code> returns a boolean return value.</p>
+<pre><code>@Override
+public boolean processControl(ControlTuple userControlTuple)
+{
+  // process userControlTuple here
+  // return true if operator wants to propagate explicitly or block propagation
+  // return false if operator wants engine to propagate automatically
+}
+</code></pre>
+
+<h3 id="non-control-aware-ports">Non - <em>Control Aware</em> ports</h3>
+<p>For operators without <em>Control Aware</em> ports, the platform will forward the control tuples to the downstream operators automatically. The application writer / user does not have to worry about handling a Control tuple which is generated upstream. Only operators with <em>Control Aware</em> ports would be delivered the control tuple via the <code>processControl</code> method.
+This also allows the existing operators to be backward compatible.</p>
+<h2 id="delivery-semantics">Delivery Semantics</h2>
+<p>Delivery mechanism refer to the time wrt. the processing window when a control tuple is delivered to the operator. An operator has various call backs like <code>setup</code>, <code>beginWindow</code>, <code>endWindow</code>, etc.  </p>
+<h3 id="deliverytype-immediate">DeliveryType IMMEDIATE</h3>
+<p>As the name implies, the control tuple is immediately delivered to the next  downstream operator (if the operator is control aware), else it is forwarded to the next downstream operator.</p>
+<ul>
+<li>
+<p><strong>Case: Downstream is partitioned</strong><br />
+When the downstream is partitioned, the control tuple with <em>IMMEDIATE</em> delivery type would go to all the downstream partitions. This holds, irrespective of whether or not the control tuple was generated by the immediately upstream operator or even further upstream.</p>
+</li>
+<li>
+<p><strong>Case: Upstream is partitioned</strong><br />
+When the upstream is partitioned and the control tuple is generated in any subset of the partitions the downstream operator would receive the control tuple immediately and would not wait till the end of the current window. In case the source for the control tuple was a single source further upstream and multiple copies were generated by the intermediate partitions, the duplicate copies of the control tuple would be filtered out at the downstream operator. Thus only unique control tuples are delivered to the downstream operator. Further, in case of <em>IMMEDIATE</em> delivery, the first instance of the control tuple is delivered to the operator and the duplicates filtered out.</p>
+</li>
+</ul>
+<h3 id="deliverytype-end_window">DeliveryType END_WINDOW</h3>
+<p>This delivery type only delivers the control tuple to the operator after all data tuples have been delivered to the operator. In the operator lifecycle, this would mean that the control tuples would be delivered just before the <code>endWindow</code> call.</p>
+<ul>
+<li>
+<p><strong>Case: Downstream is partitioned</strong><br />
+  When the downstream is partitioned, the control tuple emitted by the upstream would be broadcast to downstream operators and buffered in the downstream partitions until the end of the window and is delivered to the operator just before the <code>endWindow</code> call.</p>
+</li>
+<li>
+<p><strong>Case: Upstream is partitioned</strong><br />
+  If the control tuples are generated in any subset of the partitions, then each control tuple is unique and are delivered to the downstream operator before the <code>endWindow</code> call. However, if the source for the control tuple is a source further upstream, then the downstream operator would filter out duplicates as and when each control tuple arrive at the operator, and finally all unique control tuples are delivered to the operator just before the <code>endWindow</code> call.</p>
+</li>
+</ul>
+<h2 id="assumptions">Assumptions</h2>
+<p>All the user defined control tuples used in the application are cached in the memory of the operator for the duration of a window. For this reason, it is imperative that the size as well as the number of control tuples emitted within a window is small as compared to the number of data tuples.</p>
+<h2 id="jira">JIRA</h2>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/APEXCORE-579">APEXCORE-579</a> points to the top level JIRA issue for control tuple support.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../development_best_practices/" class="btn btn-neutral float-right" title="Best Practices">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../autometrics/" class="btn btn-neutral" title="AutoMetric API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../autometrics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../development_best_practices/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
