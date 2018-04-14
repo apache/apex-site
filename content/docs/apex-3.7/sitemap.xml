@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>/apex_development_setup/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/application_development/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/application_packages/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/operator_development/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/autometrics/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/control_tuples/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/development_best_practices/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/apex_cli/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/security/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>/compatibility/</loc>
+     <lastmod>2018-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

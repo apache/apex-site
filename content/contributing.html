@@ -227,6 +227,13 @@ work on the issue, please re-open existing PR prior to updating your remote bran
 <li>Verify contributions don&#39;t depend on incompatible licences (see <a href="https://www.apache.org/legal/resolved.html#category-x">https://www.apache.org/legal/resolved.html#category-x</a>)</li>
 </ul>
 </li>
+<li>If the CI build fails because of the presence of a CVE vulnerability, further analysis needs to be performed<ul>
+<li>If the CVE is unrelated to the changes in the PR i.e., the changes in the PR are not the cause then it can be merged</li>
+<li>If the vulnerability is in a dependency added by the PR then the committer should ask the contributor to address it. If there are no good alternatives, then a discussion should happen in the security list whether to allow the PR, before it can be merged</li>
+<li>If it is determined that a vulnerability is not applicable to the project for a reason such as the code paths corresponding to it are not exercised by the software or for any other reason, the vulnerability can be added to the whitelist file <code>dependency-check-whitelist.xml</code> to ignore it for future builds </li>
+<li>In any case, if the vulnerability affects the software, a JIRA should to be created to address the vulnerability in an appropriate way</li>
+</ul>
+</li>
 <li>Use the github <em>rebase and merge</em> option or the git command line to merge the pull request (see link <code>view command line options</code> on the PR).</li>
 <li>Update JIRA after pushing the changes. Set the <code>Fix version</code> field and resolve the JIRA with proper resolution. Also verify that other fields (type, priority, assignee) are correct.</li>
 </ol>
