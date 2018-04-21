@@ -1,4 +1,4 @@
-# Announcements
+# Announcements <a  href="https://www.apache.org/events/current-event.html"><img style="float:right" src="https://www.apache.org/events/current-event-234x60.png"/></a>
 
 ## Apache Apex Malhar Library release 3.8.0
 
