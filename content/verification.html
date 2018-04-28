@@ -155,7 +155,7 @@ The extracted directory should not contain any binary. Need to test this before 
 <h2 id="launch-demos">Launch demos</h2>
 <p>For verification of Apex build, check backward compatibility with respect to Malhar. Locally update <em>apex.core.version</em> in Malhar to point to <em>to-be released</em> version of apex-core and recompile Malhar.</p>
 <p>Launch a few demos to make sure everything is working fine using <em>apex</em> utility. The apex script is present at <apex-core-folder>/engine/src/main/scripts/apex . If apex-core is being verified, then simply use engine/src/main/scripts/apex to launch the script. Otherwise, prefix it with apex-core folder path.</p>
-<pre><code class="lang-bash">engine/src/main/scripts/apex
+<pre><code class="lang-bash">engine/src/main/scripts/apex 
 </code></pre>
 <p>You will get apex prompt, where demos can be launched.</p>
 <pre><code class="lang-bash">apex&gt; launch &lt;demo-apa-file&gt;
