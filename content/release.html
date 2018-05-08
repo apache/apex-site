@@ -140,7 +140,7 @@ rv=3.4.0
 <pre><code>git commit --author &quot;Apex Dev &lt;dev@apex.apache.org&gt;&quot; -am &quot;Preparing to release ${rv}-RC1&quot;
 git tag -a &quot;v${rv}-RC1&quot; -m &quot;Release ${rv}-RC1&quot;
 </code></pre><p>Push to fork (as temporary branch), open pull request, wait for Travis CI build to succeed. Then push the tag.</p>
-<pre><code>git push apache &quot;v${rv}-RC1&quot; 
+<pre><code>git push apache &quot;v${rv}-RC1&quot;
 </code></pre><p>The only difference between release branch and tag are this final version number change and the change log commit. The branch stays at <code>-SNAPSHOT</code> version.</p>
 <h2 id="build-and-deploy-release-candidate">Build and Deploy Release Candidate</h2>
 <p>Prerequisites:</p>
@@ -278,7 +278,7 @@ git push
 <h2 id="announce-release">Announce Release</h2>
 <p>Send the announcement email, example:
 <a href="http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E">http://mail-archives.apache.org/mod_mbox/www-announce/201605.mbox/%3CCA%2B5xAo1ZYso6azUBJOkpVtJqM%3DAnJFr_RtjKk9_VusBwgYNS8A%40mail.gmail.com%3E</a></p>
-<p>Please include the <a href="mailto:announce@apache.org">announce@apache.org</a> as one of the recipients. Also make sure that the email is being sent from the <a href="mailto:youremail@apache.org">youremail@apache.org</a> email id. Note that the email to <a href="mailto:announce@apache.org">announce@apache.org</a> will bounce back if <a href="mailto:youremail@apache.org">youremail@apache.org</a> email is not configured for the alias address from which you are sending this email.
+<p>Please include the announce@apache.org as one of the recipients. Also make sure that the email is being sent from the youremail@apache.org email id. Note that the email to announce@apache.org will bounce back if youremail@apache.org email is not configured for the alias address from which you are sending this email.
 The release email must be visible under <a href="https://lists.apache.org/list.html?announce@apache.org">announce mailing list</a></p>
 <h2 id="anouncements-page">Anouncements page</h2>
 <p>Edit the announcements page to publish the feed about the new release by editing the markup file announcements-latest.md under the source tree. Consider removing one or multiple old announcements at the same time.</p>
