@@ -6,16 +6,16 @@
 
 ### Writing Apache Apex Applications
 
-- <a href="http://docs.datatorrent.com/beginner/" rel="nofollow">Beginner's Guide to Apache Apex</a> This document provides a comprehensive overview of Apex and is recommended for developers just starting out with Apex.
+- <a href="http://dt-docs.readthedocs.io/en/latest/beginner/" rel="nofollow">Beginner's Guide to Apache Apex</a> This document provides a comprehensive overview of Apex and is recommended for developers just starting out with Apex.
 - [Building Your First Apache Apex Application](https://youtu.be/LwRWBudOjg4) This video has a hands-on demonstration of how to check out the source code repositories and build them, then run the maven archetype command to generate a new Apache Apex project, populate the project with Java source files for a new application, and finally, build and run the application -- all on a virtual machine running Linux with Apache Hadoop installed.
 - <a href="https://www.amazon.com/Learning-Apache-Apex-Real-time-applications-ebook/dp/B072LX18W5" rel="nofollow">Learning Apache Apex Book</a> and related blog <a href="https://medium.com/@PacktExprtNtwrk/apache-apex-in-a-nutshell-c4d5be3d5d83" rel="nofollow">Apache Apex in a Nutshell</a> An instructional and example driven guide on how to build Apex applications for developers and hands-on enterprise architects. It will help identify use cases, the building blocks for solutions and the process of implementing and testing production ready Apex applications.
 - [Writing an Apache Apex application](http://files.meetup.com/18978602/University%20program%20-%20Writing%20an%20Apache%20Apex%20application.pdf) A PDF document that frames a hands-on exercise of building a basic application; also includes a diagram illustrating the life-cycle of operators.
 - [Examples](https://github.com/apache/apex-malhar/tree/master/examples) This is part of the source repository for Apache Apex Malhar and contains a number of readily runnable applications that developers will find especially useful. They include the important IO connectors as well as typical processing patterns like a Twitter stream analyzer, computation of statistics (such as moving averages) from a live stream of stock transactions from *Yahoo! Finance*; and one that analyzes a synthetic stream of eruption event data for the *Old Faithful* geyser.
-- <a href="http://docs.datatorrent.com/tutorials/topnwords/" rel="nofollow">Top N Words Application Tutorial</a> This document provides a detailed step-by-step description of how to build and run a
+- <a href="http://dt-docs.readthedocs.io/en/latest/tutorials/topnwords/" rel="nofollow">Top N Words Application Tutorial</a> This document provides a detailed step-by-step description of how to build and run a
 word counting application with Apache Apex starting with setting up your development environment, progressing to building, running and monitoring the application, visualizing the output and concluding with some advanced features such as assessing operator memory requirements, partitioning, and debugging.
-- <a href="http://docs.datatorrent.com/tutorials/salesdimensions/" rel="nofollow">Sales Dimensions Application Tutorial</a> Similar to the Top N Words application but covers
+- <a href="http://dt-docs.readthedocs.io/en/latest/tutorials/salesdimensions/" rel="nofollow">Sales Dimensions Application Tutorial</a> Similar to the Top N Words application but covers
 dimensional computations on a simulated sales data stream.
-- <a href="https://github.com/DataTorrent/examples" rel="nofollow">More Example Applications</a> Sample code for more IO connectors and specialized tutorials covering a variety of topics such as large key-value state management (HDHT), custom partitioning using stream codecs, etc.
+- <a href="https://github.com/dtpublic/examples" rel="nofollow">More Example Applications</a> Sample code for more IO connectors and specialized tutorials covering a variety of topics such as large key-value state management (HDHT), custom partitioning using stream codecs, etc.
 
 ### Presentations
 
@@ -41,4 +41,4 @@ dimensional computations on a simulated sales data stream.
 
 ### Troubleshooting
 
-- <a href="http://docs.datatorrent.com/troubleshooting/" rel="nofollow">Troubleshooting Guide</a>
+- <a href="http://dt-docs.readthedocs.io/en/latest/troubleshooting/" rel="nofollow">Troubleshooting Guide</a>

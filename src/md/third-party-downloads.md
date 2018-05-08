@@ -8,6 +8,4 @@ This is a list of 3rd party binary packages based on Apache Apex. The Apache Ape
 
 - [Bigtop](http://bigtop.apache.org/) CI based distribution [binaries](https://cwiki.apache.org/confluence/display/APEX/ApexBigtop#ApexBigtop-BigtopCIbaseddistributionbinaries)
 
-- <a href="https://www.datatorrent.com/download/" rel="nofollow">DataTorrent RTS</a>, which contains a binary build of Apache Apex
-
 If you would like to provide your own edition of Apache Apex here, please send email to [dev@apex.apache.org](mailto:dev@apex.apache.org).
