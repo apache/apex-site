@@ -20,7 +20,7 @@ The `asf-site` branch is where the actual generated files are stored. Note that 
 and so has been checked out as an orphan branch with its own commit history apart from the master branch. See the *Contributing* section below.
 
 Through a [gitpubsub](http://www.apache.org/dev/gitpubsub.html) mechanism on the apache.org server,
-files are taken from the `asf-branch` and pushed to the live server.
+files are taken from the `asf-site` branch and pushed to the live server.
 
 Pages
 -----
